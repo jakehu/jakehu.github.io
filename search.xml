@@ -70,6 +70,27 @@
       </tags>
   </entry>
   <entry>
+    <title>说一说，那些年我们一起自建过的Git服务器</title>
+    <url>/2015/Git-on-the-Server/</url>
+    <content><![CDATA[<h3 id="Git服务器端搭建，基于ssh协议"><a href="#Git服务器端搭建，基于ssh协议" class="headerlink" title="Git服务器端搭建，基于ssh协议"></a>Git服务器端搭建，基于ssh协议</h3><h4 id="服务端架设空git-repo"><a href="#服务端架设空git-repo" class="headerlink" title="服务端架设空git repo"></a>服务端架设空git repo</h4><p>ssh登录服务器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">groupadd git <span class="comment">#增加git用户组</span></span><br><span class="line">useradd jakehu -g git <span class="comment">#增加名为jakehu的用户属于git用户组</span></span><br><span class="line">ln –s /gitwork /git </span><br><span class="line"><span class="comment">#gitwork为实际工作目录，git为空目录做链接使用，可直接在根目录建立git文件夹即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以下造作操作是以直接在根目录下建立git文件夹为前提</span></span><br><span class="line">chown jakehu.git /git</span><br><span class="line">su jakehu</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">cd</span> /git</span><br><span class="line"><span class="comment">#空库的目录权限设定为 组内读写</span></span><br><span class="line"><span class="comment">#用--shared  git会自动搞定创建起来的文件目录</span></span><br><span class="line"><span class="comment"># shared 参数很重要</span></span><br><span class="line">git init --bare --shared test.git</span><br></pre></td></tr></table></figure>
+<p>到此为止服务器端架设完成</p>
+<a id="more"></a>
+<h4 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">ssh-keygen -b 2048 -t rsa <span class="comment">#生成密钥</span></span><br><span class="line"><span class="comment">#windows生成密钥方式不同,可用Pageant生成密钥</span></span><br></pre></td></tr></table></figure>
+<h4 id="服务器端导入密钥"><a href="#服务器端导入密钥" class="headerlink" title="服务器端导入密钥"></a>服务器端导入密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su jakehu</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line">cat id_rsa_jakehu.pub &gt;&gt; authorized_keys</span><br><span class="line">chmod 600 authorized_keys</span><br></pre></td></tr></table></figure>
+<p>最后访问地址: ssh://jakehu@serverIP/git/test.git</p>
+<h4 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h4><p>服务器上自动部署</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root</span><br><span class="line"><span class="built_in">cd</span> /www/ <span class="comment">#网站目录</span></span><br><span class="line">sh git-deploy.sh</span><br><span class="line"><span class="comment">#https://raw.githubusercontent.com/jakehu/tools/master/git-deploy.sh</span></span><br></pre></td></tr></table></figure>
+<p>服务器上切换分支测试</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root</span><br><span class="line"><span class="built_in">cd</span> /www/web</span><br><span class="line">git checkout dev</span><br><span class="line">chown -R www:www /www/web</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>搭建GitLab Runner For Java</title>
     <url>/2019/GitLab-Java-Runner/</url>
     <content><![CDATA[<h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>之前在使用<code>gitlab runner</code>时大多使用<code>docker</code>方式进行<code>CI</code>，但是对于<code>Java and Maven</code>每次都需要下载费时很久，所以后来我选择<code>shell</code>方式。接下来我们看看<code>shell</code>方式的<code>runner</code>应该怎样搭建</p>
@@ -96,27 +117,6 @@
       <tags>
         <tag>gitlab</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>说一说，那些年我们一起自建过的Git服务器</title>
-    <url>/2015/Git-on-the-Server/</url>
-    <content><![CDATA[<h3 id="Git服务器端搭建，基于ssh协议"><a href="#Git服务器端搭建，基于ssh协议" class="headerlink" title="Git服务器端搭建，基于ssh协议"></a>Git服务器端搭建，基于ssh协议</h3><h4 id="服务端架设空git-repo"><a href="#服务端架设空git-repo" class="headerlink" title="服务端架设空git repo"></a>服务端架设空git repo</h4><p>ssh登录服务器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">groupadd git <span class="comment">#增加git用户组</span></span><br><span class="line">useradd jakehu -g git <span class="comment">#增加名为jakehu的用户属于git用户组</span></span><br><span class="line">ln –s /gitwork /git </span><br><span class="line"><span class="comment">#gitwork为实际工作目录，git为空目录做链接使用，可直接在根目录建立git文件夹即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以下造作操作是以直接在根目录下建立git文件夹为前提</span></span><br><span class="line">chown jakehu.git /git</span><br><span class="line">su jakehu</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">cd</span> /git</span><br><span class="line"><span class="comment">#空库的目录权限设定为 组内读写</span></span><br><span class="line"><span class="comment">#用--shared  git会自动搞定创建起来的文件目录</span></span><br><span class="line"><span class="comment"># shared 参数很重要</span></span><br><span class="line">git init --bare --shared test.git</span><br></pre></td></tr></table></figure>
-<p>到此为止服务器端架设完成</p>
-<a id="more"></a>
-<h4 id="客户端生成密钥"><a href="#客户端生成密钥" class="headerlink" title="客户端生成密钥"></a>客户端生成密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">ssh-keygen -b 2048 -t rsa <span class="comment">#生成密钥</span></span><br><span class="line"><span class="comment">#windows生成密钥方式不同,可用Pageant生成密钥</span></span><br></pre></td></tr></table></figure>
-<h4 id="服务器端导入密钥"><a href="#服务器端导入密钥" class="headerlink" title="服务器端导入密钥"></a>服务器端导入密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su jakehu</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line">cat id_rsa_jakehu.pub &gt;&gt; authorized_keys</span><br><span class="line">chmod 600 authorized_keys</span><br></pre></td></tr></table></figure>
-<p>最后访问地址: ssh://jakehu@serverIP/git/test.git</p>
-<h4 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h4><p>服务器上自动部署</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root</span><br><span class="line"><span class="built_in">cd</span> /www/ <span class="comment">#网站目录</span></span><br><span class="line">sh git-deploy.sh</span><br><span class="line"><span class="comment">#https://raw.githubusercontent.com/jakehu/tools/master/git-deploy.sh</span></span><br></pre></td></tr></table></figure>
-<p>服务器上切换分支测试</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root</span><br><span class="line"><span class="built_in">cd</span> /www/web</span><br><span class="line">git checkout dev</span><br><span class="line">chown -R www:www /www/web</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>服务器</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -563,6 +563,28 @@
       </tags>
   </entry>
   <entry>
+    <title>CleanMyMac资源之备忘录</title>
+    <url>/2018/cleanmymac/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>CleanMyMac X</code>是一款强大的<code>Mac</code>系统垃圾清理工具，可以清除<code>Mac</code>系统多余的语言包、系统缓存、应用程序、<code>PowerPc</code>软件运行库等，是硬盘瘦身的好工具</p>
+<h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><p><a href="https://macpaw.com/">国际版官网</a></p>
+<p><a href="http://www.mycleanmymac.com/">中文官网</a></p>
+<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>因为<code>CleanMyMac</code>对不同的版本有不同的授权信息。</p>
+<p>下面地址均为官网下载地址<code>https://dl.devmate.com</code>开头。</p>
+<p><a href="https://dl.devmate.com/com.macpaw.CleanMyMac3/CleanMyMac3.dmg">国际版 CleanMyMac 3</a></p>
+<p><a href="https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg">国际版  CleanMyMac X</a></p>
+<p><a href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac3/CleanMyMacChinese.dmg">中文版 CleanMyMac 3</a></p>
+<p><a href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac4/CleanMyMacXChinese.dmg">中文版 CleanMyMac X</a></p>
+<h3 id="MacPaw支持"><a href="#MacPaw支持" class="headerlink" title="MacPaw支持"></a>MacPaw支持</h3><p>可在支持中心查询许可证，或者当换机不成功时可以通过支持中心进行许可证重置。</p>
+<p><a href="https://macpaw.com/zh/support">支持中心</a></p>
+]]></content>
+      <categories>
+        <category>资源控</category>
+      </categories>
+      <tags>
+        <tag>cleanmymac</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker之常用命令集</title>
     <url>/2018/docker-command/</url>
     <content><![CDATA[<h4 id="查看docker磁盘使用情况"><a href="#查看docker磁盘使用情况" class="headerlink" title="查看docker磁盘使用情况"></a>查看docker磁盘使用情况</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker system df</span><br></pre></td></tr></table></figure>
@@ -584,28 +606,6 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CleanMyMac资源之备忘录</title>
-    <url>/2018/cleanmymac/</url>
-    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>CleanMyMac X</code>是一款强大的<code>Mac</code>系统垃圾清理工具，可以清除<code>Mac</code>系统多余的语言包、系统缓存、应用程序、<code>PowerPc</code>软件运行库等，是硬盘瘦身的好工具</p>
-<h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><p><a href="https://macpaw.com/">国际版官网</a></p>
-<p><a href="http://www.mycleanmymac.com/">中文官网</a></p>
-<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>因为<code>CleanMyMac</code>对不同的版本有不同的授权信息。</p>
-<p>下面地址均为官网下载地址<code>https://dl.devmate.com</code>开头。</p>
-<p><a href="https://dl.devmate.com/com.macpaw.CleanMyMac3/CleanMyMac3.dmg">国际版 CleanMyMac 3</a></p>
-<p><a href="https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg">国际版  CleanMyMac X</a></p>
-<p><a href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac3/CleanMyMacChinese.dmg">中文版 CleanMyMac 3</a></p>
-<p><a href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac4/CleanMyMacXChinese.dmg">中文版 CleanMyMac X</a></p>
-<h3 id="MacPaw支持"><a href="#MacPaw支持" class="headerlink" title="MacPaw支持"></a>MacPaw支持</h3><p>可在支持中心查询许可证，或者当换机不成功时可以通过支持中心进行许可证重置。</p>
-<p><a href="https://macpaw.com/zh/support">支持中心</a></p>
-]]></content>
-      <categories>
-        <category>资源控</category>
-      </categories>
-      <tags>
-        <tag>cleanmymac</tag>
       </tags>
   </entry>
   <entry>
@@ -1388,6 +1388,22 @@
       </tags>
   </entry>
   <entry>
+    <title>npm之常用命令集</title>
+    <url>/2018/npm-cli/</url>
+    <content><![CDATA[<h3 id="查看npm全局包"><a href="#查看npm全局包" class="headerlink" title="查看npm全局包"></a>查看npm全局包</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm ll -g</span><br><span class="line">npm la -g</span><br></pre></td></tr></table></figure>
+<p>上面这两个命令会显示包的简介和git地址和readme信息</p>
+<p><code>npm ls -g</code> 只会显示包名和版本</p>
+<p><code>depth</code>参数代表依赖关系最大深度</p>
+<p>如:<code>npm ls -g --depth 0</code>表示只显示最顶层</p>
+]]></content>
+      <categories>
+        <category>技术渣</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nodejs工具函数集</title>
     <url>/2018/node-utils/</url>
     <content><![CDATA[<h3 id="对数组中的对象进行排序"><a href="#对数组中的对象进行排序" class="headerlink" title="对数组中的对象进行排序"></a>对数组中的对象进行排序</h3><p>函数：</p>
@@ -1404,22 +1420,6 @@
       <tags>
         <tag>Nodejs</tag>
         <tag>utils</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm之常用命令集</title>
-    <url>/2018/npm-cli/</url>
-    <content><![CDATA[<h3 id="查看npm全局包"><a href="#查看npm全局包" class="headerlink" title="查看npm全局包"></a>查看npm全局包</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm ll -g</span><br><span class="line">npm la -g</span><br></pre></td></tr></table></figure>
-<p>上面这两个命令会显示包的简介和git地址和readme信息</p>
-<p><code>npm ls -g</code> 只会显示包名和版本</p>
-<p><code>depth</code>参数代表依赖关系最大深度</p>
-<p>如:<code>npm ls -g --depth 0</code>表示只显示最顶层</p>
-]]></content>
-      <categories>
-        <category>技术渣</category>
-      </categories>
-      <tags>
-        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
@@ -1550,26 +1550,6 @@
       </tags>
   </entry>
   <entry>
-    <title>群晖中利用阿里镜像为Docker加速</title>
-    <url>/2020/synology-docker/</url>
-    <content><![CDATA[<p>先来看看阿里对<code>docker</code>加速的步骤</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p &#x2F;etc&#x2F;docker</span><br><span class="line">sudo tee &#x2F;etc&#x2F;docker&#x2F;daemon.json &lt;&lt;-&#39;EOF&#39;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https:&#x2F;&#x2F;xxx.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
-<p>接下来我们对群晖中<code>Docker</code>套件进行设置，配置文件如下，只需要将阿里加速地址设置在<code>registry-mirrors</code>即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 配置文件路径</span><br><span class="line"># &#x2F;var&#x2F;packages&#x2F;Docker&#x2F;etc&#x2F;dockerd.json</span><br><span class="line">&#123;</span><br><span class="line">   &quot;data-root&quot; : &quot;&#x2F;var&#x2F;packages&#x2F;Docker&#x2F;target&#x2F;docker&quot;,</span><br><span class="line">   &quot;log-driver&quot; : &quot;db&quot;,</span><br><span class="line">   &quot;registry-mirrors&quot; : [&quot;https:&#x2F;&#x2F;xxx.mirror.aliyuncs.com&quot;],</span><br><span class="line">   &quot;storage-driver&quot; : &quot;btrfs&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在群晖中对服务的管理可以用<code>synoservice</code>命令，利用下面命令重启<code>Docker</code>：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">synoservice --restart pkgctl-Docker</span><br></pre></td></tr></table></figure>
-<p>这样就能重启<code>Docker</code>实现加速了，最后我们可以通过<code>docker info</code>来查看<code>Registry Mirrors</code>参数看是否设置正确</p>
-<hr>
-<p>另一种方式也可以通过网页端的套件中心对套件进行<code>停用</code>和<code>启用</code></p>
-]]></content>
-      <categories>
-        <category>技术渣</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux之SUSE内核升级看这里</title>
     <url>/2019/suse-kernel/</url>
     <content><![CDATA[<h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近公司在部署<code>SAP</code>，在部署<code>SUSE</code>的虚拟机的过程中接到<code>SAP</code>实施商的一个要求，需要将虚拟机的内核进行升级。原:<code>4.4.73-7-default</code>，目标：<code>4.4.140-94.42-default</code></p>
@@ -1590,6 +1570,26 @@
       <tags>
         <tag>Linux</tag>
         <tag>SUSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>群晖中利用阿里镜像为Docker加速</title>
+    <url>/2020/synology-docker/</url>
+    <content><![CDATA[<p>先来看看阿里对<code>docker</code>加速的步骤</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p &#x2F;etc&#x2F;docker</span><br><span class="line">sudo tee &#x2F;etc&#x2F;docker&#x2F;daemon.json &lt;&lt;-&#39;EOF&#39;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https:&#x2F;&#x2F;xxx.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>接下来我们对群晖中<code>Docker</code>套件进行设置，配置文件如下，只需要将阿里加速地址设置在<code>registry-mirrors</code>即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 配置文件路径</span><br><span class="line"># &#x2F;var&#x2F;packages&#x2F;Docker&#x2F;etc&#x2F;dockerd.json</span><br><span class="line">&#123;</span><br><span class="line">   &quot;data-root&quot; : &quot;&#x2F;var&#x2F;packages&#x2F;Docker&#x2F;target&#x2F;docker&quot;,</span><br><span class="line">   &quot;log-driver&quot; : &quot;db&quot;,</span><br><span class="line">   &quot;registry-mirrors&quot; : [&quot;https:&#x2F;&#x2F;xxx.mirror.aliyuncs.com&quot;],</span><br><span class="line">   &quot;storage-driver&quot; : &quot;btrfs&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在群晖中对服务的管理可以用<code>synoservice</code>命令，利用下面命令重启<code>Docker</code>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">synoservice --restart pkgctl-Docker</span><br></pre></td></tr></table></figure>
+<p>这样就能重启<code>Docker</code>实现加速了，最后我们可以通过<code>docker info</code>来查看<code>Registry Mirrors</code>参数看是否设置正确</p>
+<hr>
+<p>另一种方式也可以通过网页端的套件中心对套件进行<code>停用</code>和<code>启用</code></p>
+]]></content>
+      <categories>
+        <category>技术渣</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
