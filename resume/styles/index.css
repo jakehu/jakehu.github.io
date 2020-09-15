@@ -64,7 +64,7 @@ address {
     margin-top: 1.33333333em;
 }
 
-.content > article > section {
+.content &gt; article &gt; section {
     padding: .5em 0;
 }
 
@@ -242,13 +242,13 @@ footer {
     .title {
         text-align: left;
     }
-    .content > article {
+    .content &gt; article {
         width: 27em;
     }
-    .content > article:first-child {
+    .content &gt; article:first-child {
         padding-right: 3em;
     }
-    .content > article:last-child {
+    .content &gt; article:last-child {
         padding-left: 3em;
     }
 }
@@ -257,7 +257,7 @@ footer {
     .container {
         width: 95%;
     }
-    .content > article {
+    .content &gt; article {
         width: 100%;
     }
     header,
@@ -271,7 +271,7 @@ footer {
     header {
         align-items: center;
     }
-    .content > article {
+    .content &gt; article {
         padding: 0;
     }
     address {

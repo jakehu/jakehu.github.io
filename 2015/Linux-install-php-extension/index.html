@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="想在Windows上安装个Memcached的php扩展真是找了好多地方都没找到，Windows上自己编译起来也非常的麻烦。算了吧还是Linux方便，走你：Memcached扩展需要安装libmemcached，因为该扩展是依赖libmemcached的API。所以首先我们必须安装libmemcached： 123456wget https:&#x2F;&#x2F;launchpad.net&#x2F;libmemcached">
+  <meta name="description" content="想在 Windows 上安装个 Memcached 的 php 扩展真是找了好多地方都没找到，Windows 上自己编译起来也非常的麻烦。算了吧还是 Linux 方便，走你：Memcached 扩展需要安装 libmemcached，因为该扩展是依赖 libmemcached 的 API。所以首先我们必须安装 libmemcached： 123456wget https:&#x2F;&#x2F;launchpad.n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="唉，找不到Windows下Memcached的php扩展还是自己在Linux上编译吧！">
+<meta property="og:title" content="唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！">
 <meta property="og:url" content="http://www.jakehu.me/2015/Linux-install-php-extension/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="想在Windows上安装个Memcached的php扩展真是找了好多地方都没找到，Windows上自己编译起来也非常的麻烦。算了吧还是Linux方便，走你：Memcached扩展需要安装libmemcached，因为该扩展是依赖libmemcached的API。所以首先我们必须安装libmemcached： 123456wget https:&#x2F;&#x2F;launchpad.net&#x2F;libmemcached">
+<meta property="og:description" content="想在 Windows 上安装个 Memcached 的 php 扩展真是找了好多地方都没找到，Windows 上自己编译起来也非常的麻烦。算了吧还是 Linux 方便，走你：Memcached 扩展需要安装 libmemcached，因为该扩展是依赖 libmemcached 的 API。所以首先我们必须安装 libmemcached： 123456wget https:&#x2F;&#x2F;launchpad.n">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/20151027125619.jpg">
 <meta property="article:published_time" content="2015-10-26T16:00:01.000Z">
@@ -73,7 +73,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>唉，找不到Windows下Memcached的php扩展还是自己在Linux上编译吧！ | 晨曦's Blog</title>
+  <title>唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！ | 晨曦's Blog</title>
   
 
 
@@ -344,7 +344,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          唉，找不到Windows下Memcached的php扩展还是自己在Linux上编译吧！
+          唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！
         </h1>
 
         <div class="post-meta-container">
@@ -375,7 +375,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2015/Linux-install-php-extension/" class="post-meta-item leancloud_visitors" data-flag-title="唉，找不到Windows下Memcached的php扩展还是自己在Linux上编译吧！" title="阅读次数">
+    <span id="/2015/Linux-install-php-extension/" class="post-meta-item leancloud_visitors" data-flag-title="唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -405,23 +405,23 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>想在Windows上安装个Memcached的php扩展真是找了好多地方都没找到，Windows上自己编译起来也非常的麻烦。算了吧还是Linux方便，走你：<br><img src="https://img.jakehu.me/20151027125619.jpg"><br>Memcached扩展需要安装libmemcached，因为该扩展是依赖libmemcached的API。所以首先我们必须安装libmemcached：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz</span><br><span class="line">tar zxvf libmemcached-1.0.18.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libmemcached-1.0.18</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>安装完成后我们可以发现libmemcached被安装在了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;include&#x2F;libmemcached</span><br></pre></td></tr></table></figure>
+        <p>想在 Windows 上安装个 Memcached 的 php 扩展真是找了好多地方都没找到，Windows 上自己编译起来也非常的麻烦。算了吧还是 Linux 方便，走你：<br><img src="https://img.jakehu.me/20151027125619.jpg"><br>Memcached 扩展需要安装 libmemcached，因为该扩展是依赖 libmemcached 的 API。所以首先我们必须安装 libmemcached：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz</span><br><span class="line">tar zxvf libmemcached-1.0.18.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libmemcached-1.0.18</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></tbody></table></figure>
+<p>安装完成后我们可以发现 libmemcached 被安装在了</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/include/libmemcached</span><br></pre></td></tr></tbody></table></figure>
 <a id="more"></a>
-<p>接下来找到php中Memcached扩展页面<a target="_blank" rel="noopener" href="http://pecl.php.net/package/memcached">http://pecl.php.net/package/memcached</a>并下载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://pecl.php.net/get/memcached-2.2.0.tgz</span><br><span class="line">tar xvzf memcached-2.2.0.tgz</span><br><span class="line"><span class="built_in">cd</span> memcached-2.2.0</span><br></pre></td></tr></table></figure>
-<p>在编译之前我们要确认php-devel是否已经安装，如果没有安装请使用(Centos)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php-devel</span><br></pre></td></tr></table></figure>
+<p>接下来找到 php 中 Memcached 扩展页面 <a target="_blank" rel="noopener" href="http://pecl.php.net/package/memcached">http://pecl.php.net/package/memcached</a> 并下载</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://pecl.php.net/get/memcached-2.2.0.tgz</span><br><span class="line">tar xvzf memcached-2.2.0.tgz</span><br><span class="line"><span class="built_in">cd</span> memcached-2.2.0</span><br></pre></td></tr></tbody></table></figure>
+<p>在编译之前我们要确认 php-devel 是否已经安装，如果没有安装请使用 (Centos)</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php-devel</span><br></pre></td></tr></tbody></table></figure>
 <p>安装；如果已经安装好接下来我们就可以编译了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php-5.6.4/bin/php-config --disable-memcached-sasl</span><br><span class="line">make</span><br><span class="line">make <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php-5.6.4/bin/php-config --disable-memcached-sasl</span><br><span class="line">make</span><br><span class="line">make <span class="built_in">test</span></span><br></pre></td></tr></tbody></table></figure>
 <p>然后我们可以在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;root&#x2F;memcached-2.2.0&#x2F;modules</span><br></pre></td></tr></table></figure>
-<p>目录下面找到 memcached.so,我们只需要将memcached.so移动到PHP环境所在的ext文件夹内然后再配置php.ini即可<br><strong>注：以上安装过程中出现以下错误可以按下面的解决办法解决</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#configure: error: no, sasl.h is not available. Run configure with --disable-memcached-sasl to disable this check</span></span><br><span class="line"><span class="comment">#如果出现上面错误则运行以下代码</span></span><br><span class="line">yum install cyrus-sasl-devel</span><br></pre></td></tr></table></figure>
-<p>最后我们用php代码进行测试，代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$m = <span class="keyword">new</span> Memcached();</span><br><span class="line">$arr = <span class="keyword">array</span>(<span class="keyword">array</span>(<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="number">11211</span>));</span><br><span class="line">$m-&gt;addServers($arr); <span class="comment">//addServers可以同时添加多台服务器</span></span><br><span class="line">print_r($m-&gt;getStats()); <span class="comment">//打印服务器状态</span></span><br><span class="line">print_r($m-&gt;getVersion()); <span class="comment">//打印memcached版本号</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/root/memcached-2.2.0/modules</span><br></pre></td></tr></tbody></table></figure>
+<p>目录下面找到 memcached.so, 我们只需要将 memcached.so 移动到 PHP 环境所在的 ext 文件夹内然后再配置 php.ini 即可<br><strong>注：以上安装过程中出现以下错误可以按下面的解决办法解决</strong></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#configure: error: no, sasl.h is not available. Run configure with --disable-memcached-sasl to disable this check</span></span><br><span class="line"><span class="comment">#如果出现上面错误则运行以下代码</span></span><br><span class="line">yum install cyrus-sasl-devel</span><br></pre></td></tr></tbody></table></figure>
+<p>最后我们用 php 代码进行测试，代码如下：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$m = <span class="keyword">new</span> Memcached();</span><br><span class="line">$arr = <span class="keyword">array</span>(<span class="keyword">array</span>(<span class="string">'127.0.0.1'</span>,<span class="number">11211</span>));</span><br><span class="line">$m-&gt;addServers($arr); <span class="comment">//addServers可以同时添加多台服务器</span></span><br><span class="line">print_r($m-&gt;getStats()); <span class="comment">//打印服务器状态</span></span><br><span class="line">print_r($m-&gt;getVersion()); <span class="comment">//打印memcached版本号</span></span><br></pre></td></tr></tbody></table></figure>
     </div>
 
     
@@ -452,13 +452,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2015/TP-Link-703N-Openwrt-Shadowsocks/" rel="prev" title="TP-Link 703N路由器刷Openwrt+Shadowsocks实现OpenWRT 路由器自动翻墙">
-                  <i class="fa fa-chevron-left"></i> TP-Link 703N路由器刷Openwrt+Shadowsocks实现OpenWRT 路由器自动翻墙
+                <a href="/2015/TP-Link-703N-Openwrt-Shadowsocks/" rel="prev" title="TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙">
+                  <i class="fa fa-chevron-left"></i> TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2015/Shijing-Caiwei/" rel="next" title="《诗经·小雅· 采薇》">
-                  《诗经·小雅· 采薇》 <i class="fa fa-chevron-right"></i>
+                <a href="/2015/Shijing-Caiwei/" rel="next" title="《诗经・小雅・采薇》">
+                  《诗经・小雅・采薇》 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -523,6 +523,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

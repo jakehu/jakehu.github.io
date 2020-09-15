@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="之前安装了openldap服务和lam管理平台，接下来我们看看如何在ldap中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建Group组创建objectClass属性为groupOfUniqueNames的组gogs用于gogs登陆其中cn为组名，uniqueMember为组下用户 为Gogs添加认证">
+  <meta name="description" content="之前安装了 openldap 服务和 lam 管理平台，接下来我们看看如何在 ldap 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建 Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建 Group 组创建 objectClass 属性为 groupOfUniqueNames 的组 gogs 用于 gogs 登陆其中 cn 为组名，uniqueMe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ldap按分组控制权限并接入Gogs系统">
+<meta property="og:title" content="Ldap 按分组控制权限并接入 Gogs 系统">
 <meta property="og:url" content="http://www.jakehu.me/2020/openldap-gogs/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="之前安装了openldap服务和lam管理平台，接下来我们看看如何在ldap中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建Group组创建objectClass属性为groupOfUniqueNames的组gogs用于gogs登陆其中cn为组名，uniqueMember为组下用户 为Gogs添加认证">
+<meta property="og:description" content="之前安装了 openldap 服务和 lam 管理平台，接下来我们看看如何在 ldap 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建 Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建 Group 组创建 objectClass 属性为 groupOfUniqueNames 的组 gogs 用于 gogs 登陆其中 cn 为组名，uniqueMe">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/20200520103212.png">
 <meta property="og:image" content="https://img.jakehu.me/20200520103333.png">
@@ -79,7 +79,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>Ldap按分组控制权限并接入Gogs系统 | 晨曦's Blog</title>
+  <title>Ldap 按分组控制权限并接入 Gogs 系统 | 晨曦's Blog</title>
   
 
 
@@ -235,7 +235,7 @@ var _hmt = _hmt || [];
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAGroup"><span class="nav-number">1.</span> <span class="nav-text">创建Group</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-number">2.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAGroup%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">创建Group组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BAGogs%E6%B7%BB%E5%8A%A0%E8%AE%A4%E8%AF%81%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">为Gogs添加认证源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%AE%A4%E8%AF%81%E6%BA%90"><span class="nav-number">5.</span> <span class="nav-text">更改认证源</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAGroup"><span class="nav-number">1.</span> <span class="nav-text">创建 Group</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-number">2.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAGroup%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">创建 Group 组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BAGogs%E6%B7%BB%E5%8A%A0%E8%AE%A4%E8%AF%81%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">为 Gogs 添加认证源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%AE%A4%E8%AF%81%E6%BA%90"><span class="nav-number">5.</span> <span class="nav-text">更改认证源</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -351,7 +351,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Ldap按分组控制权限并接入Gogs系统
+          Ldap 按分组控制权限并接入 Gogs 系统
         </h1>
 
         <div class="post-meta-container">
@@ -376,7 +376,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/openldap-gogs/" class="post-meta-item leancloud_visitors" data-flag-title="Ldap按分组控制权限并接入Gogs系统" title="阅读次数">
+    <span id="/2020/openldap-gogs/" class="post-meta-item leancloud_visitors" data-flag-title="Ldap 按分组控制权限并接入 Gogs 系统" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -406,12 +406,12 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>之前安装了<code>openldap</code>服务和<code>lam</code>管理平台，接下来我们看看如何在<code>ldap</code>中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。</p>
-<h4 id="创建Group"><a href="#创建Group" class="headerlink" title="创建Group"></a>创建Group</h4><p>先创建一个组，如图：<br><img src="https://img.jakehu.me/20200520103212.png"></p>
+        <p>之前安装了 <code>openldap</code> 服务和 <code>lam</code> 管理平台，接下来我们看看如何在 <code>ldap</code> 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。</p>
+<h4 id="创建Group"><a href="#创建Group" class="headerlink" title="创建Group"></a>创建 Group</h4><p>先创建一个组，如图：<br><img src="https://img.jakehu.me/20200520103212.png"></p>
 <h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p>在刚才创建的组里创建用户，如图：<br><img src="https://img.jakehu.me/20200520103333.png"></p>
-<h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建Group组</h4><p>创建<code>objectClass</code>属性为<code>groupOfUniqueNames</code>的组<code>gogs</code>用于<code>gogs</code>登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中<code>cn</code>为组名，<code>uniqueMember</code>为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
-<h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为Gogs添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code>管理员的<code>DN</code><br><code>绑定密码</code>：<code>Ldap</code>管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code>用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是<code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
-<h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在<code>gogs</code>用户改为<code>ldap</code>认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
+<h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建 Group 组</h4><p>创建 <code>objectClass</code> 属性为 <code>groupOfUniqueNames</code> 的组 <code>gogs</code> 用于 <code>gogs</code> 登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中 <code>cn</code> 为组名，<code>uniqueMember</code> 为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
+<h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为 Gogs 添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code> 管理员的 <code>DN</code><br><code>绑定密码</code>：<code>Ldap</code> 管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code> 用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是 <code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
+<h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在 <code>gogs</code> 用户改为 <code>ldap</code> 认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
 
     </div>
 
@@ -442,8 +442,8 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/ldap-docker/" rel="prev" title="利用Docker为自己打造一套OpenLdap认证系统">
-                  <i class="fa fa-chevron-left"></i> 利用Docker为自己打造一套OpenLdap认证系统
+                <a href="/2020/ldap-docker/" rel="prev" title="利用 Docker 为自己打造一套 OpenLdap 认证系统">
+                  <i class="fa fa-chevron-left"></i> 利用 Docker 为自己打造一套 OpenLdap 认证系统
                 </a>
             </div>
             <div class="post-nav-item">
@@ -510,6 +510,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

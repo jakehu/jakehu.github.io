@@ -20,7 +20,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="提笔为青春，人生正当年">
@@ -339,7 +339,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/LCN-GTS/" class="post-title-link" itemprop="url">分布式事务LCN和GTS比较and你更喜欢谁？</a>
+            <a href="/2018/LCN-GTS/" class="post-title-link" itemprop="url">分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？</a>
         </h2>
 
         <div class="post-meta-container">
@@ -370,7 +370,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/LCN-GTS/" class="post-meta-item leancloud_visitors" data-flag-title="分布式事务LCN和GTS比较and你更喜欢谁？" title="阅读次数">
+    <span id="/2018/LCN-GTS/" class="post-meta-item leancloud_visitors" data-flag-title="分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -400,43 +400,43 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="LCN简介"><a href="#LCN简介" class="headerlink" title="LCN简介"></a>LCN简介</h3><ol>
-<li>LCN分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制</li>
+          <h3 id="LCN简介"><a href="#LCN简介" class="headerlink" title="LCN简介"></a>LCN 简介</h3><ol>
+<li>LCN 分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制</li>
 <li>因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用</li>
 <li>在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低</li>
 </ol>
-<h3 id="LCN核心步骤"><a href="#LCN核心步骤" class="headerlink" title="LCN核心步骤"></a>LCN核心步骤</h3><ol>
-<li>创建事务组，是指在事务发起方开始执行业务代码之前先调用TxManager创建事务组对象，然后拿到事务标示GroupId的过程</li>
-<li>添加事务组，添加事务组是指参与方在执行完业务方法以后，将该模块的事务信息添加通知给TxManager的操作</li>
-<li>关闭事务组，是指在发起方执行完业务代码以后，将发起方执行结果状态通知给TxManager的动作。当执行完关闭事务组的方法以后，TxManager将根据事务组信息来通知相应的参与模块提交或回滚事务</li>
+<h3 id="LCN核心步骤"><a href="#LCN核心步骤" class="headerlink" title="LCN核心步骤"></a>LCN 核心步骤</h3><ol>
+<li>创建事务组，是指在事务发起方开始执行业务代码之前先调用 TxManager 创建事务组对象，然后拿到事务标示 GroupId 的过程</li>
+<li>添加事务组，添加事务组是指参与方在执行完业务方法以后，将该模块的事务信息添加通知给 TxManager 的操作</li>
+<li>关闭事务组，是指在发起方执行完业务代码以后，将发起方执行结果状态通知给 TxManager 的动作。当执行完关闭事务组的方法以后，TxManager 将根据事务组信息来通知相应的参与模块提交或回滚事务</li>
 </ol>
-<h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN事务控制原理</h3><p>LCN事务控制原理是由事务模块TxClient下的代理连接池与TxManager的协调配合完成的事务协调控制TxClient的代理连接池实现了javax.sql.DataSource接口，并重写了close方法，事务模块在提交关闭以后TxClient连接池将执行”假关闭”操作，等待TxManager协调完成事务以后在关闭连接<br><img src="https://img.jakehu.me/1.png"></p>
-<h3 id="阿里云GTS全局事务服务"><a href="#阿里云GTS全局事务服务" class="headerlink" title="阿里云GTS全局事务服务"></a>阿里云GTS全局事务服务</h3><ol>
+<h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN 事务控制原理</h3><p>LCN 事务控制原理是由事务模块 TxClient 下的代理连接池与 TxManager 的协调配合完成的事务协调控制 TxClient 的代理连接池实现了 javax.sql.DataSource 接口，并重写了 close 方法，事务模块在提交关闭以后 TxClient 连接池将执行” 假关闭” 操作，等待 TxManager 协调完成事务以后在关闭连接<br><img src="https://img.jakehu.me/1.png"></p>
+<h3 id="阿里云GTS全局事务服务"><a href="#阿里云GTS全局事务服务" class="headerlink" title="阿里云GTS全局事务服务"></a>阿里云 GTS 全局事务服务</h3><ol>
 <li>全局事务服务（Global Transaction Service，简称 GTS）是一款高性能、高可靠、接入简单的分布式事务中间件，用于解决分布式环境下的事务一致性问题</li>
-<li>GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
+<li> GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合 EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
 </ol>
-<h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS模拟场景演示</h3><p><img src="https://img.jakehu.me/2.png"></p>
+<h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS 模拟场景演示</h3><p><img src="https://img.jakehu.me/2.png"></p>
 <h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>GTS 通过大量创新，解决了事务 ACID 特性与高性能、高可用、低侵入不可兼得的问题。单事务分支的平均响应时间在 2ms 左右，3 台服务器组成的集群可以支撑 3 万 TPS 以上的分布式事务请求</p>
-<p>LCN性能参考：<a target="_blank" rel="noopener" href="http://springcloud.cn/view/374">http://springcloud.cn/view/374</a>在众多开源分布式事务框架中，LCN性能是处于前列的</p>
-<h3 id="LCN总结"><a href="#LCN总结" class="headerlink" title="LCN总结"></a>LCN总结</h3><p>优点:</p>
+<p>LCN 性能参考：<a target="_blank" rel="noopener" href="http://springcloud.cn/view/374">http://springcloud.cn/view/374</a>在众多开源分布式事务框架中，LCN 性能是处于前列的</p>
+<h3 id="LCN总结"><a href="#LCN总结" class="headerlink" title="LCN总结"></a>LCN 总结</h3><p>优点:</p>
 <ul>
 <li>性能优秀</li>
 <li>可靠性强</li>
-<li>LCN实现的分布式事务处理模式，编码复杂性和入侵代码量低</li>
+<li> LCN 实现的分布式事务处理模式，编码复杂性和入侵代码量低</li>
 </ul>
 <p>缺点:</p>
 <ul>
-<li>需额外部署tx-manager服务节点</li>
-<li>由于需要lock资源这种处理方式，如果集中更新某几个热门商品时，LCN的性能衰减量大于TCC模式</li>
+<li>需额外部署 tx-manager 服务节点</li>
+<li>由于需要 lock 资源这种处理方式，如果集中更新某几个热门商品时，LCN 的性能衰减量大于 TCC 模式</li>
 <li>服务超时时，会造成其他服务的资源被锁住，比如支付服务超时过程中，相关商品库存会一直无法操作</li>
-<li>不支持SpringCloud 2.0.0及以上版本（目前已通过修改源码实现支持）</li>
+<li>不支持 SpringCloud 2.0.0 及以上版本（目前已通过修改源码实现支持）</li>
 </ul>
-<h3 id="GTS总结"><a href="#GTS总结" class="headerlink" title="GTS总结"></a>GTS总结</h3><p>优点:</p>
+<h3 id="GTS总结"><a href="#GTS总结" class="headerlink" title="GTS总结"></a>GTS 总结</h3><p>优点:</p>
 <ul>
-<li>性能优秀(有淘宝双十一作为示例）</li>
+<li>性能优秀 (有淘宝双十一作为示例）</li>
 <li>可靠性强</li>
-<li>代码入侵性小（相比LCN多一点）</li>
-<li>支持SpringCloud 2.0.0及以上版本</li>
+<li>代码入侵性小（相比 LCN 多一点）</li>
+<li>支持 SpringCloud 2.0.0 及以上版本</li>
 </ul>
 <p>缺点:</p>
 <ul>
@@ -481,7 +481,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/hexo-pages/" class="post-title-link" itemprop="url">Hexo在Github慢？不存在百度云？七牛？又拍？</a>
+            <a href="/2018/hexo-pages/" class="post-title-link" itemprop="url">Hexo 在 Github 慢？不存在百度云？七牛？又拍？</a>
         </h2>
 
         <div class="post-meta-container">
@@ -512,7 +512,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/hexo-pages/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo在Github慢？不存在百度云？七牛？又拍？" title="阅读次数">
+    <span id="/2018/hexo-pages/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo 在 Github 慢？不存在百度云？七牛？又拍？" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -542,14 +542,14 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>博客<code>hexo</code>一直部署在<code>Github Pages</code>，方便、稳定非常<code>nice</code>，但是最近发现打开博客的速度比较慢。于是想着能否通过多部署，或者国内<code>CDN</code>加快访问速度</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>博客 <code>hexo</code> 一直部署在 <code>Github Pages</code>，方便、稳定非常 <code>nice</code>，但是最近发现打开博客的速度比较慢。于是想着能否通过多部署，或者国内 <code>CDN</code> 加快访问速度</p>
 <h3 id="加速方案"><a href="#加速方案" class="headerlink" title="加速方案"></a>加速方案</h3><ol>
-<li>利用<code>Gitee Pages</code>作为国内部署，但是<code>Gitee Pages</code>免费版不支持<code>https</code>，遂作罢</li>
-<li>利用<code>Coding Pages</code>作为国内部署，支持<code>Let&#39;s Encrypt https</code>，但发现所加速的<code>IP</code>均为国外<code>IP</code>，有时也比较的慢，于是尝试在国内找<code>cdn</code>加速就有了下面方案的对比</li>
-<li>百度云：免费版不支持<code>https</code>，遂作罢</li>
+<li>利用 <code>Gitee Pages</code> 作为国内部署，但是 <code>Gitee Pages</code> 免费版不支持 <code>https</code>，遂作罢</li>
+<li>利用 <code>Coding Pages</code> 作为国内部署，支持 <code>Let's Encrypt https</code>，但发现所加速的 <code>IP</code> 均为国外 <code>IP</code>，有时也比较的慢，于是尝试在国内找 <code>cdn</code> 加速就有了下面方案的对比</li>
+<li>百度云：免费版不支持 <code>https</code>，遂作罢</li>
 <li>腾讯云：没有免费额度，支持上传自有证书，遂作罢</li>
-<li>七牛CDN：免费10G额度，免费版不支持<code>https</code>，遂作罢</li>
-<li>又拍云(在用方案，目前最完美方案)：支持<code>Let&#39;s Encrypt</code>加入<a target="_blank" rel="noopener" href="https://www.upyun.com/league">又拍云联盟</a>10G空间+15G流量额度</li>
+<li>七牛 CDN：免费 10G 额度，免费版不支持 <code>https</code>，遂作罢</li>
+<li>又拍云 (在用方案，目前最完美方案)：支持 <code>Let's Encrypt</code> 加入<a target="_blank" rel="noopener" href="https://www.upyun.com/league">又拍云联盟</a> 10G 空间 + 15G 流量额度</li>
 </ol>
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>加速过后速度杠杠的</p>
 
@@ -590,7 +590,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/etc-fstab/" class="post-title-link" itemprop="url">修改/etc/fstab后可以不重启吗？答案是肯定的</a>
+            <a href="/2018/etc-fstab/" class="post-title-link" itemprop="url">修改 /etc/fstab 后可以不重启吗？答案是肯定的</a>
         </h2>
 
         <div class="post-meta-container">
@@ -621,7 +621,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/etc-fstab/" class="post-meta-item leancloud_visitors" data-flag-title="修改/etc/fstab后可以不重启吗？答案是肯定的" title="阅读次数">
+    <span id="/2018/etc-fstab/" class="post-meta-item leancloud_visitors" data-flag-title="修改 /etc/fstab 后可以不重启吗？答案是肯定的" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -651,16 +651,16 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近由于项目比较大而且附件比较多，在服务器上选择了外挂<code>Nas</code>盘符来存储项目文件</p>
-<p>目前服务器和<code>Nas</code>都是用的阿里的服务，这里说一下阿里在<code>Linux</code>中自动挂载的注意事项，在<code>/etc/fstab</code>配置文件中添加以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fid-xxxx.cn-hangzhou.nas.aliyuncs.com:&#x2F; &#x2F;mnt  nfs4 vers&#x3D;4.0,rsize&#x3D;1048576,wsize&#x3D;1048576,hard,timeo&#x3D;600,retrans&#x3D;2,_netdev,noresvport 0 0</span><br></pre></td></tr></table></figure>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近由于项目比较大而且附件比较多，在服务器上选择了外挂 <code>Nas</code> 盘符来存储项目文件</p>
+<p>目前服务器和 <code>Nas</code> 都是用的阿里的服务，这里说一下阿里在 <code>Linux</code> 中自动挂载的注意事项，在 <code>/etc/fstab</code> 配置文件中添加以下命令：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fid-xxxx.cn-hangzhou.nas.aliyuncs.com:/ /mnt  nfs4 vers=4.0,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,_netdev,noresvport 0 0</span><br></pre></td></tr></tbody></table></figure>
 <p>重点来了，请注意：</p>
 <blockquote>
-<p>命令中的<code>fid-xxxx.cn-hangzhou.nas.aliyuncs.com</code>为挂载点的域名</p>
+<p>命令中的 <code>fid-xxxx.cn-hangzhou.nas.aliyuncs.com</code> 为挂载点的域名</p>
 </blockquote>
-<p>我第一次的时候就把<code>xxxx.cn-hangzhou.nas.aliyuncs.com</code>替换为了挂载点的域名，而保留了<code>fid</code></p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>按阿里官方说明为重启时自动挂载<code>NAS</code>文件系统，如果需要及时生效可以运行以下命令而不用重启：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -a</span><br><span class="line">-a：将 &#x2F;etc&#x2F;fstab 中定义的所有档案系统挂上</span><br></pre></td></tr></table></figure>
+<p>我第一次的时候就把 <code>xxxx.cn-hangzhou.nas.aliyuncs.com</code> 替换为了挂载点的域名，而保留了 <code>fid</code></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>按阿里官方说明为重启时自动挂载 <code>NAS</code> 文件系统，如果需要及时生效可以运行以下命令而不用重启：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -a</span><br><span class="line">-a：将 /etc/fstab 中定义的所有档案系统挂上</span><br></pre></td></tr></tbody></table></figure>
 
       
     </div>
@@ -699,7 +699,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/npm-cli/" class="post-title-link" itemprop="url">npm之常用命令集</a>
+            <a href="/2018/npm-cli/" class="post-title-link" itemprop="url">npm 之常用命令集</a>
         </h2>
 
         <div class="post-meta-container">
@@ -730,7 +730,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/npm-cli/" class="post-meta-item leancloud_visitors" data-flag-title="npm之常用命令集" title="阅读次数">
+    <span id="/2018/npm-cli/" class="post-meta-item leancloud_visitors" data-flag-title="npm 之常用命令集" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -760,11 +760,11 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="查看npm全局包"><a href="#查看npm全局包" class="headerlink" title="查看npm全局包"></a>查看npm全局包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm ll -g</span><br><span class="line">npm la -g</span><br></pre></td></tr></table></figure>
-<p>上面这两个命令会显示包的简介和git地址和readme信息</p>
+          <h3 id="查看npm全局包"><a href="#查看npm全局包" class="headerlink" title="查看npm全局包"></a>查看 npm 全局包</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm ll -g</span><br><span class="line">npm la -g</span><br></pre></td></tr></tbody></table></figure>
+<p>上面这两个命令会显示包的简介和 git 地址和 readme 信息</p>
 <p><code>npm ls -g</code> 只会显示包名和版本</p>
-<p><code>depth</code>参数代表依赖关系最大深度</p>
-<p>如:<code>npm ls -g --depth 0</code>表示只显示最顶层</p>
+<p><code>depth</code> 参数代表依赖关系最大深度</p>
+<p>如:<code>npm ls -g --depth 0</code> 表示只显示最顶层</p>
 
       
     </div>
@@ -803,7 +803,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/Bushe-Lushan/" class="post-title-link" itemprop="url">周末休闲江津.李市之不舍.鹿山</a>
+            <a href="/2018/Bushe-Lushan/" class="post-title-link" itemprop="url">周末休闲江津。李市之不舍。鹿山</a>
         </h2>
 
         <div class="post-meta-container">
@@ -834,7 +834,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/Bushe-Lushan/" class="post-meta-item leancloud_visitors" data-flag-title="周末休闲江津.李市之不舍.鹿山" title="阅读次数">
+    <span id="/2018/Bushe-Lushan/" class="post-meta-item leancloud_visitors" data-flag-title="周末休闲江津。李市之不舍。鹿山" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -864,27 +864,27 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>去年团建的时候公司一直在物色一个好的农家乐，由此关注上了不舍.鹿山。虽然最后也没有去，好心累<br><img src="https://img.jakehu.me/20181222160331.jpg"><br>这次找了个周末双休带上孩子一起出发，去到大山卡卡里头呼吸新鲜的空气</p>
-<h3 id="行"><a href="#行" class="headerlink" title="行"></a>行</h3><p>在百度直接导航不舍.鹿山度假酒店即可差不多一个半小时左右<br><img src="https://img.jakehu.me/baidu.png"><br>从重庆出发经过<code>G85-&gt;G93-&gt;江习高速</code>在李市下道，再走上过10分钟左右就到了，有一个问题有差不多500m的距离小路非常窄，可能也就2m左右。记得要注意上面来车，真的很难错车</p>
-<h3 id="住"><a href="#住" class="headerlink" title="住"></a>住</h3><p>关于住宿最好是在网上订好，差不多只有20多间房吧，所有越早订好越好，基本周末都是满房。<br><img src="https://img.jakehu.me/20181222161231.jpg"><br>就是因为我们订房晚了，所以只能订在周五…</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>去年团建的时候公司一直在物色一个好的农家乐，由此关注上了不舍。鹿山。虽然最后也没有去，好心累<br><img src="https://img.jakehu.me/20181222160331.jpg"><br>这次找了个周末双休带上孩子一起出发，去到大山卡卡里头呼吸新鲜的空气</p>
+<h3 id="行"><a href="#行" class="headerlink" title="行"></a>行</h3><p>在百度直接导航不舍。鹿山度假酒店即可差不多一个半小时左右<br><img src="https://img.jakehu.me/baidu.png"><br>从重庆出发经过 <code>G85-&gt;G93-&gt;江习高速</code>在李市下道，再走上过 10 分钟左右就到了，有一个问题有差不多 500m 的距离小路非常窄，可能也就 2m 左右。记得要注意上面来车，真的很难错车</p>
+<h3 id="住"><a href="#住" class="headerlink" title="住"></a>住</h3><p>关于住宿最好是在网上订好，差不多只有 20 多间房吧，所有越早订好越好，基本周末都是满房。<br><img src="https://img.jakehu.me/20181222161231.jpg"><br>就是因为我们订房晚了，所以只能订在周五…</p>
 <p>目前订房好像是只接受官微订房，官微：<code>蕙家农业</code>价格方面有四个档次</p>
 <p>以下价格为周末价格，平常价格可能会有波动请以官微为准</p>
 <ol>
-<li>普通标间 280元</li>
-<li>精品标间 380元</li>
-<li>大床房 480元</li>
-<li>套房 680元</li>
+<li>普通标间 280 元</li>
+<li>精品标间 380 元</li>
+<li>大床房 480 元</li>
+<li>套房 680 元</li>
 </ol>
 <p>普标房间内部，有热水，感觉空调不是嘿给力，如果冷可以找前台拿棉被<br><img src="https://img.jakehu.me/20181222160111.jpg"></p>
 <h3 id="食"><a href="#食" class="headerlink" title="食"></a>食</h3><p>吃的还是比较多，价格也还能接收，有<code>炒菜</code>、<code>烧烤</code>、<code>汤锅</code>等</p>
 <p>价格方面：</p>
 <ol>
-<li>晚上炒菜<code>8个菜 366元</code>，分量非常足，就是冬天菜上桌易冷</li>
+<li>晚上炒菜 <code>8个菜 366元</code>，分量非常足，就是冬天菜上桌易冷</li>
 <li>早上房间含双早，自己点有<code>饺子、汤圆、小面</code>等</li>
 <li>中午汤锅<code>整只乌鸡汤锅 299</code>，现杀</li>
 </ol>
-<p>对于我们6个大人3个小孩来说整体不算太贵，而且食材都还比较新鲜，尤其是鸡更是后山现抓、现杀</p>
-<h3 id="耍"><a href="#耍" class="headerlink" title="耍"></a>耍</h3><p>酒店门前有一大片竹林，夏天歇凉好去处，竹林下有草坪可露营等，晚上有篝火活动(可能这个要看人多少)</p>
+<p>对于我们 6 个大人 3 个小孩来说整体不算太贵，而且食材都还比较新鲜，尤其是鸡更是后山现抓、现杀</p>
+<h3 id="耍"><a href="#耍" class="headerlink" title="耍"></a>耍</h3><p>酒店门前有一大片竹林，夏天歇凉好去处，竹林下有草坪可露营等，晚上有篝火活动 (可能这个要看人多少)</p>
 <p>由于冬天所有官方的活动只有<code>丛林寻蛋</code>，<code>59元</code>一个小朋友，捡的蛋可以自己带走，如果是夏天会有各种采摘活动<br><img src="https://img.jakehu.me/20181222162015.jpg"><br>也可以带小朋友看<code>孔雀 、 梅花鹿 、 鸵鸟 、 鸡 、 香猪</code>等</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总体来说周末休闲，带小朋友出去耍还是不错的</p>
 
@@ -925,7 +925,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/sql-soar/" class="post-title-link" itemprop="url">SQL优化和改写工具之小米SOAR</a>
+            <a href="/2018/sql-soar/" class="post-title-link" itemprop="url">SQL 优化和改写工具之小米 SOAR</a>
         </h2>
 
         <div class="post-meta-container">
@@ -956,7 +956,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/sql-soar/" class="post-meta-item leancloud_visitors" data-flag-title="SQL优化和改写工具之小米SOAR" title="阅读次数">
+    <span id="/2018/sql-soar/" class="post-meta-item leancloud_visitors" data-flag-title="SQL 优化和改写工具之小米 SOAR" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -986,13 +986,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p><code>SOAR(SQL Optimizer And Rewriter)</code>是一个对<code>SQL</code>进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。</p>
-<p>本来之前使用过一段时间美团的<code>SQLAdvisor</code>，但是依然有诸多问题无法解决，所以改用<code>SOAR</code>试试。</p>
+          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p><code>SOAR(SQL Optimizer And Rewriter)</code> 是一个对 <code>SQL</code> 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。</p>
+<p>本来之前使用过一段时间美团的 <code>SQLAdvisor</code>，但是依然有诸多问题无法解决，所以改用 <code>SOAR</code> 试试。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载二进制安装包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;XiaoMi&#x2F;soar&#x2F;releases&#x2F;download&#x2F;0.10.0&#x2F;soar.linux-amd64 -O soar</span><br><span class="line">chmod a+x soar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/XiaoMi/soar/releases/download/0.10.0/soar.linux-amd64 -O soar</span><br><span class="line">chmod a+x soar</span><br></pre></td></tr></tbody></table></figure>
 
 <p>验证安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;select * from film&#39; | .&#x2F;soar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 'select * from film' | ./soar</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p><a target="_blank" rel="noopener" href="https://github.com/XiaoMi/soar/blob/master/doc/config.md">配置参考</a></p>
 
@@ -1033,7 +1033,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/Homebrew-nvm/" class="post-title-link" itemprop="url">Homebrew安装Node版本管理nvm之不得不说的坑！</a>
+            <a href="/2018/Homebrew-nvm/" class="post-title-link" itemprop="url">Homebrew 安装 Node 版本管理 nvm 之不得不说的坑！</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1064,7 +1064,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/Homebrew-nvm/" class="post-meta-item leancloud_visitors" data-flag-title="Homebrew安装Node版本管理nvm之不得不说的坑！" title="阅读次数">
+    <span id="/2018/Homebrew-nvm/" class="post-meta-item leancloud_visitors" data-flag-title="Homebrew 安装 Node 版本管理 nvm 之不得不说的坑！" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1094,19 +1094,19 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>首先终端已经换为<code>zsh</code>了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法</p>
+          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>首先终端已经换为 <code>zsh</code> 了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法</p>
 <p><a target="_blank" rel="noopener" href="http://achillessatan.github.io/2016/02/15/2016021503/">Homebrew install zsh &amp; oh-my-zsh</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>在<code>.bash_profile</code>加入以下这行，让你可以直接在<code>shell</code>使用<code>nvm</code>指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $(brew --prefix nvm)&#x2F;nvm.sh</span><br></pre></td></tr></table></figure>
-<p>重新<code>source .bash_profile</code>来让设定生效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以上操作看似没有任何问题，安装<code>node</code>后也能使用。但是，当你第二次重新打开终端时<code>node</code>将不能使用，提示错误<code>Run nvm use --delete-prefix v8.14.0 to unset it.</code></p>
-<p>后面在<code>nvm</code>文档看到这段话<code>Homebrew installation is not supported. If you have issues with homebrew-installed nvm, please brew uninstall it, and install it using the instructions below, before filing an issue.</code>，额…看来没事还是要多看看文档啊，同时也有网友对此提有<a target="_blank" rel="noopener" href="https://github.com/creationix/nvm/issues/855">Issues</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>在<code>.bash_profile</code> 加入以下这行，让你可以直接在 <code>shell</code> 使用 <code>nvm</code> 指令</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></tbody></table></figure>
+<p>重新 <code>source .bash_profile</code> 来让设定生效</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以上操作看似没有任何问题，安装 <code>node</code> 后也能使用。但是，当你第二次重新打开终端时 <code>node</code> 将不能使用，提示错误 <code>Run nvm use --delete-prefix v8.14.0 to unset it.</code></p>
+<p>后面在 <code>nvm</code> 文档看到这段话 <code>Homebrew installation is not supported. If you have issues with homebrew-installed nvm, please brew uninstall it, and install it using the instructions below, before filing an issue.</code>，额… 看来没事还是要多看看文档啊，同时也有网友对此提有 <a target="_blank" rel="noopener" href="https://github.com/creationix/nvm/issues/855">Issues</a></p>
 <h3 id="正确安装"><a href="#正确安装" class="headerlink" title="正确安装"></a>正确安装</h3><p>推荐使用官方<code>script</code>安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;creationix&#x2F;nvm&#x2F;v0.33.11&#x2F;install.sh | bash</span><br></pre></td></tr></table></figure>
-<p>最后在安装好<code>node</code>之后不要忘记设置<code>alias default</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm alias default 8.14.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></tbody></table></figure>
+<p>最后在安装好 <code>node</code> 之后不要忘记设置 <code>alias default</code></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm alias default 8.14.0</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 
@@ -1144,7 +1144,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/node-utils/" class="post-title-link" itemprop="url">Nodejs工具函数集</a>
+            <a href="/2018/node-utils/" class="post-title-link" itemprop="url">Nodejs 工具函数集</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1175,7 +1175,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/node-utils/" class="post-meta-item leancloud_visitors" data-flag-title="Nodejs工具函数集" title="阅读次数">
+    <span id="/2018/node-utils/" class="post-meta-item leancloud_visitors" data-flag-title="Nodejs 工具函数集" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1206,13 +1206,13 @@ var _hmt = _hmt || [];
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="对数组中的对象进行排序"><a href="#对数组中的对象进行排序" class="headerlink" title="对数组中的对象进行排序"></a>对数组中的对象进行排序</h3><p>函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function keysort (key, desc) &#123;</span><br><span class="line">  return function (a, b) &#123;</span><br><span class="line">    return desc ? (a[key] &lt; b[key]) : (a[key] &gt; b[key]);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function keysort (key, desc) {</span><br><span class="line">  return function (a, b) {</span><br><span class="line">    return desc ? (a[key] &lt; b[key]) : (a[key] &gt; b[key]);</span><br><span class="line">  };</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr &#x3D; [&#123;&quot;id&quot;:2,&quot;name&quot;:&quot;2&quot;&#125;,&#123;&quot;id&quot;:1,&quot;name&quot;:&quot;1&quot;&#125;]</span><br><span class="line">arr.sort(keysort(&#39;name&#39;, &#39;desc&#39;));</span><br></pre></td></tr></table></figure>
-<h3 id="判断是否是Float浮点"><a href="#判断是否是Float浮点" class="headerlink" title="判断是否是Float浮点"></a>判断是否是Float浮点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isFloat (num) &#123;</span><br><span class="line">  return num !&#x3D;&#x3D; parseInt(num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="保留两位小数，同时不四舍五入"><a href="#保留两位小数，同时不四舍五入" class="headerlink" title="保留两位小数，同时不四舍五入"></a>保留两位小数，同时不四舍五入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; number</span><br><span class="line">&#x2F;&#x2F; num 保留位数</span><br><span class="line">function toFixedNum (number, num) &#123;</span><br><span class="line">  const type &#x3D; typeof (number);</span><br><span class="line">  let number_arr &#x3D; [];</span><br><span class="line">  if (type &#x3D;&#x3D;&#x3D; &#39;number&#39;) &#123;</span><br><span class="line">    const str &#x3D; number.toString();</span><br><span class="line">    number_arr &#x3D; str.split(&#39;.&#39;);</span><br><span class="line">  &#125; else if (type &#x3D;&#x3D;&#x3D; &#39;string&#39;) &#123;</span><br><span class="line">    number_arr &#x3D; number.split(&#39;.&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">  if (number_arr.length &gt; 1) &#123;</span><br><span class="line">    number &#x3D; number_arr[0] + &#39;.&#39; + number_arr[1].substr(0, num);</span><br><span class="line">  &#125;</span><br><span class="line">  return parseFloat(number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="给出开始时间和结束时间，算出中间所有的日期"><a href="#给出开始时间和结束时间，算出中间所有的日期" class="headerlink" title="给出开始时间和结束时间，算出中间所有的日期"></a>给出开始时间和结束时间，算出中间所有的日期</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; start ： 2018-01-01</span><br><span class="line">&#x2F;&#x2F; end ： 2018-01-03</span><br><span class="line">&#x2F;&#x2F; return : [&quot;2018-01-01&quot;,&quot;2018-01-02&quot;,&quot;2018-01-03&quot;]</span><br><span class="line">function getDate (start, end) &#123;</span><br><span class="line">  start &#x3D; new Date(start).getTime();</span><br><span class="line">  end &#x3D; new Date(end).getTime();</span><br><span class="line">  const date &#x3D; [];</span><br><span class="line">  for (; start &lt;&#x3D; end; start +&#x3D; 86400000) &#123;</span><br><span class="line">    const tmp &#x3D; new Date(start);</span><br><span class="line">    date.push(tmp.getFullYear() + &#39;-&#39; + (tmp.getMonth() + 1) + &#39;-&#39; + tmp.getDate());</span><br><span class="line">  &#125;</span><br><span class="line">  return date;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="从数组中随机取出N个元素"><a href="#从数组中随机取出N个元素" class="headerlink" title="从数组中随机取出N个元素"></a>从数组中随机取出N个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getRandomArrayElements (arr, count) &#123;</span><br><span class="line">  const shuffled &#x3D; arr.slice(0);</span><br><span class="line">  let i &#x3D; arr.length;</span><br><span class="line">  const min &#x3D; i - count;</span><br><span class="line">  let temp,</span><br><span class="line">    index;</span><br><span class="line">  while (i-- &gt; min) &#123;</span><br><span class="line">    index &#x3D; Math.floor((i + 1) * Math.random());</span><br><span class="line">    temp &#x3D; shuffled[index];</span><br><span class="line">    shuffled[index] &#x3D; shuffled[i];</span><br><span class="line">    shuffled[i] &#x3D; temp;</span><br><span class="line">  &#125;</span><br><span class="line">  return shuffled.slice(min);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [{"id":2,"name":"2"},{"id":1,"name":"1"}]</span><br><span class="line">arr.sort(keysort('name', 'desc'));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="判断是否是Float浮点"><a href="#判断是否是Float浮点" class="headerlink" title="判断是否是Float浮点"></a>判断是否是 Float 浮点</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isFloat (num) {</span><br><span class="line">  return num !== parseInt(num);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="保留两位小数，同时不四舍五入"><a href="#保留两位小数，同时不四舍五入" class="headerlink" title="保留两位小数，同时不四舍五入"></a>保留两位小数，同时不四舍五入</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// number</span><br><span class="line">// num 保留位数</span><br><span class="line">function toFixedNum (number, num) {</span><br><span class="line">  const type = typeof (number);</span><br><span class="line">  let number_arr = [];</span><br><span class="line">  if (type === 'number') {</span><br><span class="line">    const str = number.toString();</span><br><span class="line">    number_arr = str.split('.');</span><br><span class="line">  } else if (type === 'string') {</span><br><span class="line">    number_arr = number.split('.');</span><br><span class="line">  }</span><br><span class="line">  if (number_arr.length &gt; 1) {</span><br><span class="line">    number = number_arr[0] + '.' + number_arr[1].substr(0, num);</span><br><span class="line">  }</span><br><span class="line">  return parseFloat(number);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="给出开始时间和结束时间，算出中间所有的日期"><a href="#给出开始时间和结束时间，算出中间所有的日期" class="headerlink" title="给出开始时间和结束时间，算出中间所有的日期"></a>给出开始时间和结束时间，算出中间所有的日期</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// start ： 2018-01-01</span><br><span class="line">// end ： 2018-01-03</span><br><span class="line">// return : ["2018-01-01","2018-01-02","2018-01-03"]</span><br><span class="line">function getDate (start, end) {</span><br><span class="line">  start = new Date(start).getTime();</span><br><span class="line">  end = new Date(end).getTime();</span><br><span class="line">  const date = [];</span><br><span class="line">  for (; start &lt;= end; start += 86400000) {</span><br><span class="line">    const tmp = new Date(start);</span><br><span class="line">    date.push(tmp.getFullYear() + '-' + (tmp.getMonth() + 1) + '-' + tmp.getDate());</span><br><span class="line">  }</span><br><span class="line">  return date;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="从数组中随机取出N个元素"><a href="#从数组中随机取出N个元素" class="headerlink" title="从数组中随机取出N个元素"></a>从数组中随机取出 N 个元素</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getRandomArrayElements (arr, count) {</span><br><span class="line">  const shuffled = arr.slice(0);</span><br><span class="line">  let i = arr.length;</span><br><span class="line">  const min = i - count;</span><br><span class="line">  let temp,</span><br><span class="line">    index;</span><br><span class="line">  while (i-- &gt; min) {</span><br><span class="line">    index = Math.floor((i + 1) * Math.random());</span><br><span class="line">    temp = shuffled[index];</span><br><span class="line">    shuffled[index] = shuffled[i];</span><br><span class="line">    shuffled[i] = temp;</span><br><span class="line">  }</span><br><span class="line">  return shuffled.slice(min);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 
@@ -1250,7 +1250,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/cleanmymac/" class="post-title-link" itemprop="url">CleanMyMac资源之备忘录</a>
+            <a href="/2018/cleanmymac/" class="post-title-link" itemprop="url">CleanMyMac 资源之备忘录</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1281,7 +1281,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/cleanmymac/" class="post-meta-item leancloud_visitors" data-flag-title="CleanMyMac资源之备忘录" title="阅读次数">
+    <span id="/2018/cleanmymac/" class="post-meta-item leancloud_visitors" data-flag-title="CleanMyMac 资源之备忘录" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1311,16 +1311,16 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>CleanMyMac X</code>是一款强大的<code>Mac</code>系统垃圾清理工具，可以清除<code>Mac</code>系统多余的语言包、系统缓存、应用程序、<code>PowerPc</code>软件运行库等，是硬盘瘦身的好工具</p>
+          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>CleanMyMac X</code> 是一款强大的 <code>Mac</code> 系统垃圾清理工具，可以清除 <code>Mac</code> 系统多余的语言包、系统缓存、应用程序、<code>PowerPc</code> 软件运行库等，是硬盘瘦身的好工具</p>
 <h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><p><a target="_blank" rel="noopener" href="https://macpaw.com/">国际版官网</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.mycleanmymac.com/">中文官网</a></p>
-<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>因为<code>CleanMyMac</code>对不同的版本有不同的授权信息。</p>
-<p>下面地址均为官网下载地址<code>https://dl.devmate.com</code>开头。</p>
+<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>因为 <code>CleanMyMac</code> 对不同的版本有不同的授权信息。</p>
+<p>下面地址均为官网下载地址 <code>https://dl.devmate.com</code> 开头。</p>
 <p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.CleanMyMac3/CleanMyMac3.dmg">国际版 CleanMyMac 3</a></p>
 <p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg">国际版  CleanMyMac X</a></p>
 <p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac3/CleanMyMacChinese.dmg">中文版 CleanMyMac 3</a></p>
 <p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac4/CleanMyMacXChinese.dmg">中文版 CleanMyMac X</a></p>
-<h3 id="MacPaw支持"><a href="#MacPaw支持" class="headerlink" title="MacPaw支持"></a>MacPaw支持</h3><p>可在支持中心查询许可证，或者当换机不成功时可以通过支持中心进行许可证重置。</p>
+<h3 id="MacPaw支持"><a href="#MacPaw支持" class="headerlink" title="MacPaw支持"></a>MacPaw 支持</h3><p>可在支持中心查询许可证，或者当换机不成功时可以通过支持中心进行许可证重置。</p>
 <p><a target="_blank" rel="noopener" href="https://macpaw.com/zh/support">支持中心</a></p>
 
       
@@ -1360,7 +1360,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/hexo-gulp/" class="post-title-link" itemprop="url">利用gulp对Hexo博客压缩并一键之部署</a>
+            <a href="/2018/hexo-gulp/" class="post-title-link" itemprop="url">利用 gulp 对 Hexo 博客压缩并一键之部署</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1391,7 +1391,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/hexo-gulp/" class="post-meta-item leancloud_visitors" data-flag-title="利用gulp对Hexo博客压缩并一键之部署" title="阅读次数">
+    <span id="/2018/hexo-gulp/" class="post-meta-item leancloud_visitors" data-flag-title="利用 gulp 对 Hexo 博客压缩并一键之部署" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1422,16 +1422,16 @@ var _hmt = _hmt || [];
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h3><p>压缩页面无非就是减小页面大小加快博客访问时间</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s</span><br></pre></td></tr></table></figure>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="gulp配置"><a href="#gulp配置" class="headerlink" title="gulp配置"></a>gulp配置</h4><p>在根目录下创建<code>gulpfile.js</code>文件</p>
+<h4 id="gulp配置"><a href="#gulp配置" class="headerlink" title="gulp配置"></a>gulp 配置</h4><p>在根目录下创建 <code>gulpfile.js</code> 文件</p>
 <p><code>gulpfile.js</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var gulp &#x3D; require(&#39;gulp&#39;);</span><br><span class="line">var minifycss &#x3D; require(&#39;gulp-minify-css&#39;);</span><br><span class="line">var uglify &#x3D; require(&#39;gulp-uglify&#39;);</span><br><span class="line">var htmlmin &#x3D; require(&#39;gulp-htmlmin&#39;);</span><br><span class="line">var htmlclean &#x3D; require(&#39;gulp-htmlclean&#39;);</span><br><span class="line">&#x2F;&#x2F; 压缩 public 目录 css</span><br><span class="line">gulp.task(&#39;minify-css&#39;, function () &#123;</span><br><span class="line">    return gulp.src(&#39;.&#x2F;public&#x2F;**&#x2F;*.css&#39;)</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest(&#39;.&#x2F;public&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 压缩 public 目录 html</span><br><span class="line">gulp.task(&#39;minify-html&#39;, function () &#123;</span><br><span class="line">    return gulp.src(&#39;.&#x2F;public&#x2F;**&#x2F;*.html&#39;)</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin(&#123;</span><br><span class="line">            removeComments: true,</span><br><span class="line">            minifyJS: true,</span><br><span class="line">            minifyCSS: true,</span><br><span class="line">            minifyURLs: true,</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&#39;.&#x2F;public&#39;))</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 压缩 public&#x2F;js 目录 js</span><br><span class="line">gulp.task(&#39;minify-js&#39;, function () &#123;</span><br><span class="line">    return gulp.src(&#39;.&#x2F;public&#x2F;**&#x2F;*.js&#39;)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(&#39;.&#x2F;public&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task(&#39;default&#39;, [</span><br><span class="line">    &#39;minify-html&#39;, &#39;minify-css&#39;, &#39;minify-js&#39;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require('gulp');</span><br><span class="line">var minifycss = require('gulp-minify-css');</span><br><span class="line">var uglify = require('gulp-uglify');</span><br><span class="line">var htmlmin = require('gulp-htmlmin');</span><br><span class="line">var htmlclean = require('gulp-htmlclean');</span><br><span class="line">// 压缩 public 目录 css</span><br><span class="line">gulp.task('minify-css', function () {</span><br><span class="line">    return gulp.src('./public/**/*.css')</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 压缩 public 目录 html</span><br><span class="line">gulp.task('minify-html', function () {</span><br><span class="line">    return gulp.src('./public/**/*.html')</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin({</span><br><span class="line">            removeComments: true,</span><br><span class="line">            minifyJS: true,</span><br><span class="line">            minifyCSS: true,</span><br><span class="line">            minifyURLs: true,</span><br><span class="line">        }))</span><br><span class="line">        .pipe(gulp.dest('./public'))</span><br><span class="line">});</span><br><span class="line">// 压缩 public/js 目录 js</span><br><span class="line">gulp.task('minify-js', function () {</span><br><span class="line">    return gulp.src('./public/**/*.js')</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task('default', [</span><br><span class="line">    'minify-html', 'minify-css', 'minify-js'</span><br><span class="line">]);</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h4><p>在<code>package.json</code>中加入如下<code>script</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;push&quot;: &quot;hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h4><p>在 <code>package.json</code> 中加入如下 <code>script</code></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": {</span><br><span class="line">  "push": "hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>然后在部署的时候只需要运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run push</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run push</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 
@@ -1508,6 +1508,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

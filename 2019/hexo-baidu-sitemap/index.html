@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="虽然度娘是一个垮掉的搜索引擎，但是谁叫它在强国是垄断的存在呢。谈谈Hexo部署在Github Pages怎么提交Sitemap给百度。 Sitemap因为Github Pages禁止百度爬虫所以这里我们不做过多的说明，无疑这种方式是行不通的 自动推送目前在用的一种推送方式 1自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，页面URL将立即">
+  <meta name="description" content="虽然度娘是一个垮掉的搜索引擎，但是谁叫它在强国是垄断的存在呢。谈谈 Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度。 Sitemap因为 Github Pages 禁止百度爬虫所以这里我们不做过多的说明，无疑这种方式是行不通的 自动推送目前在用的一种推送方式 1自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo部署在Github Pages怎么提交Sitemap给百度？来我教你">
+<meta property="og:title" content="Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你">
 <meta property="og:url" content="http://www.jakehu.me/2019/hexo-baidu-sitemap/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="虽然度娘是一个垮掉的搜索引擎，但是谁叫它在强国是垄断的存在呢。谈谈Hexo部署在Github Pages怎么提交Sitemap给百度。 Sitemap因为Github Pages禁止百度爬虫所以这里我们不做过多的说明，无疑这种方式是行不通的 自动推送目前在用的一种推送方式 1自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，页面URL将立即">
+<meta property="og:description" content="虽然度娘是一个垮掉的搜索引擎，但是谁叫它在强国是垄断的存在呢。谈谈 Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度。 Sitemap因为 Github Pages 禁止百度爬虫所以这里我们不做过多的说明，无疑这种方式是行不通的 自动推送目前在用的一种推送方式 1自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-22T02:07:45.000Z">
 <meta property="article:modified_time" content="2019-06-21T01:58:49.399Z">
@@ -70,7 +70,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>Hexo部署在Github Pages怎么提交Sitemap给百度？来我教你 | 晨曦's Blog</title>
+  <title>Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你 | 晨曦's Blog</title>
   
 
 
@@ -226,7 +226,7 @@ var _hmt = _hmt || [];
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sitemap"><span class="nav-number">1.</span> <span class="nav-text">Sitemap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%8E%A8%E9%80%81"><span class="nav-number">2.</span> <span class="nav-text">自动推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E6%8E%A8%E9%80%81-%E5%AE%9E%E6%97%B6"><span class="nav-number">3.</span> <span class="nav-text">主动推送(实时)</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sitemap"><span class="nav-number">1.</span> <span class="nav-text">Sitemap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%8E%A8%E9%80%81"><span class="nav-number">2.</span> <span class="nav-text">自动推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E6%8E%A8%E9%80%81-%E5%AE%9E%E6%97%B6"><span class="nav-number">3.</span> <span class="nav-text">主动推送 (实时)</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -342,7 +342,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo部署在Github Pages怎么提交Sitemap给百度？来我教你
+          Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你
         </h1>
 
         <div class="post-meta-container">
@@ -364,7 +364,7 @@ var _hmt = _hmt || [];
       </span>
 
   
-    <span id="/2019/hexo-baidu-sitemap/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo部署在Github Pages怎么提交Sitemap给百度？来我教你" title="阅读次数">
+    <span id="/2019/hexo-baidu-sitemap/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -394,23 +394,23 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>虽然<code>度娘</code>是一个<code>垮掉</code>的搜索引擎，但是谁叫它在<code>强国</code>是垄断的存在呢。谈谈<code>Hexo</code>部署在<code>Github Pages</code>怎么提交<code>Sitemap</code>给百度。</p>
-<h3 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h3><p>因为<code>Github Pages</code>禁止百度爬虫所以这里我们不做过多的说明，无疑这种方式是行不通的</p>
+        <p>虽然<code>度娘</code>是一个<code>垮掉</code>的搜索引擎，但是谁叫它在<code>强国</code>是垄断的存在呢。谈谈 <code>Hexo</code> 部署在 <code>Github Pages</code> 怎么提交 <code>Sitemap</code> 给百度。</p>
+<h3 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h3><p>因为 <code>Github Pages</code> 禁止百度爬虫所以这里我们不做过多的说明，无疑这种方式是行不通的</p>
 <h3 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h3><p>目前在用的一种推送方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，页面URL将立即被推送给百度</span><br></pre></td></tr></table></figure>
-<p>安装方式也很简单，只需要在页面中加入以下<code>JS</code>即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">(function()&#123;</span><br><span class="line">    var bp &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    var curProtocol &#x3D; window.location.protocol.split(&#39;:&#39;)[0];</span><br><span class="line">    if (curProtocol &#x3D;&#x3D;&#x3D; &#39;https&#39;) &#123;</span><br><span class="line">        bp.src &#x3D; &#39;https:&#x2F;&#x2F;zz.bdstatic.com&#x2F;linksubmit&#x2F;push.js&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        bp.src &#x3D; &#39;http:&#x2F;&#x2F;push.zhanzhang.baidu.com&#x2F;push.js&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    var s &#x3D; document.getElementsByTagName(&quot;script&quot;)[0];</span><br><span class="line">    s.parentNode.insertBefore(bp, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="主动推送-实时"><a href="#主动推送-实时" class="headerlink" title="主动推送(实时)"></a>主动推送(实时)</h3><p>我们重点来说说<code>主动推送</code></p>
-<p>首先我们这里需要安装一下生成<code>sitemap</code>的包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-generator-baidu-sitemap -s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，页面URL将立即被推送给百度</span><br></pre></td></tr></tbody></table></figure>
+<p>安装方式也很简单，只需要在页面中加入以下 <code>JS</code> 即可</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">(function(){</span><br><span class="line">    var bp = document.createElement('script');</span><br><span class="line">    var curProtocol = window.location.protocol.split(':')[0];</span><br><span class="line">    if (curProtocol === 'https') {</span><br><span class="line">        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';</span><br><span class="line">    }</span><br><span class="line">    else {</span><br><span class="line">        bp.src = 'http://push.zhanzhang.baidu.com/push.js';</span><br><span class="line">    }</span><br><span class="line">    var s = document.getElementsByTagName("script")[0];</span><br><span class="line">    s.parentNode.insertBefore(bp, s);</span><br><span class="line">})();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="主动推送-实时"><a href="#主动推送-实时" class="headerlink" title="主动推送(实时)"></a>主动推送 (实时)</h3><p>我们重点来说说<code>主动推送</code></p>
+<p>首先我们这里需要安装一下生成 <code>sitemap</code> 的包</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-generator-baidu-sitemap -s</span><br></pre></td></tr></tbody></table></figure>
 
-<p>新建文件<code>push_sitemap_to_baidu.php</code>，这里我们通过<code>PHP</code>来实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;&#x2F; 解析xml</span><br><span class="line">$file &#x3D; &quot;.&#x2F;public&#x2F;baidusitemap.xml&quot;;</span><br><span class="line">$xml &#x3D; simplexml_load_file($file);</span><br><span class="line">$urls &#x3D; array();</span><br><span class="line">foreach ($xml as $key &#x3D;&gt; $value) &#123;</span><br><span class="line">    $url &#x3D; array();</span><br><span class="line">    $url &#x3D; (array) $value-&gt;loc;</span><br><span class="line">    $urls[] &#x3D; current($url);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 调用百度API</span><br><span class="line">$api &#x3D; &#39;http:&#x2F;&#x2F;data.zz.baidu.com&#x2F;urls?site&#x3D;https:&#x2F;&#x2F;www.jakehu.me&amp;token&#x3D;***&#39;;</span><br><span class="line">$ch &#x3D; curl_init();</span><br><span class="line">$options &#x3D; array(</span><br><span class="line">    CURLOPT_URL &#x3D;&gt; $api,</span><br><span class="line">    CURLOPT_POST &#x3D;&gt; true,</span><br><span class="line">    CURLOPT_RETURNTRANSFER &#x3D;&gt; true,</span><br><span class="line">    CURLOPT_POSTFIELDS &#x3D;&gt; implode(&quot;\n&quot;, $urls),</span><br><span class="line">    CURLOPT_HTTPHEADER &#x3D;&gt; array(&#39;Content-Type: text&#x2F;plain&#39;),</span><br><span class="line">);</span><br><span class="line">curl_setopt_array($ch, $options);</span><br><span class="line">$result &#x3D; curl_exec($ch);</span><br><span class="line">&#x2F;&#x2F; 返回结果记录</span><br><span class="line">$time &#x3D; date(&quot;Y-m-d H:i:s&quot;);</span><br><span class="line">$content &#x3D; $time . &quot; --- &quot; . $result . PHP_EOL;</span><br><span class="line">$file &#x3D; &quot;push_sitemap.log&quot;;</span><br><span class="line">$fp &#x3D; fopen($file, &quot;a+&quot;) or die(&quot;fail to open the file&quot;);</span><br><span class="line">fwrite($fp, $content);</span><br><span class="line">fclose($fp);</span><br></pre></td></tr></table></figure>
-<p>最后会在根目录下生成<code>push_sitemap.log</code>日志文件</p>
-<p>然后改造<code>package.json</code>如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;push&quot;: &quot;hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d &amp;&amp; php -f push_sitemap_to_baidu.php&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这条命令包含了<code>清理</code>、<code>生成</code>、<code>压缩</code>、<code>部署</code>、<code>推送Sitemap</code>，关于<code>gulp</code>压缩部分可看这里<a href="../../2018/hexo-gulp/">【点击查看】</a></p>
-<p>最后我们可以直接运行命令进行部署和推送<code>npm run push</code>，或者将<code>push</code>改为<code>start</code>直接运行<code>npm start</code>即可</p>
+<p>新建文件 <code>push_sitemap_to_baidu.php</code>，这里我们通过 <code>PHP</code> 来实现</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// 解析xml</span><br><span class="line">$file = "./public/baidusitemap.xml";</span><br><span class="line">$xml = simplexml_load_file($file);</span><br><span class="line">$urls = array();</span><br><span class="line">foreach ($xml as $key =&gt; $value) {</span><br><span class="line">    $url = array();</span><br><span class="line">    $url = (array) $value-&gt;loc;</span><br><span class="line">    $urls[] = current($url);</span><br><span class="line">}</span><br><span class="line">// 调用百度API</span><br><span class="line">$api = 'http://data.zz.baidu.com/urls?site=https://www.jakehu.me&amp;token=***';</span><br><span class="line">$ch = curl_init();</span><br><span class="line">$options = array(</span><br><span class="line">    CURLOPT_URL =&gt; $api,</span><br><span class="line">    CURLOPT_POST =&gt; true,</span><br><span class="line">    CURLOPT_RETURNTRANSFER =&gt; true,</span><br><span class="line">    CURLOPT_POSTFIELDS =&gt; implode("\n", $urls),</span><br><span class="line">    CURLOPT_HTTPHEADER =&gt; array('Content-Type: text/plain'),</span><br><span class="line">);</span><br><span class="line">curl_setopt_array($ch, $options);</span><br><span class="line">$result = curl_exec($ch);</span><br><span class="line">// 返回结果记录</span><br><span class="line">$time = date("Y-m-d H:i:s");</span><br><span class="line">$content = $time . " --- " . $result . PHP_EOL;</span><br><span class="line">$file = "push_sitemap.log";</span><br><span class="line">$fp = fopen($file, "a+") or die("fail to open the file");</span><br><span class="line">fwrite($fp, $content);</span><br><span class="line">fclose($fp);</span><br></pre></td></tr></tbody></table></figure>
+<p>最后会在根目录下生成 <code>push_sitemap.log</code> 日志文件</p>
+<p>然后改造 <code>package.json</code> 如下</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": {</span><br><span class="line">  "push": "hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d &amp;&amp; php -f push_sitemap_to_baidu.php"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>这条命令包含了<code>清理</code>、<code>生成</code>、<code>压缩</code>、<code>部署</code>、<code>推送Sitemap</code>，关于 <code>gulp</code> 压缩部分可看这里<a href="../../2018/hexo-gulp/">【点击查看】</a></p>
+<p>最后我们可以直接运行命令进行部署和推送 <code>npm run push</code>，或者将 <code>push</code> 改为 <code>start</code> 直接运行 <code>npm start</code> 即可</p>
 
     </div>
 
@@ -438,13 +438,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/centos-chrome-headles/" rel="prev" title="Centos7之安装Headless Chrome">
-                  <i class="fa fa-chevron-left"></i> Centos7之安装Headless Chrome
+                <a href="/2019/centos-chrome-headles/" rel="prev" title="Centos7 之安装 Headless Chrome">
+                  <i class="fa fa-chevron-left"></i> Centos7 之安装 Headless Chrome
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019/eggjs-80/" rel="next" title="Eggjs之绑定80端口引发的一场血案">
-                  Eggjs之绑定80端口引发的一场血案 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/eggjs-80/" rel="next" title="Eggjs 之绑定 80 端口引发的一场血案">
+                  Eggjs 之绑定 80 端口引发的一场血案 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -509,6 +509,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

@@ -20,7 +20,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="提笔为青春，人生正当年">
@@ -339,7 +339,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/Linux-install-php-extension/" class="post-title-link" itemprop="url">唉，找不到Windows下Memcached的php扩展还是自己在Linux上编译吧！</a>
+            <a href="/2015/Linux-install-php-extension/" class="post-title-link" itemprop="url">唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！</a>
         </h2>
 
         <div class="post-meta-container">
@@ -370,7 +370,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2015/Linux-install-php-extension/" class="post-meta-item leancloud_visitors" data-flag-title="唉，找不到Windows下Memcached的php扩展还是自己在Linux上编译吧！" title="阅读次数">
+    <span id="/2015/Linux-install-php-extension/" class="post-meta-item leancloud_visitors" data-flag-title="唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -400,10 +400,10 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>想在Windows上安装个Memcached的php扩展真是找了好多地方都没找到，Windows上自己编译起来也非常的麻烦。算了吧还是Linux方便，走你：<br><img src="https://img.jakehu.me/20151027125619.jpg"><br>Memcached扩展需要安装libmemcached，因为该扩展是依赖libmemcached的API。所以首先我们必须安装libmemcached：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz</span><br><span class="line">tar zxvf libmemcached-1.0.18.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libmemcached-1.0.18</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>安装完成后我们可以发现libmemcached被安装在了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;include&#x2F;libmemcached</span><br></pre></td></tr></table></figure>
+          <p>想在 Windows 上安装个 Memcached 的 php 扩展真是找了好多地方都没找到，Windows 上自己编译起来也非常的麻烦。算了吧还是 Linux 方便，走你：<br><img src="https://img.jakehu.me/20151027125619.jpg"><br>Memcached 扩展需要安装 libmemcached，因为该扩展是依赖 libmemcached 的 API。所以首先我们必须安装 libmemcached：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz</span><br><span class="line">tar zxvf libmemcached-1.0.18.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libmemcached-1.0.18</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></tbody></table></figure>
+<p>安装完成后我们可以发现 libmemcached 被安装在了</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/include/libmemcached</span><br></pre></td></tr></tbody></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/Linux-install-php-extension/#more" rel="contents">
@@ -449,7 +449,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/TP-Link-703N-Openwrt-Shadowsocks/" class="post-title-link" itemprop="url">TP-Link 703N路由器刷Openwrt+Shadowsocks实现OpenWRT 路由器自动翻墙</a>
+            <a href="/2015/TP-Link-703N-Openwrt-Shadowsocks/" class="post-title-link" itemprop="url">TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙</a>
         </h2>
 
         <div class="post-meta-container">
@@ -480,7 +480,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2015/TP-Link-703N-Openwrt-Shadowsocks/" class="post-meta-item leancloud_visitors" data-flag-title="TP-Link 703N路由器刷Openwrt+Shadowsocks实现OpenWRT 路由器自动翻墙" title="阅读次数">
+    <span id="/2015/TP-Link-703N-Openwrt-Shadowsocks/" class="post-meta-item leancloud_visitors" data-flag-title="TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -511,8 +511,8 @@ var _hmt = _hmt || [];
     
     <div class="post-body" itemprop="articleBody">
           <p>说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。</p>
-<h3 id="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"><a href="#一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。" class="headerlink" title="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"></a>一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。</h3><p><a target="_blank" rel="noopener" href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/">http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/</a></p>
-<h3 id="二、进入原路由器（192-168-1-1）在【系统工具】-gt-【软件升级】中升级刚才在Openwrt官网下载的固件。"><a href="#二、进入原路由器（192-168-1-1）在【系统工具】-gt-【软件升级】中升级刚才在Openwrt官网下载的固件。" class="headerlink" title="二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在Openwrt官网下载的固件。"></a>二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在Openwrt官网下载的固件。</h3><h4 id="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"><a href="#（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。" class="headerlink" title="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"></a>（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。</h4><h4 id="（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。"><a href="#（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。" class="headerlink" title="（2）然后运行cmd.exe，输入telnet 192.168.1.1成功后出现OpenWrt的欢迎界面。"></a>（2）然后运行cmd.exe，输入telnet 192.168.1.1成功后出现OpenWrt的欢迎界面。</h4><h4 id="（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"><a href="#（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。" class="headerlink" title="（3）输入passwd更改root密码后dropbear(SSH 服务)就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"></a>（3）输入passwd更改root密码后dropbear(SSH 服务)就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。</h4><p>注：最新版默认已经安装和启用Luci管理界面，你可以直接通过访问192.168.1.1进入Luci Web管理界面。</p>
+<h3 id="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"><a href="#一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。" class="headerlink" title="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"></a>一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。</h3><p><a target="_blank" rel="noopener" href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/">http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/</a></p>
+<h3 id="二、进入原路由器（192-168-1-1）在【系统工具】-gt-【软件升级】中升级刚才在Openwrt官网下载的固件。"><a href="#二、进入原路由器（192-168-1-1）在【系统工具】-gt-【软件升级】中升级刚才在Openwrt官网下载的固件。" class="headerlink" title="二、进入原路由器（192.168.1.1）在【系统工具】->【软件升级】中升级刚才在Openwrt官网下载的固件。"></a>二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在 Openwrt 官网下载的固件。</h3><h4 id="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"><a href="#（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。" class="headerlink" title="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"></a>（1）首先用一根网线将 703N 的 Lan 口和你电脑相连，电脑上设置为 DHCP 模式。</h4><h4 id="（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。"><a href="#（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。" class="headerlink" title="（2）然后运行cmd.exe，输入telnet 192.168.1.1成功后出现OpenWrt的欢迎界面。"></a>（2）然后运行 cmd.exe，输入 telnet 192.168.1.1 成功后出现 OpenWrt 的欢迎界面。</h4><h4 id="（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"><a href="#（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。" class="headerlink" title="（3）输入passwd更改root密码后dropbear(SSH 服务)就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"></a>（3）输入 passwd 更改 root 密码后 dropbear (SSH 服务) 就运行了，输入 exit 退出 telnet；以后就可以通过 ssh 管理 OpenWrt。</h4><p>注：最新版默认已经安装和启用 Luci 管理界面，你可以直接通过访问 192.168.1.1 进入 Luci Web 管理界面。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/TP-Link-703N-Openwrt-Shadowsocks/#more" rel="contents">
@@ -619,8 +619,8 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>人生的境遇并没有绝对的好坏之别，佛说:物随心转,境由心造,烦恼皆心生。自性的清明、智慧，才是一切意念的本源。日月经年，世事无常；人生如月，盈亏有间。人生在世，难免有忠奸善恶，是非情仇，得失成败，荣辱浮沉。我们应当不逃避。不强求，一切随缘，任由世事变迁，宠辱皆不惊，以一颗恬然、淡定的心，泰然处之。</p>
-<img src="https://img.jakehu.me/54114822.jpg"/>
+          <p>人生的境遇并没有绝对的好坏之别，佛说：物随心转，境由心造，烦恼皆心生。自性的清明、智慧，才是一切意念的本源。日月经年，世事无常；人生如月，盈亏有间。人生在世，难免有忠奸善恶，是非情仇，得失成败，荣辱浮沉。我们应当不逃避。不强求，一切随缘，任由世事变迁，宠辱皆不惊，以一颗恬然、淡定的心，泰然处之。</p>
+<img src="https://img.jakehu.me/54114822.jpg">
 
 <p>从前，山上有座古刹，里面住着师徒四人。一天，师父为考验弟子们的修行功夫，与他们一起来到寺庙前的两棵树前。</p>
 <p>其中一棵尚未到秋天枝干就枯瘪了，叶子也凋零得差不多，恐怕早已病死了。另一棵则郁郁葱葱。深绿的叶子像涂了层蜡似的，在阳光下泛着耀眼的光泽，一副欣欣向荣的样子。</p>
@@ -776,7 +776,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/Git-on-the-Server/" class="post-title-link" itemprop="url">说一说，那些年我们一起自建过的Git服务器</a>
+            <a href="/2015/Git-on-the-Server/" class="post-title-link" itemprop="url">说一说，那些年我们一起自建过的 Git 服务器</a>
         </h2>
 
         <div class="post-meta-container">
@@ -807,7 +807,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2015/Git-on-the-Server/" class="post-meta-item leancloud_visitors" data-flag-title="说一说，那些年我们一起自建过的Git服务器" title="阅读次数">
+    <span id="/2015/Git-on-the-Server/" class="post-meta-item leancloud_visitors" data-flag-title="说一说，那些年我们一起自建过的 Git 服务器" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -837,8 +837,8 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Git服务器端搭建，基于ssh协议"><a href="#Git服务器端搭建，基于ssh协议" class="headerlink" title="Git服务器端搭建，基于ssh协议"></a>Git服务器端搭建，基于ssh协议</h3><h4 id="服务端架设空git-repo"><a href="#服务端架设空git-repo" class="headerlink" title="服务端架设空git repo"></a>服务端架设空git repo</h4><p>ssh登录服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">groupadd git <span class="comment">#增加git用户组</span></span><br><span class="line">useradd jakehu -g git <span class="comment">#增加名为jakehu的用户属于git用户组</span></span><br><span class="line">ln –s /gitwork /git </span><br><span class="line"><span class="comment">#gitwork为实际工作目录，git为空目录做链接使用，可直接在根目录建立git文件夹即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以下造作操作是以直接在根目录下建立git文件夹为前提</span></span><br><span class="line">chown jakehu.git /git</span><br><span class="line">su jakehu</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">cd</span> /git</span><br><span class="line"><span class="comment">#空库的目录权限设定为 组内读写</span></span><br><span class="line"><span class="comment">#用--shared  git会自动搞定创建起来的文件目录</span></span><br><span class="line"><span class="comment"># shared 参数很重要</span></span><br><span class="line">git init --bare --shared test.git</span><br></pre></td></tr></table></figure>
+          <h3 id="Git服务器端搭建，基于ssh协议"><a href="#Git服务器端搭建，基于ssh协议" class="headerlink" title="Git服务器端搭建，基于ssh协议"></a>Git 服务器端搭建，基于 ssh 协议</h3><h4 id="服务端架设空git-repo"><a href="#服务端架设空git-repo" class="headerlink" title="服务端架设空git repo"></a>服务端架设空 git repo</h4><p>ssh 登录服务器</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">groupadd git <span class="comment">#增加git用户组</span></span><br><span class="line">useradd jakehu -g git <span class="comment">#增加名为jakehu的用户属于git用户组</span></span><br><span class="line">ln –s /gitwork /git </span><br><span class="line"><span class="comment">#gitwork为实际工作目录，git为空目录做链接使用，可直接在根目录建立git文件夹即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以下造作操作是以直接在根目录下建立git文件夹为前提</span></span><br><span class="line">chown jakehu.git /git</span><br><span class="line">su jakehu</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">cd</span> /git</span><br><span class="line"><span class="comment">#空库的目录权限设定为 组内读写</span></span><br><span class="line"><span class="comment">#用--shared  git会自动搞定创建起来的文件目录</span></span><br><span class="line"><span class="comment"># shared 参数很重要</span></span><br><span class="line">git init --bare --shared test.git</span><br></pre></td></tr></tbody></table></figure>
 <p>到此为止服务器端架设完成</p>
           <!--noindex-->
             <div class="post-button">
@@ -885,7 +885,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/hello-hexo/" class="post-title-link" itemprop="url">你好Hexo，我来了！</a>
+            <a href="/2015/hello-hexo/" class="post-title-link" itemprop="url">你好 Hexo，我来了！</a>
         </h2>
 
         <div class="post-meta-container">
@@ -916,7 +916,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2015/hello-hexo/" class="post-meta-item leancloud_visitors" data-flag-title="你好Hexo，我来了！" title="阅读次数">
+    <span id="/2015/hello-hexo/" class="post-meta-item leancloud_visitors" data-flag-title="你好 Hexo，我来了！" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -946,10 +946,10 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>13年开始玩博客，最开始的时候还比较上心每天都去更新一两篇文章；也把自己的做的一些笔记分享在博客上。后来渐渐的也就失去了兴趣了，好吧，其实要把一件事变成一个习惯还是挺难的。再后来我发现<code>wordpress</code>越来越慢，把啥子<code>Google</code>的一些字体什么的都去掉之后还是很慢。其实也是<code>wordpress</code>都已经进行了这么多的迭代，所以我放弃了<code>wordpress</code>开始寻找他的代替品。</p>
-<p>在放弃<code>Wordpress</code>之后我开始寻找一款极简的博客，我尝试过在IT界不少人推荐的<a target="_blank" rel="noopener" href="http://typecho.org/">Typecho</a>，也试过<code>Github</code>官方推荐的<code>jekyll</code>,直到我看到<code>Hexo</code>；好吧，我承认我找到了我想要的。</p>
-<p>当然在这里也要感谢<a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">iissnan</a>为我们带来这么棒棒哒的主题。</p>
-<p>就这样Hexo我来了，哈哈！</p>
+          <p>13 年开始玩博客，最开始的时候还比较上心每天都去更新一两篇文章；也把自己的做的一些笔记分享在博客上。后来渐渐的也就失去了兴趣了，好吧，其实要把一件事变成一个习惯还是挺难的。再后来我发现 <code>wordpress</code> 越来越慢，把啥子 <code>Google</code> 的一些字体什么的都去掉之后还是很慢。其实也是 <code>wordpress</code> 都已经进行了这么多的迭代，所以我放弃了 <code>wordpress</code> 开始寻找他的代替品。</p>
+<p>在放弃 <code>Wordpress</code> 之后我开始寻找一款极简的博客，我尝试过在 IT 界不少人推荐的 <a target="_blank" rel="noopener" href="http://typecho.org/">Typecho</a>，也试过 <code>Github</code> 官方推荐的 <code>jekyll</code>, 直到我看到 <code>Hexo</code>；好吧，我承认我找到了我想要的。</p>
+<p>当然在这里也要感谢 <a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">iissnan</a> 为我们带来这么棒棒哒的主题。</p>
+<p>就这样 Hexo 我来了，哈哈！</p>
 <hr>
 <p>广厦千间，夜眠仅需六尺；家财万贯，日食不过三餐。</p>
 
@@ -1029,6 +1029,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

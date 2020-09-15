@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="前记自用代码管理gogs和对应的mysql都部署在家用群晖的Docker上，今早发现gogs报500错误无法访问，经过查询日志确定是mysql 5.7密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expired password">
+  <meta name="description" content="前记自用代码管理 gogs 和对应的 mysql 都部署在家用群晖的 Docker 上，今早发现 gogs 报 500 错误无法访问，经过查询日志确定是 mysql 5.7 密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gogs报500错误，Mysql密码到期了？">
+<meta property="og:title" content="Gogs 报 500 错误，Mysql 密码到期了？">
 <meta property="og:url" content="http://www.jakehu.me/2020/mysql-password/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记自用代码管理gogs和对应的mysql都部署在家用群晖的Docker上，今早发现gogs报500错误无法访问，经过查询日志确定是mysql 5.7密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expired password">
+<meta property="og:description" content="前记自用代码管理 gogs 和对应的 mysql 都部署在家用群晖的 Docker 上，今早发现 gogs 报 500 错误无法访问，经过查询日志确定是 mysql 5.7 密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-31T03:21:00.000Z">
 <meta property="article:modified_time" content="2020-03-31T04:30:40.940Z">
@@ -70,7 +70,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>Gogs报500错误，Mysql密码到期了？ | 晨曦's Blog</title>
+  <title>Gogs 报 500 错误，Mysql 密码到期了？ | 晨曦's Blog</title>
   
 
 
@@ -342,7 +342,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Gogs报500错误，Mysql密码到期了？
+          Gogs 报 500 错误，Mysql 密码到期了？
         </h1>
 
         <div class="post-meta-container">
@@ -367,7 +367,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/mysql-password/" class="post-meta-item leancloud_visitors" data-flag-title="Gogs报500错误，Mysql密码到期了？" title="阅读次数">
+    <span id="/2020/mysql-password/" class="post-meta-item leancloud_visitors" data-flag-title="Gogs 报 500 错误，Mysql 密码到期了？" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -397,21 +397,21 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理<code>gogs</code>和对应的<code>mysql</code>都部署在家用群晖的<code>Docker</code>上，今早发现<code>gogs</code>报<code>500</code>错误无法访问，经过查询日志确定是<code>mysql 5.7</code>密码已过期，如下错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error 1862: Your password has expired. To log in you must change it using a client that supports expired passwords.</span><br></pre></td></tr></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code>登陆到群晖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh admin@192.168.1.x -p xx22</span><br></pre></td></tr></table></figure>
-<p>首先我们需要对群晖<code>admin</code>账户提权</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
-<p>然后进入对应的<code>docker</code>容器并登陆到<code>mysql</code>客户端，这里说明一下客户端的密码是不会过期的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql1 mysql -uroot -ppassword</span><br></pre></td></tr></table></figure>
+        <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理 <code>gogs</code> 和对应的 <code>mysql</code> 都部署在家用群晖的 <code>Docker</code> 上，今早发现 <code>gogs</code> 报 <code>500</code> 错误无法访问，经过查询日志确定是 <code>mysql 5.7</code> 密码已过期，如下错误</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error 1862: Your password has expired. To log in you must change it using a client that supports expired passwords.</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code> 登陆到群晖</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh admin@192.168.1.x -p xx22</span><br></pre></td></tr></tbody></table></figure>
+<p>首先我们需要对群晖 <code>admin</code> 账户提权</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></tbody></table></figure>
+<p>然后进入对应的 <code>docker</code> 容器并登陆到 <code>mysql</code> 客户端，这里说明一下客户端的密码是不会过期的</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql1 mysql -uroot -ppassword</span><br></pre></td></tr></tbody></table></figure>
 <p>然后重置密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password &#x3D; password(&#39;newpassword&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = password('newpassword');</span><br></pre></td></tr></tbody></table></figure>
 <p>接下来刷新权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
 <p>最后设置密码永不过期</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL default_password_lifetime &#x3D; 0;</span><br></pre></td></tr></table></figure>
-<p>到此问题就解决了，又可以愉快的访问<code>gogs</code>了</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL default_password_lifetime = 0;</span><br></pre></td></tr></tbody></table></figure>
+<p>到此问题就解决了，又可以愉快的访问 <code>gogs</code> 了</p>
 
     </div>
 
@@ -442,13 +442,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/synology-update/" rel="prev" title="黑群晖6.1.7升级6.2.2失败之降级安装">
-                  <i class="fa fa-chevron-left"></i> 黑群晖6.1.7升级6.2.2失败之降级安装
+                <a href="/2019/synology-update/" rel="prev" title="黑群晖 6.1.7 升级 6.2.2 失败之降级安装">
+                  <i class="fa fa-chevron-left"></i> 黑群晖 6.1.7 升级 6.2.2 失败之降级安装
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/zsh-plugins/" rel="next" title="Mac下oh-my-zsh之必备插件">
-                  Mac下oh-my-zsh之必备插件 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/zsh-plugins/" rel="next" title="Mac 下 oh-my-zsh 之必备插件">
+                  Mac 下 oh-my-zsh 之必备插件 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -513,6 +513,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

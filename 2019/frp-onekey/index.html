@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="前记鉴于电信运营商对公网IP的吝啬之前一直使用frp对家里的Nas进行公网暴露，不过之前frpc一直是放在路由器梅林上的，这次将frpc移到了群晖Docker里面，所以制作了下面一键安装脚本以及Docker镜像以供使用 frps-onekey此脚本根据clangcn&#x2F;onekey-install-shell脚本制作，感谢Clang大大 操作12345678910111213# 安装wget --n">
+  <meta name="description" content="前记鉴于电信运营商对公网 IP 的吝啬之前一直使用 frp 对家里的 Nas 进行公网暴露，不过之前 frpc 一直是放在路由器梅林上的，这次将 frpc 移到了群晖Docker 里面，所以制作了下面一键安装脚本以及 Docker 镜像以供使用 frps-onekey此脚本根据 clangcn&#x2F;onekey-install-shell 脚本制作，感谢 Clang 大大 操作123456789101">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Frps 一件脚本 &amp;&amp; Frpc Docker镜像 &amp;&amp; Frps Docker镜像">
+<meta property="og:title" content="Frps 一件脚本 &amp;&amp; Frpc Docker 镜像 &amp;&amp; Frps Docker 镜像">
 <meta property="og:url" content="http://www.jakehu.me/2019/frp-onekey/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记鉴于电信运营商对公网IP的吝啬之前一直使用frp对家里的Nas进行公网暴露，不过之前frpc一直是放在路由器梅林上的，这次将frpc移到了群晖Docker里面，所以制作了下面一键安装脚本以及Docker镜像以供使用 frps-onekey此脚本根据clangcn&#x2F;onekey-install-shell脚本制作，感谢Clang大大 操作12345678910111213# 安装wget --n">
+<meta property="og:description" content="前记鉴于电信运营商对公网 IP 的吝啬之前一直使用 frp 对家里的 Nas 进行公网暴露，不过之前 frpc 一直是放在路由器梅林上的，这次将 frpc 移到了群晖Docker 里面，所以制作了下面一键安装脚本以及 Docker 镜像以供使用 frps-onekey此脚本根据 clangcn&#x2F;onekey-install-shell 脚本制作，感谢 Clang 大大 操作123456789101">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-04T02:51:00.000Z">
 <meta property="article:modified_time" content="2019-07-10T08:17:37.711Z">
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>Frps 一件脚本 && Frpc Docker镜像 && Frps Docker镜像 | 晨曦's Blog</title>
+  <title>Frps 一件脚本 && Frpc Docker 镜像 && Frps Docker 镜像 | 晨曦's Blog</title>
   
 
 
@@ -343,7 +343,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Frps 一件脚本 && Frpc Docker镜像 && Frps Docker镜像
+          Frps 一件脚本 && Frpc Docker 镜像 && Frps Docker 镜像
         </h1>
 
         <div class="post-meta-container">
@@ -374,7 +374,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2019/frp-onekey/" class="post-meta-item leancloud_visitors" data-flag-title="Frps 一件脚本 && Frpc Docker镜像 && Frps Docker镜像" title="阅读次数">
+    <span id="/2019/frp-onekey/" class="post-meta-item leancloud_visitors" data-flag-title="Frps 一件脚本 && Frpc Docker 镜像 && Frps Docker 镜像" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -404,12 +404,12 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>鉴于电信运营商对公网<code>IP</code>的<code>吝啬</code>之前一直使用<code>frp</code>对家里的<code>Nas</code>进行公网暴露，不过之前<code>frpc</code>一直是放在<code>路由器梅林</code>上的，这次将<code>frpc</code>移到了<code>群晖Docker</code>里面，所以制作了下面一键安装脚本以及<code>Docker</code>镜像以供使用</p>
-<h3 id="frps-onekey"><a href="#frps-onekey" class="headerlink" title="frps-onekey"></a>frps-onekey</h3><p>此脚本根据<a target="_blank" rel="noopener" href="https://github.com/clangcn/onekey-install-shell/tree/master/frps">clangcn/onekey-install-shell</a>脚本制作，感谢<code>Clang</code>大大</p>
-<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/jakehu/frp/master/frps-onekey/install-frps.sh -O ./install-frps.sh</span><br><span class="line">chmod 700 ./install-frps.sh</span><br><span class="line">./install-frps.sh install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">./install-frps.sh uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">./install-frps.sh update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 管理</span></span><br><span class="line">frps &#123;start|stop|restart|status|config|version&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="frpc-docker"><a href="#frpc-docker" class="headerlink" title="frpc-docker"></a>frpc-docker</h3><h3 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">docker run -d --restart always -v /data/frpc.ini:/frp/frpc.ini jakehu/frpc-docker</span><br></pre></td></tr></table></figure>
+        <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>鉴于电信运营商对公网 <code>IP</code> 的<code>吝啬</code>之前一直使用 <code>frp</code> 对家里的 <code>Nas</code> 进行公网暴露，不过之前 <code>frpc</code> 一直是放在<code>路由器梅林</code>上的，这次将 <code>frpc</code> 移到了<code>群晖Docker</code> 里面，所以制作了下面一键安装脚本以及 <code>Docker</code> 镜像以供使用</p>
+<h3 id="frps-onekey"><a href="#frps-onekey" class="headerlink" title="frps-onekey"></a>frps-onekey</h3><p>此脚本根据 <a target="_blank" rel="noopener" href="https://github.com/clangcn/onekey-install-shell/tree/master/frps">clangcn/onekey-install-shell</a> 脚本制作，感谢 <code>Clang</code> 大大</p>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/jakehu/frp/master/frps-onekey/install-frps.sh -O ./install-frps.sh</span><br><span class="line">chmod 700 ./install-frps.sh</span><br><span class="line">./install-frps.sh install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">./install-frps.sh uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">./install-frps.sh update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 管理</span></span><br><span class="line">frps {start|stop|restart|status|config|version}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="frpc-docker"><a href="#frpc-docker" class="headerlink" title="frpc-docker"></a>frpc-docker</h3><h3 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">docker run -d --restart always -v /data/frpc.ini:/frp/frpc.ini jakehu/frpc-docker</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="frps-docker"><a href="#frps-docker" class="headerlink" title="frps-docker"></a>frps-docker</h3><h3 id="操作-2"><a href="#操作-2" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">docker run -d --restart always -v /data/frps.ini:/frp/frps.ini jakehu/frps-docker</span><br></pre></td></tr></table></figure>
+<h3 id="frps-docker"><a href="#frps-docker" class="headerlink" title="frps-docker"></a>frps-docker</h3><h3 id="操作-2"><a href="#操作-2" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">docker run -d --restart always -v /data/frps.ini:/frp/frps.ini jakehu/frps-docker</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>晓看天色暮看云，行也思君，坐也思君。</p>
 
@@ -443,13 +443,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/synology-frp-https/" rel="prev" title="如何利用Frp & https暴露你在内网的群晖">
-                  <i class="fa fa-chevron-left"></i> 如何利用Frp & https暴露你在内网的群晖
+                <a href="/2019/synology-frp-https/" rel="prev" title="如何利用 Frp & https 暴露你在内网的群晖">
+                  <i class="fa fa-chevron-left"></i> 如何利用 Frp & https 暴露你在内网的群晖
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019/koolproxy-install/" rel="next" title="将KoolProxyR规则转换为KoolProxy规则脚本">
-                  将KoolProxyR规则转换为KoolProxy规则脚本 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/koolproxy-install/" rel="next" title="将 KoolProxyR 规则转换为 KoolProxy 规则脚本">
+                  将 KoolProxyR 规则转换为 KoolProxy 规则脚本 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -514,6 +514,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

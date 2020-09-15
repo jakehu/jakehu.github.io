@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="前记为什么要软路由？目前家里的拓扑是 1公网 -&gt; 路由器 -&gt; NAS&#x2F;BOOK&#x2F;PHONE 路由器负责了拨号、科学上网、广告过滤等 之前已经将Frp移到了NAS的Docker里面 FRP资源 FRP教程 至于为什么要软路由原因：  AC66U_B1时常不够稳定，将frp迁移至nas后深有感受 AC66U_B1固件中插件有限而且越来越不好用，所以更多的是想将路由上">
+  <meta name="description" content="前记为什么要软路由？目前家里的拓扑是 1公网 -&gt; 路由器 -&gt; NAS&#x2F;BOOK&#x2F;PHONE 路由器负责了拨号、科学上网、广告过滤等 之前已经将 Frp 移到了 NAS 的 Docker 里面 FRP 资源 FRP 教程 至于为什么要软路由原因：  AC66U_B1 时常不够稳定，将 frp 迁移至 nas 后深有感受 AC66U_B1 固件中插件有限而且越来越不好用，所以更多的是想">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在群晖上利用Virtual Machine Manager玩转软路由之LEDE">
+<meta property="og:title" content="在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE">
 <meta property="og:url" content="http://www.jakehu.me/2019/synology-lede/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记为什么要软路由？目前家里的拓扑是 1公网 -&gt; 路由器 -&gt; NAS&#x2F;BOOK&#x2F;PHONE 路由器负责了拨号、科学上网、广告过滤等 之前已经将Frp移到了NAS的Docker里面 FRP资源 FRP教程 至于为什么要软路由原因：  AC66U_B1时常不够稳定，将frp迁移至nas后深有感受 AC66U_B1固件中插件有限而且越来越不好用，所以更多的是想将路由上">
+<meta property="og:description" content="前记为什么要软路由？目前家里的拓扑是 1公网 -&gt; 路由器 -&gt; NAS&#x2F;BOOK&#x2F;PHONE 路由器负责了拨号、科学上网、广告过滤等 之前已经将 Frp 移到了 NAS 的 Docker 里面 FRP 资源 FRP 教程 至于为什么要软路由原因：  AC66U_B1 时常不够稳定，将 frp 迁移至 nas 后深有感受 AC66U_B1 固件中插件有限而且越来越不好用，所以更多的是想">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/20190712105802.jpg">
 <meta property="og:image" content="https://img.jakehu.me/20190712110017.jpg">
@@ -77,7 +77,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>在群晖上利用Virtual Machine Manager玩转软路由之LEDE | 晨曦's Blog</title>
+  <title>在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE | 晨曦's Blog</title>
   
 
 
@@ -233,7 +233,7 @@ var _hmt = _hmt || [];
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">前记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E6%94%B9%E9%80%A0"><span class="nav-number">2.</span> <span class="nav-text">硬件改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEDE%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">LEDE安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F"><span class="nav-number">3.1.</span> <span class="nav-text">上传镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">网络设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">终结</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">前记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E6%94%B9%E9%80%A0"><span class="nav-number">2.</span> <span class="nav-text">硬件改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEDE%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">LEDE 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F"><span class="nav-number">3.1.</span> <span class="nav-text">上传镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">网络设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">终结</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -349,7 +349,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在群晖上利用Virtual Machine Manager玩转软路由之LEDE
+          在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE
         </h1>
 
         <div class="post-meta-container">
@@ -380,7 +380,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2019/synology-lede/" class="post-meta-item leancloud_visitors" data-flag-title="在群晖上利用Virtual Machine Manager玩转软路由之LEDE" title="阅读次数">
+    <span id="/2019/synology-lede/" class="post-meta-item leancloud_visitors" data-flag-title="在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -411,31 +411,31 @@ var _hmt = _hmt || [];
     
     <div class="post-body" itemprop="articleBody">
         <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>为什么要软路由？目前家里的拓扑是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; 路由器 -&gt; NAS&#x2F;BOOK&#x2F;PHONE</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; 路由器 -&gt; NAS/BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
 <p>路由器负责了<code>拨号</code>、<code>科学上网</code>、<code>广告过滤</code>等</p>
-<p>之前已经将<code>Frp</code>移到了<code>NAS</code>的<code>Docker</code>里面</p>
-<p><a href="/2019/frp-onekey/">FRP资源</a></p>
-<p><a href="/2019/synology-frp-https/">FRP教程</a></p>
+<p>之前已经将 <code>Frp</code> 移到了 <code>NAS</code> 的 <code>Docker</code> 里面</p>
+<p><a href="/2019/frp-onekey/">FRP 资源</a></p>
+<p><a href="/2019/synology-frp-https/">FRP 教程</a></p>
 <p>至于为什么要软路由原因：</p>
 <ol>
-<li><code>AC66U_B1</code>时常不够稳定，将<code>frp</code>迁移至<code>nas</code>后深有感受</li>
-<li><code>AC66U_B1</code>固件中插件有限而且越来越不好用，所以更多的是想将路由上的功能转一部分到软路由上</li>
+<li><code>AC66U_B1</code> 时常不够稳定，将 <code>frp</code> 迁移至 <code>nas</code> 后深有感受</li>
+<li><code>AC66U_B1</code> 固件中插件有限而且越来越不好用，所以更多的是想将路由上的功能转一部分到软路由上</li>
 </ol>
 <p>改造后拓扑为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; NAS软路由 -&gt; NAS&#x2F;硬路由-&gt;BOOK&#x2F;PHONE</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; NAS软路由 -&gt; NAS/硬路由-&gt;BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="硬件改造"><a href="#硬件改造" class="headerlink" title="硬件改造"></a>硬件改造</h3><p>改造前现有的硬件设备：</p>
 <blockquote>
-<p>机箱：乔思伯V2<br>主板：华擎N3150TM-ITX主板<br>电源：绿巨能笔记本DC电源<br>硬盘：西部数据(WD)红盘 4TB * 2<br>内存：金士顿DDR3L 4G</p>
+<p>机箱：乔思伯 V2<br>主板：华擎 N3150TM-ITX 主板<br>电源：绿巨能笔记本 DC 电源<br>硬盘：西部数据 (WD) 红盘 4TB * 2<br>内存：金士顿 DDR3L 4G</p>
 </blockquote>
 <p>改造前如图：<br><img src="https://img.jakehu.me/20190712105802.jpg"></p>
 <p>改造部分为<code>更换机箱</code>以及<code>增加网卡</code></p>
 <blockquote>
-<p>机箱：金河田（Golden field）预见N-1<br>网卡：EDUP EP-9602 PCI-E千兆网卡</p>
+<p>机箱：金河田（Golden field）预见 N-1<br>网卡：EDUP EP-9602 PCI-E 千兆网卡</p>
 </blockquote>
 <p>改造后如图：<br><img src="https://img.jakehu.me/20190712110017.jpg"></p>
-<h3 id="LEDE安装"><a href="#LEDE安装" class="headerlink" title="LEDE安装"></a>LEDE安装</h3><h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>在<a target="_blank" rel="noopener" href="https://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/">https://firmware.koolshare.cn/LEDE_X64_fw867/虚拟机转盘或PE下写盘专用/</a> 下载<code>combined-squashfs.img.gz</code>固件，解压后上传至群晖，如图：<br><img src="https://img.jakehu.me/20190712093324.png"></p>
+<h3 id="LEDE安装"><a href="#LEDE安装" class="headerlink" title="LEDE安装"></a>LEDE 安装</h3><h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>在 <a target="_blank" rel="noopener" href="https://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/">https://firmware.koolshare.cn/LEDE_X64_fw867 / 虚拟机转盘或 PE 下写盘专用 /</a> 下载 <code>combined-squashfs.img.gz</code> 固件，解压后上传至群晖，如图：<br><img src="https://img.jakehu.me/20190712093324.png"></p>
 <h4 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h4><p>好吧，被坑了，还一直没找到问题所在。</p>
-<p>最开始上了<code>EDUP EP-9602 PCI-E千兆网卡（RTL8111芯片）</code>，在群晖的网络界面能识别，在<code>VMM</code>网络界面添加虚拟交换机时无法识别；后面又换了<code>LR-LINK 联瑞pciex1台式机千兆有线网卡intelI211芯片支持linux LREC9202CT</code>还是无法识别；后来又换了<code>胜为（shengwei）PCI-E千兆网卡 以太网rj45台式机电脑10/100/1000自适应网卡 单口 带唤醒 PEC-2051</code>还是无法识别</p>
+<p>最开始上了 <code>EDUP EP-9602 PCI-E千兆网卡（RTL8111芯片）</code>，在群晖的网络界面能识别，在 <code>VMM</code> 网络界面添加虚拟交换机时无法识别；后面又换了 <code>LR-LINK 联瑞pciex1台式机千兆有线网卡intelI211芯片支持linux LREC9202CT</code> 还是无法识别；后来又换了<code>胜为（shengwei）PCI-E千兆网卡 以太网rj45台式机电脑10/100/1000自适应网卡 单口 带唤醒 PEC-2051</code> 还是无法识别</p>
 <p>算了，不玩儿了</p>
 <h3 id="终结"><a href="#终结" class="headerlink" title="终结"></a>终结</h3><p>网卡无法识别原因寻找中</p>
 <p>未完待续…</p>
@@ -475,13 +475,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/koolproxy-install/" rel="prev" title="将KoolProxyR规则转换为KoolProxy规则脚本">
-                  <i class="fa fa-chevron-left"></i> 将KoolProxyR规则转换为KoolProxy规则脚本
+                <a href="/2019/koolproxy-install/" rel="prev" title="将 KoolProxyR 规则转换为 KoolProxy 规则脚本">
+                  <i class="fa fa-chevron-left"></i> 将 KoolProxyR 规则转换为 KoolProxy 规则脚本
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019/docker-image/" rel="next" title="Docker底层镜像之选择困难症">
-                  Docker底层镜像之选择困难症 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/docker-image/" rel="next" title="Docker 底层镜像之选择困难症">
+                  Docker 底层镜像之选择困难症 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -546,6 +546,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

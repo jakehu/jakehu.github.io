@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="前记最近在做微信开发本地测试，需要用到80端口；鉴于Eggjs默认端口为7001，于是开始了一场Eggjs绑定80端口之战 Scriptsscripts改造，将dev命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行npm run dev之后出现下面问题 1bind EACCES null:80, co">
+  <meta name="description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Eggjs之绑定80端口引发的一场血案">
+<meta property="og:title" content="Eggjs 之绑定 80 端口引发的一场血案">
 <meta property="og:url" content="http://www.jakehu.me/2019/eggjs-80/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记最近在做微信开发本地测试，需要用到80端口；鉴于Eggjs默认端口为7001，于是开始了一场Eggjs绑定80端口之战 Scriptsscripts改造，将dev命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行npm run dev之后出现下面问题 1bind EACCES null:80, co">
+<meta property="og:description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-25T11:07:00.000Z">
 <meta property="article:modified_time" content="2019-06-21T01:58:49.398Z">
@@ -70,7 +70,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>Eggjs之绑定80端口引发的一场血案 | 晨曦's Blog</title>
+  <title>Eggjs 之绑定 80 端口引发的一场血案 | 晨曦's Blog</title>
   
 
 
@@ -342,7 +342,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Eggjs之绑定80端口引发的一场血案
+          Eggjs 之绑定 80 端口引发的一场血案
         </h1>
 
         <div class="post-meta-container">
@@ -373,7 +373,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2019/eggjs-80/" class="post-meta-item leancloud_visitors" data-flag-title="Eggjs之绑定80端口引发的一场血案" title="阅读次数">
+    <span id="/2019/eggjs-80/" class="post-meta-item leancloud_visitors" data-flag-title="Eggjs 之绑定 80 端口引发的一场血案" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -403,26 +403,26 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做微信开发本地测试，需要用到<code>80</code>端口；鉴于<code>Eggjs</code>默认端口为<code>7001</code>，于是开始了一场<code>Eggjs</code>绑定<code>80</code>端口之战</p>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><code>scripts</code>改造，将<code>dev</code>命令改为如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,</span><br></pre></td></tr></table></figure>
+        <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做微信开发本地测试，需要用到 <code>80</code> 端口；鉴于 <code>Eggjs</code> 默认端口为 <code>7001</code>，于是开始了一场 <code>Eggjs</code> 绑定 <code>80</code> 端口之战</p>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><code>scripts</code> 改造，将 <code>dev</code> 命令改为如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"dev": "egg-bin dev --port=80",</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当运行<code>npm run dev</code>之后出现下面问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind EACCES null:80, code: EACCES</span><br></pre></td></tr></table></figure>
-<p>绑定<code>80</code>端口失败，看来是权限不够</p>
+<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当运行 <code>npm run dev</code> 之后出现下面问题</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind EACCES null:80, code: EACCES</span><br></pre></td></tr></tbody></table></figure>
+<p>绑定 <code>80</code> 端口失败，看来是权限不够</p>
 <blockquote>
-<p>解决方案：<code>sudo</code>高权限运行</p>
+<p>解决方案：<code>sudo</code> 高权限运行</p>
 </blockquote>
-<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>当运行<code>sudo npm run dev</code>之后出现下面问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo: npm：找不到命令</span><br></pre></td></tr></table></figure>
-<p>看来是<code>bin</code>下面没有可执行文件</p>
+<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>当运行 <code>sudo npm run dev</code> 之后出现下面问题</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo: npm：找不到命令</span><br></pre></td></tr></tbody></table></figure>
+<p>看来是 <code>bin</code> 下面没有可执行文件</p>
 <blockquote>
 <p>解决方案：<code>ln -s</code></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ which npm</span><br><span class="line">&gt; &#x2F;home&#x2F;jakehu&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v8.12.0&#x2F;bin&#x2F;npm</span><br><span class="line">$ sudo ln -s &#x2F;home&#x2F;jakehu&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v8.12.0&#x2F;bin&#x2F;npm &#x2F;usr&#x2F;bin&#x2F;npm</span><br><span class="line"></span><br><span class="line">$ which node</span><br><span class="line">&gt; &#x2F;home&#x2F;jakehu&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v8.12.0&#x2F;bin&#x2F;node</span><br><span class="line">$ sudo ln -s &#x2F;home&#x2F;jakehu&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v8.12.0&#x2F;bin&#x2F;node &#x2F;usr&#x2F;bin&#x2F;node</span><br></pre></td></tr></table></figure>
-<p>最后只需要运行<code>sudo npm run dev</code>就可以了</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ which npm</span><br><span class="line">&gt; /home/jakehu/.nvm/versions/node/v8.12.0/bin/npm</span><br><span class="line">$ sudo ln -s /home/jakehu/.nvm/versions/node/v8.12.0/bin/npm /usr/bin/npm</span><br><span class="line"></span><br><span class="line">$ which node</span><br><span class="line">&gt; /home/jakehu/.nvm/versions/node/v8.12.0/bin/node</span><br><span class="line">$ sudo ln -s /home/jakehu/.nvm/versions/node/v8.12.0/bin/node /usr/bin/node</span><br></pre></td></tr></tbody></table></figure>
+<p>最后只需要运行 <code>sudo npm run dev</code> 就可以了</p>
 <hr>
-<p>如果出现<code>bind EADDRINUSE null:80, code: EADDRINUSE</code>错误，表示有程序占用<code>80</code>端口，<code>pkill</code>掉即可</p>
+<p>如果出现 <code>bind EADDRINUSE null:80, code: EADDRINUSE</code> 错误，表示有程序占用 <code>80</code> 端口，<code>pkill</code> 掉即可</p>
 
     </div>
 
@@ -453,13 +453,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/hexo-baidu-sitemap/" rel="prev" title="Hexo部署在Github Pages怎么提交Sitemap给百度？来我教你">
-                  <i class="fa fa-chevron-left"></i> Hexo部署在Github Pages怎么提交Sitemap给百度？来我教你
+                <a href="/2019/hexo-baidu-sitemap/" rel="prev" title="Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你">
+                  <i class="fa fa-chevron-left"></i> Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019/gitlab-403-forbidden/" rel="next" title="Gitlab之403 Forbidden前世今生">
-                  Gitlab之403 Forbidden前世今生 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/gitlab-403-forbidden/" rel="next" title="Gitlab 之 403 Forbidden 前世今生">
+                  Gitlab 之 403 Forbidden 前世今生 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -524,6 +524,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

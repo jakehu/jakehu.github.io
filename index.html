@@ -20,7 +20,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="提笔为青春，人生正当年">
@@ -339,7 +339,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/openldap-gogs/" class="post-title-link" itemprop="url">Ldap按分组控制权限并接入Gogs系统</a>
+            <a href="/2020/openldap-gogs/" class="post-title-link" itemprop="url">Ldap 按分组控制权限并接入 Gogs 系统</a>
         </h2>
 
         <div class="post-meta-container">
@@ -364,7 +364,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/openldap-gogs/" class="post-meta-item leancloud_visitors" data-flag-title="Ldap按分组控制权限并接入Gogs系统" title="阅读次数">
+    <span id="/2020/openldap-gogs/" class="post-meta-item leancloud_visitors" data-flag-title="Ldap 按分组控制权限并接入 Gogs 系统" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -394,12 +394,12 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>之前安装了<code>openldap</code>服务和<code>lam</code>管理平台，接下来我们看看如何在<code>ldap</code>中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。</p>
-<h4 id="创建Group"><a href="#创建Group" class="headerlink" title="创建Group"></a>创建Group</h4><p>先创建一个组，如图：<br><img src="https://img.jakehu.me/20200520103212.png"></p>
+          <p>之前安装了 <code>openldap</code> 服务和 <code>lam</code> 管理平台，接下来我们看看如何在 <code>ldap</code> 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。</p>
+<h4 id="创建Group"><a href="#创建Group" class="headerlink" title="创建Group"></a>创建 Group</h4><p>先创建一个组，如图：<br><img src="https://img.jakehu.me/20200520103212.png"></p>
 <h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p>在刚才创建的组里创建用户，如图：<br><img src="https://img.jakehu.me/20200520103333.png"></p>
-<h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建Group组</h4><p>创建<code>objectClass</code>属性为<code>groupOfUniqueNames</code>的组<code>gogs</code>用于<code>gogs</code>登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中<code>cn</code>为组名，<code>uniqueMember</code>为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
-<h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为Gogs添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code>管理员的<code>DN</code><br><code>绑定密码</code>：<code>Ldap</code>管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code>用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是<code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
-<h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在<code>gogs</code>用户改为<code>ldap</code>认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
+<h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建 Group 组</h4><p>创建 <code>objectClass</code> 属性为 <code>groupOfUniqueNames</code> 的组 <code>gogs</code> 用于 <code>gogs</code> 登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中 <code>cn</code> 为组名，<code>uniqueMember</code> 为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
+<h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为 Gogs 添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code> 管理员的 <code>DN</code><br><code>绑定密码</code>：<code>Ldap</code> 管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code> 用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是 <code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
+<h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在 <code>gogs</code> 用户改为 <code>ldap</code> 认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
 
       
     </div>
@@ -438,7 +438,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/ldap-docker/" class="post-title-link" itemprop="url">利用Docker为自己打造一套OpenLdap认证系统</a>
+            <a href="/2020/ldap-docker/" class="post-title-link" itemprop="url">利用 Docker 为自己打造一套 OpenLdap 认证系统</a>
         </h2>
 
         <div class="post-meta-container">
@@ -469,7 +469,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/ldap-docker/" class="post-meta-item leancloud_visitors" data-flag-title="利用Docker为自己打造一套OpenLdap认证系统" title="阅读次数">
+    <span id="/2020/ldap-docker/" class="post-meta-item leancloud_visitors" data-flag-title="利用 Docker 为自己打造一套 OpenLdap 认证系统" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -499,17 +499,17 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Ldap"><a href="#Ldap" class="headerlink" title="Ldap"></a>Ldap</h3><p>轻型目录访问协议（英文：<code>Lightweight Directory Access Protocol</code>，缩写：<code>LDAP</code>，<code>/ˈɛldæp/</code>）是一个开放的，中立的，工业标准的应用协议，通过<code>IP</code>协议提供访问控制和维护分布式信息的目录信息。</p>
-<p>摘自维基百科，关于<code>LDAP</code>概念和原理可以看看这篇文章 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wilburxu/p/9174353.html">LDAP概念和原理介绍</a></p>
-<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull osixia&#x2F;openldap:1.3.0</span><br></pre></td></tr></table></figure>
-<h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 389:389 --name openldap --restart&#x3D;always \</span><br><span class="line">--env LDAP_ORGANISATION&#x3D;&quot;jakehu&quot; \</span><br><span class="line">--env LDAP_DOMAIN&#x3D;&quot;jakehu.me&quot; \</span><br><span class="line">--env LDAP_ADMIN_PASSWORD&#x3D;&quot;jakehu&quot; \</span><br><span class="line">--env LDAP_CONFIG_PASSWORD&#x3D;&quot;jakehu&quot; \</span><br><span class="line">--volume &#x2F;data&#x2F;database:&#x2F;var&#x2F;lib&#x2F;ldap \</span><br><span class="line">--volume &#x2F;data&#x2F;config:&#x2F;etc&#x2F;ldap&#x2F;slapd.d \</span><br><span class="line">--detach osixia&#x2F;openldap:1.3.0</span><br></pre></td></tr></table></figure>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>端口：默认服务端口使用<code>389</code>端口<br><code>LDAP_ORGANISATION</code>：机构组织<br><code>LDAP_DOMAIN</code>：域<br><code>LDAP_ADMIN_PASSWORD</code>：管理员(<code>admin</code>)密码<br><code>LDAP_CONFIG_PASSWORD</code>：配置管理密码<br><code>/etc/ldap/slapd.d</code>：配置文件<br><code>/var/lib/ldap</code>：后端数据，默认为<code>mdb</code></p>
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><h4 id="镜像-1"><a href="#镜像-1" class="headerlink" title="镜像"></a>镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ldapaccountmanager&#x2F;lam:7.2.RC1</span><br></pre></td></tr></table></figure>
-<h4 id="容器-1"><a href="#容器-1" class="headerlink" title="容器"></a>容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart&#x3D;always --name ldapaccountmanager -p 9880:80 \</span><br><span class="line">--link openldap:openldap \</span><br><span class="line">--env LDAP_DOMAIN&#x3D;jakehu.me \</span><br><span class="line">--env LAM_LANG&#x3D;zh_CN \</span><br><span class="line">--env LDAP_SERVER&#x3D;ldap:&#x2F;&#x2F;openldap:389 \</span><br><span class="line">--env LAM_PASSWORD&#x3D;jakehu \</span><br><span class="line">--detach ldapaccountmanager&#x2F;lam:7.2.RC1</span><br></pre></td></tr></table></figure>
-<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><p><code>LAM_LANG</code>：语言<br><code>LDAP_SERVER</code>：<code>Ldap</code>服务器<br><code>LAM_PASSWORD</code>：<code>lam</code>密码，默认用户名<code>lam</code></p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>接下来访问<code>http://IP:9880</code>就能看到下面画面<br><img src="https://img.jakehu.me/20200517183325.png"><br>点击<code>LAM configuration</code>进入配置界面<br><img src="https://img.jakehu.me/20200517183522.png"><br><img src="https://img.jakehu.me/20200517183558.png"><br>这里的密码，就是我们设置的<code>LAM_PASSWORD</code><br><img src="https://img.jakehu.me/20200517183843.png"><br>另外设置的<code>LDAP_SERVER</code>和<code>LDAP_DOMAIN</code>都被体现出来了，最后在<code>Account types</code>中修改默认创建的两个组，这两个组会在首次登陆系统时提示创建<br><img src="https://img.jakehu.me/20200517184331.png"><br>然后登陆创建我们刚设置的两个组<br><img src="https://img.jakehu.me/20200517184454.png"><br>看下结构树，两个分组已经被创建了<br><img src="https://img.jakehu.me/20200517184617.png"><br>到此就已经完成<code>docker</code>版的<code>openldap</code>和<code>lam</code>的安装配置</p>
+          <h3 id="Ldap"><a href="#Ldap" class="headerlink" title="Ldap"></a>Ldap</h3><p>轻型目录访问协议（英文：<code>Lightweight Directory Access Protocol</code>，缩写：<code>LDAP</code>，<code>/ˈɛldæp/</code>）是一个开放的，中立的，工业标准的应用协议，通过 <code>IP</code> 协议提供访问控制和维护分布式信息的目录信息。</p>
+<p>摘自维基百科，关于 <code>LDAP</code> 概念和原理可以看看这篇文章 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wilburxu/p/9174353.html">LDAP 概念和原理介绍</a></p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull osixia/openldap:1.3.0</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 389:389 --name openldap --restart=always \</span><br><span class="line">--env LDAP_ORGANISATION="jakehu" \</span><br><span class="line">--env LDAP_DOMAIN="jakehu.me" \</span><br><span class="line">--env LDAP_ADMIN_PASSWORD="jakehu" \</span><br><span class="line">--env LDAP_CONFIG_PASSWORD="jakehu" \</span><br><span class="line">--volume /data/database:/var/lib/ldap \</span><br><span class="line">--volume /data/config:/etc/ldap/slapd.d \</span><br><span class="line">--detach osixia/openldap:1.3.0</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>端口：默认服务端口使用 <code>389</code> 端口<br><code>LDAP_ORGANISATION</code>：机构组织<br><code>LDAP_DOMAIN</code>：域<br><code>LDAP_ADMIN_PASSWORD</code>：管理员 (<code>admin</code>) 密码<br><code>LDAP_CONFIG_PASSWORD</code>：配置管理密码<br><code>/etc/ldap/slapd.d</code>：配置文件<br><code>/var/lib/ldap</code>：后端数据，默认为 <code>mdb</code></p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><h4 id="镜像-1"><a href="#镜像-1" class="headerlink" title="镜像"></a>镜像</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ldapaccountmanager/lam:7.2.RC1</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="容器-1"><a href="#容器-1" class="headerlink" title="容器"></a>容器</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always --name ldapaccountmanager -p 9880:80 \</span><br><span class="line">--link openldap:openldap \</span><br><span class="line">--env LDAP_DOMAIN=jakehu.me \</span><br><span class="line">--env LAM_LANG=zh_CN \</span><br><span class="line">--env LDAP_SERVER=ldap://openldap:389 \</span><br><span class="line">--env LAM_PASSWORD=jakehu \</span><br><span class="line">--detach ldapaccountmanager/lam:7.2.RC1</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><p><code>LAM_LANG</code>：语言<br><code>LDAP_SERVER</code>：<code>Ldap</code> 服务器<br><code>LAM_PASSWORD</code>：<code>lam</code> 密码，默认用户名 <code>lam</code></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>接下来访问 <code>http://IP:9880</code> 就能看到下面画面<br><img src="https://img.jakehu.me/20200517183325.png"><br>点击 <code>LAM configuration</code> 进入配置界面<br><img src="https://img.jakehu.me/20200517183522.png"><br><img src="https://img.jakehu.me/20200517183558.png"><br>这里的密码，就是我们设置的 <code>LAM_PASSWORD</code><br><img src="https://img.jakehu.me/20200517183843.png"><br>另外设置的 <code>LDAP_SERVER</code> 和 <code>LDAP_DOMAIN</code> 都被体现出来了，最后在 <code>Account types</code> 中修改默认创建的两个组，这两个组会在首次登陆系统时提示创建<br><img src="https://img.jakehu.me/20200517184331.png"><br>然后登陆创建我们刚设置的两个组<br><img src="https://img.jakehu.me/20200517184454.png"><br>看下结构树，两个分组已经被创建了<br><img src="https://img.jakehu.me/20200517184617.png"><br>到此就已经完成 <code>docker</code> 版的 <code>openldap</code> 和 <code>lam</code> 的安装配置</p>
 <hr>
-<p>o – organization（组织-公司）<br>ou – organization unit（组织单元-部门）<br>c - countryName（国家）<br>dc - domainComponent（域名）<br>sn – suer name（真实名称）<br>cn - common name（常用名称）</p>
+<p>o – organization（组织 - 公司）<br>ou – organization unit（组织单元 - 部门）<br>c - countryName（国家）<br>dc - domainComponent（域名）<br>sn – suer name（真实名称）<br>cn - common name（常用名称）</p>
 
       
     </div>
@@ -548,7 +548,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/openssh-pip/" class="post-title-link" itemprop="url">不省心的Openssh和Pip</a>
+            <a href="/2020/openssh-pip/" class="post-title-link" itemprop="url">不省心的 Openssh 和 Pip</a>
         </h2>
 
         <div class="post-meta-container">
@@ -573,7 +573,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/openssh-pip/" class="post-meta-item leancloud_visitors" data-flag-title="不省心的Openssh和Pip" title="阅读次数">
+    <span id="/2020/openssh-pip/" class="post-meta-item leancloud_visitors" data-flag-title="不省心的 Openssh 和 Pip" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -603,13 +603,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>pip</code>出现以下错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;pip3&quot;, line 6, in &lt;module&gt;</span><br><span class="line">    from pip._internal.cli.main import main</span><br><span class="line">ModuleNotFoundError: No module named &#39;pip._internal.cli.main&#39;</span><br></pre></td></tr></table></figure>
-<p>经过排查应该是<code>brew install openssh</code>之后安装了<code>python3.8</code>的包导致的</p>
-<h3 id="卸载Openssh"><a href="#卸载Openssh" class="headerlink" title="卸载Openssh"></a>卸载Openssh</h3><p>利用<code>rmtree</code>卸载<code>Openssh</code>及其依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap beeftornado&#x2F;rmtree</span><br><span class="line">brew rmtree openssh</span><br></pre></td></tr></table></figure>
+          <p><code>pip</code> 出现以下错误</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip3", line 6, in &lt;module&gt;</span><br><span class="line">    from pip._internal.cli.main import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal.cli.main'</span><br></pre></td></tr></tbody></table></figure>
+<p>经过排查应该是 <code>brew install openssh</code> 之后安装了 <code>python3.8</code> 的包导致的</p>
+<h3 id="卸载Openssh"><a href="#卸载Openssh" class="headerlink" title="卸载Openssh"></a>卸载 Openssh</h3><p>利用 <code>rmtree</code> 卸载 <code>Openssh</code> 及其依赖</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap beeftornado/rmtree</span><br><span class="line">brew rmtree openssh</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="Pip修复"><a href="#Pip修复" class="headerlink" title="Pip修复"></a>Pip修复</h3><p><code>python3 -m pip install --upgrade pip --user</code></p>
+<h3 id="Pip修复"><a href="#Pip修复" class="headerlink" title="Pip修复"></a>Pip 修复</h3><p><code>python3 -m pip install --upgrade pip --user</code></p>
 
       
     </div>
@@ -648,7 +648,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/git-auto-push/" class="post-title-link" itemprop="url">基于Docker+Python对Git项目自动提交</a>
+            <a href="/2020/git-auto-push/" class="post-title-link" itemprop="url">基于 Docker+Python 对 Git 项目自动提交</a>
         </h2>
 
         <div class="post-meta-container">
@@ -664,7 +664,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/git-auto-push/" class="post-meta-item leancloud_visitors" data-flag-title="基于Docker+Python对Git项目自动提交" title="阅读次数">
+    <span id="/2020/git-auto-push/" class="post-meta-item leancloud_visitors" data-flag-title="基于 Docker+Python 对 Git 项目自动提交" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -694,16 +694,16 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>基于Docker+Python对git项目自动提交</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="第一个使用场景"><a href="#第一个使用场景" class="headerlink" title="第一个使用场景"></a>第一个使用场景</h4><p>自己本地有几个私有库，如<code>hexo</code>、<code>资料记载</code>等…这些个私有库有事没事就需要<code>push</code>更改，所以需要自动提交</p>
-<h4 id="第二个使用场景"><a href="#第二个使用场景" class="headerlink" title="第二个使用场景"></a>第二个使用场景</h4><p><code>home-assistant</code>安装在树莓派上，但是对于<code>home-assistant</code>的配置文件希望用<code>git</code>管理起来</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以上两个使用场景其实都是需要外挂盘符来操作的，接下来编写<code>docker-compose.yml</code>文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  git-auto-push:</span><br><span class="line">    image: jakehu&#x2F;git-auto-push:latest</span><br><span class="line">    container_name: git-auto-push</span><br><span class="line">    restart: always</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;Web&#x2F;项目1:&#x2F;opt&#x2F;Web&#x2F;项目1</span><br><span class="line">      - &#x2F;Web&#x2F;项目2:&#x2F;opt&#x2F;Web&#x2F;项目2</span><br><span class="line">      - &#x2F;Web&#x2F;项目3:&#x2F;opt&#x2F;Web&#x2F;项目3</span><br><span class="line">      - &#x2F;you_dir&#x2F;.ssh&#x2F;:&#x2F;root&#x2F;.ssh&#x2F;</span><br></pre></td></tr></table></figure>
-<p><code>/opt/Web/</code>勿修改，程序会自动读取<code>/opt/Web/</code>下一级目录作为需要监听的项目，<code>.ssh</code>挂载进去主要是不用单独去配置<code>ssh key</code></p>
+          <p>基于 Docker+Python 对 git 项目自动提交</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="第一个使用场景"><a href="#第一个使用场景" class="headerlink" title="第一个使用场景"></a>第一个使用场景</h4><p>自己本地有几个私有库，如 <code>hexo</code>、<code>资料记载</code>等… 这些个私有库有事没事就需要 <code>push</code> 更改，所以需要自动提交</p>
+<h4 id="第二个使用场景"><a href="#第二个使用场景" class="headerlink" title="第二个使用场景"></a>第二个使用场景</h4><p><code>home-assistant</code> 安装在树莓派上，但是对于 <code>home-assistant</code> 的配置文件希望用 <code>git</code> 管理起来</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以上两个使用场景其实都是需要外挂盘符来操作的，接下来编写 <code>docker-compose.yml</code> 文件</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">version: '2'</span><br><span class="line">services:</span><br><span class="line">  git-auto-push:</span><br><span class="line">    image: jakehu/git-auto-push:latest</span><br><span class="line">    container_name: git-auto-push</span><br><span class="line">    restart: always</span><br><span class="line">    volumes:</span><br><span class="line">      - /Web/项目1:/opt/Web/项目1</span><br><span class="line">      - /Web/项目2:/opt/Web/项目2</span><br><span class="line">      - /Web/项目3:/opt/Web/项目3</span><br><span class="line">      - /you_dir/.ssh/:/root/.ssh/</span><br></pre></td></tr></tbody></table></figure>
+<p><code>/opt/Web/</code> 勿修改，程序会自动读取 <code>/opt/Web/</code> 下一级目录作为需要监听的项目，<code>.ssh</code> 挂载进去主要是不用单独去配置 <code>ssh key</code></p>
 <p>启动：<code>docker-compose up -d</code></p>
 <hr>
-<p><a target="_blank" rel="noopener" href="https://github.com/jakehu/git-auto-push">Github地址</a></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://note.qidong.name/2018/01/gitpython/">GitPython操作Git</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jakehu/git-auto-push">Github 地址</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://note.qidong.name/2018/01/gitpython/">GitPython 操作 Git</a></p>
 
       
     </div>
@@ -797,13 +797,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><p>在使用<code>git clone</code> <code>gogs</code>项目的时候出现错误<code>fatal: unable to fork</code> ，原因是因为没有<code>openssh</code>，解决：<code>brew install openssh</code></p>
+          <h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><p>在使用 <code>git clone</code> <code>gogs</code> 项目的时候出现错误 <code>fatal: unable to fork</code> ，原因是因为没有 <code>openssh</code>，解决：<code>brew install openssh</code></p>
 <h4 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h4><p>问题如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; node-gyp rebuild</span><br><span class="line">No receipt for &#39;com.apple.pkg.CLTools_Executables&#39; found at &#39;&#x2F;&#39;.</span><br><span class="line">No receipt for &#39;com.apple.pkg.DeveloperToolsCLILeo&#39; found at &#39;&#x2F;&#39;.</span><br><span class="line">No receipt for &#39;com.apple.pkg.DeveloperToolsCLI&#39; found at &#39;&#x2F;&#39;.</span><br><span class="line">gyp: No Xcode or CLT version detected!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; node-gyp rebuild</span><br><span class="line">No receipt for 'com.apple.pkg.CLTools_Executables' found at '/'.</span><br><span class="line">No receipt for 'com.apple.pkg.DeveloperToolsCLILeo' found at '/'.</span><br><span class="line">No receipt for 'com.apple.pkg.DeveloperToolsCLI' found at '/'.</span><br><span class="line">gyp: No Xcode or CLT version detected!</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>尝试解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br><span class="line">xcode-select: error: command line tools are already installed, use &quot;Software Update&quot; to install updates</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br><span class="line">xcode-select: error: command line tools are already installed, use "Software Update" to install updates</span><br></pre></td></tr></tbody></table></figure>
 <p>尝试失败了，再次尝试解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf $(xcode-select -print-path)</span><br><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf $(xcode-select -print-path)</span><br><span class="line">xcode-select --install</span><br></pre></td></tr></tbody></table></figure>
 <p>先删除再重新安装问题解决，真是奇葩问题</p>
 
       
@@ -843,7 +843,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/synology-docker/" class="post-title-link" itemprop="url">群晖中利用阿里镜像为Docker加速</a>
+            <a href="/2020/synology-docker/" class="post-title-link" itemprop="url">群晖中利用阿里镜像为 Docker 加速</a>
         </h2>
 
         <div class="post-meta-container">
@@ -874,7 +874,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/synology-docker/" class="post-meta-item leancloud_visitors" data-flag-title="群晖中利用阿里镜像为Docker加速" title="阅读次数">
+    <span id="/2020/synology-docker/" class="post-meta-item leancloud_visitors" data-flag-title="群晖中利用阿里镜像为 Docker 加速" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -904,13 +904,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>先来看看阿里对<code>docker</code>加速的步骤</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p &#x2F;etc&#x2F;docker</span><br><span class="line">sudo tee &#x2F;etc&#x2F;docker&#x2F;daemon.json &lt;&lt;-&#39;EOF&#39;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https:&#x2F;&#x2F;xxx.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
-<p>接下来我们对群晖中<code>Docker</code>套件进行设置，配置文件如下，只需要将阿里加速地址设置在<code>registry-mirrors</code>即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 配置文件路径</span><br><span class="line"># &#x2F;var&#x2F;packages&#x2F;Docker&#x2F;etc&#x2F;dockerd.json</span><br><span class="line">&#123;</span><br><span class="line">   &quot;data-root&quot; : &quot;&#x2F;var&#x2F;packages&#x2F;Docker&#x2F;target&#x2F;docker&quot;,</span><br><span class="line">   &quot;log-driver&quot; : &quot;db&quot;,</span><br><span class="line">   &quot;registry-mirrors&quot; : [&quot;https:&#x2F;&#x2F;xxx.mirror.aliyuncs.com&quot;],</span><br><span class="line">   &quot;storage-driver&quot; : &quot;btrfs&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在群晖中对服务的管理可以用<code>synoservice</code>命令，利用下面命令重启<code>Docker</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">synoservice --restart pkgctl-Docker</span><br></pre></td></tr></table></figure>
-<p>这样就能重启<code>Docker</code>实现加速了，最后我们可以通过<code>docker info</code>来查看<code>Registry Mirrors</code>参数看是否设置正确</p>
+          <p>先来看看阿里对 <code>docker</code> 加速的步骤</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'</span><br><span class="line">{</span><br><span class="line">  "registry-mirrors": ["https://xxx.mirror.aliyuncs.com"]</span><br><span class="line">}</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></tbody></table></figure>
+<p>接下来我们对群晖中 <code>Docker</code> 套件进行设置，配置文件如下，只需要将阿里加速地址设置在 <code>registry-mirrors</code> 即可</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 配置文件路径</span><br><span class="line"># /var/packages/Docker/etc/dockerd.json</span><br><span class="line">{</span><br><span class="line">   "data-root" : "/var/packages/Docker/target/docker",</span><br><span class="line">   "log-driver" : "db",</span><br><span class="line">   "registry-mirrors" : ["https://xxx.mirror.aliyuncs.com"],</span><br><span class="line">   "storage-driver" : "btrfs"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在群晖中对服务的管理可以用 <code>synoservice</code> 命令，利用下面命令重启 <code>Docker</code>：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">synoservice --restart pkgctl-Docker</span><br></pre></td></tr></tbody></table></figure>
+<p>这样就能重启 <code>Docker</code> 实现加速了，最后我们可以通过 <code>docker info</code> 来查看 <code>Registry Mirrors</code> 参数看是否设置正确</p>
 <hr>
 <p>另一种方式也可以通过网页端的套件中心对套件进行<code>停用</code>和<code>启用</code></p>
 
@@ -951,7 +951,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/home-assistant/" class="post-title-link" itemprop="url">家庭助理之Home Assistant初体验</a>
+            <a href="/2020/home-assistant/" class="post-title-link" itemprop="url">家庭助理之 Home Assistant 初体验</a>
         </h2>
 
         <div class="post-meta-container">
@@ -976,7 +976,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/home-assistant/" class="post-meta-item leancloud_visitors" data-flag-title="家庭助理之Home Assistant初体验" title="阅读次数">
+    <span id="/2020/home-assistant/" class="post-meta-item leancloud_visitors" data-flag-title="家庭助理之 Home Assistant 初体验" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1006,14 +1006,14 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>其实安装挺简单的，因为家里有群晖，所以只需要在<code>docker</code>插件上进行安装即可</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="http"><a href="#http" class="headerlink" title="http"></a>http</h4><p>由于群晖中容器安装，所以需要设置<code>http</code>访问地址，不然会出现以下错误</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;/usr/local/lib/python3.7/site-packages/aiohttp/web_protocol.py&quot;, line 275, in data_received</span><br><span class="line">    messages, upgraded, tail = self._request_parser.feed_data(data)</span><br><span class="line">  File &quot;aiohttp\_http_parser.pyx&quot;, line 523, in aiohttp._http_parser.HttpParser.feed_data</span><br><span class="line">aiohttp.http_exceptions.BadStatusLine: invalid HTTP method</span><br><span class="line">2020-05-01 16:19:34 ERROR (MainThread) [aiohttp.server] Error handling request</span><br></pre></td></tr></table></figure>
+          <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>其实安装挺简单的，因为家里有群晖，所以只需要在 <code>docker</code> 插件上进行安装即可</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="http"><a href="#http" class="headerlink" title="http"></a>http</h4><p>由于群晖中容器安装，所以需要设置 <code>http</code> 访问地址，不然会出现以下错误</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/lib/python3.7/site-packages/aiohttp/web_protocol.py", line 275, in data_received</span><br><span class="line">    messages, upgraded, tail = self._request_parser.feed_data(data)</span><br><span class="line">  File "aiohttp\_http_parser.pyx", line 523, in aiohttp._http_parser.HttpParser.feed_data</span><br><span class="line">aiohttp.http_exceptions.BadStatusLine: invalid HTTP method</span><br><span class="line">2020-05-01 16:19:34 ERROR (MainThread) [aiohttp.server] Error handling request</span><br></pre></td></tr></tbody></table></figure>
 <p>配置如下：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http:</span></span><br><span class="line">    <span class="attr">base_url:</span> <span class="string">http://xx.xxx.com:8123</span></span><br></pre></td></tr></table></figure>
-<h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><p>默认是用的<code>sqlite</code>数据库，如果数据量比较大的话建议可以用<code>mysql</code>配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">recorder:</span><br><span class="line">    db_url: mysql:&#x2F;&#x2F;user:password@SERVER_IP&#x2F;DB_NAME?charset&#x3D;utf8</span><br></pre></td></tr></table></figure>
-<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>对于<code>docker</code>安装的版本只有核心，并没有<code>hass.io</code>插件模块，对于这块可以看以下文章，不过官方好像已经放弃这种方式了：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http:</span></span><br><span class="line">    <span class="attr">base_url:</span> <span class="string">http://xx.xxx.com:8123</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><p>默认是用的 <code>sqlite</code> 数据库，如果数据量比较大的话建议可以用 <code>mysql</code> 配置如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">recorder:</span><br><span class="line">    db_url: mysql://user:password@SERVER_IP/DB_NAME?charset=utf8</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>对于 <code>docker</code> 安装的版本只有核心，并没有 <code>hass.io</code> 插件模块，对于这块可以看以下文章，不过官方好像已经放弃这种方式了：</p>
 <p><a target="_blank" rel="noopener" href="https://community.home-assistant.io/t/hass-io-via-docker/60720">Hass.io via Docker</a></p>
 <hr>
 <p>估计还是需要上树莓派才是王道</p>
@@ -1055,7 +1055,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/zsh-plugins/" class="post-title-link" itemprop="url">Mac下oh-my-zsh之必备插件</a>
+            <a href="/2020/zsh-plugins/" class="post-title-link" itemprop="url">Mac 下 oh-my-zsh 之必备插件</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1080,7 +1080,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/zsh-plugins/" class="post-meta-item leancloud_visitors" data-flag-title="Mac下oh-my-zsh之必备插件" title="阅读次数">
+    <span id="/2020/zsh-plugins/" class="post-meta-item leancloud_visitors" data-flag-title="Mac 下 oh-my-zsh 之必备插件" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1110,16 +1110,16 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p><code>autojump</code>：实现目录间快速跳转，想去哪个目录直接<code>j</code>，不用再有事没事就<code>cd</code>了<br><code>zsh-autosuggestions</code>：输入命令时可提示自动补全以及之前的历史记录，然后按键盘<code>→</code>即可<br><code>zsh-syntax-highlighting</code>：日常用的命令会高亮显示，命令错误显示红色</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>安装前我们可以在配置文件中查看<code>plugins</code>目录如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Standard plugins can be found in ~&#x2F;.oh-my-zsh&#x2F;plugins&#x2F;*</span><br><span class="line"># Custom plugins may be added to ~&#x2F;.oh-my-zsh&#x2F;custom&#x2F;plugins&#x2F;</span><br></pre></td></tr></table></figure>
-<p><code>autojump</code>安装如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install autojump</span><br></pre></td></tr></table></figure>
-<p><code>zsh-autosuggestions</code>安装如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users&#x2F;zsh-autosuggestions.git ~&#x2F;.oh-my-zsh&#x2F;custom&#x2F;plugins&#x2F;zsh-autosuggestions</span><br></pre></td></tr></table></figure>
-<p><code>zsh-syntax-highlighting</code>安装如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users&#x2F;zsh-syntax-highlighting.git ~&#x2F;.oh-my-zsh&#x2F;custom&#x2F;plugins&#x2F;zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins&#x3D;(</span><br><span class="line">autojump</span><br><span class="line">zsh-autosuggestions</span><br><span class="line">zsh-syntax-highlighting</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+          <h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p><code>autojump</code>：实现目录间快速跳转，想去哪个目录直接 <code>j</code>，不用再有事没事就 <code>cd</code> 了<br><code>zsh-autosuggestions</code>：输入命令时可提示自动补全以及之前的历史记录，然后按键盘<code>→</code>即可<br><code>zsh-syntax-highlighting</code>：日常用的命令会高亮显示，命令错误显示红色</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>安装前我们可以在配置文件中查看 <code>plugins</code> 目录如下</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Standard plugins can be found in ~/.oh-my-zsh/plugins/*</span><br><span class="line"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span><br></pre></td></tr></tbody></table></figure>
+<p><code>autojump</code> 安装如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install autojump</span><br></pre></td></tr></tbody></table></figure>
+<p><code>zsh-autosuggestions</code> 安装如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions</span><br></pre></td></tr></tbody></table></figure>
+<p><code>zsh-syntax-highlighting</code> 安装如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">autojump</span><br><span class="line">zsh-autosuggestions</span><br><span class="line">zsh-syntax-highlighting</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><p><code> source .zshrc</code></p>
 
       
@@ -1159,7 +1159,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/mysql-password/" class="post-title-link" itemprop="url">Gogs报500错误，Mysql密码到期了？</a>
+            <a href="/2020/mysql-password/" class="post-title-link" itemprop="url">Gogs 报 500 错误，Mysql 密码到期了？</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1184,7 +1184,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2020/mysql-password/" class="post-meta-item leancloud_visitors" data-flag-title="Gogs报500错误，Mysql密码到期了？" title="阅读次数">
+    <span id="/2020/mysql-password/" class="post-meta-item leancloud_visitors" data-flag-title="Gogs 报 500 错误，Mysql 密码到期了？" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1214,21 +1214,21 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理<code>gogs</code>和对应的<code>mysql</code>都部署在家用群晖的<code>Docker</code>上，今早发现<code>gogs</code>报<code>500</code>错误无法访问，经过查询日志确定是<code>mysql 5.7</code>密码已过期，如下错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error 1862: Your password has expired. To log in you must change it using a client that supports expired passwords.</span><br></pre></td></tr></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code>登陆到群晖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh admin@192.168.1.x -p xx22</span><br></pre></td></tr></table></figure>
-<p>首先我们需要对群晖<code>admin</code>账户提权</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
-<p>然后进入对应的<code>docker</code>容器并登陆到<code>mysql</code>客户端，这里说明一下客户端的密码是不会过期的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql1 mysql -uroot -ppassword</span><br></pre></td></tr></table></figure>
+          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理 <code>gogs</code> 和对应的 <code>mysql</code> 都部署在家用群晖的 <code>Docker</code> 上，今早发现 <code>gogs</code> 报 <code>500</code> 错误无法访问，经过查询日志确定是 <code>mysql 5.7</code> 密码已过期，如下错误</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error 1862: Your password has expired. To log in you must change it using a client that supports expired passwords.</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code> 登陆到群晖</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh admin@192.168.1.x -p xx22</span><br></pre></td></tr></tbody></table></figure>
+<p>首先我们需要对群晖 <code>admin</code> 账户提权</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></tbody></table></figure>
+<p>然后进入对应的 <code>docker</code> 容器并登陆到 <code>mysql</code> 客户端，这里说明一下客户端的密码是不会过期的</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql1 mysql -uroot -ppassword</span><br></pre></td></tr></tbody></table></figure>
 <p>然后重置密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password &#x3D; password(&#39;newpassword&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = password('newpassword');</span><br></pre></td></tr></tbody></table></figure>
 <p>接下来刷新权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
 <p>最后设置密码永不过期</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL default_password_lifetime &#x3D; 0;</span><br></pre></td></tr></table></figure>
-<p>到此问题就解决了，又可以愉快的访问<code>gogs</code>了</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL default_password_lifetime = 0;</span><br></pre></td></tr></tbody></table></figure>
+<p>到此问题就解决了，又可以愉快的访问 <code>gogs</code> 了</p>
 
       
     </div>
@@ -1267,7 +1267,7 @@ var _hmt = _hmt || [];
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/synology-update/" class="post-title-link" itemprop="url">黑群晖6.1.7升级6.2.2失败之降级安装</a>
+            <a href="/2019/synology-update/" class="post-title-link" itemprop="url">黑群晖 6.1.7 升级 6.2.2 失败之降级安装</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1292,7 +1292,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2019/synology-update/" class="post-meta-item leancloud_visitors" data-flag-title="黑群晖6.1.7升级6.2.2失败之降级安装" title="阅读次数">
+    <span id="/2019/synology-update/" class="post-meta-item leancloud_visitors" data-flag-title="黑群晖 6.1.7 升级 6.2.2 失败之降级安装" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1322,26 +1322,26 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p><code>6.2</code>系列引导已经出了一年多了，最近想升级<code>6.2</code>试试，于是踩进了坑</p>
+          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p><code>6.2</code> 系列引导已经出了一年多了，最近想升级 <code>6.2</code> 试试，于是踩进了坑</p>
 <p>当前配置：</p>
 <ul>
 <li>型号：<code>DS3615xs</code></li>
 <li>系统：<code>6.1.7</code></li>
 </ul>
 <h4 id="踩坑步骤"><a href="#踩坑步骤" class="headerlink" title="踩坑步骤"></a>踩坑步骤</h4><ul>
-<li>新做<code>1号U盘（6.2引导盘）</code></li>
-<li>拔出<code>2号U盘（6.1.7引导盘）</code>换上<code>1号U盘（6.2引导盘）</code></li>
-<li>启动-联机-迁移（<code>6.2.2</code>）-重启</li>
-<li>做完上面步骤后开机找不到<code>IP</code>（这里已经改<code>BIOS</code>传统启动方式了）</li>
-<li>用原<code>2号U盘（6.1.7引导盘）</code>重新引导</li>
-<li>启动-联机-提示还原-还原-重启</li>
-<li>做完上面步骤后又找不到<code>IP</code>了</li>
+<li>新做 <code>1号U盘（6.2引导盘）</code></li>
+<li>拔出 <code>2号U盘（6.1.7引导盘）</code>换上 <code>1号U盘（6.2引导盘）</code></li>
+<li>启动 - 联机 - 迁移（<code>6.2.2</code>）- 重启</li>
+<li>做完上面步骤后开机找不到 <code>IP</code>（这里已经改 <code>BIOS</code> 传统启动方式了）</li>
+<li>用原 <code>2号U盘（6.1.7引导盘）</code>重新引导</li>
+<li>启动 - 联机 - 提示还原 - 还原 - 重启</li>
+<li>做完上面步骤后又找不到 <code>IP</code> 了</li>
 </ul>
 <h4 id="降级处理"><a href="#降级处理" class="headerlink" title="降级处理"></a>降级处理</h4><ul>
-<li>新做<code>1号U盘（6.1.7引导盘）</code>型号为<code>DS3617xs</code></li>
-<li>启动-联机-全新安装（如果用迁移依然没法降级安装）-重启</li>
+<li>新做 <code>1号U盘（6.1.7引导盘）</code>型号为 <code>DS3617xs</code></li>
+<li>启动 - 联机 - 全新安装（如果用迁移依然没法降级安装）- 重启</li>
 </ul>
-<p>做完以上步骤重启发现仅系统盘丢失，数据盘依然存在，如：<code>docker</code>容器等</p>
+<p>做完以上步骤重启发现仅系统盘丢失，数据盘依然存在，如：<code>docker</code> 容器等</p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a target="_blank" rel="noopener" href="https://xpenology.com/forum/">XPEnology Community</a></p>
 
       
@@ -1420,6 +1420,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

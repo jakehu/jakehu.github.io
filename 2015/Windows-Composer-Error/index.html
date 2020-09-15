@@ -20,12 +20,12 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="问题一：123Fatal error: Call to undefined method Composer\Package\CompletePackage::getTransportOptions() in C:\Users\idiot\AppData\Roaming\Composer\vendor\fxp\composer-asset-plugin\Package\AbstractLazyCom">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论如何解决在Windows下使用Composer时出现的这些问题">
+<meta property="og:title" content="论如何解决在 Windows 下使用 Composer 时出现的这些问题">
 <meta property="og:url" content="http://www.jakehu.me/2015/Windows-Composer-Error/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
 <meta property="og:description" content="问题一：123Fatal error: Call to undefined method Composer\Package\CompletePackage::getTransportOptions() in C:\Users\idiot\AppData\Roaming\Composer\vendor\fxp\composer-asset-plugin\Package\AbstractLazyCom">
@@ -70,7 +70,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>论如何解决在Windows下使用Composer时出现的这些问题 | 晨曦's Blog</title>
+  <title>论如何解决在 Windows 下使用 Composer 时出现的这些问题 | 晨曦's Blog</title>
   
 
 
@@ -342,7 +342,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          论如何解决在Windows下使用Composer时出现的这些问题
+          论如何解决在 Windows 下使用 Composer 时出现的这些问题
         </h1>
 
         <div class="post-meta-container">
@@ -373,7 +373,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2015/Windows-Composer-Error/" class="post-meta-item leancloud_visitors" data-flag-title="论如何解决在Windows下使用Composer时出现的这些问题" title="阅读次数">
+    <span id="/2015/Windows-Composer-Error/" class="post-meta-item leancloud_visitors" data-flag-title="论如何解决在 Windows 下使用 Composer 时出现的这些问题" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -403,13 +403,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Fatal error: Call to undefined method Composer\Package\CompletePackage::getTrans</span><br><span class="line">portOptions() <span class="keyword">in</span> C:\Users\idiot\AppData\Roaming\Composer\vendor\fxp\composer-ass</span><br><span class="line">et-plugin\Package\AbstractLazyCompletePackage.php on line 184</span><br></pre></td></tr></table></figure>
+        <h3 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Fatal error: Call to undefined method Composer\Package\CompletePackage::getTrans</span><br><span class="line">portOptions() <span class="keyword">in</span> C:\Users\idiot\AppData\Roaming\Composer\vendor\fxp\composer-ass</span><br><span class="line">et-plugin\Package\AbstractLazyCompletePackage.php on line 184</span><br></pre></td></tr></tbody></table></figure>
 <p>解决办法：<br>下载最新的 composer.phar<br><a target="_blank" rel="noopener" href="https://getcomposer.org/download/">https://getcomposer.org/download/</a></p>
-<h3 id="问题二："><a href="#问题二：" class="headerlink" title="问题二："></a>问题二：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Could not fetch https://api.github.com/repos/jquery/jquery, enter your GitHub cr</span><br><span class="line">edentials to go over the API rate <span class="built_in">limit</span></span><br><span class="line">The credentials will be swapped <span class="keyword">for</span> an OAuth token stored <span class="keyword">in</span> C:/Users/idiot/AppD</span><br><span class="line">ata/Roaming/Composer/auth.json, your password will not be stored</span><br><span class="line">To revoke access to this token you can visit https://github.com/settings/applica</span><br><span class="line">tions</span><br><span class="line">Username: </span><br></pre></td></tr></table></figure>
-<p>解决办法：<br>1、更新Composer到最新版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php composer.phar self-update</span><br></pre></td></tr></table></figure>
-<p>2、登录到Github <a target="_blank" rel="noopener" href="https://github.com/settings/applications">https://github.com/settings/applications</a> “generated a token”增加一个新的Token<br>3、运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php composer.phar config -g github-oauth.github.com token</span><br></pre></td></tr></table></figure>
+<h3 id="问题二："><a href="#问题二：" class="headerlink" title="问题二："></a>问题二：</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Could not fetch https://api.github.com/repos/jquery/jquery, enter your GitHub cr</span><br><span class="line">edentials to go over the API rate <span class="built_in">limit</span></span><br><span class="line">The credentials will be swapped <span class="keyword">for</span> an OAuth token stored <span class="keyword">in</span> C:/Users/idiot/AppD</span><br><span class="line">ata/Roaming/Composer/auth.json, your password will not be stored</span><br><span class="line">To revoke access to this token you can visit https://github.com/settings/applica</span><br><span class="line">tions</span><br><span class="line">Username: </span><br></pre></td></tr></tbody></table></figure>
+<p>解决办法：<br>1、更新 Composer 到最新版本</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php composer.phar self-update</span><br></pre></td></tr></tbody></table></figure>
+<p>2、登录到 Github <a target="_blank" rel="noopener" href="https://github.com/settings/applications">https://github.com/settings/applications</a> “generated a token” 增加一个新的 Token<br>3、运行</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php composer.phar config -g github-oauth.github.com token</span><br></pre></td></tr></tbody></table></figure>
 
     </div>
 
@@ -440,13 +440,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2015/Shijing-Caiwei/" rel="prev" title="《诗经·小雅· 采薇》">
-                  <i class="fa fa-chevron-left"></i> 《诗经·小雅· 采薇》
+                <a href="/2015/Shijing-Caiwei/" rel="prev" title="《诗经・小雅・采薇》">
+                  <i class="fa fa-chevron-left"></i> 《诗经・小雅・采薇》
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2015/Shijing-Zhenwei/" rel="next" title="《诗经·国风·郑风·溱洧》">
-                  《诗经·国风·郑风·溱洧》 <i class="fa fa-chevron-right"></i>
+                <a href="/2015/Shijing-Zhenwei/" rel="next" title="《诗经・国风・郑风・溱洧》">
+                  《诗经・国风・郑风・溱洧》 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -511,6 +511,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

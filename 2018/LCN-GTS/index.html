@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="LCN简介 LCN分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制 因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用 在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低  LCN核心步骤 创建事务组，是指在事务发起方开始执行业务代码之前先调用TxManager创建事务组对象，然">
+  <meta name="description" content="LCN 简介 LCN 分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制 因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用 在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低  LCN 核心步骤 创建事务组，是指在事务发起方开始执行业务代码之前先调用 TxManager 创建事务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式事务LCN和GTS比较and你更喜欢谁？">
+<meta property="og:title" content="分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？">
 <meta property="og:url" content="http://www.jakehu.me/2018/LCN-GTS/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="LCN简介 LCN分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制 因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用 在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低  LCN核心步骤 创建事务组，是指在事务发起方开始执行业务代码之前先调用TxManager创建事务组对象，然">
+<meta property="og:description" content="LCN 简介 LCN 分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制 因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用 在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低  LCN 核心步骤 创建事务组，是指在事务发起方开始执行业务代码之前先调用 TxManager 创建事务">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/1.png">
 <meta property="og:image" content="https://img.jakehu.me/2.png">
@@ -74,7 +74,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>分布式事务LCN和GTS比较and你更喜欢谁？ | 晨曦's Blog</title>
+  <title>分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？ | 晨曦's Blog</title>
   
 
 
@@ -230,7 +230,7 @@ var _hmt = _hmt || [];
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">LCN简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E6%A0%B8%E5%BF%83%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">LCN核心步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">LCN事务控制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91GTS%E5%85%A8%E5%B1%80%E4%BA%8B%E5%8A%A1%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.</span> <span class="nav-text">阿里云GTS全局事务服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GTS%E6%A8%A1%E6%8B%9F%E5%9C%BA%E6%99%AF%E6%BC%94%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">GTS模拟场景演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">LCN总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GTS%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">GTS总结</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">LCN 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E6%A0%B8%E5%BF%83%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">LCN 核心步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">LCN 事务控制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91GTS%E5%85%A8%E5%B1%80%E4%BA%8B%E5%8A%A1%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.</span> <span class="nav-text">阿里云 GTS 全局事务服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GTS%E6%A8%A1%E6%8B%9F%E5%9C%BA%E6%99%AF%E6%BC%94%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">GTS 模拟场景演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LCN%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">LCN 总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GTS%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">GTS 总结</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -346,7 +346,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          分布式事务LCN和GTS比较and你更喜欢谁？
+          分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？
         </h1>
 
         <div class="post-meta-container">
@@ -377,7 +377,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/LCN-GTS/" class="post-meta-item leancloud_visitors" data-flag-title="分布式事务LCN和GTS比较and你更喜欢谁？" title="阅读次数">
+    <span id="/2018/LCN-GTS/" class="post-meta-item leancloud_visitors" data-flag-title="分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -407,43 +407,43 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="LCN简介"><a href="#LCN简介" class="headerlink" title="LCN简介"></a>LCN简介</h3><ol>
-<li>LCN分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制</li>
+        <h3 id="LCN简介"><a href="#LCN简介" class="headerlink" title="LCN简介"></a>LCN 简介</h3><ol>
+<li>LCN 分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制</li>
 <li>因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用</li>
 <li>在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低</li>
 </ol>
-<h3 id="LCN核心步骤"><a href="#LCN核心步骤" class="headerlink" title="LCN核心步骤"></a>LCN核心步骤</h3><ol>
-<li>创建事务组，是指在事务发起方开始执行业务代码之前先调用TxManager创建事务组对象，然后拿到事务标示GroupId的过程</li>
-<li>添加事务组，添加事务组是指参与方在执行完业务方法以后，将该模块的事务信息添加通知给TxManager的操作</li>
-<li>关闭事务组，是指在发起方执行完业务代码以后，将发起方执行结果状态通知给TxManager的动作。当执行完关闭事务组的方法以后，TxManager将根据事务组信息来通知相应的参与模块提交或回滚事务</li>
+<h3 id="LCN核心步骤"><a href="#LCN核心步骤" class="headerlink" title="LCN核心步骤"></a>LCN 核心步骤</h3><ol>
+<li>创建事务组，是指在事务发起方开始执行业务代码之前先调用 TxManager 创建事务组对象，然后拿到事务标示 GroupId 的过程</li>
+<li>添加事务组，添加事务组是指参与方在执行完业务方法以后，将该模块的事务信息添加通知给 TxManager 的操作</li>
+<li>关闭事务组，是指在发起方执行完业务代码以后，将发起方执行结果状态通知给 TxManager 的动作。当执行完关闭事务组的方法以后，TxManager 将根据事务组信息来通知相应的参与模块提交或回滚事务</li>
 </ol>
-<h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN事务控制原理</h3><p>LCN事务控制原理是由事务模块TxClient下的代理连接池与TxManager的协调配合完成的事务协调控制TxClient的代理连接池实现了javax.sql.DataSource接口，并重写了close方法，事务模块在提交关闭以后TxClient连接池将执行”假关闭”操作，等待TxManager协调完成事务以后在关闭连接<br><img src="https://img.jakehu.me/1.png"></p>
-<h3 id="阿里云GTS全局事务服务"><a href="#阿里云GTS全局事务服务" class="headerlink" title="阿里云GTS全局事务服务"></a>阿里云GTS全局事务服务</h3><ol>
+<h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN 事务控制原理</h3><p>LCN 事务控制原理是由事务模块 TxClient 下的代理连接池与 TxManager 的协调配合完成的事务协调控制 TxClient 的代理连接池实现了 javax.sql.DataSource 接口，并重写了 close 方法，事务模块在提交关闭以后 TxClient 连接池将执行” 假关闭” 操作，等待 TxManager 协调完成事务以后在关闭连接<br><img src="https://img.jakehu.me/1.png"></p>
+<h3 id="阿里云GTS全局事务服务"><a href="#阿里云GTS全局事务服务" class="headerlink" title="阿里云GTS全局事务服务"></a>阿里云 GTS 全局事务服务</h3><ol>
 <li>全局事务服务（Global Transaction Service，简称 GTS）是一款高性能、高可靠、接入简单的分布式事务中间件，用于解决分布式环境下的事务一致性问题</li>
-<li>GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
+<li> GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合 EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
 </ol>
-<h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS模拟场景演示</h3><p><img src="https://img.jakehu.me/2.png"></p>
+<h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS 模拟场景演示</h3><p><img src="https://img.jakehu.me/2.png"></p>
 <h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>GTS 通过大量创新，解决了事务 ACID 特性与高性能、高可用、低侵入不可兼得的问题。单事务分支的平均响应时间在 2ms 左右，3 台服务器组成的集群可以支撑 3 万 TPS 以上的分布式事务请求</p>
-<p>LCN性能参考：<a target="_blank" rel="noopener" href="http://springcloud.cn/view/374">http://springcloud.cn/view/374</a>在众多开源分布式事务框架中，LCN性能是处于前列的</p>
-<h3 id="LCN总结"><a href="#LCN总结" class="headerlink" title="LCN总结"></a>LCN总结</h3><p>优点:</p>
+<p>LCN 性能参考：<a target="_blank" rel="noopener" href="http://springcloud.cn/view/374">http://springcloud.cn/view/374</a>在众多开源分布式事务框架中，LCN 性能是处于前列的</p>
+<h3 id="LCN总结"><a href="#LCN总结" class="headerlink" title="LCN总结"></a>LCN 总结</h3><p>优点:</p>
 <ul>
 <li>性能优秀</li>
 <li>可靠性强</li>
-<li>LCN实现的分布式事务处理模式，编码复杂性和入侵代码量低</li>
+<li> LCN 实现的分布式事务处理模式，编码复杂性和入侵代码量低</li>
 </ul>
 <p>缺点:</p>
 <ul>
-<li>需额外部署tx-manager服务节点</li>
-<li>由于需要lock资源这种处理方式，如果集中更新某几个热门商品时，LCN的性能衰减量大于TCC模式</li>
+<li>需额外部署 tx-manager 服务节点</li>
+<li>由于需要 lock 资源这种处理方式，如果集中更新某几个热门商品时，LCN 的性能衰减量大于 TCC 模式</li>
 <li>服务超时时，会造成其他服务的资源被锁住，比如支付服务超时过程中，相关商品库存会一直无法操作</li>
-<li>不支持SpringCloud 2.0.0及以上版本（目前已通过修改源码实现支持）</li>
+<li>不支持 SpringCloud 2.0.0 及以上版本（目前已通过修改源码实现支持）</li>
 </ul>
-<h3 id="GTS总结"><a href="#GTS总结" class="headerlink" title="GTS总结"></a>GTS总结</h3><p>优点:</p>
+<h3 id="GTS总结"><a href="#GTS总结" class="headerlink" title="GTS总结"></a>GTS 总结</h3><p>优点:</p>
 <ul>
-<li>性能优秀(有淘宝双十一作为示例）</li>
+<li>性能优秀 (有淘宝双十一作为示例）</li>
 <li>可靠性强</li>
-<li>代码入侵性小（相比LCN多一点）</li>
-<li>支持SpringCloud 2.0.0及以上版本</li>
+<li>代码入侵性小（相比 LCN 多一点）</li>
+<li>支持 SpringCloud 2.0.0 及以上版本</li>
 </ul>
 <p>缺点:</p>
 <ul>
@@ -481,13 +481,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018/hexo-pages/" rel="prev" title="Hexo在Github慢？不存在百度云？七牛？又拍？">
-                  <i class="fa fa-chevron-left"></i> Hexo在Github慢？不存在百度云？七牛？又拍？
+                <a href="/2018/hexo-pages/" rel="prev" title="Hexo 在 Github 慢？不存在百度云？七牛？又拍？">
+                  <i class="fa fa-chevron-left"></i> Hexo 在 Github 慢？不存在百度云？七牛？又拍？
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019/mac-software/" rel="next" title="Mac常用软件备份">
-                  Mac常用软件备份 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/mac-software/" rel="next" title="Mac 常用软件备份">
+                  Mac 常用软件备份 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -552,6 +552,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

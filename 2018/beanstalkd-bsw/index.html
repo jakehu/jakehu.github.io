@@ -20,15 +20,15 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="简介Beanstalkd - 一个高性能、轻量级的分布式内存队列系统。 英文协议 中文协议 安装这里我们用Docker来运行。 12docker pull schickling&#x2F;beanstalkddocker run -d -p 11300:11300 schickling&#x2F;beanstalkd  beanstalkd管理WEB平台，主要用来看看以后的任务详情。 12dock">
+  <meta name="description" content="简介Beanstalkd - 一个高性能、轻量级的分布式内存队列系统。 英文协议 中文协议 安装这里我们用 Docker 来运行。 12docker pull schickling&#x2F;beanstalkddocker run -d -p 11300:11300 schickling&#x2F;beanstalkd  beanstalkd 管理 WEB 平台，主要用来看看以后的任务详情。 12docker pu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="beanstalkd之Nodejs客户端bsw">
+<meta property="og:title" content="beanstalkd 之 Nodejs 客户端 bsw">
 <meta property="og:url" content="http://www.jakehu.me/2018/beanstalkd-bsw/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="简介Beanstalkd - 一个高性能、轻量级的分布式内存队列系统。 英文协议 中文协议 安装这里我们用Docker来运行。 12docker pull schickling&#x2F;beanstalkddocker run -d -p 11300:11300 schickling&#x2F;beanstalkd  beanstalkd管理WEB平台，主要用来看看以后的任务详情。 12dock">
+<meta property="og:description" content="简介Beanstalkd - 一个高性能、轻量级的分布式内存队列系统。 英文协议 中文协议 安装这里我们用 Docker 来运行。 12docker pull schickling&#x2F;beanstalkddocker run -d -p 11300:11300 schickling&#x2F;beanstalkd  beanstalkd 管理 WEB 平台，主要用来看看以后的任务详情。 12docker pu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-03T07:53:30.000Z">
 <meta property="article:modified_time" content="2019-06-21T01:58:49.397Z">
@@ -72,7 +72,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title>beanstalkd之Nodejs客户端bsw | 晨曦's Blog</title>
+  <title>beanstalkd 之 Nodejs 客户端 bsw | 晨曦's Blog</title>
   
 
 
@@ -344,7 +344,7 @@ var _hmt = _hmt || [];
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          beanstalkd之Nodejs客户端bsw
+          beanstalkd 之 Nodejs 客户端 bsw
         </h1>
 
         <div class="post-meta-container">
@@ -375,7 +375,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/beanstalkd-bsw/" class="post-meta-item leancloud_visitors" data-flag-title="beanstalkd之Nodejs客户端bsw" title="阅读次数">
+    <span id="/2018/beanstalkd-bsw/" class="post-meta-item leancloud_visitors" data-flag-title="beanstalkd 之 Nodejs 客户端 bsw" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -408,19 +408,19 @@ var _hmt = _hmt || [];
         <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd">Beanstalkd</a> - 一个高性能、轻量级的分布式内存队列系统。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/blob/master/doc/protocol.txt">英文协议</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/blob/master/doc/protocol.zh-CN.md">中文协议</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里我们用<code>Docker</code>来运行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling&#x2F;beanstalkd</span><br><span class="line">docker run -d -p 11300:11300 schickling&#x2F;beanstalkd</span><br></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里我们用 <code>Docker</code> 来运行。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd</span><br><span class="line">docker run -d -p 11300:11300 schickling/beanstalkd</span><br></pre></td></tr></tbody></table></figure>
 
-<p><code>beanstalkd</code>管理<code>WEB</code>平台，主要用来看看以后的任务详情。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling&#x2F;beanstalkd-console</span><br><span class="line">docker run -d -p 2080:2080 --link beanstalkd:beanstalkd schickling&#x2F;beanstalkd-console</span><br></pre></td></tr></table></figure>
-<p>通过<code>127.0.0.1:2080</code>访问</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>官方客户端推荐列表<a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/wiki/Client-Libraries">Client</a></p>
-<p>下面我们主要介绍<code>Nodejs</code>客户端<code>bsw</code></p>
-<h4 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i bsw --save</span><br></pre></td></tr></table></figure>
-<h4 id="客户端示例"><a href="#客户端示例" class="headerlink" title="客户端示例"></a>客户端示例</h4><p>这里我们用阿里开源框架<code>eggjs</code>做测试。<br><code>app.js</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#39;use strict&#39;;</span><br><span class="line">const &#123; Consumer &#125; &#x3D; require(&#39;bsw&#39;);</span><br><span class="line">module.exports &#x3D; app &#x3D;&gt; &#123;</span><br><span class="line">  app.beforeStart(async () &#x3D;&gt; &#123;</span><br><span class="line">    const consumer &#x3D; new Consumer(&#123;</span><br><span class="line">      host: &#39;localhost&#39;,</span><br><span class="line">      port: &#39;11300&#39;,</span><br><span class="line">      tube: &#39;node&#39;,</span><br><span class="line">      async handler(payload, job_info) &#123;</span><br><span class="line">        console.log(&#39;processing job: &#39;, payload);</span><br><span class="line">        console.log(&#39;processing job_info: &#39;, job_info);</span><br><span class="line">        &#x2F;&#x2F; 这里进行业务操作</span><br><span class="line">        return &#39;success&#39;;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">    consumer.on(&#39;error&#39;, e &#x3D;&gt; &#123;</span><br><span class="line">      console.log(e);</span><br><span class="line">    &#125;);</span><br><span class="line">    console.log(&#39;beanstalkd启动了&#39;);</span><br><span class="line">    await consumer.start();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>beanstalkd</code> 管理 <code>WEB</code> 平台，主要用来看看以后的任务详情。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd-console</span><br><span class="line">docker run -d -p 2080:2080 --link beanstalkd:beanstalkd schickling/beanstalkd-console</span><br></pre></td></tr></tbody></table></figure>
+<p>通过 <code>127.0.0.1:2080</code> 访问</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>官方客户端推荐列表 <a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/wiki/Client-Libraries">Client</a></p>
+<p>下面我们主要介绍 <code>Nodejs</code> 客户端 <code>bsw</code></p>
+<h4 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i bsw --save</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="客户端示例"><a href="#客户端示例" class="headerlink" title="客户端示例"></a>客户端示例</h4><p>这里我们用阿里开源框架 <code>eggjs</code> 做测试。<br><code>app.js</code></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const { Consumer } = require('bsw');</span><br><span class="line">module.exports = app =&gt; {</span><br><span class="line">  app.beforeStart(async () =&gt; {</span><br><span class="line">    const consumer = new Consumer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">      async handler(payload, job_info) {</span><br><span class="line">        console.log('processing job: ', payload);</span><br><span class="line">        console.log('processing job_info: ', job_info);</span><br><span class="line">        // 这里进行业务操作</span><br><span class="line">        return 'success';</span><br><span class="line">      },</span><br><span class="line">    });</span><br><span class="line">    consumer.on('error', e =&gt; {</span><br><span class="line">      console.log(e);</span><br><span class="line">    });</span><br><span class="line">    console.log('beanstalkd启动了');</span><br><span class="line">    await consumer.start();</span><br><span class="line">  });</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
 <p><code>home.js</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#39;use strict&#39;;</span><br><span class="line">const Controller &#x3D; require(&#39;egg&#39;).Controller;</span><br><span class="line">const &#123; Producer &#125; &#x3D; require(&#39;bsw&#39;);</span><br><span class="line">class HomeController extends Controller &#123;</span><br><span class="line">  async index() &#123;</span><br><span class="line">    const producer &#x3D; new Producer(&#123;</span><br><span class="line">      host: &#39;localhost&#39;,</span><br><span class="line">      port: &#39;11300&#39;,</span><br><span class="line">      tube: &#39;node&#39;,</span><br><span class="line">    &#125;);</span><br><span class="line">    await producer.start();</span><br><span class="line">    await producer.putJob(&#123;</span><br><span class="line">      payload: JSON.stringify(&#123; throw: true, result: &#39;success&#39; &#125;),</span><br><span class="line">      priority: 0, &#x2F;&#x2F; 优先级</span><br><span class="line">      delay: 30, &#x2F;&#x2F; 延时单位(s)</span><br><span class="line">      ttr: 60, &#x2F;&#x2F; 允许worker执行的最大秒数</span><br><span class="line">    &#125;);</span><br><span class="line">    producer.stop();</span><br><span class="line">    this.ctx.body &#x3D; &#39;hi, egg&#39;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; HomeController;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const Controller = require('egg').Controller;</span><br><span class="line">const { Producer } = require('bsw');</span><br><span class="line">class HomeController extends Controller {</span><br><span class="line">  async index() {</span><br><span class="line">    const producer = new Producer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">    });</span><br><span class="line">    await producer.start();</span><br><span class="line">    await producer.putJob({</span><br><span class="line">      payload: JSON.stringify({ throw: true, result: 'success' }),</span><br><span class="line">      priority: 0, // 优先级</span><br><span class="line">      delay: 30, // 延时单位(s)</span><br><span class="line">      ttr: 60, // 允许worker执行的最大秒数</span><br><span class="line">    });</span><br><span class="line">    producer.stop();</span><br><span class="line">    this.ctx.body = 'hi, egg';</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">module.exports = HomeController;</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
 <p>天若有情天亦老，月如无恨月长圆</p>
@@ -456,13 +456,13 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018/Java-Utils/" rel="prev" title="Java楞个多优秀的工具类，嗯嗯，快记下来">
-                  <i class="fa fa-chevron-left"></i> Java楞个多优秀的工具类，嗯嗯，快记下来
+                <a href="/2018/Java-Utils/" rel="prev" title="Java 楞个多优秀的工具类，嗯嗯，快记下来">
+                  <i class="fa fa-chevron-left"></i> Java 楞个多优秀的工具类，嗯嗯，快记下来
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018/Nas-Time-Machine/" rel="next" title="如何使用Time Machine将文件从Mac备份至Synology NAS">
-                  如何使用Time Machine将文件从Mac备份至Synology NAS <i class="fa fa-chevron-right"></i>
+                <a href="/2018/Nas-Time-Machine/" rel="next" title="如何使用 Time Machine 将文件从 Mac 备份至 Synology NAS">
+                  如何使用 Time Machine 将文件从 Mac 备份至 Synology NAS <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -527,6 +527,7 @@ var _hmt = _hmt || [];
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
