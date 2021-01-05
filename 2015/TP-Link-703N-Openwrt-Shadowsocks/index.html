@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,10 +22,9 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。http:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;g">
+<meta name="description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。http:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙">
 <meta property="og:url" content="http://www.jakehu.me/2015/TP-Link-703N-Openwrt-Shadowsocks/index.html">
@@ -77,11 +76,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-
-  <title>TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙 | 晨曦's Blog</title>
+<title>TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙 | 晨曦's Blog</title>
   
-
-
 
 
 
@@ -130,7 +126,7 @@ var _hmt = _hmt || [];
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -158,26 +154,10 @@ var _hmt = _hmt || [];
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -188,8 +168,7 @@ var _hmt = _hmt || [];
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -198,7 +177,7 @@ var _hmt = _hmt || [];
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -214,7 +193,7 @@ var _hmt = _hmt || [];
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -234,12 +213,12 @@ var _hmt = _hmt || [];
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
+        <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E5%BE%80Openwrt%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD703n%E5%AE%98%E6%96%B9%E5%9B%BA%E4%BB%B6%EF%BC%8C%E6%88%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%98%AF%E6%9C%80%E6%96%B0%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9B%E5%85%A5%E5%8E%9F%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88192-168-1-1%EF%BC%89%E5%9C%A8%E3%80%90%E7%B3%BB%E7%BB%9F%E5%B7%A5%E5%85%B7%E3%80%91-gt-%E3%80%90%E8%BD%AF%E4%BB%B6%E5%8D%87%E7%BA%A7%E3%80%91%E4%B8%AD%E5%8D%87%E7%BA%A7%E5%88%9A%E6%89%8D%E5%9C%A8Openwrt%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%9B%BA%E4%BB%B6%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在 Openwrt 官网下载的固件。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E9%A6%96%E5%85%88%E7%94%A8%E4%B8%80%E6%A0%B9%E7%BD%91%E7%BA%BF%E5%B0%86703N%E7%9A%84Lan%E5%8F%A3%E5%92%8C%E4%BD%A0%E7%94%B5%E8%84%91%E7%9B%B8%E8%BF%9E%EF%BC%8C%E7%94%B5%E8%84%91%E4%B8%8A%E8%AE%BE%E7%BD%AE%E4%B8%BADHCP%E6%A8%A1%E5%BC%8F%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">（1）首先用一根网线将 703N 的 Lan 口和你电脑相连，电脑上设置为 DHCP 模式。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%84%B6%E5%90%8E%E8%BF%90%E8%A1%8Ccmd-exe%EF%BC%8C%E8%BE%93%E5%85%A5telnet-192-168-1-1%E6%88%90%E5%8A%9F%E5%90%8E%E5%87%BA%E7%8E%B0OpenWrt%E7%9A%84%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2%E3%80%82"><span class="nav-number">2.2.</span> <span class="nav-text">（2）然后运行 cmd.exe，输入 telnet 192.168.1.1 成功后出现 OpenWrt 的欢迎界面。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E8%BE%93%E5%85%A5passwd%E6%9B%B4%E6%94%B9root%E5%AF%86%E7%A0%81%E5%90%8Edropbear-SSH-%E6%9C%8D%E5%8A%A1-%E5%B0%B1%E8%BF%90%E8%A1%8C%E4%BA%86%EF%BC%8C%E8%BE%93%E5%85%A5exit%E9%80%80%E5%87%BAtelnet%EF%BC%9B%E4%BB%A5%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87ssh%E7%AE%A1%E7%90%86OpenWrt%E3%80%82"><span class="nav-number">2.3.</span> <span class="nav-text">（3）输入 passwd 更改 root 密码后 dropbear (SSH 服务) 就运行了，输入 exit 退出 telnet；以后就可以通过 ssh 管理 OpenWrt。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9B%A0%E4%B8%BA703N%E7%9A%84Flash%E5%8F%AA%E6%9C%894M%EF%BC%8C%E5%81%9A%E5%AE%8C%E4%B8%8A%E8%BF%B0%E6%AD%A5%E9%AA%A4%E4%B9%8B%E5%90%8E%E5%B0%B1%E5%8F%AA%E6%9C%89400KB%E5%B7%A6%E5%8F%B3%E4%BA%86%EF%BC%9B%E4%BA%8E%E6%98%AF%E6%88%91%E9%80%89%E6%8B%A9%E4%BA%86%E5%9C%A8703N%E4%B8%8A%E9%9D%A2%E6%8C%82%E5%9C%A8%E4%BA%86%E4%B8%80%E4%B8%AA8G%E7%9A%84U%E7%9B%98%E6%9D%A5%E6%89%A9%E5%B1%95%E3%80%82"><span class="nav-number">3.</span> <span class="nav-text">三、因为 703N 的 Flash 只有 4M，做完上述步骤之后就只有 400KB 左右了；于是我选择了在 703N 上面挂在了一个 8G 的 U 盘来扩展。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%B0%868G%E7%9A%84U%E7%9B%98%E5%88%86%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%8C%BA%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%8C%BA2G%E4%B8%BAswap%E6%A0%BC%E5%BC%8F%E4%BD%9C%E4%B8%BA%E7%BC%93%E5%AD%98%E5%8C%BA%E7%94%A8%EF%BC%8C%E5%85%B6%E4%BB%96%E7%A9%BA%E9%97%B4%E4%B8%BAext4%E6%A0%BC%E5%BC%8F%E3%80%82%EF%BC%88Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%BB%99U%E7%9B%98%E5%88%86%E5%8C%BA%E5%8F%AF%E4%BB%A5%E7%94%A8GParted%E8%BF%99%E6%AC%BE%E8%BD%AF%E4%BB%B6%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">（1）在 Linux 系统下将 8G 的 U 盘分为两个区，一个区 2G 为 swap 格式作为缓存区用，其他空间为 ext4 格式。（Linux 系统下给 U 盘分区可以用 GParted 这款软件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%8C%82%E8%BD%BDU%E7%9B%98"><span class="nav-number">3.2.</span> <span class="nav-text">（2）挂载 U 盘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E4%BB%AC%E5%B0%B1%E6%9D%A5%E5%AE%89%E8%A3%85Shadowsocks%EF%BC%8C%E8%BF%99%E6%AD%A5%E5%B7%B2%E7%BB%8F%E6%9C%89%E7%BD%91%E5%8F%8B%E6%9C%89%E6%88%90%E7%86%9F%E6%A1%88%E4%BE%8B%E5%92%8C%E6%95%99%E7%A8%8B%E4%BA%86%E3%80%82%E6%88%91%E8%BF%99%E9%87%8C%E5%B0%B1%E4%B8%8D%E5%A4%9A%E8%AF%B4%E4%BA%86%EF%BC%8C%E5%85%B7%E4%BD%93%E8%AF%B7%E5%89%8D%E5%BE%80%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">四、接下来我们就来安装 Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：</span></a></li></ol></div>
-        </section>
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
       src="https://img.jakehu.me/avatar.png">
@@ -305,9 +284,9 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 
-        </section>
+        </div>
       </div>
-        <div class="back-to-top animated">
+        <div class="back-to-top animated" role="button">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
@@ -328,9 +307,7 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
   
 
@@ -391,20 +368,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2015/TP-Link-703N-Openwrt-Shadowsocks/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2015/TP-Link-703N-Openwrt-Shadowsocks/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -483,8 +446,6 @@ var _hmt = _hmt || [];
 
 
 
-      
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -507,20 +468,16 @@ var _hmt = _hmt || [];
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -540,29 +497,7 @@ var _hmt = _hmt || [];
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
@@ -570,10 +505,6 @@ var _hmt = _hmt || [];
 
 
   
-
-
-
-
 
 
 <script>
@@ -669,21 +600,6 @@ var _hmt = _hmt || [];
 </script>
 
 
-  
-
-  
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"uLM2WFMDtpXvCYe9LInEc284","appKey":"efF52z8z4mcr5W5ELtJvIbQ2","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/2015/TP-Link-703N-Openwrt-Shadowsocks/",
-      serverURLs: "https://ulm2wfmd.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>

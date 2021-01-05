@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,10 +22,9 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="网络配置在安装 minimal 版系统之后 Centos 系统的网卡默认是没有被开启的，我们可以用下面的命令编辑网络配置: 1vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0 如果使用 DHCP 则需要按以下格式设置： 1234567DEVICE&#x3D;eth0HWADDR&#x3D;08:00:27:0F:5C:17TYPE&#x3D;EthernetUUID&#x3D;64ea57af-9">
+<meta name="description" content="网络配置在安装 minimal 版系统之后 Centos 系统的网卡默认是没有被开启的，我们可以用下面的命令编辑网络配置: 1vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0 如果使用 DHCP 则需要按以下格式设置： 1234567DEVICE&#x3D;eth0HWADDR&#x3D;08:00:27:0F:5C:17TYPE&#x3D;EthernetUUID&#x3D;64ea57af-9">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mark 在学习和使用 Centos 时那些常用的命令 &#x2F; 概念">
 <meta property="og:url" content="http://www.jakehu.me/2015/Centos-Command/index.html">
@@ -71,11 +70,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-
-  <title>Mark 在学习和使用 Centos 时那些常用的命令 / 概念 | 晨曦's Blog</title>
+<title>Mark 在学习和使用 Centos 时那些常用的命令 / 概念 | 晨曦's Blog</title>
   
-
-
 
 
 
@@ -124,7 +120,7 @@ var _hmt = _hmt || [];
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -152,26 +148,10 @@ var _hmt = _hmt || [];
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -182,8 +162,7 @@ var _hmt = _hmt || [];
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -192,7 +171,7 @@ var _hmt = _hmt || [];
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -208,7 +187,7 @@ var _hmt = _hmt || [];
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -228,12 +207,12 @@ var _hmt = _hmt || [];
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
+        <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%90%AF-%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">重启 &#x2F; 关机命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">清理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">ls 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">目录处理命令</span></a></li></ol></div>
-        </section>
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
       src="https://img.jakehu.me/avatar.png">
@@ -299,9 +278,9 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 
-        </section>
+        </div>
       </div>
-        <div class="back-to-top animated">
+        <div class="back-to-top animated" role="button">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
@@ -322,9 +301,7 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
   
 
@@ -385,20 +362,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2015/Centos-Command/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2015/Centos-Command/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -418,22 +381,18 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></tbody></table></figure>
 <p>最后可以用以下命令来查看 IP 地址：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></tbody></table></figure>
-
 <a id="more"></a>
 
 <h3 id="重启-关机命令"><a href="#重启-关机命令" class="headerlink" title="重启/关机命令"></a>重启 / 关机命令</h3><p>重启命令：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line">shutdown -r now <span class="comment">#立刻重启(root用户使用)</span></span><br><span class="line">shutdown -r 10 <span class="comment">#过10分钟自动重启(root用户使用) </span></span><br><span class="line">shutdown -r 23:59 <span class="comment">#在时间为23:59时候重启(root用户使用)</span></span><br><span class="line"><span class="comment">#如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重启</span></span><br></pre></td></tr></tbody></table></figure>
 <p>关机命令：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">halt <span class="comment">#立刻关机</span></span><br><span class="line">poweroff <span class="comment">#立刻关机</span></span><br><span class="line">shutdown -h now <span class="comment">#立刻关机(root用户使用)</span></span><br><span class="line">shutdown -h 10 <span class="comment">#10分钟后自动关机</span></span><br><span class="line"><span class="comment">#如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启</span></span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="清理命令"><a href="#清理命令" class="headerlink" title="清理命令"></a>清理命令</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum autoclean</span><br><span class="line">sudo yum clean</span><br><span class="line">sudo yum autoremove</span><br></pre></td></tr></tbody></table></figure>
 <p>这三个命令主要清理升级缓存以及无用包的。</p>
 <h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls 命令</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls [选项] [文件/目录]</span><br><span class="line">   -a 显示所有文件，包括隐藏信息</span><br><span class="line">   -l 显示详细信息</span><br><span class="line">   -d 查看目录属性</span><br><span class="line">   -h 人性化显示文件大小</span><br><span class="line">   -i 显示inode</span><br></pre></td></tr></tbody></table></figure>
 <p>扩展：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls -lh 文件权限解读</span></span><br><span class="line">-rw-r--r--. 1 root root 7.5K 11月  9 15:45 install.log</span><br><span class="line"><span class="comment"># - 文件类型</span></span><br><span class="line"><span class="comment"># rw- 所有者权限</span></span><br><span class="line"><span class="comment"># r-- 所属组权限</span></span><br><span class="line"><span class="comment"># r-- 其他人权限</span></span><br><span class="line"><span class="comment"># . 代表ACL权限</span></span><br><span class="line"><span class="comment"># 1 引用计数</span></span><br><span class="line"><span class="comment"># root 所有者</span></span><br><span class="line"><span class="comment"># root 所有组</span></span><br><span class="line"><span class="comment"># r 读 / w 写 / x 执行</span></span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="目录处理命令"><a href="#目录处理命令" class="headerlink" title="目录处理命令"></a>目录处理命令</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立目录</span></span><br><span class="line">mkdir [选项] [目录]</span><br><span class="line">      -p 递归处理</span><br><span class="line"><span class="comment"># mkdir -p blog/css</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录(tab键可以识别目录补全)</span></span><br><span class="line"><span class="built_in">cd</span> [目录]</span><br><span class="line">   ~  进入用户主目录</span><br><span class="line">   -  进入上次所在目录</span><br><span class="line">   .. 进入上级目录</span><br><span class="line">   .  进入当前目录</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前所在目录</span></span><br><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></tbody></table></figure>
-
 <p><strong>未完待续…</strong></p>
 
     </div>
@@ -484,8 +443,6 @@ var _hmt = _hmt || [];
 
 
 
-      
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -508,20 +465,16 @@ var _hmt = _hmt || [];
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -541,29 +494,7 @@ var _hmt = _hmt || [];
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
@@ -571,10 +502,6 @@ var _hmt = _hmt || [];
 
 
   
-
-
-
-
 
 
 <script>
@@ -670,21 +597,6 @@ var _hmt = _hmt || [];
 </script>
 
 
-  
-
-  
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"uLM2WFMDtpXvCYe9LInEc284","appKey":"efF52z8z4mcr5W5ELtJvIbQ2","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/2015/Centos-Command/",
-      serverURLs: "https://ulm2wfmd.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>

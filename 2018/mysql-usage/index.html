@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,10 +22,9 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="JSON1、查询数组中对象  JSON_CONTAINS 用法  12345select * from circulationwhere JSON_CONTAINS(goods-&gt;&#39;$[*].name&#39;, &#39;[&quot;海带结（香辣味）150克&#x2F;袋&quot;]&#39;, &#39;$&#39;)select * from circulationwhere JSON_CONTAINS(goods-&gt;&#39;$[*].gid&#39;, &#39;">
+<meta name="description" content="JSON1、查询数组中对象  JSON_CONTAINS 用法  12345select * from circulationwhere JSON_CONTAINS(goods-&gt;&#39;$[*].name&#39;, &#39;[&quot;海带结（香辣味）150克&#x2F;袋&quot;]&#39;, &#39;$&#39;)select * from circulationwhere JSON_CONTAINS(goods-&gt;&#39;$[*].gid&#39;, &#39;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记 Mysql 部分用法">
 <meta property="og:url" content="http://www.jakehu.me/2018/mysql-usage/index.html">
@@ -71,11 +70,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-
-  <title>记 Mysql 部分用法 | 晨曦's Blog</title>
+<title>记 Mysql 部分用法 | 晨曦's Blog</title>
   
-
-
 
 
 
@@ -124,7 +120,7 @@ var _hmt = _hmt || [];
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -152,26 +148,10 @@ var _hmt = _hmt || [];
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -182,8 +162,7 @@ var _hmt = _hmt || [];
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -192,7 +171,7 @@ var _hmt = _hmt || [];
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -208,7 +187,7 @@ var _hmt = _hmt || [];
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -228,12 +207,12 @@ var _hmt = _hmt || [];
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
+        <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON"><span class="nav-number">1.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84"><span class="nav-number">2.</span> <span class="nav-text">常规</span></a></li></ol></div>
-        </section>
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
       src="https://img.jakehu.me/avatar.png">
@@ -299,9 +278,9 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 
-        </section>
+        </div>
       </div>
-        <div class="back-to-top animated">
+        <div class="back-to-top animated" role="button">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
@@ -322,9 +301,7 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
   
 
@@ -385,20 +362,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/mysql-usage/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/mysql-usage/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -413,31 +376,26 @@ var _hmt = _hmt || [];
 <p><code>JSON_CONTAINS</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from circulation</span><br><span class="line">where JSON_CONTAINS(goods-&gt;'$[*].name', '["海带结（香辣味）150克/袋"]', '$')</span><br><span class="line"></span><br><span class="line">select * from circulation</span><br><span class="line">where JSON_CONTAINS(goods-&gt;'$[*].gid', '[20]', '$')</span><br></pre></td></tr></tbody></table></figure>
-
 <p>2、Json 字符串转化为 Json 对象</p>
 <blockquote>
 <p><code>CONVERT</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select CONVERT('{"mail": "amy@gmail.com", "name": "Amy"}',JSON)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>3、元素转化为数组</p>
 <blockquote>
 <p><code>JSON_ARRAY</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT JSON_ARRAY(1, "abc", NULL, TRUE, CURTIME())</span><br></pre></td></tr></tbody></table></figure>
-
 <p>4、数组中查询元素</p>
 <blockquote>
 <p><code>JSON_CONTAINS + JSON_ARRAY</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select JSON_CONTAINS(JSON_ARRAY(1,2,3,4,5,6),'6')</span><br></pre></td></tr></tbody></table></figure>
-
 <p>5、数组模糊查询</p>
 <blockquote>
 <p><code>JSON_SEARCH用法</code></p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where JSON_SEARCH(profiles, 'all', 'sales%') is not null</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="常规"><a href="#常规" class="headerlink" title="常规"></a>常规</h3><p>1、查询重复记录</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from merchant</span><br><span class="line">where num in (select num from synk.merchant group by num having count(num) &gt; 1)</span><br></pre></td></tr></tbody></table></figure>
     </div>
@@ -488,8 +446,6 @@ var _hmt = _hmt || [];
 
 
 
-      
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -512,20 +468,16 @@ var _hmt = _hmt || [];
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -545,29 +497,7 @@ var _hmt = _hmt || [];
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
@@ -575,10 +505,6 @@ var _hmt = _hmt || [];
 
 
   
-
-
-
-
 
 
 <script>
@@ -674,21 +600,6 @@ var _hmt = _hmt || [];
 </script>
 
 
-  
-
-  
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"uLM2WFMDtpXvCYe9LInEc284","appKey":"efF52z8z4mcr5W5ELtJvIbQ2","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/2018/mysql-usage/",
-      serverURLs: "https://ulm2wfmd.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>

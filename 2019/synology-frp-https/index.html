@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,15 +22,14 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)  由于上 https 我想对整个 frp 放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器  Frp 服务器F">
+<meta name="description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖) 由于上 https 我想对整个 frp 放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器 Frp 服务器Frp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何利用 Frp &amp; https 暴露你在内网的群晖">
 <meta property="og:url" content="http://www.jakehu.me/2019/synology-frp-https/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)  由于上 https 我想对整个 frp 放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器  Frp 服务器F">
+<meta property="og:description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖) 由于上 https 我想对整个 frp 放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器 Frp 服务器Frp">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/20190627153942.png">
 <meta property="article:published_time" content="2019-06-27T03:05:00.000Z">
@@ -75,11 +74,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-
-  <title>如何利用 Frp & https 暴露你在内网的群晖 | 晨曦's Blog</title>
+<title>如何利用 Frp & https 暴露你在内网的群晖 | 晨曦's Blog</title>
   
-
-
 
 
 
@@ -128,7 +124,7 @@ var _hmt = _hmt || [];
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -156,26 +152,10 @@ var _hmt = _hmt || [];
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -186,8 +166,7 @@ var _hmt = _hmt || [];
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -196,7 +175,7 @@ var _hmt = _hmt || [];
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -212,7 +191,7 @@ var _hmt = _hmt || [];
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -232,12 +211,12 @@ var _hmt = _hmt || [];
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
+        <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">前记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frp%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">Frp 服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Https%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7"><span class="nav-number">3.</span> <span class="nav-text">Https 证书申请</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frp%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">4.</span> <span class="nav-text">Frp 客户端</span></a></li></ol></div>
-        </section>
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
       src="https://img.jakehu.me/avatar.png">
@@ -303,9 +282,9 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 
-        </section>
+        </div>
       </div>
-        <div class="back-to-top animated">
+        <div class="back-to-top animated" role="button">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
@@ -326,9 +305,7 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
   
 
@@ -383,20 +360,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/synology-frp-https/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/synology-frp-https/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -408,11 +371,9 @@ var _hmt = _hmt || [];
     <div class="post-body" itemprop="articleBody">
         <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说我目前的整个服务器的配置以及链路</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>由于上 <code>https</code> 我想对整个 <code>frp</code> 放在群晖中去做一个映射，而不是放在路由器上</p>
 <p>改造过后的链路为</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="Frp服务器"><a href="#Frp服务器" class="headerlink" title="Frp服务器"></a>Frp 服务器</h3><p><code>Frp</code> 服务器的安装这里可以看我做的一键安装脚本</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/jakehu/frp">Frps 一件脚本</a></p>
 <h3 id="Https证书申请"><a href="#Https证书申请" class="headerlink" title="Https证书申请"></a>Https 证书申请</h3><p>可以是选择阿里云 <code>Symantec 免费版 SSL</code>，可以自行前往阿里云控制台申请</p>
@@ -423,7 +384,6 @@ var _hmt = _hmt || [];
 <p>在安装好服务端和客户端后，我们下载证书上传到群晖服务器上，同时我们像下图一样挂载<code>配置文件</code>和<code>证书目录</code><br><img src="https://img.jakehu.me/20190627153942.png"></p>
 <p>最后我们需要对 <code>https</code> 进行配置</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 127.0.0.1</span><br><span class="line">server_port = 5443</span><br><span class="line"></span><br><span class="line">[test]</span><br><span class="line">type = https</span><br><span class="line">custom_domains = test.jakehu.me</span><br><span class="line">plugin = https2http</span><br><span class="line">plugin_local_addr = 192.168.1.1:80</span><br><span class="line"># HTTPS 证书相关的配置</span><br><span class="line">plugin_crt_path = /frp/certificate/certificate.crt</span><br><span class="line">plugin_key_path = /frp/certificate/private.key</span><br><span class="line">plugin_host_header_rewrite = 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
-
 <hr>
 <p>到此告一段落，完美适应！</p>
 
@@ -477,8 +437,6 @@ var _hmt = _hmt || [];
 
 
 
-      
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -501,20 +459,16 @@ var _hmt = _hmt || [];
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -534,29 +488,7 @@ var _hmt = _hmt || [];
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
@@ -564,10 +496,6 @@ var _hmt = _hmt || [];
 
 
   
-
-
-
-
 
 
 <script>
@@ -663,21 +591,6 @@ var _hmt = _hmt || [];
 </script>
 
 
-  
-
-  
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"uLM2WFMDtpXvCYe9LInEc284","appKey":"efF52z8z4mcr5W5ELtJvIbQ2","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/2019/synology-frp-https/",
-      serverURLs: "https://ulm2wfmd.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>

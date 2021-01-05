@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,10 +22,9 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="提笔为青春，人生正当年">
+<meta name="description" content="提笔为青春，人生正当年">
 <meta property="og:type" content="website">
 <meta property="og:title" content="晨曦&#39;s Blog">
 <meta property="og:url" content="http://www.jakehu.me/page/2/index.html">
@@ -69,11 +68,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-
-  <title>晨曦's Blog</title>
+<title>晨曦's Blog</title>
   
-
-
 
 
 
@@ -122,7 +118,7 @@ var _hmt = _hmt || [];
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -150,26 +146,10 @@ var _hmt = _hmt || [];
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -180,8 +160,7 @@ var _hmt = _hmt || [];
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -190,7 +169,7 @@ var _hmt = _hmt || [];
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -206,7 +185,7 @@ var _hmt = _hmt || [];
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -226,11 +205,11 @@ var _hmt = _hmt || [];
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
-        </section>
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
       src="https://img.jakehu.me/avatar.png">
@@ -296,9 +275,9 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 
-        </section>
+        </div>
       </div>
-        <div class="back-to-top animated">
+        <div class="back-to-top animated" role="button">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
@@ -319,9 +298,7 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner index posts-expand">
-      
 
-      
     
 
 
@@ -343,8 +320,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/synology-update/" class="post-title-link" itemprop="url">黑群晖 6.1.7 升级 6.2.2 失败之降级安装</a>
+          <a href="/2019/synology-update/" class="post-title-link" itemprop="url">黑群晖 6.1.7 升级 6.2.2 失败之降级安装</a>
         </h2>
 
         <div class="post-meta-container">
@@ -376,20 +352,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/synology-update/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/synology-update/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -459,8 +421,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/docker-image/" class="post-title-link" itemprop="url">Docker 底层镜像之选择困难症</a>
+          <a href="/2019/docker-image/" class="post-title-link" itemprop="url">Docker 底层镜像之选择困难症</a>
         </h2>
 
         <div class="post-meta-container">
@@ -492,20 +453,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/docker-image/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/docker-image/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -560,8 +507,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/synology-lede/" class="post-title-link" itemprop="url">在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE</a>
+          <a href="/2019/synology-lede/" class="post-title-link" itemprop="url">在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE</a>
         </h2>
 
         <div class="post-meta-container">
@@ -599,20 +545,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/synology-lede/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/synology-lede/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -693,8 +625,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/koolproxy-install/" class="post-title-link" itemprop="url">将 KoolProxyR 规则转换为 KoolProxy 规则脚本</a>
+          <a href="/2019/koolproxy-install/" class="post-title-link" itemprop="url">将 KoolProxyR 规则转换为 KoolProxy 规则脚本</a>
         </h2>
 
         <div class="post-meta-container">
@@ -732,20 +663,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/koolproxy-install/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/koolproxy-install/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -759,16 +676,13 @@ var _hmt = _hmt || [];
 <p>SSH 到路由器上<br>下载 KoolProxy 离线包</p>
 </blockquote>
 <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm380下的包，版本为：3.8.4.1</span></span><br><span class="line">wget http://cdn.jakehu.me/koolproxy.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm384下的包，版本为：3.8.4.1</span></span><br><span class="line">wget http://cdn.jakehu.me/koolproxy384.tar.gz</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>解压并安装</p>
 </blockquote>
 <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此为arm380下的包，版本为：3.8.4.1</span></span><br><span class="line">tar koolproxy.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm384下的包，版本为：3.8.4.1</span></span><br><span class="line">tar koolproxy384.tar.gz</span><br><span class="line"></span><br><span class="line">sh koolproxy/install.sh</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="规则转换"><a href="#规则转换" class="headerlink" title="规则转换"></a>规则转换</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">安装WebShell</span><br><span class="line">复制下面的内容发送命令。</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /jffs/.koolshare/koolproxy/data/rules</span><br><span class="line"><span class="comment"># 删除旧版本规则文件</span></span><br><span class="line">rm -rf koolproxy.txt</span><br><span class="line">rm -rf daily.txt</span><br><span class="line">rm -rf kp.dat</span><br><span class="line"><span class="comment"># 下载新版本规则文件</span></span><br><span class="line"></span><br><span class="line">wget -O daily.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/easylistchina.txt</span><br><span class="line">wget -O koolproxy.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/fanboy-annoyance.txt</span><br><span class="line"><span class="comment"># wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/kp.dat</span></span><br><span class="line">wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kp.dat</span><br><span class="line"><span class="comment"># wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/user.txt</span></span><br><span class="line">wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kpr_our_rule.txt</span><br><span class="line"><span class="comment"># 下载扩展规则合并</span></span><br><span class="line">wget -O koolproxy_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/191c06c8d1f769f1b81c1437ad3b1271e0e58d7b/koolproxyR/koolproxyR/data/rules/kpr_video_list.txt</span><br><span class="line">wget -O daily_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/yhosts.txt</span><br><span class="line"></span><br><span class="line">cat koolproxy_tmp.txt &gt;&gt;koolproxy.txt</span><br><span class="line">cat daily_tmp.txt &gt;&gt;daily.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 一点点清洁工作...</span><br><span class="line">rm -rf koolproxy_tmp.txt</span><br><span class="line">rm -rf daily_tmp.txt</span><br><span class="line"><span class="built_in">echo</span> koolproxy规则已替换完成，请重新启用koolproxy!</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="自动更新"><a href="#自动更新" class="headerlink" title="自动更新"></a>自动更新</h3><h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><p>自动更新脚本如下：<br><code>/jffs/scripts/koolproxy.sh</code></p>
 <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"开始转换koolproxyR规则"</span></span><br><span class="line"><span class="built_in">cd</span> /jffs/.koolshare/koolproxy/data/rules</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除旧版本规则文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第一步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"删除旧版本规则文件"</span></span><br><span class="line">rm -rf koolproxy.txt</span><br><span class="line">rm -rf daily.txt</span><br><span class="line">rm -rf kp.dat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载新版本规则文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第二步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"下载新版本规则文件"</span></span><br><span class="line">wget -O daily.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/easylistchina.txt</span><br><span class="line">wget -O koolproxy.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/fanboy-annoyance.txt</span><br><span class="line"><span class="comment"># wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/kp.dat</span></span><br><span class="line">wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kp.dat</span><br><span class="line"><span class="comment"># wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/user.txt</span></span><br><span class="line">wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kpr_our_rule.txt</span><br><span class="line"><span class="comment"># 下载扩展规则合并</span></span><br><span class="line">wget -O koolproxy_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/191c06c8d1f769f1b81c1437ad3b1271e0e58d7b/koolproxyR/koolproxyR/data/rules/kpr_video_list.txt</span><br><span class="line">wget -O daily_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/yhosts.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第三步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"合并规则"</span></span><br><span class="line">cat koolproxy_tmp.txt &gt;&gt;koolproxy.txt</span><br><span class="line">cat daily_tmp.txt &gt;&gt;daily.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第四步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"一点点清洁工作..."</span></span><br><span class="line">rm -rf koolproxy_tmp.txt</span><br><span class="line">rm -rf daily_tmp.txt</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"koolproxyR规则转换成功"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></tbody></table></figure>
-
 <h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tools-&gt;Scripts-&gt;定时任务</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>参考资料：<br><a target="_blank" rel="noopener" href="https://github.com/koolproxy/merlin-koolproxy">arm380</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/armsoft/tree/master/koolproxy">arm384</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/rogsoft/tree/master/koolproxy">org</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/ledesoft/tree/master/koolproxy">lede</a></p>
@@ -811,8 +725,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/frp-onekey/" class="post-title-link" itemprop="url">Frps 一件脚本 && Frpc Docker 镜像 && Frps Docker 镜像</a>
+          <a href="/2019/frp-onekey/" class="post-title-link" itemprop="url">Frps 一件脚本 && Frpc Docker 镜像 && Frps Docker 镜像</a>
         </h2>
 
         <div class="post-meta-container">
@@ -850,20 +763,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/frp-onekey/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/frp-onekey/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -877,7 +776,6 @@ var _hmt = _hmt || [];
 <h3 id="frps-onekey"><a href="#frps-onekey" class="headerlink" title="frps-onekey"></a>frps-onekey</h3><p>此脚本根据 <a target="_blank" rel="noopener" href="https://github.com/clangcn/onekey-install-shell/tree/master/frps">clangcn/onekey-install-shell</a> 脚本制作，感谢 <code>Clang</code> 大大</p>
 <h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/jakehu/frp/master/frps-onekey/install-frps.sh -O ./install-frps.sh</span><br><span class="line">chmod 700 ./install-frps.sh</span><br><span class="line">./install-frps.sh install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">./install-frps.sh uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">./install-frps.sh update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 管理</span></span><br><span class="line">frps {start|stop|restart|status|config|version}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="frpc-docker"><a href="#frpc-docker" class="headerlink" title="frpc-docker"></a>frpc-docker</h3><h3 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">docker run -d --restart always -v /data/frpc.ini:/frp/frpc.ini jakehu/frpc-docker</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="frps-docker"><a href="#frps-docker" class="headerlink" title="frps-docker"></a>frps-docker</h3><h3 id="操作-2"><a href="#操作-2" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">docker run -d --restart always -v /data/frps.ini:/frp/frps.ini jakehu/frps-docker</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>晓看天色暮看云，行也思君，坐也思君。</p>
@@ -920,8 +818,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/synology-frp-https/" class="post-title-link" itemprop="url">如何利用 Frp & https 暴露你在内网的群晖</a>
+          <a href="/2019/synology-frp-https/" class="post-title-link" itemprop="url">如何利用 Frp & https 暴露你在内网的群晖</a>
         </h2>
 
         <div class="post-meta-container">
@@ -953,20 +850,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/synology-frp-https/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/synology-frp-https/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -978,11 +861,9 @@ var _hmt = _hmt || [];
     <div class="post-body" itemprop="articleBody">
           <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说我目前的整个服务器的配置以及链路</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>由于上 <code>https</code> 我想对整个 <code>frp</code> 放在群晖中去做一个映射，而不是放在路由器上</p>
 <p>改造过后的链路为</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="Frp服务器"><a href="#Frp服务器" class="headerlink" title="Frp服务器"></a>Frp 服务器</h3><p><code>Frp</code> 服务器的安装这里可以看我做的一键安装脚本</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/jakehu/frp">Frps 一件脚本</a></p>
 <h3 id="Https证书申请"><a href="#Https证书申请" class="headerlink" title="Https证书申请"></a>Https 证书申请</h3><p>可以是选择阿里云 <code>Symantec 免费版 SSL</code>，可以自行前往阿里云控制台申请</p>
@@ -993,7 +874,6 @@ var _hmt = _hmt || [];
 <p>在安装好服务端和客户端后，我们下载证书上传到群晖服务器上，同时我们像下图一样挂载<code>配置文件</code>和<code>证书目录</code><br><img src="https://img.jakehu.me/20190627153942.png"></p>
 <p>最后我们需要对 <code>https</code> 进行配置</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 127.0.0.1</span><br><span class="line">server_port = 5443</span><br><span class="line"></span><br><span class="line">[test]</span><br><span class="line">type = https</span><br><span class="line">custom_domains = test.jakehu.me</span><br><span class="line">plugin = https2http</span><br><span class="line">plugin_local_addr = 192.168.1.1:80</span><br><span class="line"># HTTPS 证书相关的配置</span><br><span class="line">plugin_crt_path = /frp/certificate/certificate.crt</span><br><span class="line">plugin_key_path = /frp/certificate/private.key</span><br><span class="line">plugin_host_header_rewrite = 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
-
 <hr>
 <p>到此告一段落，完美适应！</p>
 
@@ -1035,8 +915,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/GitLab-Java-Runner/" class="post-title-link" itemprop="url">搭建 GitLab Runner For Java</a>
+          <a href="/2019/GitLab-Java-Runner/" class="post-title-link" itemprop="url">搭建 GitLab Runner For Java</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1068,20 +947,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/GitLab-Java-Runner/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/GitLab-Java-Runner/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1103,10 +968,8 @@ var _hmt = _hmt || [];
 <li>Installing Maven 8 on CentOS 7</li>
 </ol>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里我们直接有用yum默认安装</span><br><span class="line">yum install maven</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="No-3"><a href="#No-3" class="headerlink" title="No.3"></a>No.3</h3><p>第三步 我们需要安装 <code>gitlab-runner</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 添加GitLab的官方存储库</span><br><span class="line"># For RHEL/CentOS/Fedora</span><br><span class="line">curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash</span><br><span class="line"></span><br><span class="line"># 安装gitlab-runner</span><br><span class="line">sudo yum install gitlab-runner</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="No-4"><a href="#No-4" class="headerlink" title="No.4"></a>No.4</h3><p>第四步 就是注册 <code>runner</code> 这里不过多赘述</p>
 
       
@@ -1147,8 +1010,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/guns-maven-skip-test/" class="post-title-link" itemprop="url">Guns 通过 Gitlab CI 跳过测试失败与多模块打包之解决方案</a>
+          <a href="/2019/guns-maven-skip-test/" class="post-title-link" itemprop="url">Guns 通过 Gitlab CI 跳过测试失败与多模块打包之解决方案</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1186,20 +1048,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/guns-maven-skip-test/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/guns-maven-skip-test/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1212,7 +1060,6 @@ var _hmt = _hmt || [];
           <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在部署一个由 <code>Guns</code> 开发的一套系统，在本地测试和 <code>Gitlab Runner</code> 上执行 <code>mvn package -B -Dmaven.test.skip=true</code> 都能跳过测试，但是在 <code>CI</code> 里面就没法跳过测试</p>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>在 <code>pom</code> 中加入 <code>maven-surefire-plugin</code> 并跳过测试</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;3.0.0-M3&lt;/version&gt;</span><br><span class="line">  &lt;configuration&gt;</span><br><span class="line">    &lt;skipTests&gt;true&lt;/skipTests&gt;</span><br><span class="line">  &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="Guns"><a href="#Guns" class="headerlink" title="Guns"></a>Guns</h3><p>这里我们再介绍哈 <code>guns</code> 多模块打包方案，模块如下：</p>
 <ol>
 <li>guns-parent <code>父模块</code></li>
@@ -1263,8 +1110,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/suse-kernel/" class="post-title-link" itemprop="url">Linux 之 SUSE 内核升级看这里</a>
+          <a href="/2019/suse-kernel/" class="post-title-link" itemprop="url">Linux 之 SUSE 内核升级看这里</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1302,20 +1148,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/suse-kernel/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/suse-kernel/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1331,7 +1163,6 @@ var _hmt = _hmt || [];
 <p><a target="_blank" rel="noopener" href="https://drivers.suse.com/suse/installer-update/sle-12-sp3-x86_64/5.0/install/suse/x86_64/">kernel-default-4.4.140-94.42.1.x86_64</a></p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>在安装之前可能得通过 <code>SFTP</code> 等工具将 <code>rpm</code> 包上传到虚拟机</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 安装包并在安装过程中显示正在安装的文件信息及安装进度</span><br><span class="line"></span><br><span class="line">rpm -ivh kernel-default-4.4.140-94.42.1.x86_64.rpm</span><br></pre></td></tr></tbody></table></figure>
-
 <h4 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h4><p>在更新内核后需要进行重启</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 重启</span><br><span class="line"></span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line">// 查看新的内核版本</span><br><span class="line"></span><br><span class="line">uname -r</span><br><span class="line">4.4.140-94.42-default</span><br></pre></td></tr></tbody></table></figure>
 <hr>
@@ -1375,8 +1206,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/hexo-drone/" class="post-title-link" itemprop="url">通过 Drone CI/CD Hexo 到 Github Pages 应该这样玩儿</a>
+          <a href="/2019/hexo-drone/" class="post-title-link" itemprop="url">通过 Drone CI/CD Hexo 到 Github Pages 应该这样玩儿</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1414,20 +1244,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/hexo-drone/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/hexo-drone/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1479,15 +1295,10 @@ var _hmt = _hmt || [];
 
 
 
-
-  
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
-
-
-      
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1510,20 +1321,16 @@ var _hmt = _hmt || [];
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -1543,29 +1350,7 @@ var _hmt = _hmt || [];
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1573,10 +1358,6 @@ var _hmt = _hmt || [];
 
 
   
-
-
-
-
 
 
 <script>
@@ -1672,21 +1453,6 @@ var _hmt = _hmt || [];
 </script>
 
 
-  
-
-  
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"uLM2WFMDtpXvCYe9LInEc284","appKey":"efF52z8z4mcr5W5ELtJvIbQ2","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/page/2/",
-      serverURLs: "https://ulm2wfmd.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>

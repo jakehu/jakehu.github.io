@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,10 +22,9 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="提笔为青春，人生正当年">
+<meta name="description" content="提笔为青春，人生正当年">
 <meta property="og:type" content="website">
 <meta property="og:title" content="晨曦&#39;s Blog">
 <meta property="og:url" content="http://www.jakehu.me/page/3/index.html">
@@ -69,11 +68,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-
-  <title>晨曦's Blog</title>
+<title>晨曦's Blog</title>
   
-
-
 
 
 
@@ -122,7 +118,7 @@ var _hmt = _hmt || [];
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -150,26 +146,10 @@ var _hmt = _hmt || [];
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -180,8 +160,7 @@ var _hmt = _hmt || [];
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -190,7 +169,7 @@ var _hmt = _hmt || [];
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -206,7 +185,7 @@ var _hmt = _hmt || [];
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -226,11 +205,11 @@ var _hmt = _hmt || [];
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
-        </section>
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
       src="https://img.jakehu.me/avatar.png">
@@ -296,9 +275,9 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 
-        </section>
+        </div>
       </div>
-        <div class="back-to-top animated">
+        <div class="back-to-top animated" role="button">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
@@ -319,9 +298,7 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner index posts-expand">
-      
 
-      
     
 
 
@@ -343,8 +320,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/gogs-drone/" class="post-title-link" itemprop="url">或许在 Nas (群晖 [Docker]) 上 Gogs 和 Drone 更配哦</a>
+          <a href="/2019/gogs-drone/" class="post-title-link" itemprop="url">或许在 Nas (群晖 [Docker]) 上 Gogs 和 Drone 更配哦</a>
         </h2>
 
         <div class="post-meta-container">
@@ -382,20 +358,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/gogs-drone/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/gogs-drone/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -421,7 +383,6 @@ var _hmt = _hmt || [];
 <p>最后我要说的是一个是端口映射的问题，一个是卷映射的问题，如下图<br><img src="https://img.jakehu.me/810603f6ly1g1vccwvbr8j20q10f10tx.jpg"><br><img src="https://img.jakehu.me/810603f6ly1g1vccwqe4tj20pt0evdgz.jpg"><br>最后直接访问：<code>http://192.168.1.2:10080</code> 就 OK 了</p>
 <p>这里贴出一下整个 <code>Gogs</code> 配置文件</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /data/gogs/conf/app.ini</span></span><br><span class="line"></span><br><span class="line">APP_NAME = Gogs</span><br><span class="line">RUN_USER = git</span><br><span class="line">RUN_MODE = prod</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line">DB_TYPE  = mysql</span><br><span class="line">HOST &nbsp; &nbsp; = <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span>:<span class="number">3306</span> <span class="comment">// mysql地址端口</span></span><br><span class="line">NAME &nbsp; &nbsp; = gogs</span><br><span class="line">USER     = root</span><br><span class="line">PASSWD &nbsp; = password <span class="comment">// mysql密码</span></span><br><span class="line">SSL_MODE = disable</span><br><span class="line">PATH     = data/gogs.db</span><br><span class="line"></span><br><span class="line">[repository]</span><br><span class="line">ROOT = <span class="regexp">/data/gi</span>t/gogs-repositories</span><br><span class="line">publish</span><br><span class="line">[server]</span><br><span class="line">DOMAIN &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span> <span class="comment">// 访问域名</span></span><br><span class="line">HTTP_PORT &nbsp; &nbsp; &nbsp;  = <span class="number">10080</span> <span class="comment">// http端口</span></span><br><span class="line">ROOT_URL &nbsp; &nbsp; &nbsp; &nbsp; = http:<span class="comment">//192.168.1.2/ // 访问域名</span></span><br><span class="line">DISABLE_SSH      = <span class="literal">false</span></span><br><span class="line">SSH_PORT &nbsp; &nbsp; &nbsp; &nbsp; = <span class="number">10022</span> <span class="comment">// SSH端口</span></span><br><span class="line">START_SSH_SERVER = <span class="literal">false</span></span><br><span class="line">OFFLINE_MODE     = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[mailer]</span><br><span class="line">ENABLED = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[service]</span><br><span class="line">REGISTER_EMAIL_CONFIRM = <span class="literal">false</span></span><br><span class="line">ENABLE_NOTIFY_MAIL     = <span class="literal">false</span></span><br><span class="line">DISABLE_REGISTRATION &nbsp; = <span class="literal">true</span> <span class="comment">// 禁止注册，只能有管理员能加账号</span></span><br><span class="line">ENABLE_CAPTCHA &nbsp; &nbsp; &nbsp; &nbsp; = <span class="literal">true</span></span><br><span class="line">REQUIRE_SIGNIN_VIEW &nbsp;  = <span class="literal">true</span> <span class="comment">// 默认跳转到登录页</span></span><br><span class="line"></span><br><span class="line">[picture]</span><br><span class="line">DISABLE_GRAVATAR        = <span class="literal">false</span></span><br><span class="line">ENABLE_FEDERATED_AVATAR = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[session]</span><br><span class="line">PROVIDER = file</span><br><span class="line"></span><br><span class="line">[log]</span><br><span class="line">MODE      = file</span><br><span class="line">LEVEL     = Info</span><br><span class="line">ROOT_PATH = <span class="regexp">/app/g</span>ogs/log</span><br><span class="line"></span><br><span class="line">[security]</span><br><span class="line">INSTALL_LOCK = <span class="literal">true</span></span><br><span class="line">SECRET_KEY   = security</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
 <p>到此为止，我们就完成了 <code>Gogs</code> 的所有安装<br><img src="https://img.jakehu.me/810603f6ly1g1vcre69x8j20r60aqaa8.jpg"></p>
 <h3 id="Drone"><a href="#Drone" class="headerlink" title="Drone"></a>Drone</h3><h4 id="Drone安装"><a href="#Drone安装" class="headerlink" title="Drone安装"></a>Drone 安装</h4><p>为什么？为什么要使用 <code>Drone</code> 还是因为习惯。因为在使用 <code>Gitlab</code> 的时候使用的 <code>CI/CD</code> 都是 <code>gitlab</code> 自带的 <code>gitlab ci</code>；所以这里我们也需要一个 <code>CI/CD</code> 的工具于是我选择了 <code>Drone</code>，当然市场上 <code>CI/CD</code> 的工具是比较多的</p>
 <p><code>Drone</code> 安装这里我们参考官方文档</p>
@@ -436,7 +397,6 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jdk-alpine</span><br><span class="line">VOLUME /tmp</span><br><span class="line">ADD target/hello-1.0.0.jar app.jar</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>接下来我们编辑<code>.drone.yml</code>，关于<code>.drone.yml</code> 请参考<a target="_blank" rel="noopener" href="https://docs.drone.io/user-guide/">.drone.yml 文档</a></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">kind: pipeline</span><br><span class="line">name: default</span><br><span class="line"></span><br><span class="line">steps:</span><br><span class="line">- name: build</span><br><span class="line">  image: maven:3.5-jdk-8</span><br><span class="line">  commands:</span><br><span class="line">  - mvn package -B -Dmaven.test.skip=true # 打包跳过测试</span><br><span class="line"></span><br><span class="line">- name: publish</span><br><span class="line">  image: docker:dind</span><br><span class="line">  volumes:</span><br><span class="line">  - name: docker</span><br><span class="line">    path: /var/run/docker.sock  # dind挂载来自Drone容器/var/run/docker.sock</span><br><span class="line">  commands:</span><br><span class="line">  - docker login --username=* --password=* registry.cn-shenzhen.aliyuncs.com</span><br><span class="line">  - docker build -t spring-boot:master .</span><br><span class="line">  - docker tag spring-boot:master registry.cn-shenzhen.aliyuncs.com/new/spring-boot:master</span><br><span class="line">  - docker push registry.cn-shenzhen.aliyuncs.com/new/spring-boot:master</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">- name: docker</span><br><span class="line">  host:</span><br><span class="line">    path: /var/run/docker.sock # 这里挂载Drone容器所在/var/run/docker.sock，当然Drone容器/var/run/docker.sock来自于群晖宿主机/var/run/docker.sock</span><br></pre></td></tr></tbody></table></figure>
-
 <p>通过上面我们定义了两步，<code>build</code> 利用 <code>maven</code> 对 <code>Spring Boot</code> 进行了打包操作；<code>publish</code> 利用 <code>dind</code> 将打包好的 <code>jar</code> 包通过 <code>DockerFile</code> 打包成镜像并推送到镜像仓库，这里说一下我使用的镜像仓库是<code>阿里云</code></p>
 <p>这里也请注意 <code>WebHook</code> 的地址为上面安装的 <code>Drone</code> 地址请注意填写正确<br><img src="https://img.jakehu.me/810603f6ly1g1w7p18wahj20s70bdab5.jpg"></p>
 <p>下面我们看一下 <code>Drone</code> 执行过程<br><img src="https://img.jakehu.me/810603f6ly1g1xc5lidgdj20qx0bbabj.jpg"></p>
@@ -482,8 +442,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/weixin-token/" class="post-title-link" itemprop="url">Eggjs 与微信公众平台 (Wechat) 对接之不得不说</a>
+          <a href="/2019/weixin-token/" class="post-title-link" itemprop="url">Eggjs 与微信公众平台 (Wechat) 对接之不得不说</a>
         </h2>
 
         <div class="post-meta-container">
@@ -521,20 +480,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/weixin-token/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/weixin-token/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -551,7 +496,6 @@ var _hmt = _hmt || [];
 <p>改造完路由后我们还必须对<code>安全</code>这块进行设置，屏蔽对路由 <code>/wechat</code> 的 <code>csrf</code> 验证</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.security = {</span><br><span class="line">    csrf: {</span><br><span class="line">      ignore: <span class="string">'/wechat'</span>,</span><br><span class="line">    },</span><br><span class="line">  };</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="第二步编写验证Controller"><a href="#第二步编写验证Controller" class="headerlink" title="第二步编写验证Controller"></a>第二步编写验证 Controller</h4><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> index () {</span><br><span class="line">    <span class="keyword">const</span> query = <span class="built_in">this</span>.ctx.request.query;</span><br><span class="line">    <span class="keyword">const</span> signature = query.signature;</span><br><span class="line">    <span class="keyword">const</span> timestamp = query.timestamp;</span><br><span class="line">    <span class="keyword">const</span> nonce = query.nonce;</span><br><span class="line">    <span class="keyword">const</span> echostr = query.echostr;</span><br><span class="line"> &nbsp; &nbsp;<span class="keyword">if</span> (<span class="keyword">await</span> <span class="built_in">this</span>.check(timestamp, nonce, signature, <span class="string">'token'</span>)) {</span><br><span class="line">    <span class="built_in">this</span>.ctx.body = echostr;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">    <span class="built_in">this</span>.ctx.body = <span class="string">'It is not from weixin'</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> check (timestamp, nonce, signature, token) {</span><br><span class="line">    <span class="keyword">const</span> tmp = [ token, timestamp, nonce ].sort().join(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">const</span> currSign = crypto.createHash(<span class="string">'sha1'</span>).update(tmp).digest(<span class="string">'hex'</span>);</span><br><span class="line">    <span class="keyword">return</span> (currSign === signature);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
 <p>然后就可以在<code>开发者配置</code>进行验证就好了</p>
 <blockquote>
 <p>注：上面代码中的 <code>token</code> 即为你在<code>开发者配置</code>页面中填写的 <code>token</code></p>
@@ -606,8 +550,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/gitlab-403-forbidden/" class="post-title-link" itemprop="url">Gitlab 之 403 Forbidden 前世今生</a>
+          <a href="/2019/gitlab-403-forbidden/" class="post-title-link" itemprop="url">Gitlab 之 403 Forbidden 前世今生</a>
         </h2>
 
         <div class="post-meta-container">
@@ -645,20 +588,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/gitlab-403-forbidden/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/gitlab-403-forbidden/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -741,8 +670,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/eggjs-80/" class="post-title-link" itemprop="url">Eggjs 之绑定 80 端口引发的一场血案</a>
+          <a href="/2019/eggjs-80/" class="post-title-link" itemprop="url">Eggjs 之绑定 80 端口引发的一场血案</a>
         </h2>
 
         <div class="post-meta-container">
@@ -780,20 +708,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/eggjs-80/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/eggjs-80/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -806,7 +720,6 @@ var _hmt = _hmt || [];
           <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做微信开发本地测试，需要用到 <code>80</code> 端口；鉴于 <code>Eggjs</code> 默认端口为 <code>7001</code>，于是开始了一场 <code>Eggjs</code> 绑定 <code>80</code> 端口之战</p>
 <h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><code>scripts</code> 改造，将 <code>dev</code> 命令改为如下：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"dev": "egg-bin dev --port=80",</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当运行 <code>npm run dev</code> 之后出现下面问题</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind EACCES null:80, code: EACCES</span><br></pre></td></tr></tbody></table></figure>
 <p>绑定 <code>80</code> 端口失败，看来是权限不够</p>
@@ -862,8 +775,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/hexo-baidu-sitemap/" class="post-title-link" itemprop="url">Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你</a>
+          <a href="/2019/hexo-baidu-sitemap/" class="post-title-link" itemprop="url">Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你</a>
         </h2>
 
         <div class="post-meta-container">
@@ -892,20 +804,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/hexo-baidu-sitemap/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/hexo-baidu-sitemap/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -924,7 +822,6 @@ var _hmt = _hmt || [];
 <h3 id="主动推送-实时"><a href="#主动推送-实时" class="headerlink" title="主动推送(实时)"></a>主动推送 (实时)</h3><p>我们重点来说说<code>主动推送</code></p>
 <p>首先我们这里需要安装一下生成 <code>sitemap</code> 的包</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-generator-baidu-sitemap -s</span><br></pre></td></tr></tbody></table></figure>
-
 <p>新建文件 <code>push_sitemap_to_baidu.php</code>，这里我们通过 <code>PHP</code> 来实现</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// 解析xml</span><br><span class="line">$file = "./public/baidusitemap.xml";</span><br><span class="line">$xml = simplexml_load_file($file);</span><br><span class="line">$urls = array();</span><br><span class="line">foreach ($xml as $key =&gt; $value) {</span><br><span class="line">    $url = array();</span><br><span class="line">    $url = (array) $value-&gt;loc;</span><br><span class="line">    $urls[] = current($url);</span><br><span class="line">}</span><br><span class="line">// 调用百度API</span><br><span class="line">$api = 'http://data.zz.baidu.com/urls?site=https://www.jakehu.me&amp;token=***';</span><br><span class="line">$ch = curl_init();</span><br><span class="line">$options = array(</span><br><span class="line">    CURLOPT_URL =&gt; $api,</span><br><span class="line">    CURLOPT_POST =&gt; true,</span><br><span class="line">    CURLOPT_RETURNTRANSFER =&gt; true,</span><br><span class="line">    CURLOPT_POSTFIELDS =&gt; implode("\n", $urls),</span><br><span class="line">    CURLOPT_HTTPHEADER =&gt; array('Content-Type: text/plain'),</span><br><span class="line">);</span><br><span class="line">curl_setopt_array($ch, $options);</span><br><span class="line">$result = curl_exec($ch);</span><br><span class="line">// 返回结果记录</span><br><span class="line">$time = date("Y-m-d H:i:s");</span><br><span class="line">$content = $time . " --- " . $result . PHP_EOL;</span><br><span class="line">$file = "push_sitemap.log";</span><br><span class="line">$fp = fopen($file, "a+") or die("fail to open the file");</span><br><span class="line">fwrite($fp, $content);</span><br><span class="line">fclose($fp);</span><br></pre></td></tr></tbody></table></figure>
 <p>最后会在根目录下生成 <code>push_sitemap.log</code> 日志文件</p>
@@ -971,8 +868,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/centos-chrome-headles/" class="post-title-link" itemprop="url">Centos7 之安装 Headless Chrome</a>
+          <a href="/2019/centos-chrome-headles/" class="post-title-link" itemprop="url">Centos7 之安装 Headless Chrome</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1010,20 +906,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/centos-chrome-headles/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/centos-chrome-headles/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1044,7 +926,6 @@ var _hmt = _hmt || [];
 <p><a target="_blank" rel="noopener" href="https://intoli.com/blog/installing-google-chrome-on-centos/">intoli 安装文档</a></p>
 <h3 id="运行chrome"><a href="#运行chrome" class="headerlink" title="运行chrome"></a>运行 chrome</h3><p>我们可以通过如下命令来启动 <code>Chrome</code>，同时将博客截图保存</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">google-chrome-stable --no-sandbox --headless --disable-gpu --screenshot https://www.jakehu.me</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="Chromedriver"><a href="#Chromedriver" class="headerlink" title="Chromedriver"></a>Chromedriver</h3><p><code>chromedriver</code> 可以前往<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/chromedriver">淘宝镜像</a>下载，同时通过下面命令进行验证：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./chromedriver</span><br><span class="line">Starting ChromeDriver 73.0.3683.68 (47787ec04b6e38e22703e856e101e840b65afe72) on port 9515</span><br><span class="line">Only local connections are allowed.</span><br><span class="line">Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.</span><br></pre></td></tr></tbody></table></figure>
 <p>如果有如上输出则表示驱动正常运行</p>
@@ -1087,8 +968,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/pyspider/" class="post-title-link" itemprop="url">关于 pyspider 这个问题你遇到了吗？</a>
+          <a href="/2019/pyspider/" class="post-title-link" itemprop="url">关于 pyspider 这个问题你遇到了吗？</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1126,20 +1006,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/pyspider/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/pyspider/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1195,8 +1061,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/kubeadm-cluster/" class="post-title-link" itemprop="url">利用 Kubeadm 创建 Kubernetes 集群之 Centos，你会了吗？</a>
+          <a href="/2019/kubeadm-cluster/" class="post-title-link" itemprop="url">利用 Kubeadm 创建 Kubernetes 集群之 Centos，你会了吗？</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1234,20 +1099,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/kubeadm-cluster/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/kubeadm-cluster/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1328,7 +1179,6 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart kubelet</span><br></pre></td></tr></tbody></table></figure>
 <p><code>k8s.gcr.io</code> 镜像本地化</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images list //查看所需要的镜像</span><br><span class="line"></span><br><span class="line">// 编辑脚本从hub获取镜像</span><br><span class="line">vim k8s.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">docker pull coredns/coredns:1.2.6</span><br><span class="line">docker tag coredns/coredns:1.2.6 k8s.gcr.io/coredns:1.2.6</span><br><span class="line">docker rmi coredns/coredns:1.2.6</span><br><span class="line">images=(</span><br><span class="line">    kube-apiserver:v1.13.2</span><br><span class="line">    kube-controller-manager:v1.13.2</span><br><span class="line">    kube-scheduler:v1.13.2</span><br><span class="line">    kube-proxy:v1.13.2</span><br><span class="line">    pause:3.1</span><br><span class="line">    etcd:3.2.24</span><br><span class="line">)</span><br><span class="line">for imageName in ${images[@]} ; do</span><br><span class="line">  docker pull mirrorgooglecontainers/$imageName</span><br><span class="line">  docker tag mirrorgooglecontainers/$imageName k8s.gcr.io/$imageName</span><br><span class="line">  docker rmi mirrorgooglecontainers/$imageName</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 编辑脚本权限</span><br><span class="line">chmod +x k8s.sh</span><br><span class="line"></span><br><span class="line">// 执行脚本</span><br><span class="line">./k8s.sh</span><br></pre></td></tr></tbody></table></figure>
-
 <p>初始化 <code>Master</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --kubernetes-version=v1.13.2 --pod-network-cidr=10.244.0.0/16</span><br></pre></td></tr></tbody></table></figure>
 <p>配置 <code>kubectl</code> 认证信息</p>
@@ -1339,7 +1189,6 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 编辑脚本从hub获取镜像</span><br><span class="line">vim k8s.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">images=(</span><br><span class="line">    kube-proxy:v1.13.2</span><br><span class="line">    pause:3.1</span><br><span class="line">)</span><br><span class="line">for imageName in ${images[@]} ; do</span><br><span class="line">  docker pull mirrorgooglecontainers/$imageName</span><br><span class="line">  docker tag mirrorgooglecontainers/$imageName k8s.gcr.io/$imageName</span><br><span class="line">  docker rmi mirrorgooglecontainers/$imageName</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 编辑脚本权限</span><br><span class="line">chmod +x k8s.sh</span><br><span class="line"></span><br><span class="line">// 执行脚本</span><br><span class="line">./k8s.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>将节点加入集群</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm join 172.16.1.86:6443 --token xxx --discovery-token-ca-cert-hash xxx</span><br></pre></td></tr></tbody></table></figure>
-
 <h5 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h5><p>未完待续…</p>
 <hr>
 <p>题外话：</p>
@@ -1385,8 +1234,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/python-pip/" class="post-title-link" itemprop="url">pip 之 No module named 'pip._internal'</a>
+          <a href="/2019/python-pip/" class="post-title-link" itemprop="url">pip 之 No module named 'pip._internal'</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1424,20 +1272,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/python-pip/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/python-pip/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1450,7 +1284,6 @@ var _hmt = _hmt || [];
           <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说本地环境 <code>Deepin 15.8</code>，<code>Python2</code> 与 <code>Python3</code> 共存</p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>问题如下：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip3</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip3", line 7, in &lt;module&gt;</span><br><span class="line">    from pip._internal import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal'</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip", line 7, in &lt;module&gt;</span><br><span class="line">    from pip._internal import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal'</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>如 <code>pip</code> 与 <code>pip3</code> 均不可使用</p>
 <h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip</span><br><span class="line">Searching for pip</span><br><span class="line">Best match: pip 10.0.1</span><br><span class="line">Adding pip 10.0.1 to easy-install.pth file</span><br><span class="line">Installing pip script to /usr/local/bin</span><br><span class="line">Installing pip3.6 script to /usr/local/bin</span><br><span class="line">Installing pip3 script to /usr/local/bin</span><br><span class="line"></span><br><span class="line">Using /usr/local/lib/python2.7/dist-packages</span><br><span class="line">Processing dependencies for pip</span><br><span class="line">Finished processing dependencies for pip</span><br></pre></td></tr></tbody></table></figure>
@@ -1494,8 +1327,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/java-k8s/" class="post-title-link" itemprop="url">通过 Gitlab 打包 Java-Spring Cloud 部署 K8s 部分备忘</a>
+          <a href="/2019/java-k8s/" class="post-title-link" itemprop="url">通过 Gitlab 打包 Java-Spring Cloud 部署 K8s 部分备忘</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1533,20 +1365,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/java-k8s/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/java-k8s/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1574,7 +1392,6 @@ var _hmt = _hmt || [];
 </ol>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/passwd</span><br><span class="line">gitlab-runner:x:997:993:GitLab Runner:/home/gitlab-runner:/bin/bash // 修改前</span><br><span class="line">gitlab-runner:x:0:0:GitLab Runner:/home/gitlab-runner:/bin/bash // 修改后</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
 <hr>
 <p>未完待续</p>
 
@@ -1595,15 +1412,10 @@ var _hmt = _hmt || [];
 
 
 
-
-  
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
-
-
-      
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1626,20 +1438,16 @@ var _hmt = _hmt || [];
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -1659,29 +1467,7 @@ var _hmt = _hmt || [];
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1689,10 +1475,6 @@ var _hmt = _hmt || [];
 
 
   
-
-
-
-
 
 
 <script>
@@ -1788,21 +1570,6 @@ var _hmt = _hmt || [];
 </script>
 
 
-  
-
-  
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"uLM2WFMDtpXvCYe9LInEc284","appKey":"efF52z8z4mcr5W5ELtJvIbQ2","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/page/3/",
-      serverURLs: "https://ulm2wfmd.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>

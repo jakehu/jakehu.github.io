@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,10 +22,9 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="提笔为青春，人生正当年">
+<meta name="description" content="提笔为青春，人生正当年">
 <meta property="og:type" content="website">
 <meta property="og:title" content="晨曦&#39;s Blog">
 <meta property="og:url" content="http://www.jakehu.me/page/5/index.html">
@@ -69,11 +68,8 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-
-  <title>晨曦's Blog</title>
+<title>晨曦's Blog</title>
   
-
-
 
 
 
@@ -122,7 +118,7 @@ var _hmt = _hmt || [];
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -150,26 +146,10 @@ var _hmt = _hmt || [];
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -180,8 +160,7 @@ var _hmt = _hmt || [];
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -190,7 +169,7 @@ var _hmt = _hmt || [];
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -206,7 +185,7 @@ var _hmt = _hmt || [];
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -226,11 +205,11 @@ var _hmt = _hmt || [];
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
-        </section>
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
       src="https://img.jakehu.me/avatar.png">
@@ -296,9 +275,9 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 
-        </section>
+        </div>
       </div>
-        <div class="back-to-top animated">
+        <div class="back-to-top animated" role="button">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
@@ -319,9 +298,7 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner index posts-expand">
-      
 
-      
     
 
 
@@ -343,8 +320,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/hexo-gulp/" class="post-title-link" itemprop="url">利用 gulp 对 Hexo 博客压缩并一键之部署</a>
+          <a href="/2018/hexo-gulp/" class="post-title-link" itemprop="url">利用 gulp 对 Hexo 博客压缩并一键之部署</a>
         </h2>
 
         <div class="post-meta-container">
@@ -382,20 +358,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/hexo-gulp/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/hexo-gulp/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -407,11 +369,9 @@ var _hmt = _hmt || [];
     <div class="post-body" itemprop="articleBody">
           <h3 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h3><p>压缩页面无非就是减小页面大小加快博客访问时间</p>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s</span><br></pre></td></tr></tbody></table></figure>
-
 <h4 id="gulp配置"><a href="#gulp配置" class="headerlink" title="gulp配置"></a>gulp 配置</h4><p>在根目录下创建 <code>gulpfile.js</code> 文件</p>
 <p><code>gulpfile.js</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require('gulp');</span><br><span class="line">var minifycss = require('gulp-minify-css');</span><br><span class="line">var uglify = require('gulp-uglify');</span><br><span class="line">var htmlmin = require('gulp-htmlmin');</span><br><span class="line">var htmlclean = require('gulp-htmlclean');</span><br><span class="line">// 压缩 public 目录 css</span><br><span class="line">gulp.task('minify-css', function () {</span><br><span class="line">    return gulp.src('./public/**/*.css')</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 压缩 public 目录 html</span><br><span class="line">gulp.task('minify-html', function () {</span><br><span class="line">    return gulp.src('./public/**/*.html')</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin({</span><br><span class="line">            removeComments: true,</span><br><span class="line">            minifyJS: true,</span><br><span class="line">            minifyCSS: true,</span><br><span class="line">            minifyURLs: true,</span><br><span class="line">        }))</span><br><span class="line">        .pipe(gulp.dest('./public'))</span><br><span class="line">});</span><br><span class="line">// 压缩 public/js 目录 js</span><br><span class="line">gulp.task('minify-js', function () {</span><br><span class="line">    return gulp.src('./public/**/*.js')</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task('default', [</span><br><span class="line">    'minify-html', 'minify-css', 'minify-js'</span><br><span class="line">]);</span><br></pre></td></tr></tbody></table></figure>
-
 <h4 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h4><p>在 <code>package.json</code> 中加入如下 <code>script</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": {</span><br><span class="line">  "push": "hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>然后在部署的时候只需要运行</p>
@@ -454,8 +414,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/next-leancloud/" class="post-title-link" itemprop="url">Next 之 Leancloud 访客统计 v6.6.0 配置</a>
+          <a href="/2018/next-leancloud/" class="post-title-link" itemprop="url">Next 之 Leancloud 访客统计 v6.6.0 配置</a>
         </h2>
 
         <div class="post-meta-container">
@@ -493,20 +452,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/next-leancloud/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/next-leancloud/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -566,8 +511,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/Nas-Time-Machine/" class="post-title-link" itemprop="url">如何使用 Time Machine 将文件从 Mac 备份至 Synology NAS</a>
+          <a href="/2018/Nas-Time-Machine/" class="post-title-link" itemprop="url">如何使用 Time Machine 将文件从 Mac 备份至 Synology NAS</a>
         </h2>
 
         <div class="post-meta-container">
@@ -605,20 +549,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/Nas-Time-Machine/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/Nas-Time-Machine/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -672,8 +602,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/beanstalkd-bsw/" class="post-title-link" itemprop="url">beanstalkd 之 Nodejs 客户端 bsw</a>
+          <a href="/2018/beanstalkd-bsw/" class="post-title-link" itemprop="url">beanstalkd 之 Nodejs 客户端 bsw</a>
         </h2>
 
         <div class="post-meta-container">
@@ -711,20 +640,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/beanstalkd-bsw/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/beanstalkd-bsw/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -739,7 +654,6 @@ var _hmt = _hmt || [];
 <p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/blob/master/doc/protocol.zh-CN.md">中文协议</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里我们用 <code>Docker</code> 来运行。</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd</span><br><span class="line">docker run -d -p 11300:11300 schickling/beanstalkd</span><br></pre></td></tr></tbody></table></figure>
-
 <p><code>beanstalkd</code> 管理 <code>WEB</code> 平台，主要用来看看以后的任务详情。</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd-console</span><br><span class="line">docker run -d -p 2080:2080 --link beanstalkd:beanstalkd schickling/beanstalkd-console</span><br></pre></td></tr></tbody></table></figure>
 <p>通过 <code>127.0.0.1:2080</code> 访问</p>
@@ -750,7 +664,6 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const { Consumer } = require('bsw');</span><br><span class="line">module.exports = app =&gt; {</span><br><span class="line">  app.beforeStart(async () =&gt; {</span><br><span class="line">    const consumer = new Consumer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">      async handler(payload, job_info) {</span><br><span class="line">        console.log('processing job: ', payload);</span><br><span class="line">        console.log('processing job_info: ', job_info);</span><br><span class="line">        // 这里进行业务操作</span><br><span class="line">        return 'success';</span><br><span class="line">      },</span><br><span class="line">    });</span><br><span class="line">    consumer.on('error', e =&gt; {</span><br><span class="line">      console.log(e);</span><br><span class="line">    });</span><br><span class="line">    console.log('beanstalkd启动了');</span><br><span class="line">    await consumer.start();</span><br><span class="line">  });</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
 <p><code>home.js</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const Controller = require('egg').Controller;</span><br><span class="line">const { Producer } = require('bsw');</span><br><span class="line">class HomeController extends Controller {</span><br><span class="line">  async index() {</span><br><span class="line">    const producer = new Producer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">    });</span><br><span class="line">    await producer.start();</span><br><span class="line">    await producer.putJob({</span><br><span class="line">      payload: JSON.stringify({ throw: true, result: 'success' }),</span><br><span class="line">      priority: 0, // 优先级</span><br><span class="line">      delay: 30, // 延时单位(s)</span><br><span class="line">      ttr: 60, // 允许worker执行的最大秒数</span><br><span class="line">    });</span><br><span class="line">    producer.stop();</span><br><span class="line">    this.ctx.body = 'hi, egg';</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">module.exports = HomeController;</span><br></pre></td></tr></tbody></table></figure>
-
 <hr>
 <p>天若有情天亦老，月如无恨月长圆</p>
 
@@ -792,8 +705,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/Java-Utils/" class="post-title-link" itemprop="url">Java 楞个多优秀的工具类，嗯嗯，快记下来</a>
+          <a href="/2018/Java-Utils/" class="post-title-link" itemprop="url">Java 楞个多优秀的工具类，嗯嗯，快记下来</a>
         </h2>
 
         <div class="post-meta-container">
@@ -831,20 +743,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/Java-Utils/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/Java-Utils/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -863,7 +761,6 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>要使用 <code>commons-lang3</code> 库，只需使用以下依赖项从中央 Maven 存储库中提取它</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>示例、文档参考</p>
 </blockquote>
@@ -876,7 +773,6 @@ var _hmt = _hmt || [];
 <p>Maven 依赖</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;cn.hutool&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.2.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>示例、文档参考</p>
 </blockquote>
@@ -889,7 +785,6 @@ var _hmt = _hmt || [];
 <p>Maven 依赖</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.mzlion&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;easy-okhttp&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>示例、文档参考</p>
 </blockquote>
@@ -933,8 +828,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/docker-command/" class="post-title-link" itemprop="url">Docker 之常用命令集</a>
+          <a href="/2018/docker-command/" class="post-title-link" itemprop="url">Docker 之常用命令集</a>
         </h2>
 
         <div class="post-meta-container">
@@ -972,20 +866,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/docker-command/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/docker-command/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1047,8 +927,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/docker-time-zone/" class="post-title-link" itemprop="url">Docker 之时区配置</a>
+          <a href="/2018/docker-time-zone/" class="post-title-link" itemprop="url">Docker 之时区配置</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1086,20 +965,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/docker-time-zone/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/docker-time-zone/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1151,8 +1016,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/k8s-ui/" class="post-title-link" itemprop="url">这些个 Kubernetes 集群管理平台你值得拥有</a>
+          <a href="/2018/k8s-ui/" class="post-title-link" itemprop="url">这些个 Kubernetes 集群管理平台你值得拥有</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1190,20 +1054,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/k8s-ui/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/k8s-ui/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1264,8 +1114,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/mybatis-plus-page/" class="post-title-link" itemprop="url">Mybatis-Plus 注解方式自定义分页实现</a>
+          <a href="/2018/mybatis-plus-page/" class="post-title-link" itemprop="url">Mybatis-Plus 注解方式自定义分页实现</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1303,20 +1152,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/mybatis-plus-page/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/mybatis-plus-page/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1330,10 +1165,8 @@ var _hmt = _hmt || [];
 <p>于是，记录了在 <code>Mybatis-Plus</code> 中注解分页方式实现。</p>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>首先讲一下我的请求：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">controller-&gt;service-&gt;mapper-&gt;entity</span><br></pre></td></tr></tbody></table></figure>
-
 <p><code>UserService.java</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public Object getAll() {</span><br><span class="line">    Page userList = new Page&lt;&gt;(1, 5);</span><br><span class="line">    Map&lt;String, Object&gt; param = new HashMap&lt;&gt;();</span><br><span class="line">    param.put("name", "测试788");</span><br><span class="line">    param.put("page", userList);</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; userListArr = mapper.getAllUserGoodsSQLPage(param);</span><br><span class="line">    userList.setRecords(userListArr);</span><br><span class="line"></span><br><span class="line">    return userList;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
 <p><code>UserMapper.java</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Select("&lt;script&gt;SELECT u.id,u.name from " + TABLE + " as u " +</span><br><span class="line">        "left join " + G_TABLE + " as g " +</span><br><span class="line">        "on u.id = g.uid " +</span><br><span class="line">        "where u.name =  #{name}" +</span><br><span class="line">        "&lt;if test = 'id != null'&gt;" +</span><br><span class="line">        "   and u.id = #{id}" +</span><br><span class="line">        "&lt;/if&gt;" +</span><br><span class="line">        "&lt;/script&gt;")</span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; getAllUserGoodsSQLPage(Map&lt;String, Object&gt; param);</span><br></pre></td></tr></tbody></table></figure>
       
@@ -1374,8 +1207,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/mysql-usage/" class="post-title-link" itemprop="url">记 Mysql 部分用法</a>
+          <a href="/2018/mysql-usage/" class="post-title-link" itemprop="url">记 Mysql 部分用法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1413,20 +1245,6 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2018/mysql-usage/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2018/mysql-usage/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1441,31 +1259,26 @@ var _hmt = _hmt || [];
 <p><code>JSON_CONTAINS</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from circulation</span><br><span class="line">where JSON_CONTAINS(goods-&gt;'$[*].name', '["海带结（香辣味）150克/袋"]', '$')</span><br><span class="line"></span><br><span class="line">select * from circulation</span><br><span class="line">where JSON_CONTAINS(goods-&gt;'$[*].gid', '[20]', '$')</span><br></pre></td></tr></tbody></table></figure>
-
 <p>2、Json 字符串转化为 Json 对象</p>
 <blockquote>
 <p><code>CONVERT</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select CONVERT('{"mail": "amy@gmail.com", "name": "Amy"}',JSON)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>3、元素转化为数组</p>
 <blockquote>
 <p><code>JSON_ARRAY</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT JSON_ARRAY(1, "abc", NULL, TRUE, CURTIME())</span><br></pre></td></tr></tbody></table></figure>
-
 <p>4、数组中查询元素</p>
 <blockquote>
 <p><code>JSON_CONTAINS + JSON_ARRAY</code> 用法</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select JSON_CONTAINS(JSON_ARRAY(1,2,3,4,5,6),'6')</span><br></pre></td></tr></tbody></table></figure>
-
 <p>5、数组模糊查询</p>
 <blockquote>
 <p><code>JSON_SEARCH用法</code></p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table where JSON_SEARCH(profiles, 'all', 'sales%') is not null</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="常规"><a href="#常规" class="headerlink" title="常规"></a>常规</h3><p>1、查询重复记录</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from merchant</span><br><span class="line">where num in (select num from synk.merchant group by num having count(num) &gt; 1)</span><br></pre></td></tr></tbody></table></figure>
       
@@ -1485,15 +1298,10 @@ var _hmt = _hmt || [];
 
 
 
-
-  
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
-
-
-      
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1516,20 +1324,16 @@ var _hmt = _hmt || [];
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -1549,29 +1353,7 @@ var _hmt = _hmt || [];
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1579,10 +1361,6 @@ var _hmt = _hmt || [];
 
 
   
-
-
-
-
 
 
 <script>
@@ -1678,21 +1456,6 @@ var _hmt = _hmt || [];
 </script>
 
 
-  
-
-  
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"uLM2WFMDtpXvCYe9LInEc284","appKey":"efF52z8z4mcr5W5ELtJvIbQ2","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/page/5/",
-      serverURLs: "https://ulm2wfmd.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>
