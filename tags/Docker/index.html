@@ -27,7 +27,7 @@
 <meta name="description" content="提笔为青春，人生正当年">
 <meta property="og:type" content="website">
 <meta property="og:title" content="晨曦&#39;s Blog">
-<meta property="og:url" content="http://www.jakehu.me/tags/docker/index.html">
+<meta property="og:url" content="http://www.jakehu.me/tags/Docker/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
 <meta property="og:description" content="提笔为青春，人生正当年">
 <meta property="og:locale" content="zh_CN">
@@ -36,7 +36,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.jakehu.me/tags/docker/">
+<link rel="canonical" href="http://www.jakehu.me/tags/Docker/">
 
 
 <script class="page-configurations">
@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-<title>标签: docker | 晨曦's Blog</title>
+<title>标签: Docker | 晨曦's Blog</title>
   
 
 
@@ -221,7 +221,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -234,7 +234,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -306,52 +306,29 @@ var _hmt = _hmt || [];
   <div class="post-block">
     <div class="post-content">
       <div class="collection-title">
-        <h2 class="collection-header">docker
+        <h2 class="collection-header">Docker
           <small>标签</small>
         </h2>
       </div>
 
       
     <div class="collection-year">
-      <span class="collection-header">2020</span>
+      <span class="collection-header">2018</span>
     </div>
 
   <article itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <div class="post-meta-container">
         <time itemprop="dateCreated"
-              datetime="2020-05-10T17:33:00+08:00"
-              content="2020-05-10">
-          05-10
+              datetime="2018-11-28T16:34:24+08:00"
+              content="2018-11-28">
+          11-28
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2020/synology-docker/" itemprop="url">
-            <span itemprop="name">群晖中利用阿里镜像为 Docker 加速</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2019</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2019-07-23T16:12:00+08:00"
-              content="2019-07-23">
-          07-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/docker-image/" itemprop="url">
-            <span itemprop="name">Docker 底层镜像之选择困难症</span>
+          <a class="post-title-link" href="/2018/docker-command/" itemprop="url">
+            <span itemprop="name">Docker 之常用命令集</span>
           </a>
       </div>
 
@@ -363,15 +340,15 @@ var _hmt = _hmt || [];
     <header class="post-header">
       <div class="post-meta-container">
         <time itemprop="dateCreated"
-              datetime="2019-07-04T10:51:00+08:00"
-              content="2019-07-04">
-          07-04
+              datetime="2018-11-27T14:17:45+08:00"
+              content="2018-11-27">
+          11-27
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2019/frp-onekey/" itemprop="url">
-            <span itemprop="name">Frps 一件脚本 && Frpc Docker 镜像 && Frps Docker 镜像</span>
+          <a class="post-title-link" href="/2018/docker-time-zone/" itemprop="url">
+            <span itemprop="name">Docker 之时区配置</span>
           </a>
       </div>
 
@@ -383,15 +360,15 @@ var _hmt = _hmt || [];
     <header class="post-header">
       <div class="post-meta-container">
         <time itemprop="dateCreated"
-              datetime="2019-04-08T16:42:00+08:00"
-              content="2019-04-08">
-          04-08
+              datetime="2018-11-23T00:00:00+08:00"
+              content="2018-11-23">
+          11-23
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2019/gogs-drone/" itemprop="url">
-            <span itemprop="name">或许在 Nas (群晖 [Docker]) 上 Gogs 和 Drone 更配哦</span>
+          <a class="post-title-link" href="/2018/gitlab-docker/" itemprop="url">
+            <span itemprop="name">记 Gitlab 到 Docker 全过程 CI/CD</span>
           </a>
       </div>
 
@@ -534,6 +511,35 @@ var _hmt = _hmt || [];
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+
+</body>
+</html>
+gify(data)
         });
       };
       if (CONFIG.page.isPost) {

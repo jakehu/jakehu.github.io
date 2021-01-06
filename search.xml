@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>AC86U 创建虚拟内存 U 盘读写速度不够？</title>
+      <link href="2021/ac86u-virtual-memory/"/>
+      <url>2021/ac86u-virtual-memory/</url>
+      
+        <content type="html"><![CDATA[<h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p><code>AC86U</code> 升级固件后挂载虚拟内存总是提示读写速度不够，新固件的读取速度要求 <code>20M/s</code>，写入速度要求 <code>30M/s</code><br><img src="https://img.jakehu.me/20210106091033.png"></p><h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>修改参数限制</p><p><code>ssh</code> 登录到路由器，执行如下命令</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 修改写入速度限制，30替换为10</span><br><span class="line">sed -i 's/^W_LIMIT=30/W_LIMIT=10/' /koolshare/scripts/swap_make.sh</span><br><span class="line"></span><br><span class="line"># 修改读取速度限制，20替换为10</span><br><span class="line">sed -i 's/^R_LIMIT=20/R_LIMIT=10/' /koolshare/scripts/swap_make.sh</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><p>以上参数可以根据自己的实际情况进行调整</p><p>完成后重新进入管理界面挂载虚拟内存即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ac86u </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Gogs 升级之殇</title>
       <link href="2021/gogs-update/"/>
       <url>2021/gogs-update/</url>
