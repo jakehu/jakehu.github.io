@@ -221,7 +221,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -298,6 +298,111 @@ var _hmt = _hmt || [];
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2020/zsh-plugins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+      <meta itemprop="description" content="提笔为青春，人生正当年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/zsh-plugins/" class="post-title-link" itemprop="url">Mac 下 oh-my-zsh 之必备插件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-04-16 11:40:20 / 修改时间：12:33:40" itemprop="dateCreated datePublished" datetime="2020-04-16T11:40:20+08:00">2020-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/zsh-plugins/" class="post-meta-item leancloud_visitors" data-flag-title="Mac 下 oh-my-zsh 之必备插件" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/zsh-plugins/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/zsh-plugins/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p><code>autojump</code>：实现目录间快速跳转，想去哪个目录直接 <code>j</code>，不用再有事没事就 <code>cd</code> 了<br><code>zsh-autosuggestions</code>：输入命令时可提示自动补全以及之前的历史记录，然后按键盘<code>→</code>即可<br><code>zsh-syntax-highlighting</code>：日常用的命令会高亮显示，命令错误显示红色</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>安装前我们可以在配置文件中查看 <code>plugins</code> 目录如下</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Standard plugins can be found in ~/.oh-my-zsh/plugins/*</span><br><span class="line"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span><br></pre></td></tr></tbody></table></figure>
+<p><code>autojump</code> 安装如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install autojump</span><br></pre></td></tr></tbody></table></figure>
+<p><code>zsh-autosuggestions</code> 安装如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions</span><br></pre></td></tr></tbody></table></figure>
+<p><code>zsh-syntax-highlighting</code> 安装如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">autojump</span><br><span class="line">zsh-autosuggestions</span><br><span class="line">zsh-syntax-highlighting</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><p><code> source .zshrc</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1293,116 +1398,6 @@ var _hmt = _hmt || [];
 <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义代码目录</span></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">rm</span> <span class="string">-rf</span> <span class="string">/data/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">/data/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">mv</span> <span class="string">*</span> <span class="string">.git*</span> <span class="string">/data/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">/data/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">maven-build:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">deploy</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">cd</span> <span class="string">guns</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">mvn</span> <span class="string">clean</span> <span class="string">install</span> <span class="comment"># 在父模块上运行install，将依赖打包到maven本地仓库</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">cd</span> <span class="string">../guns/guns-admin</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">mvn</span> <span class="string">package</span> <span class="string">-B</span> <span class="string">-Dmaven.test.skip=true</span> <span class="comment"># 这里其实可以不用打包，因为前面install的时候已经打包</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">docker</span> <span class="string">build</span> <span class="string">...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">tag</span> <span class="string">...</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">docker</span> <span class="string">push</span> <span class="string">...</span> <span class="comment"># 构建不同项目的镜像</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">cd</span> <span class="string">../../guns/guns-rest</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">mvn</span> <span class="string">package</span> <span class="string">-B</span> <span class="string">-Dmaven.test.skip=true</span> <span class="comment"># 这里其实可以不用打包，因为前面install的时候已经打包</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">build</span> <span class="string">...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">tag</span> <span class="string">...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">push</span> <span class="string">...</span> <span class="comment"># 构建不同项目的镜像</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">spring-boot-shell</span></span><br></pre></td></tr></tbody></table></figure>
 <p>关于构建的 <code>Dockerfile</code> 可以参考</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jdk-alpine</span><br><span class="line">VOLUME /tmp</span><br><span class="line">COPY target/guns-admin-1.0.0.jar app.jar</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/suse-kernel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-      <meta itemprop="description" content="提笔为青春，人生正当年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/suse-kernel/" class="post-title-link" itemprop="url">Linux 之 SUSE 内核升级看这里</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-04-19 17:29:00" itemprop="dateCreated datePublished" datetime="2019-04-19T17:29:00+08:00">2019-04-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2019-06-21 09:58:49" itemprop="dateModified" datetime="2019-06-21T09:58:49+08:00">2019-06-21</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/suse-kernel/" class="post-meta-item leancloud_visitors" data-flag-title="Linux 之 SUSE 内核升级看这里" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2019/suse-kernel/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/suse-kernel/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近公司在部署 <code>SAP</code>，在部署 <code>SUSE</code> 的虚拟机的过程中接到 <code>SAP</code> 实施商的一个要求，需要将虚拟机的内核进行升级。原:<code>4.4.73-7-default</code>，目标：<code>4.4.140-94.42-default</code></p>
-<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><h4 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h4><p>开始之前记得去 <code>YaST</code> 里面防火墙打开对 <code>SSH</code> 允许，以及<code>网络设置</code>对 <code>IP</code> 地址进行设置</p>
-<h4 id="获取内核"><a href="#获取内核" class="headerlink" title="获取内核"></a>获取内核</h4><p>获取内核的方法有很多比如：<a target="_blank" rel="noopener" href="https://www.kernel.org/">kernel</a> 以及 <a target="_blank" rel="noopener" href="https://www.opensuse.org/">opensuse</a>；不过我是通过 <a target="_blank" rel="noopener" href="https://drivers.suse.com/suse">Suse Drivers</a> 获取的官方的补丁包</p>
-<p><a target="_blank" rel="noopener" href="https://drivers.suse.com/suse/installer-update/sle-12-sp3-x86_64/5.0/install/suse/x86_64/">kernel-default-4.4.140-94.42.1.x86_64</a></p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>在安装之前可能得通过 <code>SFTP</code> 等工具将 <code>rpm</code> 包上传到虚拟机</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 安装包并在安装过程中显示正在安装的文件信息及安装进度</span><br><span class="line"></span><br><span class="line">rpm -ivh kernel-default-4.4.140-94.42.1.x86_64.rpm</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h4><p>在更新内核后需要进行重启</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 重启</span><br><span class="line"></span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line">// 查看新的内核版本</span><br><span class="line"></span><br><span class="line">uname -r</span><br><span class="line">4.4.140-94.42-default</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<p>大功告成！！！</p>
-
       
     </div>
 

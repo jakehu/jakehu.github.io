@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Mac 下 Iterm2 配置的一些问题</title>
+      <link href="2021/mac-iterm/"/>
+      <url>2021/mac-iterm/</url>
+      
+        <content type="html"><![CDATA[<h4 id="agnoster主题乱码"><a href="#agnoster主题乱码" class="headerlink" title="agnoster主题乱码"></a>agnoster 主题乱码</h4><p>原因：是缺少 <code>Menlo for Powerline</code> 字体</p><p>下载字体：<a href="https://github.com/abertsch/Menlo-for-Powerline">Menlo for Powerline</a></p><p>安装字体：<code>mv "Menlo for Powerline.ttf" ~/Library/Fonts</code></p><p>配置：<code>Text-&gt;Font</code></p><h4 id="ls文件夹颜色"><a href="#ls文件夹颜色" class="headerlink" title="ls文件夹颜色"></a>ls 文件夹颜色</h4><p>配置：<code>Colors-&gt;Brighten bold text</code> 勾选掉之后</p><h4 id="rz-sz配置"><a href="#rz-sz配置" class="headerlink" title="rz/sz配置"></a>rz/sz 配置</h4><p><a href="https://github.com/aikuyun/iterm2-zmodem">参考文档</a></p><h4 id="zsh-autosuggestion颜色与底色相同"><a href="#zsh-autosuggestion颜色与底色相同" class="headerlink" title="zsh-autosuggestion颜色与底色相同"></a>zsh-autosuggestion 颜色与底色相同</h4><p>更改 <code>zsh-autosuggestion</code> 颜色，在<code>.zshrc</code> 最后加入 <code>ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'</code>。</p><p><a href="https://github.com/zsh-users/zsh-autosuggestions/issues/12">参考文档</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AC86U 创建虚拟内存 U 盘读写速度不够？</title>
       <link href="2021/ac86u-virtual-memory/"/>
       <url>2021/ac86u-virtual-memory/</url>
