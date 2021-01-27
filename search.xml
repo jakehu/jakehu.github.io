@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>Python 之 Requests 参数格式</title>
+      <link href="2021/requests-data/"/>
+      <url>2021/requests-data/</url>
+      
+        <content type="html"><![CDATA[<h3 id="x-www-form-urlencoded"><a href="#x-www-form-urlencoded" class="headerlink" title="x-www-form-urlencoded"></a>x-www-form-urlencoded</h3><p>当 <code>requests</code> 的 <code>content-typ</code> 为 <code>"content-type": "application/x-www-form-urlencoded; charset=UTF-8",</code> 时请求参数当如下</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r = requests.post(</span><br><span class="line">    url,</span><br><span class="line">    headers=headers,</span><br><span class="line">    data=data</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><p>当 <code>requests</code> 的 <code>content-typ</code> 为 <code>"Content-Type": "application/json;charset=UTF-8",</code> 时请求参数当如下</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r = requests.post(</span><br><span class="line">    url,</span><br><span class="line">    headers=headers,</span><br><span class="line">    data=json.dumps(data)</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><hr><p><code>x-www-form-urlencoded</code> 时应该为一个字典，<code>json</code> 时应该为一个 <code>json</code> 字符串</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> requests </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>怎么？ADGuard Home 客户端无法显示对应的设备？</title>
       <link href="2021/adguardhome-client/"/>
       <url>2021/adguardhome-client/</url>
