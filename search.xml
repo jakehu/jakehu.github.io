@@ -250,9 +250,9 @@
       
         <tags>
             
-            <tag> npm </tag>
-            
             <tag> git </tag>
+            
+            <tag> npm </tag>
             
         </tags>
       
@@ -457,6 +457,37 @@
           
       </categories>
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>从发布 weixin js sdk 看如何将自己的包发布到 npmjs</title>
+      <link href="2019/weixin-js-sdk-npm/"/>
+      <url>2019/weixin-js-sdk-npm/</url>
+      
+        <content type="html"><![CDATA[<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>发布的命令很简单，但开始之前请前往 <code>npmjs.com</code> 注册一个账号</p><h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p><code>npm init</code></p><h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p><code>npm login</code></p><h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p><code>npm publish</code></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>包参考：<a href="https://www.npmjs.com/package/weixin-js-sdk-official">weixin-js-sdk-official</a></p><p>代码参考：<a href="https://github.com/jakehu/wechat-js-sdk">wechat-js-sdk</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> npm </tag>
+            
+            <tag> npmjs </tag>
+            
+            <tag> weixin </tag>
+            
+            <tag> sdk </tag>
+            
+        </tags>
       
     </entry>
     
