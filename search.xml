@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>ModuleNotFoundError: No module named &#39;Crypto&#39;</title>
+      <link href="2021/module-crypto/"/>
+      <url>2021/module-crypto/</url>
+      
+        <content type="html"><![CDATA[<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Cipher import PKCS1_v1_5</span><br><span class="line">from Crypto.PublicKey import RSA</span><br></pre></td></tr></tbody></table></figure><h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/Users/jakehu/Documents/Web/python-usability-cli/app.py", line 13, in &lt;module&gt;</span><br><span class="line">    from libs import cmdb, esutil, mysqlutil, redisutil, sendmsg</span><br><span class="line">  File "/Users/jakehu/Documents/Web/python-usability-cli/libs/sendmsg.py", line 14, in &lt;module&gt;</span><br><span class="line">    from Crypto.Cipher import PKCS1_v1_5</span><br><span class="line">ModuleNotFoundError: No module named 'Crypto'</span><br></pre></td></tr></tbody></table></figure><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip3 uninstall crypto</span><br><span class="line">pip3 uninstall pycrypto</span><br><span class="line">pip3 install pycrypto</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Crypto </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python 之 Requests 参数格式</title>
       <link href="2021/requests-data/"/>
       <url>2021/requests-data/</url>
