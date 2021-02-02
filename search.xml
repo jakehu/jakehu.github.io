@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>CommandLineTools xcrun: error</title>
+      <link href="2021/xcrun-error/"/>
+      <url>2021/xcrun-error/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>每次 <code>Mac</code> 大的版本更新后 <code>Git</code> 都用不了</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ git</span><br><span class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</span><br></pre></td></tr></tbody></table></figure><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>前往官网下载新的 <code>Command_Line_Tools_for_Xcode</code> 安装即可</p><p><a href="https://developer.apple.com/download/more/">下载地址</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ModuleNotFoundError: No module named &#39;Crypto&#39;</title>
       <link href="2021/module-crypto/"/>
       <url>2021/module-crypto/</url>
