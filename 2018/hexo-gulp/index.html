@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,14 +22,14 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="说在前面压缩页面无非就是减小页面大小加快博客访问时间 实现安装依赖1npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s gulp 配置在根目录下创建 gulpfile.js 文件 gulpfile.js 123456789101112131415161718192021222324252627282930313">
+<meta name="description" content="说在前面压缩页面无非就是减小页面大小加快博客访问时间 实现安装依赖1npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s  gulp 配置在根目录下创建 gulpfile.js 文件 gulpfile.js 12345678910111213141516171819202122232425262728293031">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用 gulp 对 Hexo 博客压缩并一键之部署">
 <meta property="og:url" content="http://www.jakehu.me/2018/hexo-gulp/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="说在前面压缩页面无非就是减小页面大小加快博客访问时间 实现安装依赖1npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s gulp 配置在根目录下创建 gulpfile.js 文件 gulpfile.js 123456789101112131415161718192021222324252627282930313">
+<meta property="og:description" content="说在前面压缩页面无非就是减小页面大小加快博客访问时间 实现安装依赖1npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s  gulp 配置在根目录下创建 gulpfile.js 文件 gulpfile.js 12345678910111213141516171819202122232425262728293031">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-04T02:43:45.000Z">
 <meta property="article:modified_time" content="2019-06-21T01:58:49.399Z">
@@ -225,7 +225,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -238,7 +238,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -388,9 +388,11 @@ var _hmt = _hmt || [];
     <div class="post-body" itemprop="articleBody">
         <h3 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h3><p>压缩页面无非就是减小页面大小加快博客访问时间</p>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s</span><br></pre></td></tr></tbody></table></figure>
+
 <h4 id="gulp配置"><a href="#gulp配置" class="headerlink" title="gulp配置"></a>gulp 配置</h4><p>在根目录下创建 <code>gulpfile.js</code> 文件</p>
 <p><code>gulpfile.js</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require('gulp');</span><br><span class="line">var minifycss = require('gulp-minify-css');</span><br><span class="line">var uglify = require('gulp-uglify');</span><br><span class="line">var htmlmin = require('gulp-htmlmin');</span><br><span class="line">var htmlclean = require('gulp-htmlclean');</span><br><span class="line">// 压缩 public 目录 css</span><br><span class="line">gulp.task('minify-css', function () {</span><br><span class="line">    return gulp.src('./public/**/*.css')</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 压缩 public 目录 html</span><br><span class="line">gulp.task('minify-html', function () {</span><br><span class="line">    return gulp.src('./public/**/*.html')</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin({</span><br><span class="line">            removeComments: true,</span><br><span class="line">            minifyJS: true,</span><br><span class="line">            minifyCSS: true,</span><br><span class="line">            minifyURLs: true,</span><br><span class="line">        }))</span><br><span class="line">        .pipe(gulp.dest('./public'))</span><br><span class="line">});</span><br><span class="line">// 压缩 public/js 目录 js</span><br><span class="line">gulp.task('minify-js', function () {</span><br><span class="line">    return gulp.src('./public/**/*.js')</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task('default', [</span><br><span class="line">    'minify-html', 'minify-css', 'minify-js'</span><br><span class="line">]);</span><br></pre></td></tr></tbody></table></figure>
+
 <h4 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h4><p>在 <code>package.json</code> 中加入如下 <code>script</code></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": {</span><br><span class="line">  "push": "hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>然后在部署的时候只需要运行</p>

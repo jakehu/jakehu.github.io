@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="前记由于我的 ADGuard Home 是安装在群晖的 Docker 中的，对外服务是在路由器上设置的 DNS，DNS 请求如下 client-&gt;路由器-&gt;群晖-&gt;Docker-&gt;ADGuard Home 所以 ADGuard Home 的客户端列表只是显示了群晖 Docker 的网关地 172.17.0.1，没有显示具体的客户端 IP 地址，导致有很多请求都不知道是从哪个">
 <meta property="og:type" content="article">
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -237,7 +237,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -388,6 +388,7 @@ var _hmt = _hmt || [];
 <p><code>Docker-&gt;网络-&gt;macvlan-&gt;管理-&gt;新增</code></p>
 <p>当然你也可以选择通过 Docker 命令的模式来创建容器指定网络</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always --network macvlan --ip=192.168.50.50 --name nginx nginx</span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>本来是 <code>Bridge</code> 下的一个 <code>Frp</code> 容器提供穿透服务，由于 <code>Macvlan</code> 下容器无法与宿主机通信，所以 <code>ADGuard Home</code> 管理平台也就无法穿透出外网</p>
 <p>解决方案就是将 <code>ADGuard Home</code> 容器同时加入 <code>Bridge</code> 和 <code>Macvlan</code> 网络下，<code>Bridge</code> 映射端口到宿主机进行穿透，而 <code>Macvlan</code> 下的 <code>IP</code> 用来提供 <code>DNS</code> 服务</p>
 <hr>

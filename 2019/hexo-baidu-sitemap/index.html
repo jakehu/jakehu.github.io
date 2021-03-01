@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="虽然度娘是一个垮掉的搜索引擎，但是谁叫它在强国是垄断的存在呢。谈谈 Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度。 Sitemap因为 Github Pages 禁止百度爬虫所以这里我们不做过多的说明，无疑这种方式是行不通的 自动推送目前在用的一种推送方式 1自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，">
 <meta property="og:type" content="article">
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -237,7 +237,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -385,6 +385,7 @@ var _hmt = _hmt || [];
 <h3 id="主动推送-实时"><a href="#主动推送-实时" class="headerlink" title="主动推送(实时)"></a>主动推送 (实时)</h3><p>我们重点来说说<code>主动推送</code></p>
 <p>首先我们这里需要安装一下生成 <code>sitemap</code> 的包</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-generator-baidu-sitemap -s</span><br></pre></td></tr></tbody></table></figure>
+
 <p>新建文件 <code>push_sitemap_to_baidu.php</code>，这里我们通过 <code>PHP</code> 来实现</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// 解析xml</span><br><span class="line">$file = "./public/baidusitemap.xml";</span><br><span class="line">$xml = simplexml_load_file($file);</span><br><span class="line">$urls = array();</span><br><span class="line">foreach ($xml as $key =&gt; $value) {</span><br><span class="line">    $url = array();</span><br><span class="line">    $url = (array) $value-&gt;loc;</span><br><span class="line">    $urls[] = current($url);</span><br><span class="line">}</span><br><span class="line">// 调用百度API</span><br><span class="line">$api = 'http://data.zz.baidu.com/urls?site=https://www.jakehu.me&amp;token=***';</span><br><span class="line">$ch = curl_init();</span><br><span class="line">$options = array(</span><br><span class="line">    CURLOPT_URL =&gt; $api,</span><br><span class="line">    CURLOPT_POST =&gt; true,</span><br><span class="line">    CURLOPT_RETURNTRANSFER =&gt; true,</span><br><span class="line">    CURLOPT_POSTFIELDS =&gt; implode("\n", $urls),</span><br><span class="line">    CURLOPT_HTTPHEADER =&gt; array('Content-Type: text/plain'),</span><br><span class="line">);</span><br><span class="line">curl_setopt_array($ch, $options);</span><br><span class="line">$result = curl_exec($ch);</span><br><span class="line">// 返回结果记录</span><br><span class="line">$time = date("Y-m-d H:i:s");</span><br><span class="line">$content = $time . " --- " . $result . PHP_EOL;</span><br><span class="line">$file = "push_sitemap.log";</span><br><span class="line">$fp = fopen($file, "a+") or die("fail to open the file");</span><br><span class="line">fwrite($fp, $content);</span><br><span class="line">fclose($fp);</span><br></pre></td></tr></tbody></table></figure>
 <p>最后会在根目录下生成 <code>push_sitemap.log</code> 日志文件</p>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,14 +22,14 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;, 问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES 绑">
+<meta name="description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Eggjs 之绑定 80 端口引发的一场血案">
 <meta property="og:url" content="http://www.jakehu.me/2019/eggjs-80/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;, 问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES 绑">
+<meta property="og:description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-25T11:07:00.000Z">
 <meta property="article:modified_time" content="2019-06-21T01:58:49.398Z">
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -237,7 +237,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -388,6 +388,7 @@ var _hmt = _hmt || [];
         <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做微信开发本地测试，需要用到 <code>80</code> 端口；鉴于 <code>Eggjs</code> 默认端口为 <code>7001</code>，于是开始了一场 <code>Eggjs</code> 绑定 <code>80</code> 端口之战</p>
 <h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><code>scripts</code> 改造，将 <code>dev</code> 命令改为如下：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"dev": "egg-bin dev --port=80",</span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当运行 <code>npm run dev</code> 之后出现下面问题</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind EACCES null:80, code: EACCES</span><br></pre></td></tr></tbody></table></figure>
 <p>绑定 <code>80</code> 端口失败，看来是权限不够</p>

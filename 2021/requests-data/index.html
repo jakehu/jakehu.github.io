@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,14 +22,14 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="x-www-form-urlencoded当 requests 的 content-typ 为 &quot;content-type&quot;: &quot;application&#x2F;x-www-form-urlencoded; charset&#x3D;UTF-8&quot;, 时请求参数当如下 12345r &#x3D; requests.post(    url,    headers&#x3D;headers,    data&#x3D;data) json当 req">
+<meta name="description" content="x-www-form-urlencoded当 requests 的 content-typ 为 &quot;content-type&quot;: &quot;application&#x2F;x-www-form-urlencoded; charset&#x3D;UTF-8&quot;, 时请求参数当如下 12345r &#x3D; requests.post(    url,    headers&#x3D;headers,    data&#x3D;data)  json当 re">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 之 Requests 参数格式">
 <meta property="og:url" content="http://www.jakehu.me/2021/requests-data/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="x-www-form-urlencoded当 requests 的 content-typ 为 &quot;content-type&quot;: &quot;application&#x2F;x-www-form-urlencoded; charset&#x3D;UTF-8&quot;, 时请求参数当如下 12345r &#x3D; requests.post(    url,    headers&#x3D;headers,    data&#x3D;data) json当 req">
+<meta property="og:description" content="x-www-form-urlencoded当 requests 的 content-typ 为 &quot;content-type&quot;: &quot;application&#x2F;x-www-form-urlencoded; charset&#x3D;UTF-8&quot;, 时请求参数当如下 12345r &#x3D; requests.post(    url,    headers&#x3D;headers,    data&#x3D;data)  json当 re">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-27T05:11:00.000Z">
 <meta property="article:modified_time" content="2021-01-27T05:18:31.188Z">
@@ -225,7 +225,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -238,7 +238,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -373,8 +373,10 @@ var _hmt = _hmt || [];
     <div class="post-body" itemprop="articleBody">
         <h3 id="x-www-form-urlencoded"><a href="#x-www-form-urlencoded" class="headerlink" title="x-www-form-urlencoded"></a>x-www-form-urlencoded</h3><p>当 <code>requests</code> 的 <code>content-typ</code> 为 <code>"content-type": "application/x-www-form-urlencoded; charset=UTF-8",</code> 时请求参数当如下</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r = requests.post(</span><br><span class="line">    url,</span><br><span class="line">    headers=headers,</span><br><span class="line">    data=data</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><p>当 <code>requests</code> 的 <code>content-typ</code> 为 <code>"Content-Type": "application/json;charset=UTF-8",</code> 时请求参数当如下</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r = requests.post(</span><br><span class="line">    url,</span><br><span class="line">    headers=headers,</span><br><span class="line">    data=json.dumps(data)</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
 <hr>
 <p><code>x-www-form-urlencoded</code> 时应该为一个字典，<code>json</code> 时应该为一个 <code>json</code> 字符串</p>
 

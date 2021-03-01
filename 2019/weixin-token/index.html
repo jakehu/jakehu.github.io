@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="最近在开发一个项目是用的 eggjs 同时又需要对接到微信公众平台，所以记录下自己 Egg 对接微信的过程 验证 Token我们知道在微信开发时都需在公众开发配置中对 Token 验证一次，接下来谈谈验证的步骤 第一步确定验证 URL比如我的是 https:&#x2F;&#x2F;www.jakehu.me&#x2F;wechat，那么先对 eggjs 路由改造 12345&#x2F;&#x2F; app&#x2F;router.jsmodule.expo">
 <meta property="og:type" content="article">
@@ -225,7 +225,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -238,7 +238,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -393,6 +393,7 @@ var _hmt = _hmt || [];
 <p>改造完路由后我们还必须对<code>安全</code>这块进行设置，屏蔽对路由 <code>/wechat</code> 的 <code>csrf</code> 验证</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.security = {</span><br><span class="line">    csrf: {</span><br><span class="line">      ignore: <span class="string">'/wechat'</span>,</span><br><span class="line">    },</span><br><span class="line">  };</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="第二步编写验证Controller"><a href="#第二步编写验证Controller" class="headerlink" title="第二步编写验证Controller"></a>第二步编写验证 Controller</h4><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> index () {</span><br><span class="line">    <span class="keyword">const</span> query = <span class="built_in">this</span>.ctx.request.query;</span><br><span class="line">    <span class="keyword">const</span> signature = query.signature;</span><br><span class="line">    <span class="keyword">const</span> timestamp = query.timestamp;</span><br><span class="line">    <span class="keyword">const</span> nonce = query.nonce;</span><br><span class="line">    <span class="keyword">const</span> echostr = query.echostr;</span><br><span class="line"> &nbsp; &nbsp;<span class="keyword">if</span> (<span class="keyword">await</span> <span class="built_in">this</span>.check(timestamp, nonce, signature, <span class="string">'token'</span>)) {</span><br><span class="line">    <span class="built_in">this</span>.ctx.body = echostr;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">    <span class="built_in">this</span>.ctx.body = <span class="string">'It is not from weixin'</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> check (timestamp, nonce, signature, token) {</span><br><span class="line">    <span class="keyword">const</span> tmp = [ token, timestamp, nonce ].sort().join(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">const</span> currSign = crypto.createHash(<span class="string">'sha1'</span>).update(tmp).digest(<span class="string">'hex'</span>);</span><br><span class="line">    <span class="keyword">return</span> (currSign === signature);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <p>然后就可以在<code>开发者配置</code>进行验证就好了</p>
 <blockquote>
 <p>注：上面代码中的 <code>token</code> 即为你在<code>开发者配置</code>页面中填写的 <code>token</code></p>

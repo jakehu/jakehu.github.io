@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="网络配置在安装 minimal 版系统之后 Centos 系统的网卡默认是没有被开启的，我们可以用下面的命令编辑网络配置: 1vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0 如果使用 DHCP 则需要按以下格式设置： 1234567DEVICE&#x3D;eth0HWADDR&#x3D;08:00:27:0F:5C:17TYPE&#x3D;EthernetUUID&#x3D;64ea57af-9">
 <meta property="og:type" content="article">
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -237,7 +237,7 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">82</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -395,18 +395,22 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></tbody></table></figure>
 <p>最后可以用以下命令来查看 IP 地址：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></tbody></table></figure>
-<a id="more"></a>
+
+<span id="more"></span>
 
 <h3 id="重启-关机命令"><a href="#重启-关机命令" class="headerlink" title="重启/关机命令"></a>重启 / 关机命令</h3><p>重启命令：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line">shutdown -r now <span class="comment">#立刻重启(root用户使用)</span></span><br><span class="line">shutdown -r 10 <span class="comment">#过10分钟自动重启(root用户使用) </span></span><br><span class="line">shutdown -r 23:59 <span class="comment">#在时间为23:59时候重启(root用户使用)</span></span><br><span class="line"><span class="comment">#如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重启</span></span><br></pre></td></tr></tbody></table></figure>
 <p>关机命令：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">halt <span class="comment">#立刻关机</span></span><br><span class="line">poweroff <span class="comment">#立刻关机</span></span><br><span class="line">shutdown -h now <span class="comment">#立刻关机(root用户使用)</span></span><br><span class="line">shutdown -h 10 <span class="comment">#10分钟后自动关机</span></span><br><span class="line"><span class="comment">#如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启</span></span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="清理命令"><a href="#清理命令" class="headerlink" title="清理命令"></a>清理命令</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum autoclean</span><br><span class="line">sudo yum clean</span><br><span class="line">sudo yum autoremove</span><br></pre></td></tr></tbody></table></figure>
 <p>这三个命令主要清理升级缓存以及无用包的。</p>
 <h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls 命令</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls [选项] [文件/目录]</span><br><span class="line">   -a 显示所有文件，包括隐藏信息</span><br><span class="line">   -l 显示详细信息</span><br><span class="line">   -d 查看目录属性</span><br><span class="line">   -h 人性化显示文件大小</span><br><span class="line">   -i 显示inode</span><br></pre></td></tr></tbody></table></figure>
 <p>扩展：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls -lh 文件权限解读</span></span><br><span class="line">-rw-r--r--. 1 root root 7.5K 11月  9 15:45 install.log</span><br><span class="line"><span class="comment"># - 文件类型</span></span><br><span class="line"><span class="comment"># rw- 所有者权限</span></span><br><span class="line"><span class="comment"># r-- 所属组权限</span></span><br><span class="line"><span class="comment"># r-- 其他人权限</span></span><br><span class="line"><span class="comment"># . 代表ACL权限</span></span><br><span class="line"><span class="comment"># 1 引用计数</span></span><br><span class="line"><span class="comment"># root 所有者</span></span><br><span class="line"><span class="comment"># root 所有组</span></span><br><span class="line"><span class="comment"># r 读 / w 写 / x 执行</span></span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="目录处理命令"><a href="#目录处理命令" class="headerlink" title="目录处理命令"></a>目录处理命令</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立目录</span></span><br><span class="line">mkdir [选项] [目录]</span><br><span class="line">      -p 递归处理</span><br><span class="line"><span class="comment"># mkdir -p blog/css</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录(tab键可以识别目录补全)</span></span><br><span class="line"><span class="built_in">cd</span> [目录]</span><br><span class="line">   ~  进入用户主目录</span><br><span class="line">   -  进入上次所在目录</span><br><span class="line">   .. 进入上级目录</span><br><span class="line">   .  进入当前目录</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前所在目录</span></span><br><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></tbody></table></figure>
+
 <p><strong>未完待续…</strong></p>
 
     </div>
