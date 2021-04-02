@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>一些常用的 Linux 或 Shell 命令或其他配置</title>
+      <link href="2021/Linux-shell-setting/"/>
+      <url>2021/Linux-shell-setting/</url>
+      
+        <content type="html"><![CDATA[<h3 id="grep过滤注释行和空白行"><a href="#grep过滤注释行和空白行" class="headerlink" title="grep过滤注释行和空白行"></a>grep 过滤注释行和空白行</h3><p><code>cat /etc/kibana/kibana.yml | grep "^\s*[^# \t].*$"</code></p><h3 id="grep查看非系统进程"><a href="#grep查看非系统进程" class="headerlink" title="grep查看非系统进程"></a>grep 查看非系统进程</h3><p><code>ps -ef | grep -v ]$</code></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>利用群晖自带的 Nginx 做反向代理</title>
       <link href="2021/synology-nginx/"/>
       <url>2021/synology-nginx/</url>
