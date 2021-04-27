@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Element 之 Table 多选翻页以及清空选择</title>
+      <link href="2021/element-table-selection/"/>
+      <url>2021/element-table-selection/</url>
+      
+        <content type="html"><![CDATA[<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>在 <code>Vue</code> 中需要对 <code>Table</code> 数据进行多选，且翻页时需要对前一页选中进行保留</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-table</span></span></span><br><span class="line"><span class="tag"><span class="attr">:data</span>=<span class="string">"data"</span> <span class="attr">border</span> <span class="attr">highlight-current-row</span> </span></span><br><span class="line"><span class="tag">@<span class="attr">selection-change</span>=<span class="string">"handleSelectionChange"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:row-key</span>=<span class="string">"getRowKeys"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">ref</span>=<span class="string">"selectionTable"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">type</span>=<span class="string">"selection"</span> <span class="attr">:reserve-selection</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><h4 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h4><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当选择时调用</span></span><br><span class="line">handleSelectionChange(val) {</span><br><span class="line">    <span class="comment">// 业务处理</span></span><br><span class="line">},</span><br><span class="line">getRowKeys(row) {</span><br><span class="line">    <span class="keyword">return</span> row.id; <span class="comment">// 重点是id不能重复</span></span><br><span class="line">},</span><br><span class="line"><span class="comment">// 清除所选，视情况在所需要的地方调用即可</span></span><br><span class="line"><span class="built_in">this</span>.$refs.selectionTable.clearSelection();</span><br></pre></td></tr></tbody></table></figure><hr><p>重点是<code>:row-key</code> 不能重复，也就是 <code>getRowKeys</code> 中的 <code>ID</code> 不能重复</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Element </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Element 之 Table 一键展开与一键折叠</title>
       <link href="2021/element-table/"/>
       <url>2021/element-table/</url>
