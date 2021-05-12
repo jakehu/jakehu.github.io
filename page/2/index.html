@@ -839,10 +839,16 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-05-20 13:45:00 / 修改时间：15:06:29" itemprop="dateCreated datePublished" datetime="2020-05-20T13:45:00+08:00">2020-05-20</time>
+      <time title="创建时间：2020-05-20 13:45:00" itemprop="dateCreated datePublished" datetime="2020-05-20T13:45:00+08:00">2020-05-20</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-12 17:16:02" itemprop="dateModified" datetime="2021-05-12T17:16:02+08:00">2021-05-12</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -890,6 +896,8 @@ var _hmt = _hmt || [];
 <h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建 Group 组</h4><p>创建 <code>objectClass</code> 属性为 <code>groupOfUniqueNames</code> 的组 <code>gogs</code> 用于 <code>gogs</code> 登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中 <code>cn</code> 为组名，<code>uniqueMember</code> 为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
 <h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为 Gogs 添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code> 管理员的 <code>DN</code><br><code>绑定密码</code>：<code>Ldap</code> 管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code> 用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是 <code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
 <h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在 <code>gogs</code> 用户改为 <code>ldap</code> 认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
+<hr>
+<p>题外话：禅道 (<code>zentao</code>) 接入 <code>Ldap</code> <a target="_blank" rel="noopener" href="https://github.com/anjia0532/zentao-ldap">参考</a></p>
 
       
     </div>
