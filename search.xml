@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>试一试，MySQL 计算相邻两行某列差值</title>
+      <link href="2021/mysql-adjoin-diff/"/>
+      <url>2021/mysql-adjoin-diff/</url>
+      
+        <content type="html"><![CDATA[<h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>当我们需要统计累积量的时候就需要计算<code>同一业务</code>以及<code>相邻</code>两行的<code>差值</code></p><h4 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h4><p>接下来我们模拟一个业务，就是统计每天数据表的行数增加量。首先我们需要每天将当天表的数据行数写入到数据库</p><p>表结构如下：</p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`table_logs`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`table_name`</span> <span class="built_in">char</span>(<span class="number">64</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'_'</span> <span class="keyword">COMMENT</span> <span class="string">'table_name'</span>,</span><br><span class="line">  <span class="string">`row_num`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">'行数'</span>,</span><br><span class="line">  <span class="string">`created_at`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">current_timestamp</span>() <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span>,</span><br><span class="line">  <span class="string">`updated_at`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">current_timestamp</span>() <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">current_timestamp</span>(),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`uuid`</span> (<span class="string">`uuid`</span>),</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">1</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</span><br></pre></td></tr></tbody></table></figure><h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>方法：<code>t1.rownum = t2.rownum - 1</code></p><p>代码：</p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        (@<span class="keyword">rownum</span> := @<span class="keyword">rownum</span> + <span class="number">1</span>) <span class="keyword">AS</span> <span class="keyword">rownum</span>,</span><br><span class="line">        <span class="string">`id`</span>,</span><br><span class="line">        <span class="string">`table_name`</span>,</span><br><span class="line">        <span class="string">`row_num`</span></span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        table_logs,</span><br><span class="line">        (<span class="keyword">SELECT</span> @<span class="keyword">rownum</span> := <span class="number">0</span>) t</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">        <span class="number">1</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">       <span class="string">`table_name`</span> <span class="keyword">desc</span>, <span class="string">`id`</span> <span class="keyword">desc</span></span><br><span class="line">  ) <span class="keyword">as</span> t1</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        (@<span class="keyword">INDEX</span> := @<span class="keyword">INDEX</span> + <span class="number">1</span>) <span class="keyword">AS</span> <span class="keyword">rownum</span>,</span><br><span class="line">        <span class="string">`id`</span>,</span><br><span class="line">        <span class="string">`table_name`</span>,</span><br><span class="line">        <span class="string">`row_num`</span></span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        table_logs,</span><br><span class="line">        (<span class="keyword">SELECT</span> @<span class="keyword">rownum</span> := <span class="number">0</span>) t</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">        <span class="number">1</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">       <span class="string">`table_name`</span> <span class="keyword">desc</span>, <span class="string">`id`</span> <span class="keyword">desc</span></span><br><span class="line"> ) <span class="keyword">as</span> t2 <span class="keyword">on</span> t1.rownum = t2.rownum - <span class="number">1</span> <span class="keyword">and</span> t1.table_name = t2.table_name</span><br></pre></td></tr></tbody></table></figure><hr><p>最后只需要将 <code>t1.row_num-t2.row_num</code> 就可以实现我们的需求</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python 之 Json 序列化报错 XXX is not JSON serializable</title>
       <link href="2021/python-serializable/"/>
       <url>2021/python-serializable/</url>
@@ -591,9 +616,9 @@
             
             <tag> 群晖 </tag>
             
-            <tag> Virtual Machine Manager </tag>
-            
             <tag> lede </tag>
+            
+            <tag> Virtual Machine Manager </tag>
             
             <tag> 软路由 </tag>
             

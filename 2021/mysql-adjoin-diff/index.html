@@ -24,19 +24,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="提笔为青春，人生正当年">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晨曦&#39;s Blog">
-<meta property="og:url" content="http://www.jakehu.me/tags/Homebrew/index.html">
+<meta name="description" content="前记当我们需要统计累积量的时候就需要计算同一业务以及相邻两行的差值 业务接下来我们模拟一个业务，就是统计每天数据表的行数增加量。首先我们需要每天将当天表的数据行数写入到数据库 表结构如下： 123456789CREATE TABLE &#96;table_logs&#96; (  &#96;id&#96; int(11) NOT NULL AUTO_INCREMENT,  &#96;table_name&#96; char(64) NOT NU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="试一试，MySQL 计算相邻两行某列差值">
+<meta property="og:url" content="http://www.jakehu.me/2021/mysql-adjoin-diff/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="提笔为青春，人生正当年">
+<meta property="og:description" content="前记当我们需要统计累积量的时候就需要计算同一业务以及相邻两行的差值 业务接下来我们模拟一个业务，就是统计每天数据表的行数增加量。首先我们需要每天将当天表的数据行数写入到数据库 表结构如下： 123456789CREATE TABLE &#96;table_logs&#96; (  &#96;id&#96; int(11) NOT NULL AUTO_INCREMENT,  &#96;table_name&#96; char(64) NOT NU">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-27T08:13:00.000Z">
+<meta property="article:modified_time" content="2021-05-27T08:47:26.187Z">
 <meta property="article:author" content="jakehu">
-<meta property="article:tag" content="jakehu">
+<meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.jakehu.me/tags/Homebrew/">
+<link rel="canonical" href="http://www.jakehu.me/2021/mysql-adjoin-diff/">
 
 
 <script class="page-configurations">
@@ -44,7 +46,7 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
@@ -68,7 +70,7 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-<title>标签: Homebrew | 晨曦's Blog</title>
+<title>试一试，MySQL 计算相邻两行某列差值 | 晨曦's Blog</title>
   
 
 
@@ -193,7 +195,7 @@ var _hmt = _hmt || [];
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -206,6 +208,7 @@ var _hmt = _hmt || [];
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">前记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1"><span class="nav-number">2.</span> <span class="nav-text">业务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -291,51 +294,145 @@ var _hmt = _hmt || [];
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">Homebrew
-          <small>标签</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/mysql-adjoin-diff/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+      <meta itemprop="description" content="提笔为青春，人生正当年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          试一试，MySQL 计算相邻两行某列差值
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
+
+      <time title="创建时间：2021-05-27 16:13:00 / 修改时间：16:47:26" itemprop="dateCreated datePublished" datetime="2021-05-27T16:13:00+08:00">2021-05-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/mysql-adjoin-diff/" class="post-meta-item leancloud_visitors" data-flag-title="试一试，MySQL 计算相邻两行某列差值" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/mysql-adjoin-diff/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/mysql-adjoin-diff/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>当我们需要统计累积量的时候就需要计算<code>同一业务</code>以及<code>相邻</code>两行的<code>差值</code></p>
+<h4 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h4><p>接下来我们模拟一个业务，就是统计每天数据表的行数增加量。首先我们需要每天将当天表的数据行数写入到数据库</p>
+<p>表结构如下：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`table_logs`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`table_name`</span> <span class="built_in">char</span>(<span class="number">64</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'_'</span> <span class="keyword">COMMENT</span> <span class="string">'table_name'</span>,</span><br><span class="line">  <span class="string">`row_num`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">'行数'</span>,</span><br><span class="line">  <span class="string">`created_at`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">current_timestamp</span>() <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span>,</span><br><span class="line">  <span class="string">`updated_at`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">current_timestamp</span>() <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">current_timestamp</span>(),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`uuid`</span> (<span class="string">`uuid`</span>),</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">1</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>方法：<code>t1.rownum = t2.rownum - 1</code></p>
+<p>代码：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        (@<span class="keyword">rownum</span> := @<span class="keyword">rownum</span> + <span class="number">1</span>) <span class="keyword">AS</span> <span class="keyword">rownum</span>,</span><br><span class="line">        <span class="string">`id`</span>,</span><br><span class="line">        <span class="string">`table_name`</span>,</span><br><span class="line">        <span class="string">`row_num`</span></span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        table_logs,</span><br><span class="line">        (<span class="keyword">SELECT</span> @<span class="keyword">rownum</span> := <span class="number">0</span>) t</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">        <span class="number">1</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">       <span class="string">`table_name`</span> <span class="keyword">desc</span>, <span class="string">`id`</span> <span class="keyword">desc</span></span><br><span class="line">  ) <span class="keyword">as</span> t1</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        (@<span class="keyword">INDEX</span> := @<span class="keyword">INDEX</span> + <span class="number">1</span>) <span class="keyword">AS</span> <span class="keyword">rownum</span>,</span><br><span class="line">        <span class="string">`id`</span>,</span><br><span class="line">        <span class="string">`table_name`</span>,</span><br><span class="line">        <span class="string">`row_num`</span></span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        table_logs,</span><br><span class="line">        (<span class="keyword">SELECT</span> @<span class="keyword">rownum</span> := <span class="number">0</span>) t</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">        <span class="number">1</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">       <span class="string">`table_name`</span> <span class="keyword">desc</span>, <span class="string">`id`</span> <span class="keyword">desc</span></span><br><span class="line"> ) <span class="keyword">as</span> t2 <span class="keyword">on</span> t1.rownum = t2.rownum - <span class="number">1</span> <span class="keyword">and</span> t1.table_name = t2.table_name</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>最后只需要将 <code>t1.row_num-t2.row_num</code> 就可以实现我们的需求</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2018-12-06T09:12:00+08:00"
-              content="2018-12-06">
-          12-06
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>我就想试试，没别的意思！</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://img.jakehu.me/wxpay.png" alt="jakehu 微信">
+        <span>微信</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2018/Homebrew-nvm/" itemprop="url">
-            <span itemprop="name">Homebrew 安装 Node 版本管理 nvm 之不得不说的坑！</span>
-          </a>
-      </div>
+  </div>
+</div>
 
-      
-    </header>
+          <div class="post-tags">
+              <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/python-serializable/" rel="prev" title="Python 之 Json 序列化报错 XXX is not JSON serializable">
+                  <i class="fa fa-chevron-left"></i> Python 之 Json 序列化报错 XXX is not JSON serializable
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
   </div>
   
-  
-  
-
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -500,6 +597,26 @@ var _hmt = _hmt || [];
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://www.jakehu.me/2021/mysql-adjoin-diff/";
+    this.page.identifier = "2021/mysql-adjoin-diff/";
+    this.page.title = "试一试，MySQL 计算相邻两行某列差值";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://jakehu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>
