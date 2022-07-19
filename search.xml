@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>VSCode 远程开发之 Remote</title>
+      <link href="/2022/VSCode-Remote/"/>
+      <url>/2022/VSCode-Remote/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>本地 <code>Windows</code>，在做 <code>k8s kubebuilder</code> 开发的时候是在本机安装一台 <code>Cnetos</code> 虚拟机来作为开发环境，这个时候就需要用到远程开发了</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>1、<code>Vscode</code> 上安装 <code>Remote - SSH</code> 插件</p><p>2、设置配置文件</p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置文件路径</span></span><br><span class="line"><span class="comment"># C:\Users\jakehu\.ssh\config</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置文件格式</span></span><br><span class="line">Host kubebuilder</span><br><span class="line">    HostName 10.113.73.205</span><br><span class="line">    User root</span><br><span class="line">    Port 22</span><br></pre></td></tr></tbody></table></figure><p>3、配置免密登陆</p><p>将本地公钥 <code>C:\Users\jakehu\.ssh\id_rsa.pub</code> 放入服务器 <code>~/.ssh/authorized_keys</code> 即可</p><hr><p><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote 参考</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vscode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VMware 虚拟机中 Centos 获取不到 IP</title>
+      <link href="/2022/vmware-centos-no-ip/"/>
+      <url>/2022/vmware-centos-no-ip/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>虚拟机是 <code>Centos</code>，利用桥接模式进行网络连接，输入 <code>ip a s</code> 命令 <code>ens33</code> 网卡没有 <code>IP</code> 地址</p><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>修改配置文件：</p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></tbody></table></figure><p>修改如下配置：</p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ONBOOT=<span class="built_in">yes</span></span><br></pre></td></tr></tbody></table></figure><p>重启：</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure><hr><p>题外话：</p><p><a href="https://docs.vmware.com/cn/VMware-Workstation-Player-for-Windows/16.0/com.vmware.player.win.using.doc/GUID-D8892B15-73A5-4FCE-AB7D-56C2C90BD951.html">安装 VMware Tools</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VMware </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Centos 下搭建 kubebuilder 开发环境</title>
+      <link href="/2022/centos-kubebuilder/"/>
+      <url>/2022/centos-kubebuilder/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>昨天在 <code>Windows</code> 上成功安装了 <code>kubebuilder</code> 但是在最后 <code>make install</code> 环节一直过不去，想想算了，还是用 <code>Centos</code> 吧</p><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p>这是官方给出的需求依赖</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">go version v1.17.9+</span><br><span class="line">docker version 17.03+.</span><br><span class="line">kubectl version v1.11.3+.</span><br><span class="line">Access to a Kubernetes v1.11.3+ cluster.</span><br></pre></td></tr></tbody></table></figure><h4 id="GO"><a href="#GO" class="headerlink" title="GO"></a>GO</h4><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz</span><br><span class="line"><span class="built_in">rm</span> -rf /usr/local/go &amp;&amp; tar -C /usr/local -xzf go1.18.4.linux-amd64.tar.gz</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/local/go/bin</span><br><span class="line">go version</span><br></pre></td></tr></tbody></table></figure><h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><p><a href="https://docs.docker.com/engine/install/centos/">Centos Docker 安装文档</a></p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自启动Docker</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker.service</span><br></pre></td></tr></tbody></table></figure><h4 id="K8S"><a href="#K8S" class="headerlink" title="K8S"></a>K8S</h4><p><a href="https://minikube.sigs.k8s.io/docs/start/">Minikube 安装</a></p><p>问题 1：<code>X Exiting due to DRV_AS_ROOT: The "docker" driver should not be used with root privileges.</code></p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start --force --driver=docker</span><br></pre></td></tr></tbody></table></figure><h3 id="kubebuilder"><a href="#kubebuilder" class="headerlink" title="kubebuilder"></a>kubebuilder</h3><p><a href="https://book.kubebuilder.io/quick-start.html">kubebuilder 安装</a></p><hr><p>到此 <code>kubebuilder</code> 环境就算搭建完成</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> kubebuilder </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows 下通过 Cygwin 来安装 kubebuilder</title>
       <link href="/2022/windows-cygwin-kubebuilder/"/>
       <url>/2022/windows-cygwin-kubebuilder/</url>
@@ -20,9 +95,9 @@
       
         <tags>
             
-            <tag> cygwin </tag>
-            
             <tag> kubebuilder </tag>
+            
+            <tag> cygwin </tag>
             
         </tags>
       
@@ -756,9 +831,9 @@
       
         <tags>
             
-            <tag> go </tag>
-            
             <tag> vscode </tag>
+            
+            <tag> go </tag>
             
         </tags>
       
@@ -1053,9 +1128,9 @@
       
         <tags>
             
-            <tag> Sanic </tag>
-            
             <tag>  ORM </tag>
+            
+            <tag> Sanic </tag>
             
         </tags>
       
