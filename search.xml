@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Caddy error listen tcp 127.0.0.1:2019: bind: cannot assign</title>
+      <link href="/2023/caddy-error/"/>
+      <url>/2023/caddy-error/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在使用 <code>Caddy</code> 的时候出现如下错误</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: HOME=/root</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: LOGNAME=root</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: USER=root</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: SHELL=/bin/sh</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: INVOCATION_ID=91c06f7e038e4ed2a5e12d9d975650b1</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: JOURNAL_STREAM=8:26524</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: {"level":"info","ts":1672885007.9022179,"msg":"using provided configuration","config_file":"/etc/caddy/Caddyfile","config_adapter":""}</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: run: loading initial config: loading new config: starting caddy administration endpoint: listen tcp 127.0.0.1:2019: bind: cannot assign&gt;</span><br><span class="line">Jan 05 02:16:47 C20230104172971 systemd[1]: caddy.service: Main process exited, code=exited, status=1/FAILURE</span><br><span class="line">Jan 05 02:16:47 C20230104172971 systemd[1]: caddy.service: Failed with result 'exit-code'.</span><br></pre></td></tr></tbody></table></figure><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>在 <code>Caddyfile</code> 开头增加下面配置即可</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  admin 0.0.0.0:2019</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> error </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> caddy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>利用更改 Hosts 文件恢复 Google Translate</title>
       <link href="/2022/google-translate/"/>
       <url>/2022/google-translate/</url>
