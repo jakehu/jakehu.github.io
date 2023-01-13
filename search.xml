@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>群晖 Synocommunity 无效的位置</title>
+      <link href="/2023/Synology-Packages-Error/"/>
+      <url>/2023/Synology-Packages-Error/</url>
+      
+        <content type="html"><![CDATA[<p>添加的 <code>synocommunity</code> 本来是没有问题的，最近发现没法显示相关组件，从新添加提示<code>无效的位置</code></p><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mv</span> /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt.bak &amp;&amp; sudo curl -Lko /etc/ssl/certs/ca-certificates.crt https://curl.se/ca/cacert.pem</span><br></pre></td></tr></tbody></table></figure><p>参考：<a href="https://github.com/SynoCommunity/spksrc/issues/4897">can’t add community repo - “invalid location” error - problem solved</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Caddy error listen tcp 127.0.0.1:2019: bind: cannot assign</title>
       <link href="/2023/caddy-error/"/>
       <url>/2023/caddy-error/</url>
@@ -503,9 +522,9 @@
       
         <tags>
             
-            <tag> sed </tag>
-            
             <tag> mac </tag>
+            
+            <tag> sed </tag>
             
         </tags>
       
@@ -1203,9 +1222,9 @@
       
         <tags>
             
-            <tag>  ORM </tag>
-            
             <tag> Sanic </tag>
+            
+            <tag>  ORM </tag>
             
         </tags>
       
@@ -2546,9 +2565,9 @@
       
         <tags>
             
-            <tag> mac </tag>
-            
             <tag> microsoft </tag>
+            
+            <tag> mac </tag>
             
         </tags>
       
