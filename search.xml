@@ -102,7 +102,7 @@
       <link href="/2022/google-translate/"/>
       <url>/2022/google-translate/</url>
       
-        <content type="html"><![CDATA[<h3 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h3><p>首先找到 <code>google.cn</code> 在大陆可用的 <code>IP</code>，可以利用下面 <code>chinaz</code></p><p><a href="https://ping.chinaz.com/google.cn">https://ping.chinaz.com/google.cn</a></p><p>尽量找延迟低一点的 <code>IP</code></p><h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><p>修改 <code>Host</code>，<code>Windows</code> 如：<code>C:\Windows\System32\drivers\etc\hosts</code></p><h2 id="将下面记录加入到hosts文件"><a href="#将下面记录加入到hosts文件" class="headerlink" title="将下面记录加入到hosts文件"></a>将下面记录加入到 <code>hosts</code> 文件<br><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">180.163.151.162 translate.googleapis.com</span><br></pre></td></tr></tbody></table></figure></h2><p>题外话：<code>Chrome</code> 翻译插件可以用<code>火山翻译</code>，字节出品还比较好用</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h3><p>首先找到 <code>google.cn</code> 在大陆可用的 <code>IP</code>，可以利用下面 <code>chinaz</code></p><p><a href="https://ping.chinaz.com/google.cn">https://ping.chinaz.com/google.cn</a></p><p>尽量找延迟低一点的 <code>IP</code></p><h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><p>修改 <code>Host</code>，<code>Windows</code> 如：<code>C:\Windows\System32\drivers\etc\hosts</code></p><p>将下面记录加入到 <code>hosts</code> 文件</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">180.163.151.162 translate.googleapis.com</span><br></pre></td></tr></tbody></table></figure><p><a href="https://hcfy.app/blog/2022/09/28/ggg">参考</a></p><hr><p>题外话：<code>Chrome</code> 翻译插件可以用<code>火山翻译</code>，字节出品还比较好用</p>]]></content>
       
       
       <categories>
@@ -682,9 +682,9 @@
       
         <tags>
             
-            <tag> golang </tag>
-            
             <tag> gin </tag>
+            
+            <tag> golang </tag>
             
         </tags>
       
