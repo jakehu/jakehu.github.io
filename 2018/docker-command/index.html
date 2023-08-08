@@ -16,10 +16,10 @@
 
 <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="查看 docker 磁盘使用情况1docker system df kill 掉所有容器1docker kill $(docker ps -a -q) 删除所有停止容器1docker rm $(docker ps -a -q) 删除所有镜像1docker rmi $(docker images -q) 强制删除镜像 当同一镜像被多个储存库引用时，就需要强制删除镜像  1docker rmi -f">
 <meta property="og:type" content="article">
@@ -160,7 +160,7 @@ var _hmt = _hmt || [];
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bdocker%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="nav-number">1.</span> <span class="nav-text">查看 docker 磁盘使用情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill%E6%8E%89%E6%89%80%E6%9C%89%E5%AE%B9%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">kill 掉所有容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">删除所有停止容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E9%95%9C%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">删除所有镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F"><span class="nav-number">5.</span> <span class="nav-text">强制删除镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4tag%E4%B8%BA-lt-none-gt-%E7%9A%84%E6%89%80%E6%9C%89%E9%95%9C%E5%83%8F"><span class="nav-number">6.</span> <span class="nav-text">删除 tag 为 &lt;none&gt; 的所有镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%B7%B2%E7%BB%8FPUSH%E5%B8%A6%E6%9C%89DIGEST%E5%8F%82%E6%95%B0%E9%95%9C%E5%83%8F"><span class="nav-number">7.</span> <span class="nav-text">删除已经 PUSH 带有 DIGEST 参数镜像</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bdocker%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="nav-number">1.</span> <span class="nav-text">查看 docker 磁盘使用情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill%E6%8E%89%E6%89%80%E6%9C%89%E5%AE%B9%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">kill 掉所有容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">删除所有停止容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E9%95%9C%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">删除所有镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F"><span class="nav-number">5.</span> <span class="nav-text">强制删除镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4tag%E4%B8%BA%E7%9A%84%E6%89%80%E6%9C%89%E9%95%9C%E5%83%8F"><span class="nav-number">6.</span> <span class="nav-text">删除 tag 为 &lt;none&gt; 的所有镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%B7%B2%E7%BB%8FPUSH%E5%B8%A6%E6%9C%89DIGEST%E5%8F%82%E6%95%B0%E9%95%9C%E5%83%8F"><span class="nav-number">7.</span> <span class="nav-text">删除已经 PUSH 带有 DIGEST 参数镜像</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -175,7 +175,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -186,7 +186,7 @@ var _hmt = _hmt || [];
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -325,8 +325,7 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <h4 id="查看docker磁盘使用情况"><a href="#查看docker磁盘使用情况" class="headerlink" title="查看docker磁盘使用情况"></a>查看 docker 磁盘使用情况</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system df</span><br></pre></td></tr></tbody></table></figure>
+    <div class="post-body" itemprop="articleBody"><h4 id="查看docker磁盘使用情况"><a href="#查看docker磁盘使用情况" class="headerlink" title="查看docker磁盘使用情况"></a>查看 docker 磁盘使用情况</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system df</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="kill掉所有容器"><a href="#kill掉所有容器" class="headerlink" title="kill掉所有容器"></a>kill 掉所有容器</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker kill $(docker ps -a -q)</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="删除所有停止容器"><a href="#删除所有停止容器" class="headerlink" title="删除所有停止容器"></a>删除所有停止容器</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="删除所有镜像"><a href="#删除所有镜像" class="headerlink" title="删除所有镜像"></a>删除所有镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></tbody></table></figure>
@@ -334,7 +333,7 @@ var _hmt = _hmt || [];
 <p>当同一镜像被多个储存库引用时，就需要强制删除镜像</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f 镜像ID</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="删除tag为-lt-none-gt-的所有镜像"><a href="#删除tag为-lt-none-gt-的所有镜像" class="headerlink" title="删除tag为<none>的所有镜像"></a>删除 tag 为 <code>&lt;none&gt;</code> 的所有镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker images|grep none|awk '{print $3}'|xargs docker rmi</span><br><span class="line"></span><br><span class="line">docker rmi $(docker images -f "dangling=true" -q)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="删除tag为的所有镜像"><a href="#删除tag为的所有镜像" class="headerlink" title="删除tag为<none>的所有镜像"></a>删除 tag 为 <code>&lt;none&gt;</code> 的所有镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker images|grep none|awk '{print $3}'|xargs docker rmi</span><br><span class="line"></span><br><span class="line">docker rmi $(docker images -f "dangling=true" -q)</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="删除已经PUSH带有DIGEST参数镜像"><a href="#删除已经PUSH带有DIGEST参数镜像" class="headerlink" title="删除已经PUSH带有DIGEST参数镜像"></a>删除已经 PUSH 带有 DIGEST 参数镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker images --digests</span><br><span class="line">REPOSITORY                     TAG       DIGEST                                                                    IMAGE ID        CREATED         SIZE</span><br><span class="line">localhost:5000/nodeservice    &lt;none&gt;    sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf   4986bf8c1536    9 weeks ago     2.43 MB</span><br><span class="line"></span><br><span class="line">$ docker rmi localhost:5000/nodeservice@sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <font color="red">
@@ -356,12 +355,12 @@ var _hmt = _hmt || [];
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2018/docker-time-zone/" rel="prev" title="Docker 之时区配置">
-                  <i class="fa fa-chevron-left"></i> Docker 之时区配置
+                  <i class="fa fa-angle-left"></i> Docker 之时区配置
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2018/Java-Utils/" rel="next" title="Java 楞个多优秀的工具类，嗯嗯，快记下来">
-                  Java 楞个多优秀的工具类，嗯嗯，快记下来 <i class="fa fa-chevron-right"></i>
+                  Java 楞个多优秀的工具类，嗯嗯，快记下来 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -383,15 +382,14 @@ var _hmt = _hmt || [];
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">jakehu</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">jakehu</span>
+  </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
@@ -405,7 +403,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:11</span>
+    <span title="站点阅读时长">2:12</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -417,7 +415,7 @@ var _hmt = _hmt || [];
   
   <div class="reading-progress-bar"></div>
 
-  <a href="https://github.com/jakehu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+  <a href="https://github.com/jakehu" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -431,6 +429,8 @@ var _hmt = _hmt || [];
 
   <script src="https://cdn.staticfile.org/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
+
+
 
 
 

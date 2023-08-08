@@ -16,10 +16,10 @@
 
 <link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。http:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;g">
 <meta property="og:type" content="article">
@@ -166,7 +166,7 @@ var _hmt = _hmt || [];
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E5%BE%80Openwrt%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD703n%E5%AE%98%E6%96%B9%E5%9B%BA%E4%BB%B6%EF%BC%8C%E6%88%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%98%AF%E6%9C%80%E6%96%B0%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9B%E5%85%A5%E5%8E%9F%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88192-168-1-1%EF%BC%89%E5%9C%A8%E3%80%90%E7%B3%BB%E7%BB%9F%E5%B7%A5%E5%85%B7%E3%80%91-gt-%E3%80%90%E8%BD%AF%E4%BB%B6%E5%8D%87%E7%BA%A7%E3%80%91%E4%B8%AD%E5%8D%87%E7%BA%A7%E5%88%9A%E6%89%8D%E5%9C%A8Openwrt%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%9B%BA%E4%BB%B6%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在 Openwrt 官网下载的固件。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E9%A6%96%E5%85%88%E7%94%A8%E4%B8%80%E6%A0%B9%E7%BD%91%E7%BA%BF%E5%B0%86703N%E7%9A%84Lan%E5%8F%A3%E5%92%8C%E4%BD%A0%E7%94%B5%E8%84%91%E7%9B%B8%E8%BF%9E%EF%BC%8C%E7%94%B5%E8%84%91%E4%B8%8A%E8%AE%BE%E7%BD%AE%E4%B8%BADHCP%E6%A8%A1%E5%BC%8F%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">（1）首先用一根网线将 703N 的 Lan 口和你电脑相连，电脑上设置为 DHCP 模式。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%84%B6%E5%90%8E%E8%BF%90%E8%A1%8Ccmd-exe%EF%BC%8C%E8%BE%93%E5%85%A5telnet-192-168-1-1%E6%88%90%E5%8A%9F%E5%90%8E%E5%87%BA%E7%8E%B0OpenWrt%E7%9A%84%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2%E3%80%82"><span class="nav-number">2.2.</span> <span class="nav-text">（2）然后运行 cmd.exe，输入 telnet 192.168.1.1 成功后出现 OpenWrt 的欢迎界面。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E8%BE%93%E5%85%A5passwd%E6%9B%B4%E6%94%B9root%E5%AF%86%E7%A0%81%E5%90%8Edropbear-SSH-%E6%9C%8D%E5%8A%A1-%E5%B0%B1%E8%BF%90%E8%A1%8C%E4%BA%86%EF%BC%8C%E8%BE%93%E5%85%A5exit%E9%80%80%E5%87%BAtelnet%EF%BC%9B%E4%BB%A5%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87ssh%E7%AE%A1%E7%90%86OpenWrt%E3%80%82"><span class="nav-number">2.3.</span> <span class="nav-text">（3）输入 passwd 更改 root 密码后 dropbear (SSH 服务) 就运行了，输入 exit 退出 telnet；以后就可以通过 ssh 管理 OpenWrt。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9B%A0%E4%B8%BA703N%E7%9A%84Flash%E5%8F%AA%E6%9C%894M%EF%BC%8C%E5%81%9A%E5%AE%8C%E4%B8%8A%E8%BF%B0%E6%AD%A5%E9%AA%A4%E4%B9%8B%E5%90%8E%E5%B0%B1%E5%8F%AA%E6%9C%89400KB%E5%B7%A6%E5%8F%B3%E4%BA%86%EF%BC%9B%E4%BA%8E%E6%98%AF%E6%88%91%E9%80%89%E6%8B%A9%E4%BA%86%E5%9C%A8703N%E4%B8%8A%E9%9D%A2%E6%8C%82%E5%9C%A8%E4%BA%86%E4%B8%80%E4%B8%AA8G%E7%9A%84U%E7%9B%98%E6%9D%A5%E6%89%A9%E5%B1%95%E3%80%82"><span class="nav-number">3.</span> <span class="nav-text">三、因为 703N 的 Flash 只有 4M，做完上述步骤之后就只有 400KB 左右了；于是我选择了在 703N 上面挂在了一个 8G 的 U 盘来扩展。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%B0%868G%E7%9A%84U%E7%9B%98%E5%88%86%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%8C%BA%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%8C%BA2G%E4%B8%BAswap%E6%A0%BC%E5%BC%8F%E4%BD%9C%E4%B8%BA%E7%BC%93%E5%AD%98%E5%8C%BA%E7%94%A8%EF%BC%8C%E5%85%B6%E4%BB%96%E7%A9%BA%E9%97%B4%E4%B8%BAext4%E6%A0%BC%E5%BC%8F%E3%80%82%EF%BC%88Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%BB%99U%E7%9B%98%E5%88%86%E5%8C%BA%E5%8F%AF%E4%BB%A5%E7%94%A8GParted%E8%BF%99%E6%AC%BE%E8%BD%AF%E4%BB%B6%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">（1）在 Linux 系统下将 8G 的 U 盘分为两个区，一个区 2G 为 swap 格式作为缓存区用，其他空间为 ext4 格式。（Linux 系统下给 U 盘分区可以用 GParted 这款软件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%8C%82%E8%BD%BDU%E7%9B%98"><span class="nav-number">3.2.</span> <span class="nav-text">（2）挂载 U 盘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E4%BB%AC%E5%B0%B1%E6%9D%A5%E5%AE%89%E8%A3%85Shadowsocks%EF%BC%8C%E8%BF%99%E6%AD%A5%E5%B7%B2%E7%BB%8F%E6%9C%89%E7%BD%91%E5%8F%8B%E6%9C%89%E6%88%90%E7%86%9F%E6%A1%88%E4%BE%8B%E5%92%8C%E6%95%99%E7%A8%8B%E4%BA%86%E3%80%82%E6%88%91%E8%BF%99%E9%87%8C%E5%B0%B1%E4%B8%8D%E5%A4%9A%E8%AF%B4%E4%BA%86%EF%BC%8C%E5%85%B7%E4%BD%93%E8%AF%B7%E5%89%8D%E5%BE%80%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">四、接下来我们就来安装 Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E5%BE%80Openwrt%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD703n%E5%AE%98%E6%96%B9%E5%9B%BA%E4%BB%B6%EF%BC%8C%E6%88%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%98%AF%E6%9C%80%E6%96%B0%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9B%E5%85%A5%E5%8E%9F%E8%B7%AF%E7%94%B1%E5%99%A8%EF%BC%88192-168-1-1%EF%BC%89%E5%9C%A8%E3%80%90%E7%B3%BB%E7%BB%9F%E5%B7%A5%E5%85%B7%E3%80%91-%E3%80%90%E8%BD%AF%E4%BB%B6%E5%8D%87%E7%BA%A7%E3%80%91%E4%B8%AD%E5%8D%87%E7%BA%A7%E5%88%9A%E6%89%8D%E5%9C%A8Openwrt%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%9B%BA%E4%BB%B6%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在 Openwrt 官网下载的固件。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E9%A6%96%E5%85%88%E7%94%A8%E4%B8%80%E6%A0%B9%E7%BD%91%E7%BA%BF%E5%B0%86703N%E7%9A%84Lan%E5%8F%A3%E5%92%8C%E4%BD%A0%E7%94%B5%E8%84%91%E7%9B%B8%E8%BF%9E%EF%BC%8C%E7%94%B5%E8%84%91%E4%B8%8A%E8%AE%BE%E7%BD%AE%E4%B8%BADHCP%E6%A8%A1%E5%BC%8F%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">（1）首先用一根网线将 703N 的 Lan 口和你电脑相连，电脑上设置为 DHCP 模式。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%84%B6%E5%90%8E%E8%BF%90%E8%A1%8Ccmd-exe%EF%BC%8C%E8%BE%93%E5%85%A5telnet-192-168-1-1%E6%88%90%E5%8A%9F%E5%90%8E%E5%87%BA%E7%8E%B0OpenWrt%E7%9A%84%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2%E3%80%82"><span class="nav-number">2.2.</span> <span class="nav-text">（2）然后运行 cmd.exe，输入 telnet 192.168.1.1 成功后出现 OpenWrt 的欢迎界面。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E8%BE%93%E5%85%A5passwd%E6%9B%B4%E6%94%B9root%E5%AF%86%E7%A0%81%E5%90%8Edropbear-SSH-%E6%9C%8D%E5%8A%A1-%E5%B0%B1%E8%BF%90%E8%A1%8C%E4%BA%86%EF%BC%8C%E8%BE%93%E5%85%A5exit%E9%80%80%E5%87%BAtelnet%EF%BC%9B%E4%BB%A5%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87ssh%E7%AE%A1%E7%90%86OpenWrt%E3%80%82"><span class="nav-number">2.3.</span> <span class="nav-text">（3）输入 passwd 更改 root 密码后 dropbear (SSH 服务) 就运行了，输入 exit 退出 telnet；以后就可以通过 ssh 管理 OpenWrt。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9B%A0%E4%B8%BA703N%E7%9A%84Flash%E5%8F%AA%E6%9C%894M%EF%BC%8C%E5%81%9A%E5%AE%8C%E4%B8%8A%E8%BF%B0%E6%AD%A5%E9%AA%A4%E4%B9%8B%E5%90%8E%E5%B0%B1%E5%8F%AA%E6%9C%89400KB%E5%B7%A6%E5%8F%B3%E4%BA%86%EF%BC%9B%E4%BA%8E%E6%98%AF%E6%88%91%E9%80%89%E6%8B%A9%E4%BA%86%E5%9C%A8703N%E4%B8%8A%E9%9D%A2%E6%8C%82%E5%9C%A8%E4%BA%86%E4%B8%80%E4%B8%AA8G%E7%9A%84U%E7%9B%98%E6%9D%A5%E6%89%A9%E5%B1%95%E3%80%82"><span class="nav-number">3.</span> <span class="nav-text">三、因为 703N 的 Flash 只有 4M，做完上述步骤之后就只有 400KB 左右了；于是我选择了在 703N 上面挂在了一个 8G 的 U 盘来扩展。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%B0%868G%E7%9A%84U%E7%9B%98%E5%88%86%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%8C%BA%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%8C%BA2G%E4%B8%BAswap%E6%A0%BC%E5%BC%8F%E4%BD%9C%E4%B8%BA%E7%BC%93%E5%AD%98%E5%8C%BA%E7%94%A8%EF%BC%8C%E5%85%B6%E4%BB%96%E7%A9%BA%E9%97%B4%E4%B8%BAext4%E6%A0%BC%E5%BC%8F%E3%80%82%EF%BC%88Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%BB%99U%E7%9B%98%E5%88%86%E5%8C%BA%E5%8F%AF%E4%BB%A5%E7%94%A8GParted%E8%BF%99%E6%AC%BE%E8%BD%AF%E4%BB%B6%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">（1）在 Linux 系统下将 8G 的 U 盘分为两个区，一个区 2G 为 swap 格式作为缓存区用，其他空间为 ext4 格式。（Linux 系统下给 U 盘分区可以用 GParted 这款软件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%8C%82%E8%BD%BDU%E7%9B%98"><span class="nav-number">3.2.</span> <span class="nav-text">（2）挂载 U 盘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E4%BB%AC%E5%B0%B1%E6%9D%A5%E5%AE%89%E8%A3%85Shadowsocks%EF%BC%8C%E8%BF%99%E6%AD%A5%E5%B7%B2%E7%BB%8F%E6%9C%89%E7%BD%91%E5%8F%8B%E6%9C%89%E6%88%90%E7%86%9F%E6%A1%88%E4%BE%8B%E5%92%8C%E6%95%99%E7%A8%8B%E4%BA%86%E3%80%82%E6%88%91%E8%BF%99%E9%87%8C%E5%B0%B1%E4%B8%8D%E5%A4%9A%E8%AF%B4%E4%BA%86%EF%BC%8C%E5%85%B7%E4%BD%93%E8%AF%B7%E5%89%8D%E5%BE%80%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">四、接下来我们就来安装 Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -181,7 +181,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">143</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,7 +192,7 @@ var _hmt = _hmt || [];
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -331,10 +331,9 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。</p>
+    <div class="post-body" itemprop="articleBody"><p>说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。</p>
 <h3 id="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"><a href="#一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。" class="headerlink" title="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"></a>一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。</h3><p><a target="_blank" rel="noopener" href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/">http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/</a></p>
-<h3 id="二、进入原路由器（192-168-1-1）在【系统工具】-gt-【软件升级】中升级刚才在Openwrt官网下载的固件。"><a href="#二、进入原路由器（192-168-1-1）在【系统工具】-gt-【软件升级】中升级刚才在Openwrt官网下载的固件。" class="headerlink" title="二、进入原路由器（192.168.1.1）在【系统工具】->【软件升级】中升级刚才在Openwrt官网下载的固件。"></a>二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在 Openwrt 官网下载的固件。</h3><h4 id="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"><a href="#（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。" class="headerlink" title="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"></a>（1）首先用一根网线将 703N 的 Lan 口和你电脑相连，电脑上设置为 DHCP 模式。</h4><h4 id="（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。"><a href="#（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。" class="headerlink" title="（2）然后运行cmd.exe，输入telnet 192.168.1.1成功后出现OpenWrt的欢迎界面。"></a>（2）然后运行 cmd.exe，输入 telnet 192.168.1.1 成功后出现 OpenWrt 的欢迎界面。</h4><h4 id="（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"><a href="#（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。" class="headerlink" title="（3）输入passwd更改root密码后dropbear(SSH 服务)就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"></a>（3）输入 passwd 更改 root 密码后 dropbear (SSH 服务) 就运行了，输入 exit 退出 telnet；以后就可以通过 ssh 管理 OpenWrt。</h4><p>注：最新版默认已经安装和启用 Luci 管理界面，你可以直接通过访问 192.168.1.1 进入 Luci Web 管理界面。</p>
+<h3 id="二、进入原路由器（192-168-1-1）在【系统工具】-【软件升级】中升级刚才在Openwrt官网下载的固件。"><a href="#二、进入原路由器（192-168-1-1）在【系统工具】-【软件升级】中升级刚才在Openwrt官网下载的固件。" class="headerlink" title="二、进入原路由器（192.168.1.1）在【系统工具】->【软件升级】中升级刚才在Openwrt官网下载的固件。"></a>二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在 Openwrt 官网下载的固件。</h3><h4 id="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"><a href="#（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。" class="headerlink" title="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"></a>（1）首先用一根网线将 703N 的 Lan 口和你电脑相连，电脑上设置为 DHCP 模式。</h4><h4 id="（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。"><a href="#（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。" class="headerlink" title="（2）然后运行cmd.exe，输入telnet 192.168.1.1成功后出现OpenWrt的欢迎界面。"></a>（2）然后运行 cmd.exe，输入 telnet 192.168.1.1 成功后出现 OpenWrt 的欢迎界面。</h4><h4 id="（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"><a href="#（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。" class="headerlink" title="（3）输入passwd更改root密码后dropbear(SSH 服务)就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"></a>（3）输入 passwd 更改 root 密码后 dropbear (SSH 服务) 就运行了，输入 exit 退出 telnet；以后就可以通过 ssh 管理 OpenWrt。</h4><p>注：最新版默认已经安装和启用 Luci 管理界面，你可以直接通过访问 192.168.1.1 进入 Luci Web 管理界面。</p>
 <span id="more"></span>
 <p>默认 Luci 管理界面是没有中文的，中文包安装如下：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install luci-i18n-chinese</span><br></pre></td></tr></tbody></table></figure>
@@ -369,12 +368,12 @@ var _hmt = _hmt || [];
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2015/life-is-changeable/" rel="prev" title="世事无常，荣枯随缘，泰然处之">
-                  <i class="fa fa-chevron-left"></i> 世事无常，荣枯随缘，泰然处之
+                  <i class="fa fa-angle-left"></i> 世事无常，荣枯随缘，泰然处之
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2015/Linux-install-php-extension/" rel="next" title="唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！">
-                  唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！ <i class="fa fa-chevron-right"></i>
+                  唉，找不到 Windows 下 Memcached 的 php 扩展还是自己在 Linux 上编译吧！ <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -396,15 +395,14 @@ var _hmt = _hmt || [];
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
   </div>
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">jakehu</span>
-</div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">jakehu</span>
+  </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
@@ -418,7 +416,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:11</span>
+    <span title="站点阅读时长">2:12</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -430,7 +428,7 @@ var _hmt = _hmt || [];
   
   <div class="reading-progress-bar"></div>
 
-  <a href="https://github.com/jakehu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+  <a href="https://github.com/jakehu" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -444,6 +442,8 @@ var _hmt = _hmt || [];
 
   <script src="https://cdn.staticfile.org/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
+
+
 
 
 
