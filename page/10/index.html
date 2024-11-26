@@ -164,7 +164,7 @@ var _hmt = _hmt || [];
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
-      src="https://img.jakehu.me/avatar.png">
+      src="http://jakehu-image.test.upcdn.net/avatar.png">
   <p class="site-author-name" itemprop="name">jakehu</p>
   <div class="site-description" itemprop="description">提笔为青春，人生正当时</div>
 </div>
@@ -245,7 +245,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/frp-onekey/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -278,7 +278,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -359,7 +359,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/synology-frp-https/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -392,7 +392,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-11-26 15:53:18" itemprop="dateModified" datetime="2024-11-26T15:53:18+08:00">2024-11-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -450,7 +450,7 @@ var _hmt = _hmt || [];
 <p>当然也还可以通过其他的方式比如：<a target="_blank" rel="noopener" href="https://github.com/Neilpang/acme.sh">acme.sh</a> 等</p>
 <h3 id="Frp客户端"><a href="#Frp客户端" class="headerlink" title="Frp客户端"></a>Frp 客户端</h3><p>在群晖上 <code>Frp</code> 客户端可以用 <code>docker</code> 镜像，这里同样可以看我制作的镜像</p>
 <p><a target="_blank" rel="noopener" href="https://hub.docker.com/r/jakehu/frpc-docker">Frpc Docker 镜像</a></p>
-<p>在安装好服务端和客户端后，我们下载证书上传到群晖服务器上，同时我们像下图一样挂载<code>配置文件</code>和<code>证书目录</code><br><img src="https://img.jakehu.me/20190627153942.png"></p>
+<p>在安装好服务端和客户端后，我们下载证书上传到群晖服务器上，同时我们像下图一样挂载<code>配置文件</code>和<code>证书目录</code><br><img src="http://jakehu-image.test.upcdn.net/20190627153942.png"></p>
 <p>最后我们需要对 <code>https</code> 进行配置</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 127.0.0.1</span><br><span class="line">server_port = 5443</span><br><span class="line"></span><br><span class="line">[test]</span><br><span class="line">type = https</span><br><span class="line">custom_domains = test.jakehu.me</span><br><span class="line">plugin = https2http</span><br><span class="line">plugin_local_addr = 192.168.1.1:80</span><br><span class="line"># HTTPS 证书相关的配置</span><br><span class="line">plugin_crt_path = /frp/certificate/certificate.crt</span><br><span class="line">plugin_key_path = /frp/certificate/private.key</span><br><span class="line">plugin_host_header_rewrite = 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
 
@@ -485,7 +485,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/GitLab-Java-Runner/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -518,7 +518,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -608,7 +608,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/guns-maven-skip-test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -641,7 +641,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -729,7 +729,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/suse-kernel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -762,7 +762,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -846,7 +846,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/hexo-drone/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -879,7 +879,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-11-26 15:53:18" itemprop="dateModified" datetime="2024-11-26T15:53:18+08:00">2024-11-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -946,7 +946,7 @@ var _hmt = _hmt || [];
 <p>这样就完了？并没有由于我们是在 <code>Drone</code> 的 <code>DIND</code> 里面进行的部署，所以我们还需要对 <code>Github</code> 权限进行设置</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// _config.yml</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line"> &nbsp; &nbsp;repo: https://jakehu:password@github.com/jakehu/jakehu.github.io.git</span><br><span class="line">    branch: master</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure>
 <p>到这里就完成，只需要进行 <code>git push</code> 每次 <code>Drone</code> 就会自动把 <code>npm start</code> 所有的工作完成了</p>
-<p><code>Drone</code> 运行过程<br><img src="https://img.jakehu.me/810603f6ly1g1xk56nuh4j20qh079mxr.jpg"></p>
+<p><code>Drone</code> 运行过程<br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1xk56nuh4j20qh079mxr.jpg"></p>
 
       
     </div>
@@ -976,7 +976,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/gogs-drone/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -1009,7 +1009,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-11-26 15:53:18" itemprop="dateModified" datetime="2024-11-26T15:53:18+08:00">2024-11-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1066,19 +1066,19 @@ var _hmt = _hmt || [];
 <p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/mysql">Mysql 安装文档</a></p>
 <p>对于在群晖 <code>Docker</code> 中去管理 <code>Mysql</code> 的工具这里我推荐 <code>adminer</code> 安装文档如下</p>
 <p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/adminer">adminer 安装文档</a></p>
-<p>最后我要说的是一个是端口映射的问题，一个是卷映射的问题，如下图<br><img src="https://img.jakehu.me/810603f6ly1g1vccwvbr8j20q10f10tx.jpg"><br><img src="https://img.jakehu.me/810603f6ly1g1vccwqe4tj20pt0evdgz.jpg"><br>最后直接访问：<code>http://192.168.1.2:10080</code> 就 OK 了</p>
+<p>最后我要说的是一个是端口映射的问题，一个是卷映射的问题，如下图<br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1vccwvbr8j20q10f10tx.jpg"><br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1vccwqe4tj20pt0evdgz.jpg"><br>最后直接访问：<code>http://192.168.1.2:10080</code> 就 OK 了</p>
 <p>这里贴出一下整个 <code>Gogs</code> 配置文件</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /data/gogs/conf/app.ini</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">APP_NAME</span> = <span class="title class_">Gogs</span></span><br><span class="line"><span class="variable constant_">RUN_USER</span> = git</span><br><span class="line"><span class="variable constant_">RUN_MODE</span> = prod</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line"><span class="variable constant_">DB_TYPE</span>  = mysql</span><br><span class="line"><span class="variable constant_">HOST</span> &nbsp; &nbsp; = <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span>:<span class="number">3306</span> <span class="comment">// mysql地址端口</span></span><br><span class="line"><span class="variable constant_">NAME</span> &nbsp; &nbsp; = gogs</span><br><span class="line"><span class="variable constant_">USER</span>     = root</span><br><span class="line"><span class="variable constant_">PASSWD</span> &nbsp; = password <span class="comment">// mysql密码</span></span><br><span class="line"><span class="variable constant_">SSL_MODE</span> = disable</span><br><span class="line"><span class="variable constant_">PATH</span>     = data/gogs.<span class="property">db</span></span><br><span class="line"></span><br><span class="line">[repository]</span><br><span class="line"><span class="variable constant_">ROOT</span> = <span class="regexp">/data/gi</span>t/gogs-repositories</span><br><span class="line">publish</span><br><span class="line">[server]</span><br><span class="line"><span class="variable constant_">DOMAIN</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span> <span class="comment">// 访问域名</span></span><br><span class="line"><span class="variable constant_">HTTP_PORT</span> &nbsp; &nbsp; &nbsp;  = <span class="number">10080</span> <span class="comment">// http端口</span></span><br><span class="line"><span class="variable constant_">ROOT_URL</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="attr">http</span>:<span class="comment">//192.168.1.2/ // 访问域名</span></span><br><span class="line"><span class="variable constant_">DISABLE_SSH</span>      = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">SSH_PORT</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="number">10022</span> <span class="comment">// SSH端口</span></span><br><span class="line"><span class="variable constant_">START_SSH_SERVER</span> = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">OFFLINE_MODE</span>     = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[mailer]</span><br><span class="line"><span class="variable constant_">ENABLED</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[service]</span><br><span class="line"><span class="variable constant_">REGISTER_EMAIL_CONFIRM</span> = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">ENABLE_NOTIFY_MAIL</span>     = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">DISABLE_REGISTRATION</span> &nbsp; = <span class="literal">true</span> <span class="comment">// 禁止注册，只能有管理员能加账号</span></span><br><span class="line"><span class="variable constant_">ENABLE_CAPTCHA</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="literal">true</span></span><br><span class="line"><span class="variable constant_">REQUIRE_SIGNIN_VIEW</span> &nbsp;  = <span class="literal">true</span> <span class="comment">// 默认跳转到登录页</span></span><br><span class="line"></span><br><span class="line">[picture]</span><br><span class="line"><span class="variable constant_">DISABLE_GRAVATAR</span>        = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">ENABLE_FEDERATED_AVATAR</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[session]</span><br><span class="line"><span class="variable constant_">PROVIDER</span> = file</span><br><span class="line"></span><br><span class="line">[log]</span><br><span class="line"><span class="variable constant_">MODE</span>      = file</span><br><span class="line"><span class="variable constant_">LEVEL</span>     = <span class="title class_">Info</span></span><br><span class="line"><span class="variable constant_">ROOT_PATH</span> = <span class="regexp">/app/g</span>ogs/log</span><br><span class="line"></span><br><span class="line">[security]</span><br><span class="line"><span class="variable constant_">INSTALL_LOCK</span> = <span class="literal">true</span></span><br><span class="line"><span class="variable constant_">SECRET_KEY</span>   = security</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
-<p>到此为止，我们就完成了 <code>Gogs</code> 的所有安装<br><img src="https://img.jakehu.me/810603f6ly1g1vcre69x8j20r60aqaa8.jpg"></p>
+<p>到此为止，我们就完成了 <code>Gogs</code> 的所有安装<br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1vcre69x8j20r60aqaa8.jpg"></p>
 <h3 id="Drone"><a href="#Drone" class="headerlink" title="Drone"></a>Drone</h3><h4 id="Drone安装"><a href="#Drone安装" class="headerlink" title="Drone安装"></a>Drone 安装</h4><p>为什么？为什么要使用 <code>Drone</code> 还是因为习惯。因为在使用 <code>Gitlab</code> 的时候使用的 <code>CI/CD</code> 都是 <code>gitlab</code> 自带的 <code>gitlab ci</code>；所以这里我们也需要一个 <code>CI/CD</code> 的工具于是我选择了 <code>Drone</code>，当然市场上 <code>CI/CD</code> 的工具是比较多的</p>
 <p><code>Drone</code> 安装这里我们参考官方文档</p>
 <p><a target="_blank" rel="noopener" href="https://docs.drone.io/installation/gogs/single-machine/">Gogs 单机安装文档</a></p>
 <p><code>Docker</code> 命令如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">    -d \</span><br><span class="line">    -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">    -v /volume1/docker/drone:/data \</span><br><span class="line">    -e DRONE_GIT_ALWAYS_AUTH=false \</span><br><span class="line">    -e DRONE_GOGS_SERVER=http://192.168.1.2:10080 \</span><br><span class="line">    -e DRONE_SERVER_HOST=http://192.168.1.2:10800 \</span><br><span class="line">    -e DRONE_DATABASE_DRIVER=mysql \</span><br><span class="line">    -e DRONE_DATABASE_DATASOURCE="root:password@tcp(192.168.1.2:3306)/drone?parseTime=true" \</span><br><span class="line">    -p 80:80 \</span><br><span class="line">    -p 443:443 \</span><br><span class="line">    --name=drone \</span><br><span class="line">    drone/drone:latest</span><br></pre></td></tr></tbody></table></figure>
 <p>这里贴别强调一下 <code>/var/run/docker.sock:/var/run/docker.sock</code> 的挂载是必不可少的，因为后面的 <code>DIND</code> 会用到，另外因为我使用了 <code>Mysql</code> 所以上面 <code>DRONE_DATABASE_DRIVER</code> 配置为 <code>mysql</code></p>
-<p>接下来访问 <code>http://192.168.1.2:10800</code> 就会出现 <code>Drone</code> 登录界面，账号为 <code>Gogs</code> 管理员账号，这两个账号相通，而且也会自动同步 <code>Gogs</code> 项目<br><img src="https://img.jakehu.me/810603f6ly1g1w6bebmghj20id0c1aa1.jpg"></p>
-<h4 id="drone-yml"><a href="#drone-yml" class="headerlink" title=".drone.yml"></a>.drone.yml</h4><p>在编辑<code>.drone.yml</code> 之前我们需要在 <code>drone</code> 管理界面对项目设置<br><img src="https://img.jakehu.me/810603f6ly1g1xbr3s339j20qn0eljrt.jpg"><br>这里需要设置项目为受信任项目，如果 <code>Project settings</code> 未显示，则表示当前用户在 <code>Drone</code> 不是管理员可以更改数据库授权为管理员</p>
+<p>接下来访问 <code>http://192.168.1.2:10800</code> 就会出现 <code>Drone</code> 登录界面，账号为 <code>Gogs</code> 管理员账号，这两个账号相通，而且也会自动同步 <code>Gogs</code> 项目<br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1w6bebmghj20id0c1aa1.jpg"></p>
+<h4 id="drone-yml"><a href="#drone-yml" class="headerlink" title=".drone.yml"></a>.drone.yml</h4><p>在编辑<code>.drone.yml</code> 之前我们需要在 <code>drone</code> 管理界面对项目设置<br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1xbr3s339j20qn0eljrt.jpg"><br>这里需要设置项目为受信任项目，如果 <code>Project settings</code> 未显示，则表示当前用户在 <code>Drone</code> 不是管理员可以更改数据库授权为管理员</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE `users` SET `user_admin` = '1' WHERE `user_id` = '1';</span><br></pre></td></tr></tbody></table></figure>
 <p>接下来我们编写<code>.drone.yml</code>，对于<code>.drone.yml</code> 编写我们以 <code>Spring Boot</code> 项目为例，首先我们需要编辑 <code>DockerFile</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jdk-alpine</span><br><span class="line">VOLUME /tmp</span><br><span class="line">ADD target/hello-1.0.0.jar app.jar</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
@@ -1086,8 +1086,8 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">kind: pipeline</span><br><span class="line">name: default</span><br><span class="line"></span><br><span class="line">steps:</span><br><span class="line">- name: build</span><br><span class="line">  image: maven:3.5-jdk-8</span><br><span class="line">  commands:</span><br><span class="line">  - mvn package -B -Dmaven.test.skip=true # 打包跳过测试</span><br><span class="line"></span><br><span class="line">- name: publish</span><br><span class="line">  image: docker:dind</span><br><span class="line">  volumes:</span><br><span class="line">  - name: docker</span><br><span class="line">    path: /var/run/docker.sock  # dind挂载来自Drone容器/var/run/docker.sock</span><br><span class="line">  commands:</span><br><span class="line">  - docker login --username=* --password=* registry.cn-shenzhen.aliyuncs.com</span><br><span class="line">  - docker build -t spring-boot:master .</span><br><span class="line">  - docker tag spring-boot:master registry.cn-shenzhen.aliyuncs.com/new/spring-boot:master</span><br><span class="line">  - docker push registry.cn-shenzhen.aliyuncs.com/new/spring-boot:master</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">- name: docker</span><br><span class="line">  host:</span><br><span class="line">    path: /var/run/docker.sock # 这里挂载Drone容器所在/var/run/docker.sock，当然Drone容器/var/run/docker.sock来自于群晖宿主机/var/run/docker.sock</span><br></pre></td></tr></tbody></table></figure>
 
 <p>通过上面我们定义了两步，<code>build</code> 利用 <code>maven</code> 对 <code>Spring Boot</code> 进行了打包操作；<code>publish</code> 利用 <code>dind</code> 将打包好的 <code>jar</code> 包通过 <code>DockerFile</code> 打包成镜像并推送到镜像仓库，这里说一下我使用的镜像仓库是<code>阿里云</code></p>
-<p>这里也请注意 <code>WebHook</code> 的地址为上面安装的 <code>Drone</code> 地址请注意填写正确<br><img src="https://img.jakehu.me/810603f6ly1g1w7p18wahj20s70bdab5.jpg"></p>
-<p>下面我们看一下 <code>Drone</code> 执行过程<br><img src="https://img.jakehu.me/810603f6ly1g1xc5lidgdj20qx0bbabj.jpg"></p>
+<p>这里也请注意 <code>WebHook</code> 的地址为上面安装的 <code>Drone</code> 地址请注意填写正确<br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1w7p18wahj20s70bdab5.jpg"></p>
+<p>下面我们看一下 <code>Drone</code> 执行过程<br><img src="http://jakehu-image.test.upcdn.net/810603f6ly1g1xc5lidgdj20qx0bbabj.jpg"></p>
 <p>到这里我们就告一段落了</p>
 <hr>
 <p>以上就是群晖对接整个 <code>Gogs</code> 和 <code>Drone</code> 过程</p>
@@ -1120,7 +1120,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/weixin-token/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -1153,7 +1153,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1249,7 +1249,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/gitlab-403-forbidden/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -1282,7 +1282,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1389,7 +1389,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/eggjs-80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -1422,7 +1422,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

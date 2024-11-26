@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="晨曦&#39;s Blog">
 <meta property="og:description" content="LCN 简介 LCN 分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制 因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用 在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低  LCN 核心步骤 创建事务组，是指在事务发起方开始执行业务代码之前先调用 TxManager 创建事务">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.jakehu.me/1.png">
-<meta property="og:image" content="https://img.jakehu.me/2.png">
+<meta property="og:image" content="http://jakehu-image.test.upcdn.net/1.png">
+<meta property="og:image" content="http://jakehu-image.test.upcdn.net/2.png">
 <meta property="article:published_time" content="2018-12-22T08:30:00.000Z">
-<meta property="article:modified_time" content="2024-06-07T08:47:03.613Z">
+<meta property="article:modified_time" content="2024-11-26T07:53:18.323Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="lcn">
 <meta property="article:tag" content="gts">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.jakehu.me/1.png">
+<meta name="twitter:image" content="http://jakehu-image.test.upcdn.net/1.png">
 
 
 <link rel="canonical" href="http://www.jakehu.me/2018/LCN-GTS/">
@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
-      src="https://img.jakehu.me/avatar.png">
+      src="http://jakehu-image.test.upcdn.net/avatar.png">
   <p class="site-author-name" itemprop="name">jakehu</p>
   <div class="site-description" itemprop="description">提笔为青春，人生正当时</div>
 </div>
@@ -253,7 +253,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/LCN-GTS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -286,7 +286,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 16:47:03" itemprop="dateModified" datetime="2024-06-07T16:47:03+08:00">2024-06-07</time>
+      <time title="修改时间：2024-11-26 15:53:18" itemprop="dateModified" datetime="2024-11-26T15:53:18+08:00">2024-11-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -339,12 +339,12 @@ var _hmt = _hmt || [];
 <li>添加事务组，添加事务组是指参与方在执行完业务方法以后，将该模块的事务信息添加通知给 TxManager 的操作</li>
 <li>关闭事务组，是指在发起方执行完业务代码以后，将发起方执行结果状态通知给 TxManager 的动作。当执行完关闭事务组的方法以后，TxManager 将根据事务组信息来通知相应的参与模块提交或回滚事务</li>
 </ol>
-<h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN 事务控制原理</h3><p>LCN 事务控制原理是由事务模块 TxClient 下的代理连接池与 TxManager 的协调配合完成的事务协调控制 TxClient 的代理连接池实现了 javax.sql.DataSource 接口，并重写了 close 方法，事务模块在提交关闭以后 TxClient 连接池将执行” 假关闭” 操作，等待 TxManager 协调完成事务以后在关闭连接<br><img src="https://img.jakehu.me/1.png"></p>
+<h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN 事务控制原理</h3><p>LCN 事务控制原理是由事务模块 TxClient 下的代理连接池与 TxManager 的协调配合完成的事务协调控制 TxClient 的代理连接池实现了 javax.sql.DataSource 接口，并重写了 close 方法，事务模块在提交关闭以后 TxClient 连接池将执行” 假关闭” 操作，等待 TxManager 协调完成事务以后在关闭连接<br><img src="http://jakehu-image.test.upcdn.net/1.png"></p>
 <h3 id="阿里云GTS全局事务服务"><a href="#阿里云GTS全局事务服务" class="headerlink" title="阿里云GTS全局事务服务"></a>阿里云 GTS 全局事务服务</h3><ol>
 <li>全局事务服务（Global Transaction Service，简称 GTS）是一款高性能、高可靠、接入简单的分布式事务中间件，用于解决分布式环境下的事务一致性问题</li>
 <li> GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合 EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
 </ol>
-<h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS 模拟场景演示</h3><p><img src="https://img.jakehu.me/2.png"></p>
+<h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS 模拟场景演示</h3><p><img src="http://jakehu-image.test.upcdn.net/2.png"></p>
 <h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>GTS 通过大量创新，解决了事务 ACID 特性与高性能、高可用、低侵入不可兼得的问题。单事务分支的平均响应时间在 2ms 左右，3 台服务器组成的集群可以支撑 3 万 TPS 以上的分布式事务请求</p>
 <p>LCN 性能参考：<a target="_blank" rel="noopener" href="http://springcloud.cn/view/374">http://springcloud.cn/view/374</a>在众多开源分布式事务框架中，LCN 性能是处于前列的</p>
 <h3 id="LCN总结"><a href="#LCN总结" class="headerlink" title="LCN总结"></a>LCN 总结</h3><p>优点:</p>
