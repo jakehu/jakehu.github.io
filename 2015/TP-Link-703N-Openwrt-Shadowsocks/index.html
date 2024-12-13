@@ -28,17 +28,17 @@
 <meta property="og:site_name" content="晨曦&#39;s Blog">
 <meta property="og:description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。http:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;g">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://jakehu-image.test.upcdn.net/62972015.jpg">
-<meta property="og:image" content="http://jakehu-image.test.upcdn.net/64175937.jpg">
-<meta property="og:image" content="http://jakehu-image.test.upcdn.net/12133462.jpg">
-<meta property="og:image" content="http://jakehu-image.test.upcdn.net/61677427.jpg">
+<meta property="og:image" content="https://img.jakehu.me/62972015.jpg">
+<meta property="og:image" content="https://img.jakehu.me/64175937.jpg">
+<meta property="og:image" content="https://img.jakehu.me/12133462.jpg">
+<meta property="og:image" content="https://img.jakehu.me/61677427.jpg">
 <meta property="article:published_time" content="2015-10-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-26T07:53:18.286Z">
+<meta property="article:modified_time" content="2024-11-26T07:59:12.504Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Openwrt">
 <meta property="article:tag" content="Shadowsocks">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://jakehu-image.test.upcdn.net/62972015.jpg">
+<meta name="twitter:image" content="https://img.jakehu.me/62972015.jpg">
 
 
 <link rel="canonical" href="http://www.jakehu.me/2015/TP-Link-703N-Openwrt-Shadowsocks/">
@@ -173,7 +173,7 @@ var _hmt = _hmt || [];
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="jakehu"
-      src="http://jakehu-image.test.upcdn.net/avatar.png">
+      src="https://img.jakehu.me/avatar.png">
   <p class="site-author-name" itemprop="name">jakehu</p>
   <div class="site-description" itemprop="description">提笔为青春，人生正当时</div>
 </div>
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2015/TP-Link-703N-Openwrt-Shadowsocks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="http://jakehu-image.test.upcdn.net/avatar.png">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
       <meta itemprop="name" content="jakehu">
     </span>
 
@@ -288,7 +288,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-11-26 15:53:18" itemprop="dateModified" datetime="2024-11-26T15:53:18+08:00">2024-11-26</time>
+      <time title="修改时间：2024-11-26 15:59:12" itemprop="dateModified" datetime="2024-11-26T15:59:12+08:00">2024-11-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -337,10 +337,10 @@ var _hmt = _hmt || [];
 <span id="more"></span>
 <p>默认 Luci 管理界面是没有中文的，中文包安装如下：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install luci-i18n-chinese</span><br></pre></td></tr></tbody></table></figure>
-<p>安装好后可以前往 WEB 界面更改<br><img src="http://jakehu-image.test.upcdn.net/62972015.jpg"></p>
+<p>安装好后可以前往 WEB 界面更改<br><img src="https://img.jakehu.me/62972015.jpg"></p>
 <h3 id="三、因为703N的Flash只有4M，做完上述步骤之后就只有400KB左右了；于是我选择了在703N上面挂在了一个8G的U盘来扩展。"><a href="#三、因为703N的Flash只有4M，做完上述步骤之后就只有400KB左右了；于是我选择了在703N上面挂在了一个8G的U盘来扩展。" class="headerlink" title="三、因为703N的Flash只有4M，做完上述步骤之后就只有400KB左右了；于是我选择了在703N上面挂在了一个8G的U盘来扩展。"></a>三、因为 703N 的 Flash 只有 4M，做完上述步骤之后就只有 400KB 左右了；于是我选择了在 703N 上面挂在了一个 8G 的 U 盘来扩展。</h3><h4 id="（1）在Linux系统下将8G的U盘分为两个区，一个区2G为swap格式作为缓存区用，其他空间为ext4格式。（Linux系统下给U盘分区可以用GParted这款软件）"><a href="#（1）在Linux系统下将8G的U盘分为两个区，一个区2G为swap格式作为缓存区用，其他空间为ext4格式。（Linux系统下给U盘分区可以用GParted这款软件）" class="headerlink" title="（1）在Linux系统下将8G的U盘分为两个区，一个区2G为swap格式作为缓存区用，其他空间为ext4格式。（Linux系统下给U盘分区可以用GParted这款软件）"></a>（1）在 Linux 系统下将 8G 的 U 盘分为两个区，一个区 2G 为 swap 格式作为缓存区用，其他空间为 ext4 格式。（Linux 系统下给 U 盘分区可以用 GParted 这款软件）</h4><h4 id="（2）挂载U盘"><a href="#（2）挂载U盘" class="headerlink" title="（2）挂载U盘"></a>（2）挂载 U 盘</h4><p>安装必须的包</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install kmod-usb-storage block-mount kmod-fs-ext4</span><br></pre></td></tr></tbody></table></figure>
-<p>将 U 盘插上，执行”block info” 命令，看下 U 盘是否已被识别，如下图，其中中 sda1、sda2 为 U 盘分区：<br><img src="http://jakehu-image.test.upcdn.net/64175937.jpg"><br>安装完成以后，挂载 u 盘。如下命令将默认的系统盘转移到 u 盘中</p>
+<p>将 U 盘插上，执行”block info” 命令，看下 U 盘是否已被识别，如下图，其中中 sda1、sda2 为 U 盘分区：<br><img src="https://img.jakehu.me/64175937.jpg"><br>安装完成以后，挂载 u 盘。如下命令将默认的系统盘转移到 u 盘中</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda1 /mnt</span><br><span class="line"><span class="built_in">mkdir</span> /tmp/root</span><br><span class="line">mount -o <span class="built_in">bind</span> / /tmp/root</span><br><span class="line"><span class="built_in">cp</span> /tmp/root/* /mnt -a</span><br><span class="line">umount /tmp/root</span><br></pre></td></tr></tbody></table></figure>
 <p>修改 /etc/config/fstab 文件，让系统启动自动挂载，修改成如下</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">config mount</span><br><span class="line">        option target   /overlay</span><br><span class="line">        option device   /dev/sda1</span><br><span class="line">        option fstype   ext4</span><br><span class="line">        option options  rw,<span class="built_in">sync</span></span><br><span class="line">        option enabled  1</span><br><span class="line">        option enabled_fsck 0</span><br></pre></td></tr></tbody></table></figure>
@@ -348,8 +348,8 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/fstab <span class="built_in">enable</span></span><br></pre></td></tr></tbody></table></figure>
 <p>设置并激活 swap 分区，修改 fstab 文件，激活</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkswap /dev/sda2</span><br><span class="line">config swap</span><br><span class="line">        option device   /dev/sda2</span><br><span class="line">        option enabled  1</span><br></pre></td></tr></tbody></table></figure>
-<p>重启路由器，再次”df -h” 一下，可以看到路由器的空间已经扩展成功了。<br><img src="http://jakehu-image.test.upcdn.net/12133462.jpg"></p>
-<h3 id="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："><a href="#四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：" class="headerlink" title="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："></a>四、接下来我们就来安装 Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：</h3><p><a target="_blank" rel="noopener" href="http://cokebar.info/archives/664">http://cokebar.info/archives/664</a><br>按上面的教程设置好了就只能正常的使用和翻墙了。<br>这里我也秀一张最后的成品<br><img src="http://jakehu-image.test.upcdn.net/61677427.jpg"></p>
+<p>重启路由器，再次”df -h” 一下，可以看到路由器的空间已经扩展成功了。<br><img src="https://img.jakehu.me/12133462.jpg"></p>
+<h3 id="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："><a href="#四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：" class="headerlink" title="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："></a>四、接下来我们就来安装 Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：</h3><p><a target="_blank" rel="noopener" href="http://cokebar.info/archives/664">http://cokebar.info/archives/664</a><br>按上面的教程设置好了就只能正常的使用和翻墙了。<br>这里我也秀一张最后的成品<br><img src="https://img.jakehu.me/61677427.jpg"></p>
 
     </div>
 
@@ -393,7 +393,7 @@ var _hmt = _hmt || [];
   <footer class="footer">
     <div class="footer-inner">
 
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备13003662号-1 </a>
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备2024046745号-1 </a>
   </div>
   <div class="copyright">
     &copy; 
