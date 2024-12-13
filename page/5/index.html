@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">151</span>
+          <span class="site-state-item-count">152</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,117 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/alpine-mirrors/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/alpine-mirrors/" class="post-title-link" itemprop="url">Alpine 修改为国内源进行加速</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-09 12:40:00" itemprop="dateCreated datePublished" datetime="2021-12-09T12:40:00+00:00">2021-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/alpine-mirrors/" class="post-meta-item leancloud_visitors" data-flag-title="Alpine 修改为国内源进行加速" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>85</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人推荐使用华为的 <code>Alpine</code> 源，通过我的测试华为的源最为齐全</p>
+<h4 id="华为"><a href="#华为" class="headerlink" title="华为"></a>华为</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/dl-cdn.alpinelinux.org/repo.huaweicloud.com/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="阿里"><a href="#阿里" class="headerlink" title="阿里"></a>阿里</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="科大"><a href="#科大" class="headerlink" title="科大"></a>科大</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="清华"><a href="#清华" class="headerlink" title="清华"></a>清华</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN sed -i 's/dl-cdn.alpinelinux.org/repo.huaweicloud.com/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/sanic-docker-supervisor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +388,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +505,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -511,7 +622,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -628,7 +739,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -749,7 +860,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -858,7 +969,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -977,7 +1088,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1093,7 +1204,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1219,7 +1330,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1296,114 +1407,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/python-utc-to-beijing/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/python-utc-to-beijing/" class="post-title-link" itemprop="url">Python 将 UTC 时间转换为北京时间</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-27 11:19:00" itemprop="dateCreated datePublished" datetime="2021-10-27T11:19:00+00:00">2021-10-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/python-utc-to-beijing/" class="post-meta-item leancloud_visitors" data-flag-title="Python 将 UTC 时间转换为北京时间" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>129</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>在一些软件中如 <code>ES</code>，时间格式都是 <code>UTC</code> 时间格式。记一记如何将 <code>UTC</code> 时间格式转换为本地<code>北京时间</code>格式。</p>
-<p>原理很简单：<code>将UTC转化为datetime时间格式-&gt;将转化的datetime时间加8小时-&gt;格式化为想要的格式</code></p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">UTC转北京时间</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">utc_format</span>(<span class="params">utc_time, utc_time_format=<span class="string">'%Y-%m-%dT%H:%M:%S.000Z'</span></span>):</span><br><span class="line">    utc_datetime = datetime.datetime.strptime(utc_time, utc_time_format)</span><br><span class="line">    local_datetime = utc_datetime + datetime.timedelta(hours=<span class="number">8</span>)</span><br><span class="line">    local_time_format = <span class="string">"%Y-%m-%d %H:%M:%S"</span></span><br><span class="line">    local_time = local_datetime.strftime(local_time_format)</span><br><span class="line">    <span class="keyword">return</span> local_time</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(utc_format(utc_time=<span class="string">"2021-10-26T09:34:31.000Z"</span>))</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1437,7 +1440,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:15</span>
+    <span title="站点阅读时长">2:16</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

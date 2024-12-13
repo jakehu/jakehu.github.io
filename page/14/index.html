@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">151</span>
+          <span class="site-state-item-count">152</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,125 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/docker-command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/docker-command/" class="post-title-link" itemprop="url">Docker 之常用命令集</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-11-28 16:34:24" itemprop="dateCreated datePublished" datetime="2018-11-28T16:34:24+00:00">2018-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/docker-command/" class="post-meta-item leancloud_visitors" data-flag-title="Docker 之常用命令集" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>162</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="查看docker磁盘使用情况"><a href="#查看docker磁盘使用情况" class="headerlink" title="查看docker磁盘使用情况"></a>查看 docker 磁盘使用情况</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system df</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="kill掉所有容器"><a href="#kill掉所有容器" class="headerlink" title="kill掉所有容器"></a>kill 掉所有容器</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker kill $(docker ps -a -q)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="删除所有停止容器"><a href="#删除所有停止容器" class="headerlink" title="删除所有停止容器"></a>删除所有停止容器</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="删除所有镜像"><a href="#删除所有镜像" class="headerlink" title="删除所有镜像"></a>删除所有镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="强制删除镜像"><a href="#强制删除镜像" class="headerlink" title="强制删除镜像"></a>强制删除镜像</h4><blockquote>
+<p>当同一镜像被多个储存库引用时，就需要强制删除镜像</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f 镜像ID</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="删除tag为的所有镜像"><a href="#删除tag为的所有镜像" class="headerlink" title="删除tag为<none>的所有镜像"></a>删除 tag 为 <code>&lt;none&gt;</code> 的所有镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker images|grep none|awk '{print $3}'|xargs docker rmi</span><br><span class="line"></span><br><span class="line">docker rmi $(docker images -f "dangling=true" -q)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="删除已经PUSH带有DIGEST参数镜像"><a href="#删除已经PUSH带有DIGEST参数镜像" class="headerlink" title="删除已经PUSH带有DIGEST参数镜像"></a>删除已经 PUSH 带有 DIGEST 参数镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker images --digests</span><br><span class="line">REPOSITORY                     TAG       DIGEST                                                                    IMAGE ID        CREATED         SIZE</span><br><span class="line">localhost:5000/nodeservice    &lt;none&gt;    sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf   4986bf8c1536    9 weeks ago     2.43 MB</span><br><span class="line"></span><br><span class="line">$ docker rmi localhost:5000/nodeservice@sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<font color="red">
+参考：[Docker 命令](https://docs.docker.com/engine/reference/commandline/cli/)
+</font>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/docker-time-zone/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +396,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -386,7 +505,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -504,7 +623,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -619,7 +738,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -765,7 +884,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -889,7 +1008,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1225,7 +1344,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1304,121 +1423,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2015/Yanshu-Hongjianxiaozi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2015/Yanshu-Hongjianxiaozi/" class="post-title-link" itemprop="url">《清平乐・红笺小字》</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2015-11-20 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-20T00:00:00+00:00">2015-11-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:18" itemprop="dateModified" datetime="2024-12-13T13:58:18+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%B8%80%E4%BA%BA%E4%B8%80%E8%AF%8D/" itemprop="url" rel="index"><span itemprop="name">一人一词</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2015/Yanshu-Hongjianxiaozi/" class="post-meta-item leancloud_visitors" data-flag-title="《清平乐・红笺小字》" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>126</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这是一首念远怀人的爱情词，是晏殊 [艳情] 词的代表作之一。运用 [雁足传书] 和 [鱼传尺素] 的典故，又化用了崔护《题都城南庄》[人面不知何处去，桃花依旧笑春风] 的诗句。</p>
-<img src="https://img.jakehu.me/20151120132820.jpg">
-
-<p>红笺小字，说尽平生意。</p>
-<p>鸿雁在云鱼在水，惆怅此情难寄！</p>
-<p>斜阳独倚西楼，遥山恰对帘钩。</p>
-<p>人面不知何处，绿波依旧东流。</p>
-<hr>
-<p>锦书难寄，相思难至</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1452,7 +1456,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:15</span>
+    <span title="站点阅读时长">2:16</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

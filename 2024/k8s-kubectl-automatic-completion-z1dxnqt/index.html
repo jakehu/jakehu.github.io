@@ -21,25 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="提笔为青春，人生正当时">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晨曦&#39;s Blog">
-<meta property="og:url" content="http://www.jakehu.me/tags/requests/index.html">
+    <meta name="description" content="CentOS: 1234yum install bash-completion -ysource &#x2F;usr&#x2F;share&#x2F;bash-completion&#x2F;bash_completionsource &lt;(kubectl completion bash)echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~&#x2F;.bashrc  MacOS: 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s kubectl 自动补全">
+<meta property="og:url" content="http://www.jakehu.me/2024/k8s-kubectl-automatic-completion-z1dxnqt/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="提笔为青春，人生正当时">
+<meta property="og:description" content="CentOS: 1234yum install bash-completion -ysource &#x2F;usr&#x2F;share&#x2F;bash-completion&#x2F;bash_completionsource &lt;(kubectl completion bash)echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~&#x2F;.bashrc  MacOS: 12">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-29T15:08:59.000Z">
+<meta property="article:modified_time" content="2024-12-13T21:58:33.000Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="jakehu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.jakehu.me/tags/requests/">
+<link rel="canonical" href="http://www.jakehu.me/2024/k8s-kubectl-automatic-completion-z1dxnqt/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/requests/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.jakehu.me/2024/k8s-kubectl-automatic-completion-z1dxnqt/","path":"2024/k8s-kubectl-automatic-completion-z1dxnqt/","title":"k8s kubectl 自动补全"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: requests | 晨曦's Blog</title>
+<title>k8s kubectl 自动补全 | 晨曦's Blog</title>
   
 
 
@@ -231,51 +233,139 @@ var _hmt = _hmt || [];
 
     </div>
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">requests
-          <small>标签</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2024/k8s-kubectl-automatic-completion-z1dxnqt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="k8s kubectl 自动补全 | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          k8s kubectl 自动补全
         </h1>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-29 15:08:59" itemprop="dateCreated datePublished" datetime="2024-07-29T15:08:59+00:00">2024-07-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 21:58:33" itemprop="dateModified" datetime="2024-12-13T21:58:33+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2024/k8s-kubectl-automatic-completion-z1dxnqt/" class="post-meta-item leancloud_visitors" data-flag-title="k8s kubectl 自动补全" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>65</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>CentOS:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install bash-completion -y</span><br><span class="line">source /usr/share/bash-completion/bash_completion</span><br><span class="line">source &lt;(kubectl completion bash)</span><br><span class="line">echo "source &lt;(kubectl completion bash)" &gt;&gt; ~/.bashrc</span><br></pre></td></tr></tbody></table></figure>
+
+<p>MacOS:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install bash-completion</span><br><span class="line">$ kubectl completion bash &gt; $(brew --prefix)/etc/bash_completion.d/kubectl</span><br></pre></td></tr></tbody></table></figure>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/#enabling-shell-autocompletion">https://kubernetes.io/docs/tasks/tools/#enabling-shell-autocompletion</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/xujiyou/blog-data/blob/master/%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes/K8sFAQ.md">https://github.com/xujiyou/blog-data/blob/master/%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes/K8sFAQ.md</a></p>
+<p>‍</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-01-27T13:11:00+00:00"
-              content="2021-01-27">
-          01-27
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/requests-data/" itemprop="url">
-            <span itemprop="name">Python 之 Requests 参数格式</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/native-k8s-update-kubelet-certificate-zdaymj/" rel="prev" title="原生 K8S 更新 kubelet 证书">
+                  <i class="fa fa-angle-left"></i> 原生 K8S 更新 kubelet 证书
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/configure-dockerfile-to-let-the-container-support-chinese-1iqwgv/" rel="next" title="配置 Dockerfile 让容器支持中文">
+                  配置 Dockerfile 让容器支持中文 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
 
+
+
+
+
+    <div class="comments utterances-container"></div>
 </div>
   </main>
 
