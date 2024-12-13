@@ -18,8 +18,8 @@
     
     <entry>
       <title>No route to host</title>
-      <link href="//post/no-route-to-host-1fthpi.html"/>
-      <url>//post/no-route-to-host-1fthpi.html</url>
+      <link href="/2024/no-route-to-host-1fthpi/"/>
+      <url>/2024/no-route-to-host-1fthpi/</url>
       
         <content type="html"><![CDATA[<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No route to host</span><br></pre></td></tr></tbody></table></figure><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>目标服务器防火墙导致</p><h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></tbody></table></figure>]]></content>
       
@@ -760,9 +760,9 @@
       
         <tags>
             
-            <tag> gin </tag>
-            
             <tag> golang </tag>
+            
+            <tag> gin </tag>
             
         </tags>
       
