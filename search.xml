@@ -106,6 +106,25 @@
     
     
     <entry>
+      <title>原生 K8S 更新 kubelet 证书</title>
+      <link href="/2024/native-k8s-update-kubelet-certificate-zdaymj/"/>
+      <url>/2024/native-k8s-update-kubelet-certificate-zdaymj/</url>
+      
+        <content type="html"><![CDATA[<h4 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h4><p>k8s 集群某一个节点 kubelet 挂了，无法启动</p><h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">cat</span> /var/log/messages | grep kubelet | grep failed</span></span><br><span class="line">failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory</span><br></pre></td></tr></tbody></table></figure><h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/kubelet/pki/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">大于1.20的版本</span></span><br><span class="line">kubectl get cm kubeadm-config -n kube-system -o=jsonpath="{.data.ClusterConfiguration}" &gt; kubeadm.yaml</span><br><span class="line">kubeadm kubeconfig user --org system:nodes --client-name system:node:$(hostname) --config kubeadm.yaml &gt; /etc/kubernetes/kubelet.conf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">小于1.20的版本</span></span><br><span class="line">kubeadm alpha kubeconfig user --org system:nodes --client-name system:node:$(hostname) &gt; /etc/kubernetes/kubelet.conf</span><br></pre></td></tr></tbody></table></figure><h4 id="其他解决方案"><a href="#其他解决方案" class="headerlink" title="其他解决方案"></a>其他解决方案</h4><p>参考：<a href="https://blog.csdn.net/margu_168/article/details/135844420">https://blog.csdn.net/margu_168/article/details/135844420</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac 刷新 Dns</title>
       <link href="/2024/mac-refresh-dns-z1i6di6/"/>
       <url>/2024/mac-refresh-dns-z1i6di6/</url>
