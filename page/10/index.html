@@ -172,7 +172,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">146</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -233,6 +233,379 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/synology-lede/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/synology-lede/" class="post-title-link" itemprop="url">在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-07-10 14:09:00" itemprop="dateCreated datePublished" datetime="2019-07-10T14:09:00+08:00">2019-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-26 15:59:12" itemprop="dateModified" datetime="2024-11-26T15:59:12+08:00">2024-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/synology-lede/" class="post-meta-item leancloud_visitors" data-flag-title="在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>482</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>为什么要软路由？目前家里的拓扑是</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; 路由器 -&gt; NAS/BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
+<p>路由器负责了<code>拨号</code>、<code>科学上网</code>、<code>广告过滤</code>等</p>
+<p>之前已经将 <code>Frp</code> 移到了 <code>NAS</code> 的 <code>Docker</code> 里面</p>
+<p><a href="/2019/frp-onekey/">FRP 资源</a></p>
+<p><a href="/2019/synology-frp-https/">FRP 教程</a></p>
+<p>至于为什么要软路由原因：</p>
+<ol>
+<li><code>AC66U_B1</code> 时常不够稳定，将 <code>frp</code> 迁移至 <code>nas</code> 后深有感受</li>
+<li><code>AC66U_B1</code> 固件中插件有限而且越来越不好用，所以更多的是想将路由上的功能转一部分到软路由上</li>
+</ol>
+<p>改造后拓扑为：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; NAS软路由 -&gt; NAS/硬路由-&gt;BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="硬件改造"><a href="#硬件改造" class="headerlink" title="硬件改造"></a>硬件改造</h3><p>改造前现有的硬件设备：</p>
+<blockquote>
+<p>机箱：乔思伯 V2<br>主板：华擎 N3150TM-ITX 主板<br>电源：绿巨能笔记本 DC 电源<br>硬盘：西部数据 (WD) 红盘 4TB * 2<br>内存：金士顿 DDR3L 4G</p>
+</blockquote>
+<p>改造前如图：<br><img src="https://img.jakehu.me/20190712105802.jpg"></p>
+<p>改造部分为<code>更换机箱</code>以及<code>增加网卡</code></p>
+<blockquote>
+<p>机箱：金河田（Golden field）预见 N-1<br>网卡：EDUP EP-9602 PCI-E 千兆网卡</p>
+</blockquote>
+<p>改造后如图：<br><img src="https://img.jakehu.me/20190712110017.jpg"></p>
+<h3 id="LEDE安装"><a href="#LEDE安装" class="headerlink" title="LEDE安装"></a>LEDE 安装</h3><h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>在 <a target="_blank" rel="noopener" href="https://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/">https://firmware.koolshare.cn/LEDE_X64_fw867 / 虚拟机转盘或 PE 下写盘专用 /</a> 下载 <code>combined-squashfs.img.gz</code> 固件，解压后上传至群晖，如图：<br><img src="https://img.jakehu.me/20190712093324.png"></p>
+<h4 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h4><p>好吧，被坑了，还一直没找到问题所在。</p>
+<p>最开始上了 <code>EDUP EP-9602 PCI-E千兆网卡（RTL8111芯片）</code>，在群晖的网络界面能识别，在 <code>VMM</code> 网络界面添加虚拟交换机时无法识别；后面又换了 <code>LR-LINK 联瑞pciex1台式机千兆有线网卡intelI211芯片支持linux LREC9202CT</code> 还是无法识别；后来又换了<code>胜为（shengwei）PCI-E千兆网卡 以太网rj45台式机电脑10/100/1000自适应网卡 单口 带唤醒 PEC-2051</code> 还是无法识别</p>
+<p>算了，不玩儿了</p>
+<h3 id="终结"><a href="#终结" class="headerlink" title="终结"></a>终结</h3><p>网卡无法识别原因寻找中</p>
+<p>未完待续…</p>
+<hr>
+<p>关于群晖部分问题可以看各位网友的总结：</p>
+<p><a target="_blank" rel="noopener" href="https://wp.gxnas.com/2450.html">黑群晖常见问题</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/koolproxy-install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/koolproxy-install/" class="post-title-link" itemprop="url">将 KoolProxyR 规则转换为 KoolProxy 规则脚本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-07-09 09:38:00" itemprop="dateCreated datePublished" datetime="2019-07-09T09:38:00+08:00">2019-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/koolproxy-install/" class="post-meta-item leancloud_visitors" data-flag-title="将 KoolProxyR 规则转换为 KoolProxy 规则脚本" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>536</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h3><blockquote>
+<p>SSH 到路由器上<br>下载 KoolProxy 离线包</p>
+</blockquote>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm380下的包，版本为：3.8.4.1</span></span><br><span class="line">wget http://cdn.jakehu.me/koolproxy.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm384下的包，版本为：3.8.4.1</span></span><br><span class="line">wget http://cdn.jakehu.me/koolproxy384.tar.gz</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>解压并安装</p>
+</blockquote>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此为arm380下的包，版本为：3.8.4.1</span></span><br><span class="line">tar koolproxy.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm384下的包，版本为：3.8.4.1</span></span><br><span class="line">tar koolproxy384.tar.gz</span><br><span class="line"></span><br><span class="line">sh koolproxy/install.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="规则转换"><a href="#规则转换" class="headerlink" title="规则转换"></a>规则转换</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">安装WebShell</span><br><span class="line">复制下面的内容发送命令。</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /jffs/.koolshare/koolproxy/data/rules</span><br><span class="line"><span class="comment"># 删除旧版本规则文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily.txt</span><br><span class="line"><span class="built_in">rm</span> -rf kp.dat</span><br><span class="line"><span class="comment"># 下载新版本规则文件</span></span><br><span class="line"></span><br><span class="line">wget -O daily.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/easylistchina.txt</span><br><span class="line">wget -O koolproxy.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/fanboy-annoyance.txt</span><br><span class="line"><span class="comment"># wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/kp.dat</span></span><br><span class="line">wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kp.dat</span><br><span class="line"><span class="comment"># wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/user.txt</span></span><br><span class="line">wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kpr_our_rule.txt</span><br><span class="line"><span class="comment"># 下载扩展规则合并</span></span><br><span class="line">wget -O koolproxy_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/191c06c8d1f769f1b81c1437ad3b1271e0e58d7b/koolproxyR/koolproxyR/data/rules/kpr_video_list.txt</span><br><span class="line">wget -O daily_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/yhosts.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> koolproxy_tmp.txt &gt;&gt;koolproxy.txt</span><br><span class="line"><span class="built_in">cat</span> daily_tmp.txt &gt;&gt;daily.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 一点点清洁工作...</span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy_tmp.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily_tmp.txt</span><br><span class="line"><span class="built_in">echo</span> koolproxy规则已替换完成，请重新启用koolproxy!</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="自动更新"><a href="#自动更新" class="headerlink" title="自动更新"></a>自动更新</h3><h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><p>自动更新脚本如下：<br><code>/jffs/scripts/koolproxy.sh</code></p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"开始转换koolproxyR规则"</span></span><br><span class="line"><span class="built_in">cd</span> /jffs/.koolshare/koolproxy/data/rules</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除旧版本规则文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第一步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"删除旧版本规则文件"</span></span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily.txt</span><br><span class="line"><span class="built_in">rm</span> -rf kp.dat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载新版本规则文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第二步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"下载新版本规则文件"</span></span><br><span class="line">wget -O daily.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/easylistchina.txt</span><br><span class="line">wget -O koolproxy.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/fanboy-annoyance.txt</span><br><span class="line"><span class="comment"># wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/kp.dat</span></span><br><span class="line">wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kp.dat</span><br><span class="line"><span class="comment"># wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/user.txt</span></span><br><span class="line">wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kpr_our_rule.txt</span><br><span class="line"><span class="comment"># 下载扩展规则合并</span></span><br><span class="line">wget -O koolproxy_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/191c06c8d1f769f1b81c1437ad3b1271e0e58d7b/koolproxyR/koolproxyR/data/rules/kpr_video_list.txt</span><br><span class="line">wget -O daily_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/yhosts.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第三步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"合并规则"</span></span><br><span class="line"><span class="built_in">cat</span> koolproxy_tmp.txt &gt;&gt;koolproxy.txt</span><br><span class="line"><span class="built_in">cat</span> daily_tmp.txt &gt;&gt;daily.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第四步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"一点点清洁工作..."</span></span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy_tmp.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily_tmp.txt</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"koolproxyR规则转换成功"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tools-&gt;Scripts-&gt;定时任务</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>参考资料：<br><a target="_blank" rel="noopener" href="https://github.com/koolproxy/merlin-koolproxy">arm380</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/armsoft/tree/master/koolproxy">arm384</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/rogsoft/tree/master/koolproxy">org</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/ledesoft/tree/master/koolproxy">lede</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/weixin-js-sdk-npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/weixin-js-sdk-npm/" class="post-title-link" itemprop="url">从发布 weixin js sdk 看如何将自己的包发布到 npmjs</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-07-05 11:31:00" itemprop="dateCreated datePublished" datetime="2019-07-05T11:31:00+08:00">2019-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/weixin-js-sdk-npm/" class="post-meta-item leancloud_visitors" data-flag-title="从发布 weixin js sdk 看如何将自己的包发布到 npmjs" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>56</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>发布的命令很简单，但开始之前请前往 <code>npmjs.com</code> 注册一个账号</p>
+<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p><code>npm init</code></p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p><code>npm login</code></p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p><code>npm publish</code></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>包参考：<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/weixin-js-sdk-official">weixin-js-sdk-official</a></p>
+<p>代码参考：<a target="_blank" rel="noopener" href="https://github.com/jakehu/wechat-js-sdk">wechat-js-sdk</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1109,401 +1482,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/weixin-token/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/weixin-token/" class="post-title-link" itemprop="url">Eggjs 与微信公众平台 (Wechat) 对接之不得不说</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-03-29 14:58:00" itemprop="dateCreated datePublished" datetime="2019-03-29T14:58:00+08:00">2019-03-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/weixin-token/" class="post-meta-item leancloud_visitors" data-flag-title="Eggjs 与微信公众平台 (Wechat) 对接之不得不说" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>421</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近在开发一个项目是用的 <code>eggjs</code> 同时又需要对接到微信公众平台，所以记录下自己 <code>Egg</code> 对接微信的过程</p>
-<h3 id="验证Token"><a href="#验证Token" class="headerlink" title="验证Token"></a>验证 Token</h3><p>我们知道在微信开发时都需在公众开发配置中对 <code>Token</code> 验证一次，接下来谈谈验证的步骤</p>
-<h4 id="第一步确定验证URL"><a href="#第一步确定验证URL" class="headerlink" title="第一步确定验证URL"></a>第一步确定验证 URL</h4><p>比如我的是 <code>https://www.jakehu.me/wechat</code>，那么先对 <code>eggjs</code> 路由改造</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// app/router.js</span><br><span class="line"></span><br><span class="line">module.exports = app =&gt; {</span><br><span class="line">  app.router.get('/wechat', app.controller.wechat.index);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<p>改造完路由后我们还必须对<code>安全</code>这块进行设置，屏蔽对路由 <code>/wechat</code> 的 <code>csrf</code> 验证</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.<span class="property">security</span> = {</span><br><span class="line">    <span class="attr">csrf</span>: {</span><br><span class="line">      <span class="attr">ignore</span>: <span class="string">'/wechat'</span>,</span><br><span class="line">    },</span><br><span class="line">  };</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="第二步编写验证Controller"><a href="#第二步编写验证Controller" class="headerlink" title="第二步编写验证Controller"></a>第二步编写验证 Controller</h4><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">index</span> () {</span><br><span class="line">    <span class="keyword">const</span> query = <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">request</span>.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">const</span> signature = query.<span class="property">signature</span>;</span><br><span class="line">    <span class="keyword">const</span> timestamp = query.<span class="property">timestamp</span>;</span><br><span class="line">    <span class="keyword">const</span> nonce = query.<span class="property">nonce</span>;</span><br><span class="line">    <span class="keyword">const</span> echostr = query.<span class="property">echostr</span>;</span><br><span class="line"> &nbsp; &nbsp;<span class="keyword">if</span> (<span class="keyword">await</span> <span class="variable language_">this</span>.<span class="title function_">check</span>(timestamp, nonce, signature, <span class="string">'token'</span>)) {</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">body</span> = echostr;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">body</span> = <span class="string">'It is not from weixin'</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">check</span> (timestamp, nonce, signature, token) {</span><br><span class="line">    <span class="keyword">const</span> tmp = [ token, timestamp, nonce ].<span class="title function_">sort</span>().<span class="title function_">join</span>(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">const</span> currSign = crypto.<span class="title function_">createHash</span>(<span class="string">'sha1'</span>).<span class="title function_">update</span>(tmp).<span class="title function_">digest</span>(<span class="string">'hex'</span>);</span><br><span class="line">    <span class="keyword">return</span> (currSign === signature);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>然后就可以在<code>开发者配置</code>进行验证就好了</p>
-<blockquote>
-<p>注：上面代码中的 <code>token</code> 即为你在<code>开发者配置</code>页面中填写的 <code>token</code></p>
-</blockquote>
-<h3 id="接入开发"><a href="#接入开发" class="headerlink" title="接入开发"></a>接入开发</h3><h4 id="第一步安装必要组件"><a href="#第一步安装必要组件" class="headerlink" title="第一步安装必要组件"></a>第一步安装必要组件</h4><p>这里我们用到了 <code>co-wechat</code> 插件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i co-wechat -s</span><br></pre></td></tr></tbody></table></figure>
-<p>安装后对插件进行配置</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.<span class="property">wechat</span> = {</span><br><span class="line">    <span class="attr">token</span>: <span class="string">'token'</span>,</span><br><span class="line">    <span class="attr">appid</span>: <span class="string">'appid'</span>,</span><br><span class="line">    <span class="attr">encodingAESKey</span>: <span class="string">'encodingAESKey'</span>,</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="编写对接代码"><a href="#编写对接代码" class="headerlink" title="编写对接代码"></a>编写对接代码</h4><p>首先是 <code>Controller</code> 的编写</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> wechat = <span class="built_in">require</span>(<span class="string">'co-wechat'</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">app</span> =&gt;</span> {</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">WechatController</span> <span class="keyword">extends</span> <span class="title class_ inherited__">app.Controller</span> { }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 因为 Egg 需要用类的形式来组织，而 wechat 是通过 middleware 方法来生成中间件</span></span><br><span class="line">  <span class="title class_">WechatController</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">wechat</span> = <span class="title function_">wechat</span>({</span><br><span class="line">    <span class="attr">token</span>: <span class="string">'token'</span>,</span><br><span class="line">    <span class="attr">appid</span>: <span class="string">'appid'</span>,</span><br><span class="line">    <span class="attr">encodingAESKey</span>: <span class="string">'encodingAESKey'</span>,</span><br><span class="line">  }).<span class="title function_">middleware</span>(<span class="title function_">async</span> (message, ctx) =&gt; {</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(message);</span><br><span class="line">    <span class="keyword">return</span> { <span class="attr">type</span>: <span class="string">'text'</span>, <span class="attr">content</span>: <span class="string">'Hello world!'</span> };</span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">WechatController</span>;</span><br><span class="line">};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>其次我们对路由再进行改造</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/router.js</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">app</span> =&gt;</span> {</span><br><span class="line">  app.<span class="property">router</span>.<span class="title function_">post</span>(<span class="string">'/wechat'</span>, app.<span class="property">controller</span>.<span class="property">wechat</span>.<span class="property">wechat</span>);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<p>到此就结束了，完美对接！！！</p>
-<hr>
-<p>完美对接！！！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/gitlab-403-forbidden/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/gitlab-403-forbidden/" class="post-title-link" itemprop="url">Gitlab 之 403 Forbidden 前世今生</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-03-28 14:22:00" itemprop="dateCreated datePublished" datetime="2019-03-28T14:22:00+08:00">2019-03-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/gitlab-403-forbidden/" class="post-meta-item leancloud_visitors" data-flag-title="Gitlab 之 403 Forbidden 前世今生" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>268</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>公司的 <code>GIT</code> 环境一直是用 <code>Gitlab</code> 跑在阿里云的 <code>Docker</code> 环境中的，<code>Gitlab</code> 的配置并没有做更改，然而今天发现突然报 <code>Forbidden</code> 而且还时好时坏。通过查看官方文档<a target="_blank" rel="noopener" href="https://docs.gitlab.com/ce/security/rack_attack.html">【Rack Attack】</a>发现可能是项目太多并发太高触发了 IP 屏蔽</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>根据官方的文档<a target="_blank" rel="noopener" href="https://docs.gitlab.com/ce/security/rack_attack.html">【Rack Attack】</a>和<a target="_blank" rel="noopener" href="https://docs.gitlab.com/ee/administration/monitoring/ip_whitelist.html">【IP whitelist】</a>可有如下三种方法解决：</p>
-<ol>
-<li>添加 <code>IP</code> 白名单</li>
-<li>扩大每个 <code>IP HTTP authentication</code> 次数</li>
-<li>直接关闭 <code>Rack Attack</code></li>
-</ol>
-<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><blockquote>
-<ol>
-<li>添加 <code>IP</code> 白名单</li>
-</ol>
-</blockquote>
-<p>步骤：</p>
-<ul>
-<li><code>vi /etc/gitlab/gitlab.rb</code></li>
-<li>查找 <code>rack_attack_git_basic_auth</code></li>
-<li>将 <code>gitlab_rails['rack_attack_git_basic_auth']</code> 取消注释</li>
-<li>修改 <code>ip_whitelist</code> 白名单将 <code>gitlab</code> 部署主机 IP 地址加入<br><code>'ip_whitelist' =&gt; ["127.0.0.1","172.16.7.21"],</code></li>
-<li>最后执行 <code>gitlab-ctl reconfigure</code> 重载配置</li>
-</ul>
-<p>在添加白名单后发现问题依然存在，于是在上述完成后继续第二种方式</p>
-<blockquote>
-<ol start="2">
-<li>扩大每个 <code>IP HTTP authentication</code> 次数</li>
-</ol>
-</blockquote>
-<p>步骤：</p>
-<ul>
-<li>将 <code>maxretry</code> 调整为 <code>200</code></li>
-</ul>
-<p>最后配置如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails['rack_attack_git_basic_auth'] = {</span><br><span class="line">  'enabled' =&gt; true,</span><br><span class="line">  'ip_whitelist' =&gt; ["127.0.0.1","172.16.7.21"],</span><br><span class="line">  'maxretry' =&gt; 200,</span><br><span class="line">  'findtime' =&gt; 60,</span><br><span class="line">  'bantime' =&gt; 3600</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>再次执行 <code>gitlab-ctl reconfigure</code> 重载配置</p>
-<p>完美解决！！！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/eggjs-80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/eggjs-80/" class="post-title-link" itemprop="url">Eggjs 之绑定 80 端口引发的一场血案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-03-25 19:07:00" itemprop="dateCreated datePublished" datetime="2019-03-25T19:07:00+08:00">2019-03-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-01 17:23:09" itemprop="dateModified" datetime="2024-08-01T17:23:09+08:00">2024-08-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/eggjs-80/" class="post-meta-item leancloud_visitors" data-flag-title="Eggjs 之绑定 80 端口引发的一场血案" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>243</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做微信开发本地测试，需要用到 <code>80</code> 端口；鉴于 <code>Eggjs</code> 默认端口为 <code>7001</code>，于是开始了一场 <code>Eggjs</code> 绑定 <code>80</code> 端口之战</p>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><code>scripts</code> 改造，将 <code>dev</code> 命令改为如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"dev": "egg-bin dev --port=80",</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当运行 <code>npm run dev</code> 之后出现下面问题</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind EACCES null:80, code: EACCES</span><br></pre></td></tr></tbody></table></figure>
-<p>绑定 <code>80</code> 端口失败，看来是权限不够</p>
-<blockquote>
-<p>解决方案：<code>sudo</code> 高权限运行</p>
-</blockquote>
-<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>当运行 <code>sudo npm run dev</code> 之后出现下面问题</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo: npm：找不到命令</span><br></pre></td></tr></tbody></table></figure>
-<p>看来是 <code>bin</code> 下面没有可执行文件</p>
-<blockquote>
-<p>解决方案：<code>ln -s</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ which npm</span><br><span class="line">&gt; /home/jakehu/.nvm/versions/node/v8.12.0/bin/npm</span><br><span class="line">$ sudo ln -s /home/jakehu/.nvm/versions/node/v8.12.0/bin/npm /usr/bin/npm</span><br><span class="line"></span><br><span class="line">$ which node</span><br><span class="line">&gt; /home/jakehu/.nvm/versions/node/v8.12.0/bin/node</span><br><span class="line">$ sudo ln -s /home/jakehu/.nvm/versions/node/v8.12.0/bin/node /usr/bin/node</span><br></pre></td></tr></tbody></table></figure>
-<p>最后只需要运行 <code>sudo npm run dev</code> 就可以了</p>
-<hr>
-<p>如果出现 <code>bind EADDRINUSE null:80, code: EADDRINUSE</code> 错误，表示有程序占用 <code>80</code> 端口，<code>pkill</code> 掉即可</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1537,7 +1515,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:12</span>
+    <span title="站点阅读时长">2:13</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

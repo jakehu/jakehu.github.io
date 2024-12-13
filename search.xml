@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title>夜莺黑盒监控 (categraf http_response)</title>
+      <link href="/2024/categrahg-httpresponse-19edtc/"/>
+      <url>/2024/categrahg-httpresponse-19edtc/</url>
+      
+        <content type="html"><![CDATA[<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://download.flashcat.cloud/categraf-v0.3.77-linux-amd64.tar.gz</span><br><span class="line">tar -zxvf categraf-v0.3.77-linux-amd64.tar.gz</span><br><span class="line"><span class="built_in">mkdir</span> -pv /opt/categraf</span><br><span class="line"><span class="built_in">cp</span> -r ./categraf-v0.3.77-linux-amd64/* /opt/categraf/</span><br></pre></td></tr></tbody></table></figure><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>N9E: 这里是配置像哪个 VM 推送数据 <a href="https://flashcat.cloud/docs/content/flashcat-monitor/nightingale-v6/faq/pushgw-writers/">参考</a></p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[Pushgw.Writers]]</span><br><span class="line"><span class="comment"># Url = "http://127.0.0.1:8480/insert/0/prometheus/api/v1/write"</span></span><br><span class="line">Url = <span class="string">"http://10.168.140.45:8428/api/v1/write"</span></span><br></pre></td></tr></tbody></table></figure><p>categraf:</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[[writers]]</span><br><span class="line">url = <span class="string">"http://10.168.137.144:17000/prometheus/v1/write"</span></span><br><span class="line"></span><br><span class="line">[heartbeat]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line">url = <span class="string">"http://10.168.137.144:17000/v1/n9e/heartbeat"</span></span><br></pre></td></tr></tbody></table></figure><p>inputs:</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[[instances]]</span><br><span class="line">targets = [</span><br><span class="line"><span class="string">"http://10.113.75.134:5000/v1/datasets/8a9302de-ded1-493c-8a12-e8acf3d80772/files?apikey=ka-admin123"</span></span><br><span class="line">]</span><br></pre></td></tr></tbody></table></figure><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>linux systemd 托管不太好控制单个模块采集</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nohup</span> ./categraf --inputs http_response &amp;</span><br><span class="line">pkill categraf</span><br></pre></td></tr></tbody></table></figure><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./categraf --<span class="built_in">test</span> --inputs http_response</span><br><span class="line">./categraf --inputs http_response</span><br><span class="line"></span><br><span class="line">pkill n9e</span><br><span class="line"><span class="built_in">nohup</span> ./n9e &amp;&gt; n9e.log &amp;</span><br></pre></td></tr></tbody></table></figure><p>参考：</p><p><a href="https://flashcat.cloud/docs/content/flashcat-monitor/categraf/2-installation/">https://flashcat.cloud/docs/content/flashcat-monitor/categraf/2-installation/</a></p><p>‍</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>No route to host</title>
+      <link href="//post/no-route-to-host-1fthpi.html"/>
+      <url>//post/no-route-to-host-1fthpi.html</url>
+      
+        <content type="html"><![CDATA[<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No route to host</span><br></pre></td></tr></tbody></table></figure><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>目标服务器防火墙导致</p><h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac 刷新 Dns</title>
+      <link href="/2024/mac-refresh-dns-z1i6di6/"/>
+      <url>/2024/mac-refresh-dns-z1i6di6/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</span><br></pre></td></tr></tbody></table></figure><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>记 Python 之 Orm Peewee 部分使用方法</title>
       <link href="/2023/python-peewee/"/>
       <url>/2023/python-peewee/</url>
@@ -599,9 +650,9 @@
       
         <tags>
             
-            <tag> sed </tag>
-            
             <tag> mac </tag>
+            
+            <tag> sed </tag>
             
         </tags>
       
