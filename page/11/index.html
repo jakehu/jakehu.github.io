@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">149</span>
+          <span class="site-state-item-count">150</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,127 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/guns-maven-skip-test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/guns-maven-skip-test/" class="post-title-link" itemprop="url">Guns 通过 Gitlab CI 跳过测试失败与多模块打包之解决方案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-04-24 09:57:00" itemprop="dateCreated datePublished" datetime="2019-04-24T09:57:00+00:00">2019-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/guns-maven-skip-test/" class="post-meta-item leancloud_visitors" data-flag-title="Guns 通过 Gitlab CI 跳过测试失败与多模块打包之解决方案" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>334</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在部署一个由 <code>Guns</code> 开发的一套系统，在本地测试和 <code>Gitlab Runner</code> 上执行 <code>mvn package -B -Dmaven.test.skip=true</code> 都能跳过测试，但是在 <code>CI</code> 里面就没法跳过测试</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>在 <code>pom</code> 中加入 <code>maven-surefire-plugin</code> 并跳过测试</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;3.0.0-M3&lt;/version&gt;</span><br><span class="line">  &lt;configuration&gt;</span><br><span class="line">    &lt;skipTests&gt;true&lt;/skipTests&gt;</span><br><span class="line">  &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Guns"><a href="#Guns" class="headerlink" title="Guns"></a>Guns</h3><p>这里我们再介绍哈 <code>guns</code> 多模块打包方案，模块如下：</p>
+<ol>
+<li>guns-parent <code>父模块</code></li>
+<li>guns-core <code>guns核心模块</code></li>
+<li>guns-generator <code>代码生成模块</code></li>
+<li>guns-admin <code>后台管理模块</code></li>
+<li>guns-rest <code>API模块</code></li>
+</ol>
+<p>下面是 <code>CI</code> 文件</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义代码目录</span></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">rm</span> <span class="string">-rf</span> <span class="string">/data/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">/data/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">mv</span> <span class="string">*</span> <span class="string">.git*</span> <span class="string">/data/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">/data/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">maven-build:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">deploy</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">cd</span> <span class="string">guns</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">mvn</span> <span class="string">clean</span> <span class="string">install</span> <span class="comment"># 在父模块上运行install，将依赖打包到maven本地仓库</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">cd</span> <span class="string">../guns/guns-admin</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">mvn</span> <span class="string">package</span> <span class="string">-B</span> <span class="string">-Dmaven.test.skip=true</span> <span class="comment"># 这里其实可以不用打包，因为前面install的时候已经打包</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">docker</span> <span class="string">build</span> <span class="string">...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">tag</span> <span class="string">...</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">docker</span> <span class="string">push</span> <span class="string">...</span> <span class="comment"># 构建不同项目的镜像</span></span><br><span class="line"> &nbsp; &nbsp;<span class="bullet">-</span> <span class="string">cd</span> <span class="string">../../guns/guns-rest</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">mvn</span> <span class="string">package</span> <span class="string">-B</span> <span class="string">-Dmaven.test.skip=true</span> <span class="comment"># 这里其实可以不用打包，因为前面install的时候已经打包</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">build</span> <span class="string">...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">tag</span> <span class="string">...</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">docker</span> <span class="string">push</span> <span class="string">...</span> <span class="comment"># 构建不同项目的镜像</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">spring-boot-shell</span></span><br></pre></td></tr></tbody></table></figure>
+<p>关于构建的 <code>Dockerfile</code> 可以参考</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jdk-alpine</span><br><span class="line">VOLUME /tmp</span><br><span class="line">COPY target/guns-admin-1.0.0.jar app.jar</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]</span><br></pre></td></tr></tbody></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/suse-kernel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +398,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +515,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -524,7 +645,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -668,7 +789,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -797,7 +918,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -937,7 +1058,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1063,7 +1184,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
 
   
@@ -1177,7 +1298,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1298,7 +1419,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:51:53" itemprop="dateModified" datetime="2024-12-13T13:51:53+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1366,201 +1487,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/kubeadm-cluster/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/kubeadm-cluster/" class="post-title-link" itemprop="url">利用 Kubeadm 创建 Kubernetes 集群之 Centos，你会了吗？</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-01-21 16:38:00" itemprop="dateCreated datePublished" datetime="2019-01-21T16:38:00+00:00">2019-01-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/kubeadm-cluster/" class="post-meta-item leancloud_visitors" data-flag-title="利用 Kubeadm 创建 Kubernetes 集群之 Centos，你会了吗？" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>776</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p><code>Kubeadm</code> 是一个工具，通过提供 <code>kubeadm init</code> 和 <code>kubeadm join</code> 来作为创建 <code>Kubernetes</code> 集群的最佳实践 “快速路径”</p>
-<p>简单理解就跟 <code>Docker swarm</code> 差不多吧，<code>Kubeadm</code> 的 <code>GA</code> 版本都已经发布了，那还等什么呢？</p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><h5 id="资源版本"><a href="#资源版本" class="headerlink" title="资源版本"></a>资源版本</h5><ol>
-<li><code>CentOS 7.6 64</code></li>
-<li><code>Kubernetes version: v1.13.2</code></li>
-<li><code>Docker version 18.06</code></li>
-</ol>
-<blockquote>
-<p>这里为什么使用 <code>Docker 18.06</code> 是因为 <code>kubeadm now properly recognizes Docker 18.09.0 and newer, but still treats 18.06 as the default supported version.</code></p>
-</blockquote>
-<p>所以我们默认还是使用 <code>18.06</code></p>
-<h5 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h5><p>这里我们使用 <code>CentOS 7.6 64</code>，同时测试环境为阿里云服务器</p>
-<table>
-<thead>
-<tr>
-<th>IP Address</th>
-<th>Hostname</th>
-<th>CPU</th>
-<th>Memory</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>172.16.1.86</td>
-<td>Master</td>
-<td>2C</td>
-<td>4G</td>
-</tr>
-<tr>
-<td>172.16.1.87</td>
-<td>Node1</td>
-<td>2C</td>
-<td>4G</td>
-</tr>
-<tr>
-<td>172.16.1.88</td>
-<td>Node2</td>
-<td>2C</td>
-<td>4G</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>这里注意一下服务器系统，目前官方已支持 <code>Ubuntu 16.04+</code>、<code>Debian 9</code>、<code>CentOS 7</code>、<code>RHEL 7</code> 等</p>
-</blockquote>
-<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>关闭防火墙</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setenforce 0</span><br><span class="line">sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config</span><br><span class="line">systemctl stop firewalld &amp;&amp; systemctl disable firewalld</span><br></pre></td></tr></tbody></table></figure>
-<p>设定 <code>/etc/hosts</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.16.1.86 Master</span><br><span class="line">172.16.1.87 Node1</span><br><span class="line">172.16.1.88 Node2</span><br></pre></td></tr></tbody></table></figure>
-<p>禁用 <code>Swap</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; sysctl -w vm.swappiness=0</span><br></pre></td></tr></tbody></table></figure>
-<p>将配置中 <code>net.bridge.bridge-nf-call-iptables</code> 被设为 1</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt;  /etc/sysctl.d/k8s.conf</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装 Docker</h5><p>在 3 台服务器上都安装上 <code>Docker</code>，此次实验 <code>Docker</code> 版本：<code>Docker version 18.06</code></p>
-<p><a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/centos/">Centos Docker 安装文档</a></p>
-<p>安装完成启动 <code>Docker</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker.service</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="安装K8s"><a href="#安装K8s" class="headerlink" title="安装K8s"></a>安装 K8s</h5><p>在 3 台服务器上配置 <code>YUM</code> 源为阿里镜像源</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
-<p>您需要在每台机器上都安装以下的软件包：</p>
-<ol>
-<li>kubeadm: 用来初始化集群的指令。</li>
-<li>kubelet: 在集群中的每个节点上用来启动 <code>pod</code> 和 <code>container</code> 等。</li>
-<li>kubectl: 用来与集群通信的命令行工具。</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes</span><br><span class="line">systemctl enable kubelet &amp;&amp; systemctl start kubelet</span><br></pre></td></tr></tbody></table></figure>
-<p>版本：<code>Kubernetes version: v1.13.2</code></p>
-<h5 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h5><p>在 <code>Master</code> 节点上配置 <code>kubelet</code> 所需的 <code>cgroup</code> 驱动</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt;  /var/lib/kubelet/kubeadm-flags.env</span><br><span class="line">KUBELET_EXTRA_ARGS=--cgroup-driver=cgroupfs</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
-<p>需要重启 <code>kubelet</code>：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart kubelet</span><br></pre></td></tr></tbody></table></figure>
-<p><code>k8s.gcr.io</code> 镜像本地化</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images list //查看所需要的镜像</span><br><span class="line"></span><br><span class="line">// 编辑脚本从hub获取镜像</span><br><span class="line">vim k8s.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">docker pull coredns/coredns:1.2.6</span><br><span class="line">docker tag coredns/coredns:1.2.6 k8s.gcr.io/coredns:1.2.6</span><br><span class="line">docker rmi coredns/coredns:1.2.6</span><br><span class="line">images=(</span><br><span class="line">    kube-apiserver:v1.13.2</span><br><span class="line">    kube-controller-manager:v1.13.2</span><br><span class="line">    kube-scheduler:v1.13.2</span><br><span class="line">    kube-proxy:v1.13.2</span><br><span class="line">    pause:3.1</span><br><span class="line">    etcd:3.2.24</span><br><span class="line">)</span><br><span class="line">for imageName in ${images[@]} ; do</span><br><span class="line">  docker pull mirrorgooglecontainers/$imageName</span><br><span class="line">  docker tag mirrorgooglecontainers/$imageName k8s.gcr.io/$imageName</span><br><span class="line">  docker rmi mirrorgooglecontainers/$imageName</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 编辑脚本权限</span><br><span class="line">chmod +x k8s.sh</span><br><span class="line"></span><br><span class="line">// 执行脚本</span><br><span class="line">./k8s.sh</span><br></pre></td></tr></tbody></table></figure>
-
-<p>初始化 <code>Master</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --kubernetes-version=v1.13.2 --pod-network-cidr=10.244.0.0/16</span><br></pre></td></tr></tbody></table></figure>
-<p>配置 <code>kubectl</code> 认证信息</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 非root用户</span><br><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line"># root用户</span><br><span class="line">export KUBECONFIG=/etc/kubernetes/admin.conf</span><br><span class="line">echo "export KUBECONFIG=/etc/kubernetes/admin.conf" &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></tbody></table></figure>
-<p>安装网络插件 <code>flannel</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h5><p><code>Node</code> 镜像本地化</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 编辑脚本从hub获取镜像</span><br><span class="line">vim k8s.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">images=(</span><br><span class="line">    kube-proxy:v1.13.2</span><br><span class="line">    pause:3.1</span><br><span class="line">)</span><br><span class="line">for imageName in ${images[@]} ; do</span><br><span class="line">  docker pull mirrorgooglecontainers/$imageName</span><br><span class="line">  docker tag mirrorgooglecontainers/$imageName k8s.gcr.io/$imageName</span><br><span class="line">  docker rmi mirrorgooglecontainers/$imageName</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 编辑脚本权限</span><br><span class="line">chmod +x k8s.sh</span><br><span class="line"></span><br><span class="line">// 执行脚本</span><br><span class="line">./k8s.sh</span><br></pre></td></tr></tbody></table></figure>
-<p>将节点加入集群</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm join 172.16.1.86:6443 --token xxx --discovery-token-ca-cert-hash xxx</span><br></pre></td></tr></tbody></table></figure>
-
-<h5 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h5><p>未完待续…</p>
-<hr>
-<p>题外话：</p>
-<blockquote>
-<p>安装过程中可以用 <code>tail -f 100 /var/log/messages</code> 查看日志，便于找到问题所在</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1594,7 +1520,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:14</span>
+    <span title="站点阅读时长">2:15</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
