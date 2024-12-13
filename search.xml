@@ -36,6 +36,25 @@
     
     
     <entry>
+      <title>配置 Dockerfile 让容器支持中文</title>
+      <link href="/2024/configure-dockerfile-to-let-the-container-support-chinese-1iqwgv/"/>
+      <url>/2024/configure-dockerfile-to-let-the-container-support-chinese-1iqwgv/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RUN yum install -y kde-l10n-Chinese &amp;&amp; \</span><br><span class="line">    yum install -y glibc-common &amp;&amp; \</span><br><span class="line">    localedef -c -f UTF-8 -i zh_CN zh_CN.utf8</span><br><span class="line"></span><br><span class="line"><span class="comment"># ENV LANG zh_CN.UTF-8</span></span><br><span class="line">ENV LC_ALL zh_CN.UTF-8</span><br></pre></td></tr></tbody></table></figure><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac 刷新 Dns</title>
       <link href="/2024/mac-refresh-dns-z1i6di6/"/>
       <url>/2024/mac-refresh-dns-z1i6di6/</url>

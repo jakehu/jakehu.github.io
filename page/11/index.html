@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,150 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/gogs-drone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/gogs-drone/" class="post-title-link" itemprop="url">或许在 Nas (群晖 [Docker]) 上 Gogs 和 Drone 更配哦</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-04-08 16:42:00" itemprop="dateCreated datePublished" datetime="2019-04-08T16:42:00+00:00">2019-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/gogs-drone/" class="post-meta-item leancloud_visitors" data-flag-title="或许在 Nas (群晖 [Docker]) 上 Gogs 和 Drone 更配哦" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <div class="note danger"><p>关于 <code>Drone</code> 之 <code>Docker in Docker (dind)</code> 解决方案，本人历经 <code>2天</code>尝试了各种解决方案，最终解决方案为 <code>volumes</code> 挂载，已在本文体现</p>
+</div>
+
+<h3 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h3><p>为什么？为什么要使用 <code>Gogs</code> 和 <code>Drone</code>？答案是习惯！！！</p>
+<p>工作中一般使用 <code>GIT</code> 管理工具为 <code>gitlab</code>，自有开源项目一般都是使用的 <code>github</code>，自有私有项目之前一直用 <code>gitee</code>；玩 <code>Nas</code> 也有好几年了，最初也想过在 <code>Nas</code> 上通过 <code>docker</code> 搭建 <code>gitlab</code> 无奈配置不过硬</p>
+<p>怎么说呢？了解 <code>Gogs</code> 是在它出来的那一段时间，但是也一直没有用过。最近心血来潮还是想自己在 <code>Nas</code> 上做一个 <code>GIT</code> 私有服；于是挑中了 <code>Gogs</code> 和 <code>Gitea</code>，鉴于两个服务属于<code>同源</code>最后选择了 <code>Gogs</code></p>
+<h3 id="Gogs"><a href="#Gogs" class="headerlink" title="Gogs"></a>Gogs</h3><p>关于 <code>Gogs</code> 的安装我这里就不过多的赘述，可以看下面的两个文档</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gogs/gogs/tree/master/docker">Gogs Github</a></p>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/r/gogs/gogs">Gogs Docker</a></p>
+<p>这需要说明的是 <code>Gogs</code> 支持 <code>MySQL</code>, <code>PostgreSQL</code>, <code>SQLite3</code>, <code>MSSQL</code> 和 <code>TiDB</code>；目前我使用的是 <code>MySQL</code>，关于 <code>Mysql</code> 的安装部署可以查看官方文档这里也不过多赘述</p>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/mysql">Mysql 安装文档</a></p>
+<p>对于在群晖 <code>Docker</code> 中去管理 <code>Mysql</code> 的工具这里我推荐 <code>adminer</code> 安装文档如下</p>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/adminer">adminer 安装文档</a></p>
+<p>最后我要说的是一个是端口映射的问题，一个是卷映射的问题，如下图<br><img src="https://img.jakehu.me/810603f6ly1g1vccwvbr8j20q10f10tx.jpg"><br><img src="https://img.jakehu.me/810603f6ly1g1vccwqe4tj20pt0evdgz.jpg"><br>最后直接访问：<code>http://192.168.1.2:10080</code> 就 OK 了</p>
+<p>这里贴出一下整个 <code>Gogs</code> 配置文件</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /data/gogs/conf/app.ini</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">APP_NAME</span> = <span class="title class_">Gogs</span></span><br><span class="line"><span class="variable constant_">RUN_USER</span> = git</span><br><span class="line"><span class="variable constant_">RUN_MODE</span> = prod</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line"><span class="variable constant_">DB_TYPE</span>  = mysql</span><br><span class="line"><span class="variable constant_">HOST</span> &nbsp; &nbsp; = <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span>:<span class="number">3306</span> <span class="comment">// mysql地址端口</span></span><br><span class="line"><span class="variable constant_">NAME</span> &nbsp; &nbsp; = gogs</span><br><span class="line"><span class="variable constant_">USER</span>     = root</span><br><span class="line"><span class="variable constant_">PASSWD</span> &nbsp; = password <span class="comment">// mysql密码</span></span><br><span class="line"><span class="variable constant_">SSL_MODE</span> = disable</span><br><span class="line"><span class="variable constant_">PATH</span>     = data/gogs.<span class="property">db</span></span><br><span class="line"></span><br><span class="line">[repository]</span><br><span class="line"><span class="variable constant_">ROOT</span> = <span class="regexp">/data/gi</span>t/gogs-repositories</span><br><span class="line">publish</span><br><span class="line">[server]</span><br><span class="line"><span class="variable constant_">DOMAIN</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span> <span class="comment">// 访问域名</span></span><br><span class="line"><span class="variable constant_">HTTP_PORT</span> &nbsp; &nbsp; &nbsp;  = <span class="number">10080</span> <span class="comment">// http端口</span></span><br><span class="line"><span class="variable constant_">ROOT_URL</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="attr">http</span>:<span class="comment">//192.168.1.2/ // 访问域名</span></span><br><span class="line"><span class="variable constant_">DISABLE_SSH</span>      = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">SSH_PORT</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="number">10022</span> <span class="comment">// SSH端口</span></span><br><span class="line"><span class="variable constant_">START_SSH_SERVER</span> = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">OFFLINE_MODE</span>     = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[mailer]</span><br><span class="line"><span class="variable constant_">ENABLED</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[service]</span><br><span class="line"><span class="variable constant_">REGISTER_EMAIL_CONFIRM</span> = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">ENABLE_NOTIFY_MAIL</span>     = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">DISABLE_REGISTRATION</span> &nbsp; = <span class="literal">true</span> <span class="comment">// 禁止注册，只能有管理员能加账号</span></span><br><span class="line"><span class="variable constant_">ENABLE_CAPTCHA</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="literal">true</span></span><br><span class="line"><span class="variable constant_">REQUIRE_SIGNIN_VIEW</span> &nbsp;  = <span class="literal">true</span> <span class="comment">// 默认跳转到登录页</span></span><br><span class="line"></span><br><span class="line">[picture]</span><br><span class="line"><span class="variable constant_">DISABLE_GRAVATAR</span>        = <span class="literal">false</span></span><br><span class="line"><span class="variable constant_">ENABLE_FEDERATED_AVATAR</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[session]</span><br><span class="line"><span class="variable constant_">PROVIDER</span> = file</span><br><span class="line"></span><br><span class="line">[log]</span><br><span class="line"><span class="variable constant_">MODE</span>      = file</span><br><span class="line"><span class="variable constant_">LEVEL</span>     = <span class="title class_">Info</span></span><br><span class="line"><span class="variable constant_">ROOT_PATH</span> = <span class="regexp">/app/g</span>ogs/log</span><br><span class="line"></span><br><span class="line">[security]</span><br><span class="line"><span class="variable constant_">INSTALL_LOCK</span> = <span class="literal">true</span></span><br><span class="line"><span class="variable constant_">SECRET_KEY</span>   = security</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>到此为止，我们就完成了 <code>Gogs</code> 的所有安装<br><img src="https://img.jakehu.me/810603f6ly1g1vcre69x8j20r60aqaa8.jpg"></p>
+<h3 id="Drone"><a href="#Drone" class="headerlink" title="Drone"></a>Drone</h3><h4 id="Drone安装"><a href="#Drone安装" class="headerlink" title="Drone安装"></a>Drone 安装</h4><p>为什么？为什么要使用 <code>Drone</code> 还是因为习惯。因为在使用 <code>Gitlab</code> 的时候使用的 <code>CI/CD</code> 都是 <code>gitlab</code> 自带的 <code>gitlab ci</code>；所以这里我们也需要一个 <code>CI/CD</code> 的工具于是我选择了 <code>Drone</code>，当然市场上 <code>CI/CD</code> 的工具是比较多的</p>
+<p><code>Drone</code> 安装这里我们参考官方文档</p>
+<p><a target="_blank" rel="noopener" href="https://docs.drone.io/installation/gogs/single-machine/">Gogs 单机安装文档</a></p>
+<p><code>Docker</code> 命令如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">    -d \</span><br><span class="line">    -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">    -v /volume1/docker/drone:/data \</span><br><span class="line">    -e DRONE_GIT_ALWAYS_AUTH=false \</span><br><span class="line">    -e DRONE_GOGS_SERVER=http://192.168.1.2:10080 \</span><br><span class="line">    -e DRONE_SERVER_HOST=http://192.168.1.2:10800 \</span><br><span class="line">    -e DRONE_DATABASE_DRIVER=mysql \</span><br><span class="line">    -e DRONE_DATABASE_DATASOURCE="root:password@tcp(192.168.1.2:3306)/drone?parseTime=true" \</span><br><span class="line">    -p 80:80 \</span><br><span class="line">    -p 443:443 \</span><br><span class="line">    --name=drone \</span><br><span class="line">    drone/drone:latest</span><br></pre></td></tr></tbody></table></figure>
+<p>这里贴别强调一下 <code>/var/run/docker.sock:/var/run/docker.sock</code> 的挂载是必不可少的，因为后面的 <code>DIND</code> 会用到，另外因为我使用了 <code>Mysql</code> 所以上面 <code>DRONE_DATABASE_DRIVER</code> 配置为 <code>mysql</code></p>
+<p>接下来访问 <code>http://192.168.1.2:10800</code> 就会出现 <code>Drone</code> 登录界面，账号为 <code>Gogs</code> 管理员账号，这两个账号相通，而且也会自动同步 <code>Gogs</code> 项目<br><img src="https://img.jakehu.me/810603f6ly1g1w6bebmghj20id0c1aa1.jpg"></p>
+<h4 id="drone-yml"><a href="#drone-yml" class="headerlink" title=".drone.yml"></a>.drone.yml</h4><p>在编辑<code>.drone.yml</code> 之前我们需要在 <code>drone</code> 管理界面对项目设置<br><img src="https://img.jakehu.me/810603f6ly1g1xbr3s339j20qn0eljrt.jpg"><br>这里需要设置项目为受信任项目，如果 <code>Project settings</code> 未显示，则表示当前用户在 <code>Drone</code> 不是管理员可以更改数据库授权为管理员</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE `users` SET `user_admin` = '1' WHERE `user_id` = '1';</span><br></pre></td></tr></tbody></table></figure>
+<p>接下来我们编写<code>.drone.yml</code>，对于<code>.drone.yml</code> 编写我们以 <code>Spring Boot</code> 项目为例，首先我们需要编辑 <code>DockerFile</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jdk-alpine</span><br><span class="line">VOLUME /tmp</span><br><span class="line">ADD target/hello-1.0.0.jar app.jar</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>接下来我们编辑<code>.drone.yml</code>，关于<code>.drone.yml</code> 请参考<a target="_blank" rel="noopener" href="https://docs.drone.io/user-guide/">.drone.yml 文档</a></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">kind: pipeline</span><br><span class="line">name: default</span><br><span class="line"></span><br><span class="line">steps:</span><br><span class="line">- name: build</span><br><span class="line">  image: maven:3.5-jdk-8</span><br><span class="line">  commands:</span><br><span class="line">  - mvn package -B -Dmaven.test.skip=true # 打包跳过测试</span><br><span class="line"></span><br><span class="line">- name: publish</span><br><span class="line">  image: docker:dind</span><br><span class="line">  volumes:</span><br><span class="line">  - name: docker</span><br><span class="line">    path: /var/run/docker.sock  # dind挂载来自Drone容器/var/run/docker.sock</span><br><span class="line">  commands:</span><br><span class="line">  - docker login --username=* --password=* registry.cn-shenzhen.aliyuncs.com</span><br><span class="line">  - docker build -t spring-boot:master .</span><br><span class="line">  - docker tag spring-boot:master registry.cn-shenzhen.aliyuncs.com/new/spring-boot:master</span><br><span class="line">  - docker push registry.cn-shenzhen.aliyuncs.com/new/spring-boot:master</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">- name: docker</span><br><span class="line">  host:</span><br><span class="line">    path: /var/run/docker.sock # 这里挂载Drone容器所在/var/run/docker.sock，当然Drone容器/var/run/docker.sock来自于群晖宿主机/var/run/docker.sock</span><br></pre></td></tr></tbody></table></figure>
+
+<p>通过上面我们定义了两步，<code>build</code> 利用 <code>maven</code> 对 <code>Spring Boot</code> 进行了打包操作；<code>publish</code> 利用 <code>dind</code> 将打包好的 <code>jar</code> 包通过 <code>DockerFile</code> 打包成镜像并推送到镜像仓库，这里说一下我使用的镜像仓库是<code>阿里云</code></p>
+<p>这里也请注意 <code>WebHook</code> 的地址为上面安装的 <code>Drone</code> 地址请注意填写正确<br><img src="https://img.jakehu.me/810603f6ly1g1w7p18wahj20s70bdab5.jpg"></p>
+<p>下面我们看一下 <code>Drone</code> 执行过程<br><img src="https://img.jakehu.me/810603f6ly1g1xc5lidgdj20qx0bbabj.jpg"></p>
+<p>到这里我们就告一段落了</p>
+<hr>
+<p>以上就是群晖对接整个 <code>Gogs</code> 和 <code>Drone</code> 过程</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/weixin-token/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +421,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -406,7 +550,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -546,7 +690,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -672,7 +816,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
 
   
@@ -786,7 +930,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -907,7 +1051,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1019,7 +1163,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1214,7 +1358,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1328,7 +1472,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1411,125 +1555,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/mac-software/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/mac-software/" class="post-title-link" itemprop="url">Mac 常用软件备份</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-01-05 09:09:00" itemprop="dateCreated datePublished" datetime="2019-01-05T09:09:00+00:00">2019-01-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:25:45" itemprop="dateModified" datetime="2024-12-13T13:25:45+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%B5%84%E6%BA%90%E6%8E%A7/" itemprop="url" rel="index"><span itemprop="name">资源控</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/mac-software/" class="post-meta-item leancloud_visitors" data-flag-title="Mac 常用软件备份" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>135</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="microsoft-remote-desktop-for-mac"><a href="#microsoft-remote-desktop-for-mac" class="headerlink" title="microsoft remote desktop for mac"></a>microsoft remote desktop for mac</h4><p>根据<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/virtual-desktop/users/client-features-macos">【官方文档】</a>所示，两种方式获取</p>
-<ol>
-<li>Mac 应用应用商店下载 (只支持美区)</li>
-<li>Mac beta 版，通过<a target="_blank" rel="noopener" href="https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-for-mac/distribution_groups/all-users-of-microsoft-remote-desktop-for-mac">【appcenter】</a>下载</li>
-<li>商店之外正版<a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?linkid=868963">下载</a>，参考：<a target="_blank" rel="noopener" href="https://community.spiceworks.com/topic/2123651-microsoft-remote-desktop-now-available-outside-the-app-store">Microsoft Remote Desktop now available outside the App Store</a></li>
-</ol>
-<h4 id="Mos"><a href="#Mos" class="headerlink" title="Mos"></a>Mos</h4><p>一个用于在 macOS 上平滑你的鼠标滚动效果或单独设置滚动方向的小工具，让你的滚轮爽如触控板</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Caldis/Mos">Mos</a></p>
-<h4 id="Redis客户端"><a href="#Redis客户端" class="headerlink" title="Redis客户端"></a>Redis 客户端</h4><p><code>Redis</code> 客户端众多，安利两款自己用过，还觉得不错的</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/qishibo/AnotherRedisDesktopManager">AnotherRedisDesktopManager</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/luin/medis">Medis</a></p>
-<hr>
-<p>未完待续</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1556,7 +1581,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">36k</span>
+    <span title="站点总字数">37k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
