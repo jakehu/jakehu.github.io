@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,119 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2020/openssh-pip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/openssh-pip/" class="post-title-link" itemprop="url">不省心的 Openssh 和 Pip</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-13 09:22:00" itemprop="dateCreated datePublished" datetime="2020-05-13T09:22:00+00:00">2020-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/openssh-pip/" class="post-meta-item leancloud_visitors" data-flag-title="不省心的 Openssh 和 Pip" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>83</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>pip</code> 出现以下错误</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip3", line 6, in &lt;module&gt;</span><br><span class="line">    from pip._internal.cli.main import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal.cli.main'</span><br></pre></td></tr></tbody></table></figure>
+<p>经过排查应该是 <code>brew install openssh</code> 之后安装了 <code>python3.8</code> 的包导致的</p>
+<h3 id="卸载Openssh"><a href="#卸载Openssh" class="headerlink" title="卸载Openssh"></a>卸载 Openssh</h3><p>利用 <code>rmtree</code> 卸载 <code>Openssh</code> 及其依赖</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap beeftornado/rmtree</span><br><span class="line">brew rmtree openssh</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Pip修复"><a href="#Pip修复" class="headerlink" title="Pip修复"></a>Pip 修复</h3><p><code>python3 -m pip install --upgrade pip --user</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2020/git-auto-push/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +390,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
 
   
@@ -384,7 +497,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -498,7 +611,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -613,7 +726,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -730,7 +843,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -847,7 +960,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -968,7 +1081,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1095,7 +1208,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1207,7 +1320,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1283,129 +1396,6 @@ var _hmt = _hmt || [];
 <hr>
 <p>关于群晖部分问题可以看各位网友的总结：</p>
 <p><a target="_blank" rel="noopener" href="https://wp.gxnas.com/2450.html">黑群晖常见问题</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/koolproxy-install/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/koolproxy-install/" class="post-title-link" itemprop="url">将 KoolProxyR 规则转换为 KoolProxy 规则脚本</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-09 09:38:00" itemprop="dateCreated datePublished" datetime="2019-07-09T09:38:00+00:00">2019-07-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/koolproxy-install/" class="post-meta-item leancloud_visitors" data-flag-title="将 KoolProxyR 规则转换为 KoolProxy 规则脚本" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>536</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h3><blockquote>
-<p>SSH 到路由器上<br>下载 KoolProxy 离线包</p>
-</blockquote>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm380下的包，版本为：3.8.4.1</span></span><br><span class="line">wget http://cdn.jakehu.me/koolproxy.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm384下的包，版本为：3.8.4.1</span></span><br><span class="line">wget http://cdn.jakehu.me/koolproxy384.tar.gz</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>解压并安装</p>
-</blockquote>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此为arm380下的包，版本为：3.8.4.1</span></span><br><span class="line">tar koolproxy.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此为arm384下的包，版本为：3.8.4.1</span></span><br><span class="line">tar koolproxy384.tar.gz</span><br><span class="line"></span><br><span class="line">sh koolproxy/install.sh</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="规则转换"><a href="#规则转换" class="headerlink" title="规则转换"></a>规则转换</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">安装WebShell</span><br><span class="line">复制下面的内容发送命令。</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /jffs/.koolshare/koolproxy/data/rules</span><br><span class="line"><span class="comment"># 删除旧版本规则文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily.txt</span><br><span class="line"><span class="built_in">rm</span> -rf kp.dat</span><br><span class="line"><span class="comment"># 下载新版本规则文件</span></span><br><span class="line"></span><br><span class="line">wget -O daily.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/easylistchina.txt</span><br><span class="line">wget -O koolproxy.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/fanboy-annoyance.txt</span><br><span class="line"><span class="comment"># wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/kp.dat</span></span><br><span class="line">wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kp.dat</span><br><span class="line"><span class="comment"># wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/user.txt</span></span><br><span class="line">wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kpr_our_rule.txt</span><br><span class="line"><span class="comment"># 下载扩展规则合并</span></span><br><span class="line">wget -O koolproxy_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/191c06c8d1f769f1b81c1437ad3b1271e0e58d7b/koolproxyR/koolproxyR/data/rules/kpr_video_list.txt</span><br><span class="line">wget -O daily_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/yhosts.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> koolproxy_tmp.txt &gt;&gt;koolproxy.txt</span><br><span class="line"><span class="built_in">cat</span> daily_tmp.txt &gt;&gt;daily.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 一点点清洁工作...</span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy_tmp.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily_tmp.txt</span><br><span class="line"><span class="built_in">echo</span> koolproxy规则已替换完成，请重新启用koolproxy!</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="自动更新"><a href="#自动更新" class="headerlink" title="自动更新"></a>自动更新</h3><h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><p>自动更新脚本如下：<br><code>/jffs/scripts/koolproxy.sh</code></p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"开始转换koolproxyR规则"</span></span><br><span class="line"><span class="built_in">cd</span> /jffs/.koolshare/koolproxy/data/rules</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除旧版本规则文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第一步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"删除旧版本规则文件"</span></span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily.txt</span><br><span class="line"><span class="built_in">rm</span> -rf kp.dat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载新版本规则文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第二步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"下载新版本规则文件"</span></span><br><span class="line">wget -O daily.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/easylistchina.txt</span><br><span class="line">wget -O koolproxy.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/fanboy-annoyance.txt</span><br><span class="line"><span class="comment"># wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/kp.dat</span></span><br><span class="line">wget -O kp.dat https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kp.dat</span><br><span class="line"><span class="comment"># wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/user.txt</span></span><br><span class="line">wget -O user.txt https://raw.githubusercontent.com/user1121114685/koolproxyR_rule_list/master/kpr_our_rule.txt</span><br><span class="line"><span class="comment"># 下载扩展规则合并</span></span><br><span class="line">wget -O koolproxy_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/191c06c8d1f769f1b81c1437ad3b1271e0e58d7b/koolproxyR/koolproxyR/data/rules/kpr_video_list.txt</span><br><span class="line">wget -O daily_tmp.txt https://raw.githubusercontent.com/user1121114685/koolproxyR/master/koolproxyR/koolproxyR/data/rules/yhosts.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第三步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"合并规则"</span></span><br><span class="line"><span class="built_in">cat</span> koolproxy_tmp.txt &gt;&gt;koolproxy.txt</span><br><span class="line"><span class="built_in">cat</span> daily_tmp.txt &gt;&gt;daily.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第四步"</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"一点点清洁工作..."</span></span><br><span class="line"><span class="built_in">rm</span> -rf koolproxy_tmp.txt</span><br><span class="line"><span class="built_in">rm</span> -rf daily_tmp.txt</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"koolproxyR规则转换成功"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tools-&gt;Scripts-&gt;定时任务</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<p>参考资料：<br><a target="_blank" rel="noopener" href="https://github.com/koolproxy/merlin-koolproxy">arm380</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/armsoft/tree/master/koolproxy">arm384</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/rogsoft/tree/master/koolproxy">org</a> <a target="_blank" rel="noopener" href="https://github.com/koolshare/ledesoft/tree/master/koolproxy">lede</a></p>
 
       
     </div>

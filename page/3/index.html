@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,122 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/vmware-centos-no-ip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/vmware-centos-no-ip/" class="post-title-link" itemprop="url">VMware 虚拟机中 Centos 获取不到 IP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-19 10:23:00" itemprop="dateCreated datePublished" datetime="2022-07-19T10:23:00+00:00">2022-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/vmware-centos-no-ip/" class="post-meta-item leancloud_visitors" data-flag-title="VMware 虚拟机中 Centos 获取不到 IP" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>69</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>虚拟机是 <code>Centos</code>，利用桥接模式进行网络连接，输入 <code>ip a s</code> 命令 <code>ens33</code> 网卡没有 <code>IP</code> 地址</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>修改配置文件：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></tbody></table></figure>
+<p>修改如下配置：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ONBOOT=<span class="built_in">yes</span></span><br></pre></td></tr></tbody></table></figure>
+<p>重启：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>题外话：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.vmware.com/cn/VMware-Workstation-Player-for-Windows/16.0/com.vmware.player.win.using.doc/GUID-D8892B15-73A5-4FCE-AB7D-56C2C90BD951.html">安装 VMware Tools</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/centos-kubebuilder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +393,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -395,7 +511,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -521,7 +637,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -633,7 +749,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -741,7 +857,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -866,7 +982,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -985,7 +1101,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1097,7 +1213,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1212,7 +1328,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1274,116 +1390,6 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">celery --broker=redis://127.0.0.1:6379/0 flower --port=5566</span><br></pre></td></tr></tbody></table></figure>
 <p><a target="_blank" rel="noopener" href="https://docs.celeryproject.org/en/stable/">Celery 参考文档</a><br><a target="_blank" rel="noopener" href="https://flower.readthedocs.io/en/latest/">Flower 参考文档</a></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/sqlalchemy-date-format/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/sqlalchemy-date-format/" class="post-title-link" itemprop="url">Sqlalchemy Date Format</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-02-20 19:37:00" itemprop="dateCreated datePublished" datetime="2022-02-20T19:37:00+00:00">2022-02-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/sqlalchemy-date-format/" class="post-meta-item leancloud_visitors" data-flag-title="Sqlalchemy Date Format" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>73</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>当使用 <code>Sqlalchemy</code> 查询数据通过 <code>ujson</code> 等 <code>json</code> 工具 <code>dumps</code> 时会报以下错误</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: datetime.datetime(2022, 2, 20, 14, 17, 23) is not JSON serializable</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>可以通过在 <code>SQL</code> 查询的时候先行进行格式化</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>(</span><br><span class="line">    order.c.id,</span><br><span class="line">    func.date_format(order.c.time, "%Y-%m-%d %H:%i:%s"),</span><br><span class="line">)</span><br><span class="line">.select_from(<span class="keyword">order</span>)</span><br><span class="line">.<span class="keyword">where</span>(</span><br><span class="line">    order.c.uid <span class="operator">=</span><span class="operator">=</span> <span class="number">1</span>,</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 

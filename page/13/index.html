@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,122 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/hexo-pages/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/hexo-pages/" class="post-title-link" itemprop="url">Hexo 在 Github 慢？不存在百度云？七牛？又拍？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-22 10:26:00" itemprop="dateCreated datePublished" datetime="2018-12-22T10:26:00+00:00">2018-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/hexo-pages/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo 在 Github 慢？不存在百度云？七牛？又拍？" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>242</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>博客 <code>hexo</code> 一直部署在 <code>Github Pages</code>，方便、稳定非常 <code>nice</code>，但是最近发现打开博客的速度比较慢。于是想着能否通过多部署，或者国内 <code>CDN</code> 加快访问速度</p>
+<h3 id="加速方案"><a href="#加速方案" class="headerlink" title="加速方案"></a>加速方案</h3><ol>
+<li>利用 <code>Gitee Pages</code> 作为国内部署，但是 <code>Gitee Pages</code> 免费版不支持 <code>https</code>，遂作罢</li>
+<li>利用 <code>Coding Pages</code> 作为国内部署，支持 <code>Let's Encrypt https</code>，但发现所加速的 <code>IP</code> 均为国外 <code>IP</code>，有时也比较的慢，于是尝试在国内找 <code>cdn</code> 加速就有了下面方案的对比</li>
+<li>百度云：免费版不支持 <code>https</code>，遂作罢</li>
+<li>腾讯云：没有免费额度，支持上传自有证书，遂作罢</li>
+<li>七牛 CDN：免费 10G 额度，免费版不支持 <code>https</code>，遂作罢</li>
+<li>又拍云 (在用方案，目前最完美方案)：支持 <code>Let's Encrypt</code> 加入<a target="_blank" rel="noopener" href="https://www.upyun.com/league">又拍云联盟</a> 10G 空间 + 15G 流量额度</li>
+</ol>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>加速过后速度杠杠的</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/etc-fstab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +393,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -393,7 +509,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -504,7 +620,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -633,7 +749,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -748,7 +864,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -866,7 +982,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -979,7 +1095,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1096,7 +1212,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1212,7 +1328,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:02:57" itemprop="dateModified" datetime="2024-12-13T14:02:57+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1267,117 +1383,6 @@ var _hmt = _hmt || [];
 </li>
 </ol>
 <p>因为懒所以选择了第二方案。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/Nas-Time-Machine/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/Nas-Time-Machine/" class="post-title-link" itemprop="url">如何使用 Time Machine 将文件从 Mac 备份至 Synology NAS</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-12-04 09:31:34" itemprop="dateCreated datePublished" datetime="2018-12-04T09:31:34+00:00">2018-12-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2018/Nas-Time-Machine/" class="post-meta-item leancloud_visitors" data-flag-title="如何使用 Time Machine 将文件从 Mac 备份至 Synology NAS" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>52</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="官宣文档"><a href="#官宣文档" class="headerlink" title="官宣文档"></a>官宣文档</h3><p>官宣文档没毛病，重点说说注意事项<br><a target="_blank" rel="noopener" href="https://www.synology.com/zh-cn/knowledgebase/DSM/tutorial/Backup_Restore/How_to_back_up_files_from_Mac_to_Synology_NAS_with_Time_Machine">文档</a></p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><blockquote>
-<p>对于 macOS Sierra 和更高版本，Time Machine 使用 SMB 代替 AFP 作为默认协议。</p>
-</blockquote>
-<p>Mac(Finder)：<code>smb://JakehuNas</code></p>
 
       
     </div>
