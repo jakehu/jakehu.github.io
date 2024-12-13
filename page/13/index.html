@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,119 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/node-utils/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/node-utils/" class="post-title-link" itemprop="url">Nodejs 工具函数集</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-05 11:38:00" itemprop="dateCreated datePublished" datetime="2018-12-05T11:38:00+00:00">2018-12-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/node-utils/" class="post-meta-item leancloud_visitors" data-flag-title="Nodejs 工具函数集" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>241</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="对数组中的对象进行排序"><a href="#对数组中的对象进行排序" class="headerlink" title="对数组中的对象进行排序"></a>对数组中的对象进行排序</h3><p>函数：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function keysort (key, desc) {</span><br><span class="line">  return function (a, b) {</span><br><span class="line">    return desc ? (a[key] &lt; b[key]) : (a[key] &gt; b[key]);</span><br><span class="line">  };</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [{"id":2,"name":"2"},{"id":1,"name":"1"}]</span><br><span class="line">arr.sort(keysort('name', 'desc'));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="判断是否是Float浮点"><a href="#判断是否是Float浮点" class="headerlink" title="判断是否是Float浮点"></a>判断是否是 Float 浮点</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isFloat (num) {</span><br><span class="line">  return num !== parseInt(num);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="保留两位小数，同时不四舍五入"><a href="#保留两位小数，同时不四舍五入" class="headerlink" title="保留两位小数，同时不四舍五入"></a>保留两位小数，同时不四舍五入</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// number</span><br><span class="line">// num 保留位数</span><br><span class="line">function toFixedNum (number, num) {</span><br><span class="line">  const type = typeof (number);</span><br><span class="line">  let number_arr = [];</span><br><span class="line">  if (type === 'number') {</span><br><span class="line">    const str = number.toString();</span><br><span class="line">    number_arr = str.split('.');</span><br><span class="line">  } else if (type === 'string') {</span><br><span class="line">    number_arr = number.split('.');</span><br><span class="line">  }</span><br><span class="line">  if (number_arr.length &gt; 1) {</span><br><span class="line">    number = number_arr[0] + '.' + number_arr[1].substr(0, num);</span><br><span class="line">  }</span><br><span class="line">  return parseFloat(number);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="给出开始时间和结束时间，算出中间所有的日期"><a href="#给出开始时间和结束时间，算出中间所有的日期" class="headerlink" title="给出开始时间和结束时间，算出中间所有的日期"></a>给出开始时间和结束时间，算出中间所有的日期</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// start ： 2018-01-01</span><br><span class="line">// end ： 2018-01-03</span><br><span class="line">// return : ["2018-01-01","2018-01-02","2018-01-03"]</span><br><span class="line">function getDate (start, end) {</span><br><span class="line">  start = new Date(start).getTime();</span><br><span class="line">  end = new Date(end).getTime();</span><br><span class="line">  const date = [];</span><br><span class="line">  for (; start &lt;= end; start += 86400000) {</span><br><span class="line">    const tmp = new Date(start);</span><br><span class="line">    date.push(tmp.getFullYear() + '-' + (tmp.getMonth() + 1) + '-' + tmp.getDate());</span><br><span class="line">  }</span><br><span class="line">  return date;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="从数组中随机取出N个元素"><a href="#从数组中随机取出N个元素" class="headerlink" title="从数组中随机取出N个元素"></a>从数组中随机取出 N 个元素</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getRandomArrayElements (arr, count) {</span><br><span class="line">  const shuffled = arr.slice(0);</span><br><span class="line">  let i = arr.length;</span><br><span class="line">  const min = i - count;</span><br><span class="line">  let temp,</span><br><span class="line">    index;</span><br><span class="line">  while (i-- &gt; min) {</span><br><span class="line">    index = Math.floor((i + 1) * Math.random());</span><br><span class="line">    temp = shuffled[index];</span><br><span class="line">    shuffled[index] = shuffled[i];</span><br><span class="line">    shuffled[i] = temp;</span><br><span class="line">  }</span><br><span class="line">  return shuffled.slice(min);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/cleanmymac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +390,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +507,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -510,7 +623,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -627,7 +740,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -738,7 +851,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -863,7 +976,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1009,7 +1122,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1128,7 +1241,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1237,7 +1350,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1311,121 +1424,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/mybatis-plus-page/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/mybatis-plus-page/" class="post-title-link" itemprop="url">Mybatis-Plus 注解方式自定义分页实现</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-11-26 14:23:09" itemprop="dateCreated datePublished" datetime="2018-11-26T14:23:09+00:00">2018-11-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2018/mybatis-plus-page/" class="post-meta-item leancloud_visitors" data-flag-title="Mybatis-Plus 注解方式自定义分页实现" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>164</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>毫无疑问，<code>Mybatis-Plus</code> 是优秀的。<br>在 <code>Mybatis-Plus</code> 官网的文档中，自定义分页只能只支持 <code>xml</code> 方式，但是鉴于本人对 <code>xml</code> 并不是太喜欢，而是喜欢用注解的方式。</p>
-<p>于是，记录了在 <code>Mybatis-Plus</code> 中注解分页方式实现。</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>首先讲一下我的请求：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">controller-&gt;service-&gt;mapper-&gt;entity</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>UserService.java</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public Object getAll() {</span><br><span class="line">    Page userList = new Page&lt;&gt;(1, 5);</span><br><span class="line">    Map&lt;String, Object&gt; param = new HashMap&lt;&gt;();</span><br><span class="line">    param.put("name", "测试788");</span><br><span class="line">    param.put("page", userList);</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; userListArr = mapper.getAllUserGoodsSQLPage(param);</span><br><span class="line">    userList.setRecords(userListArr);</span><br><span class="line"></span><br><span class="line">    return userList;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>UserMapper.java</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Select("&lt;script&gt;SELECT u.id,u.name from " + TABLE + " as u " +</span><br><span class="line">        "left join " + G_TABLE + " as g " +</span><br><span class="line">        "on u.id = g.uid " +</span><br><span class="line">        "where u.name =  #{name}" +</span><br><span class="line">        "&lt;if test = 'id != null'&gt;" +</span><br><span class="line">        "   and u.id = #{id}" +</span><br><span class="line">        "&lt;/if&gt;" +</span><br><span class="line">        "&lt;/script&gt;")</span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; getAllUserGoodsSQLPage(Map&lt;String, Object&gt; param);</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1459,7 +1457,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:14</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

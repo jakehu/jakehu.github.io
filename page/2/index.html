@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,115 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2023/caddy-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/caddy-error/" class="post-title-link" itemprop="url">Caddy error listen tcp 127.0.0.1:2019: bind: cannot assign</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-05 10:51:00" itemprop="dateCreated datePublished" datetime="2023-01-05T10:51:00+00:00">2023-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/error/" itemprop="url" rel="index"><span itemprop="name">error</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2023/caddy-error/" class="post-meta-item leancloud_visitors" data-flag-title="Caddy error listen tcp 127.0.0.1:2019: bind: cannot assign" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>174</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在使用 <code>Caddy</code> 的时候出现如下错误</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: HOME=/root</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: LOGNAME=root</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: USER=root</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: SHELL=/bin/sh</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: INVOCATION_ID=91c06f7e038e4ed2a5e12d9d975650b1</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: JOURNAL_STREAM=8:26524</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: {"level":"info","ts":1672885007.9022179,"msg":"using provided configuration","config_file":"/etc/caddy/Caddyfile","config_adapter":""}</span><br><span class="line">Jan 05 02:16:47 C20230104172971 caddy[3271]: run: loading initial config: loading new config: starting caddy administration endpoint: listen tcp 127.0.0.1:2019: bind: cannot assign&gt;</span><br><span class="line">Jan 05 02:16:47 C20230104172971 systemd[1]: caddy.service: Main process exited, code=exited, status=1/FAILURE</span><br><span class="line">Jan 05 02:16:47 C20230104172971 systemd[1]: caddy.service: Failed with result 'exit-code'.</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>在 <code>Caddyfile</code> 开头增加下面配置即可</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  admin 0.0.0.0:2019</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/google-translate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +386,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -392,7 +501,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -499,7 +608,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -614,7 +723,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -730,7 +839,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -848,7 +957,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -974,7 +1083,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1086,7 +1195,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1194,7 +1303,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:49:06" itemprop="dateModified" datetime="2024-12-13T13:49:06+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1275,125 +1384,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/go-miniprogram/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/go-miniprogram/" class="post-title-link" itemprop="url">GO 实现小程序登陆授权流程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-28 15:36:00" itemprop="dateCreated datePublished" datetime="2022-05-28T15:36:00+00:00">2022-05-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/go-miniprogram/" class="post-meta-item leancloud_visitors" data-flag-title="GO 实现小程序登陆授权流程" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>341</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在用 <code>gin</code> 开发一款小程序后端需要用到小程序登陆授权，看看如何实现</p>
-<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html">小程序登陆流程图</a></p>
-<h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><p>核心代码实现，这里主要是利用了 <code>silenceper/wechat</code> 包</p>
-<p><code>InitWechat</code> 函数主要是初始化 <code>Wechat</code> 同时去设置缓存</p>
-<p><code>MiniProgramLogin</code> 函数主要是去调用 <code>Code2Session</code> 进行授权，同时将 <code>code</code> 换成 <code>session</code></p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> utils</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	<span class="string">"github.com/silenceper/wechat/v2"</span></span><br><span class="line">	<span class="string">"github.com/silenceper/wechat/v2/cache"</span></span><br><span class="line">	miniConfig <span class="string">"github.com/silenceper/wechat/v2/miniprogram/config"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitWechat</span><span class="params">(c *gin.Context)</span></span> *wechat.Wechat {</span><br><span class="line">	wc := wechat.NewWechat()</span><br><span class="line">	redisOpts := &amp;cache.RedisOpts{</span><br><span class="line">		Host:        <span class="string">"127.0.0.1:3306"</span>,</span><br><span class="line">		Database:    <span class="number">0</span>,  <span class="comment">// redis db</span></span><br><span class="line">		MaxActive:   <span class="number">10</span>, <span class="comment">// 连接池最大活跃连接数</span></span><br><span class="line">		MaxIdle:     <span class="number">10</span>, <span class="comment">//连接池最大空闲连接数</span></span><br><span class="line">		IdleTimeout: <span class="number">60</span>, <span class="comment">//空闲连接超时时间，单位：second</span></span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line">	redisCache := cache.NewRedis(c, redisOpts)</span><br><span class="line">	wc.SetCache(redisCache)</span><br><span class="line">	<span class="keyword">return</span> wc</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">MiniProgramLogin</span><span class="params">(c *gin.Context, code <span class="type">string</span>)</span></span> (<span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>{}, <span class="type">error</span>) {</span><br><span class="line">	wc := InitWechat(c)</span><br><span class="line">	cfg := &amp;miniConfig.Config{</span><br><span class="line">		AppID:     <span class="string">"APPID"</span>,</span><br><span class="line">		AppSecret: <span class="string">"APPSECRET"</span>,</span><br><span class="line">	}</span><br><span class="line">	miniprogram := wc.GetMiniProgram(cfg)</span><br><span class="line">	auth := miniprogram.GetAuth()</span><br><span class="line">	session, err := auth.Code2Session(code)</span><br><span class="line"></span><br><span class="line">	result := <span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>{}{}</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		<span class="keyword">return</span> result, err</span><br><span class="line">	}</span><br><span class="line">	result[<span class="string">"openid"</span>] = session.OpenID</span><br><span class="line">	result[<span class="string">"session_key"</span>] = session.SessionKey</span><br><span class="line">	result[<span class="string">"unionid"</span>] = session.UnionID</span><br><span class="line">	<span class="keyword">return</span> result, <span class="literal">nil</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="小程序"><a href="#小程序" class="headerlink" title="小程序"></a>小程序</h3><p>小程序需要调用 <code>wx.login</code> 获取到 <code>code</code></p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">App</span>({</span><br><span class="line">  <span class="attr">globalData</span>: {},</span><br><span class="line">  <span class="attr">onLaunch</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">      <span class="keyword">var</span> token = wx.<span class="title function_">getStorageSync</span>(<span class="string">'token'</span>); <span class="comment">// 获取本地缓存</span></span><br><span class="line">      <span class="keyword">if</span> (!token) {</span><br><span class="line">          wx.<span class="title function_">login</span>({</span><br><span class="line">              <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">_a</span>) {</span><br><span class="line">                  <span class="keyword">var</span> code = _a.<span class="property">code</span>; <span class="comment">// 获取到登陆code</span></span><br><span class="line">                  <span class="keyword">if</span> (code) {</span><br><span class="line">                      <span class="variable language_">console</span>.<span class="title function_">log</span>(code);</span><br><span class="line">                      <span class="comment">// 在这里请求API进行登陆</span></span><br><span class="line">                  }</span><br><span class="line">              }</span><br><span class="line">          });</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">      }</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">utils.MiniProgramLogin(c, code)</span><br></pre></td></tr></tbody></table></figure>
-<p><code>c</code> 为 <code>gin</code> 上下文对象 <code>*gin.Context</code></p>
-<p><code>code</code> 为前端传入小程序 <code>wx.login</code> 获取到的 <code>code</code></p>
-<hr>
-<p>纵有千古，横有八荒；前途似海，来日方长。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1427,7 +1417,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:14</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
