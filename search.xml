@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Rancher 更新 kubelet 证书</title>
+      <link href="/2024/rancher-update-the-kubelet-certificate-2hih8c/"/>
+      <url>/2024/rancher-update-the-kubelet-certificate-2hih8c/</url>
+      
+        <content type="html"><![CDATA[<h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/kubelet/pki/ &amp;&amp; openssl x509 -<span class="keyword">in</span> kubelet.crt -text -noout  |grep After</span><br><span class="line"></span><br><span class="line">openssl x509 -<span class="keyword">in</span> /var/lib/kubelet/pki/kubelet.crt  -noout -dates</span><br></pre></td></tr></tbody></table></figure><h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ansible剧本</span></span><br><span class="line">- hosts: <span class="string">"{{ host }}"</span></span><br><span class="line">  remote_user: root</span><br><span class="line">  gather_facts: no</span><br><span class="line">  tasks:</span><br><span class="line">  - name: 删除 /var/lib/kubelet/pki/ 目录下的所有文件</span><br><span class="line">    file:</span><br><span class="line">      path: /var/lib/kubelet/pki/</span><br><span class="line">      state: absent</span><br><span class="line">  - name: 重启 kubelet 容器</span><br><span class="line">    shell: docker restart kubelet</span><br><span class="line"></span><br><span class="line"><span class="comment"># ansible执行</span></span><br><span class="line">ansible-playbook -i hosts -e <span class="string">"host=region"</span> upgrade_certificate.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># ansible检查</span></span><br><span class="line">ansible -i ./hosts all -m shell -a <span class="string">"openssl x509 -in /var/lib/kubelet/pki/kubelet.crt -noout -dates"</span></span><br></pre></td></tr></tbody></table></figure><h4 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl rollout restart ds calico-node -n kube-system</span><br><span class="line">或者</span><br><span class="line">kubectl delete po -l k8s-app=calico-node -n kube-system</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>consul+vm 自动发现监控主机</title>
       <link href="/2024/consul-vm-automatic-discovery-monitoring-host-ziyi7p/"/>
       <url>/2024/consul-vm-automatic-discovery-monitoring-host-ziyi7p/</url>

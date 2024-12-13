@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-count">153</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,128 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/kafka-raft/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/kafka-raft/" class="post-title-link" itemprop="url">Kafka3.0 之 Raft 模式初体验 (单机版)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-14 11:18:00" itemprop="dateCreated datePublished" datetime="2022-01-14T11:18:00+00:00">2022-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/kafka-raft/" class="post-meta-item leancloud_visitors" data-flag-title="Kafka3.0 之 Raft 模式初体验 (单机版)" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>322</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://dlcdn.apache.org/kafka/3.0.0/kafka_2.13-3.0.0.tgz  </span><br><span class="line">tar -xzf kafka_2.13-3.0.0.tgz  </span><br><span class="line">cd kafka_2.13-3.0.0</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>配置参数前假设我们的节点为：<code>10.200.128.106</code>  </p>
+<p>配置文件路径：<code>config/kraft/server.properties</code></p>
+<figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点角色</span></span><br><span class="line"><span class="attr">process.roles</span>=broker,controller</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点的ID，唯一</span></span><br><span class="line"><span class="attr">node.id</span>=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接的集群地址字符串，每个服务器一样，单机就是本机</span></span><br><span class="line"><span class="attr">controller.quorum.voters</span>=<span class="number">1</span>@<span class="number">10.200</span>.<span class="number">128.106</span>:<span class="number">9093</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># IP:Port，每个服务器不一样</span></span><br><span class="line"><span class="attr">listeners</span>=PLAINTEXT://<span class="number">10.200</span>.<span class="number">128.106</span>:<span class="number">9092</span>,CONTROLLER://<span class="number">10.200</span>.<span class="number">128.106</span>:<span class="number">9093</span></span><br><span class="line"><span class="attr">inter.broker.listener.name</span>=PLAINTEXT</span><br><span class="line"></span><br><span class="line"><span class="comment"># IP:Port，每个服务器不一样</span></span><br><span class="line"><span class="attr">advertised.listeners</span>=PLAINTEXT://<span class="number">10.200</span>.<span class="number">128.106</span>:<span class="number">9092</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 日志目录</span></span><br><span class="line"><span class="attr">log.dirs</span>=/tmp/kraft-combined-logs</span><br></pre></td></tr></tbody></table></figure>
+<p>还有很多参数就不一一列举了</p>
+<h4 id="生成集群ID"><a href="#生成集群ID" class="headerlink" title="生成集群ID"></a>生成集群 ID</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># bin/kafka-storage.sh random-uuid</span><br><span class="line">VV7Jb8bWT-Oz_F99BNXvAQ</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="格式化日志目录"><a href="#格式化日志目录" class="headerlink" title="格式化日志目录"></a>格式化日志目录</h4><p>如果是集群应在每台机器上运行格式化命令，并且应该使用同一集群 ID</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># bin/kafka-storage.sh format -t VV7Jb8bWT-Oz_F99BNXvAQ -c ./config/kraft/server.properties</span><br><span class="line">Formatting /tmp/kraft-combined-logs</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-server-start.sh ./config/kraft/server.properties</span><br></pre></td></tr></tbody></table></figure>
+<p>也可以加上 <code>-daemon</code> 实现后台守护</p>
+<h4 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-server-stop.sh stop</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="创建Topics"><a href="#创建Topics" class="headerlink" title="创建Topics"></a>创建 Topics</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># bin/kafka-topics.sh --create --partitions 1 --replication-factor 1 --topic topic-name --bootstrap-server 10.200.128.106:9092</span><br><span class="line">Created topic topic-name.</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-console-producer.sh --topic topic-name --bootstrap-server 10.200.128.106:9092</span><br><span class="line">&gt;test1</span><br><span class="line">&gt;test2</span><br><span class="line">&gt;test3</span><br></pre></td></tr></tbody></table></figure>
+<p>可以按 <code>Ctrl+C</code> 结束生产者进程</p>
+<h4 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># bin/kafka-console-consumer.sh --topic topic-name --from-beginning --bootstrap-server 10.200.128.106:9092</span><br><span class="line">test1</span><br><span class="line">test2</span><br><span class="line">test3</span><br></pre></td></tr></tbody></table></figure>
+<p>可以按 <code>Ctrl+C</code> 结束消费者进程</p>
+<!-- https://juejin.cn/post/7030974149115772964 -->
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/php-composer-error/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +399,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -385,7 +507,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -493,7 +615,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -605,7 +727,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -716,7 +838,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -832,7 +954,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -944,7 +1066,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1058,7 +1180,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1167,7 +1289,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1227,122 +1349,6 @@ var _hmt = _hmt || [];
 <hr>
 <p>未完待续…</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/python-pip-pypi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/python-pip-pypi/" class="post-title-link" itemprop="url">Python pip 利用国内 pypi 源进行加速</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-12-09 13:40:00" itemprop="dateCreated datePublished" datetime="2021-12-09T13:40:00+00:00">2021-12-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:58:53" itemprop="dateModified" datetime="2024-12-13T13:58:53+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/python-pip-pypi/" class="post-meta-item leancloud_visitors" data-flag-title="Python pip 利用国内 pypi 源进行加速" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>199</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>国内的 <code>PYPI</code> 源也挺多的，经过实际使用下来，还是觉得华为的 <code>PYPI</code> 源包的版本最为齐全，推荐用华为的源进行加速</p>
-<h4 id="临时使用"><a href="#临时使用" class="headerlink" title="临时使用"></a>临时使用</h4><p>运行以下命令使用华为源：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple</span><br></pre></td></tr></tbody></table></figure>
-<p>或者</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple sanic</span><br></pre></td></tr></tbody></table></figure>
-<p>通过上面的方式安装单个包</p>
-<h4 id="设为默认"><a href="#设为默认" class="headerlink" title="设为默认"></a>设为默认</h4><p><code>Pip</code> 的配置文件为用户根目录下的：<code>~/.pip/pip.conf</code>（<code>Windows</code> 路径为：<code>C:\Users\&lt;UserName&gt;\pip\pip.ini</code>）, 您可以配置如下内容：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://repo.huaweicloud.com/repository/pypi/simple</span><br><span class="line">trusted-host = repo.huaweicloud.com</span><br><span class="line">timeout = 120</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<p>其他国内镜像源：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">中国科技大学：https://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line">豆瓣(douban)：http://pypi.douban.com/simple/</span><br><span class="line">清华大学：https://pypi.tuna.tsinghua.edu.cn/simple/</span><br><span class="line">中国科学技术大学：http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 
