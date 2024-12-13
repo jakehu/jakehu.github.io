@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,133 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/synology-update/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/synology-update/" class="post-title-link" itemprop="url">黑群晖 6.1.7 升级 6.2.2 失败之降级安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-06 12:44:00" itemprop="dateCreated datePublished" datetime="2019-11-06T12:44:00+00:00">2019-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/synology-update/" class="post-meta-item leancloud_visitors" data-flag-title="黑群晖 6.1.7 升级 6.2.2 失败之降级安装" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>222</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p><code>6.2</code> 系列引导已经出了一年多了，最近想升级 <code>6.2</code> 试试，于是踩进了坑</p>
+<p>当前配置：</p>
+<ul>
+<li>型号：<code>DS3615xs</code></li>
+<li>系统：<code>6.1.7</code></li>
+</ul>
+<h4 id="踩坑步骤"><a href="#踩坑步骤" class="headerlink" title="踩坑步骤"></a>踩坑步骤</h4><ul>
+<li>新做 <code>1号U盘（6.2引导盘）</code></li>
+<li>拔出 <code>2号U盘（6.1.7引导盘）</code>换上 <code>1号U盘（6.2引导盘）</code></li>
+<li>启动 - 联机 - 迁移（<code>6.2.2</code>）- 重启</li>
+<li>做完上面步骤后开机找不到 <code>IP</code>（这里已经改 <code>BIOS</code> 传统启动方式了）</li>
+<li>用原 <code>2号U盘（6.1.7引导盘）</code>重新引导</li>
+<li>启动 - 联机 - 提示还原 - 还原 - 重启</li>
+<li>做完上面步骤后又找不到 <code>IP</code> 了</li>
+</ul>
+<h4 id="降级处理"><a href="#降级处理" class="headerlink" title="降级处理"></a>降级处理</h4><ul>
+<li>新做 <code>1号U盘（6.1.7引导盘）</code>型号为 <code>DS3617xs</code></li>
+<li>启动 - 联机 - 全新安装（如果用迁移依然没法降级安装）- 重启</li>
+</ul>
+<p>做完以上步骤重启发现仅系统盘丢失，数据盘依然存在，如：<code>docker</code> 容器等</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a target="_blank" rel="noopener" href="https://xpenology.com/forum/">XPEnology Community</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/docker-image/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +404,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -389,7 +516,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -527,7 +654,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -650,7 +777,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -762,7 +889,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -876,7 +1003,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1002,7 +1129,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1125,7 +1252,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1246,7 +1373,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1301,136 +1428,6 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 重启</span><br><span class="line"></span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line">// 查看新的内核版本</span><br><span class="line"></span><br><span class="line">uname -r</span><br><span class="line">4.4.140-94.42-default</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>大功告成！！！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/hexo-drone/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/hexo-drone/" class="post-title-link" itemprop="url">通过 Drone CI/CD Hexo 到 Github Pages 应该这样玩儿</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-04-10 13:32:00" itemprop="dateCreated datePublished" datetime="2019-04-10T13:32:00+00:00">2019-04-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/hexo-drone/" class="post-meta-item leancloud_visitors" data-flag-title="通过 Drone CI/CD Hexo 到 Github Pages 应该这样玩儿" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>321</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>目前环境是 <code>Hexo</code>+<code>Github Pages</code></p>
-<p>再来看看部署命令 <code>npm start</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//  package.json</span><br><span class="line"></span><br><span class="line">  "scripts": {</span><br><span class="line">    "start": "hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d &amp;&amp; php -f push_sitemap_to_baidu.php"</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
-<p>我们逐条来解读</p>
-<blockquote>
-<p><code>hexo cl</code> 清除缓存文件 <code>db.json</code> 和已生成的静态文件 <code>public</code></p>
-</blockquote>
-<blockquote>
-<p><code>hexo g</code> 生成静态文件</p>
-</blockquote>
-<blockquote>
-<p><code>gulp</code> 将静态文件进行压缩，这部分操作可以参考之前我写的文章 —— <a href="/2018/hexo-gulp/">利用 gulp 对 Hexo 博客压缩并一键之部署
-</a></p>
-</blockquote>
-<blockquote>
-<p><code>php -f push_sitemap_to_baidu.php</code> 将文章主动推送至百度，这部分操作可以参考之前我写的文章 ——<a href="/2019/hexo-baidu-sitemap/">Hexo 部署在 Github Pages 怎么提交 Sitemap 给百度？来我教你
-</a></p>
-</blockquote>
-<h3 id="drone-yml"><a href="#drone-yml" class="headerlink" title=".drone.yml"></a>.drone.yml</h3><p>通过上面我们大概了解了环境，接下里我们编写<code>.drone.yml</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// .drone.yml</span><br><span class="line"></span><br><span class="line">kind: pipeline</span><br><span class="line">name: default</span><br><span class="line"></span><br><span class="line">steps:</span><br><span class="line">- name: publish</span><br><span class="line"> &nbsp;image: jakehu/php-node # 包含了PHP7+Node10+GIT环境的镜像</span><br><span class="line"> &nbsp;pull: always</span><br><span class="line">  commands:</span><br><span class="line">  - node -v</span><br><span class="line">  - php -v</span><br><span class="line">  - npm install</span><br><span class="line"> &nbsp;- git config --global user.email "jakehu1991@gmail.com" # 对GIT进行设置</span><br><span class="line"> &nbsp;- git config --global user.name "jakehu" # 对GIT进行设置</span><br><span class="line">  - npm start</span><br></pre></td></tr></tbody></table></figure>
-<p>这样就完了？并没有由于我们是在 <code>Drone</code> 的 <code>DIND</code> 里面进行的部署，所以我们还需要对 <code>Github</code> 权限进行设置</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// _config.yml</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">deploy:</span><br><span class="line">  - type: git</span><br><span class="line"> &nbsp; &nbsp;repo: https://jakehu:password@github.com/jakehu/jakehu.github.io.git</span><br><span class="line">    branch: master</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure>
-<p>到这里就完成，只需要进行 <code>git push</code> 每次 <code>Drone</code> 就会自动把 <code>npm start</code> 所有的工作完成了</p>
-<p><code>Drone</code> 运行过程<br><img src="https://img.jakehu.me/810603f6ly1g1xk56nuh4j20qh079mxr.jpg"></p>
 
       
     </div>

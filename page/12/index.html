@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,133 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/java-k8s/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/java-k8s/" class="post-title-link" itemprop="url">通过 Gitlab 打包 Java-Spring Cloud 部署 K8s 部分备忘</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-01-05 09:20:00" itemprop="dateCreated datePublished" datetime="2019-01-05T09:20:00+00:00">2019-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/java-k8s/" class="post-meta-item leancloud_visitors" data-flag-title="通过 Gitlab 打包 Java-Spring Cloud 部署 K8s 部分备忘" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>216</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="公共包的处理"><a href="#公共包的处理" class="headerlink" title="公共包的处理"></a>公共包的处理</h3><p>解决方案是将公共包打包在 <code>runner</code> 服务器上，其他模块打包时自动应用公共包<code>.gitlab-ci.yml</code> 如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stages:</span><br><span class="line">  - deploy</span><br><span class="line">maven-build:</span><br><span class="line">  stage: deploy</span><br><span class="line">  script: </span><br><span class="line">    - mvn install</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="注册中心地址"><a href="#注册中心地址" class="headerlink" title="注册中心地址"></a>注册中心地址</h3><p><code>Eureka</code> 地址应为 <code>http://[service name]:[port]/eureka</code></p>
+<p>切记 <code>http</code> 协议</p>
+<h3 id="runner提权"><a href="#runner提权" class="headerlink" title="runner提权"></a>runner 提权</h3><p>在 <code>gitlab-runner</code> 装好后并不能通过 <code>CI</code> 执行，因为 <code>gitlab-runner</code> 是通过 <code>gitlab-runner</code> 用户及用户组运行的，并不是 <code>ROOT</code> 权限，所以这里就需要对 <code>gitlab-runner</code> 用户进行提权</p>
+<p>说到提权这里说两种方式</p>
+<blockquote>
+<ol>
+<li><code>usermod</code></li>
+</ol>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">usermod -ag root gitlab-runner // 将gitlab-runner用户加入root用户组</span><br><span class="line"></span><br><span class="line">// 不过这种方式我没有成功，我使用的是第二种方式</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol start="2">
+<li><code>/etc/passwd</code></li>
+</ol>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/passwd</span><br><span class="line">gitlab-runner:x:997:993:GitLab Runner:/home/gitlab-runner:/bin/bash // 修改前</span><br><span class="line">gitlab-runner:x:0:0:GitLab Runner:/home/gitlab-runner:/bin/bash // 修改后</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>未完待续</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/mac-software/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +404,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -396,7 +523,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -545,7 +672,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -661,7 +788,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -777,7 +904,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -888,7 +1015,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1017,7 +1144,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1132,7 +1259,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1250,7 +1377,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1302,123 +1429,6 @@ var _hmt = _hmt || [];
 <h3 id="保留两位小数，同时不四舍五入"><a href="#保留两位小数，同时不四舍五入" class="headerlink" title="保留两位小数，同时不四舍五入"></a>保留两位小数，同时不四舍五入</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// number</span><br><span class="line">// num 保留位数</span><br><span class="line">function toFixedNum (number, num) {</span><br><span class="line">  const type = typeof (number);</span><br><span class="line">  let number_arr = [];</span><br><span class="line">  if (type === 'number') {</span><br><span class="line">    const str = number.toString();</span><br><span class="line">    number_arr = str.split('.');</span><br><span class="line">  } else if (type === 'string') {</span><br><span class="line">    number_arr = number.split('.');</span><br><span class="line">  }</span><br><span class="line">  if (number_arr.length &gt; 1) {</span><br><span class="line">    number = number_arr[0] + '.' + number_arr[1].substr(0, num);</span><br><span class="line">  }</span><br><span class="line">  return parseFloat(number);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="给出开始时间和结束时间，算出中间所有的日期"><a href="#给出开始时间和结束时间，算出中间所有的日期" class="headerlink" title="给出开始时间和结束时间，算出中间所有的日期"></a>给出开始时间和结束时间，算出中间所有的日期</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// start ： 2018-01-01</span><br><span class="line">// end ： 2018-01-03</span><br><span class="line">// return : ["2018-01-01","2018-01-02","2018-01-03"]</span><br><span class="line">function getDate (start, end) {</span><br><span class="line">  start = new Date(start).getTime();</span><br><span class="line">  end = new Date(end).getTime();</span><br><span class="line">  const date = [];</span><br><span class="line">  for (; start &lt;= end; start += 86400000) {</span><br><span class="line">    const tmp = new Date(start);</span><br><span class="line">    date.push(tmp.getFullYear() + '-' + (tmp.getMonth() + 1) + '-' + tmp.getDate());</span><br><span class="line">  }</span><br><span class="line">  return date;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="从数组中随机取出N个元素"><a href="#从数组中随机取出N个元素" class="headerlink" title="从数组中随机取出N个元素"></a>从数组中随机取出 N 个元素</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getRandomArrayElements (arr, count) {</span><br><span class="line">  const shuffled = arr.slice(0);</span><br><span class="line">  let i = arr.length;</span><br><span class="line">  const min = i - count;</span><br><span class="line">  let temp,</span><br><span class="line">    index;</span><br><span class="line">  while (i-- &gt; min) {</span><br><span class="line">    index = Math.floor((i + 1) * Math.random());</span><br><span class="line">    temp = shuffled[index];</span><br><span class="line">    shuffled[index] = shuffled[i];</span><br><span class="line">    shuffled[i] = temp;</span><br><span class="line">  }</span><br><span class="line">  return shuffled.slice(min);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/cleanmymac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/cleanmymac/" class="post-title-link" itemprop="url">CleanMyMac 资源之备忘录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-12-05 09:22:00" itemprop="dateCreated datePublished" datetime="2018-12-05T09:22:00+00:00">2018-12-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%B5%84%E6%BA%90%E6%8E%A7/" itemprop="url" rel="index"><span itemprop="name">资源控</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2018/cleanmymac/" class="post-meta-item leancloud_visitors" data-flag-title="CleanMyMac 资源之备忘录" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>166</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>CleanMyMac X</code> 是一款强大的 <code>Mac</code> 系统垃圾清理工具，可以清除 <code>Mac</code> 系统多余的语言包、系统缓存、应用程序、<code>PowerPc</code> 软件运行库等，是硬盘瘦身的好工具</p>
-<h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><p><a target="_blank" rel="noopener" href="https://macpaw.com/">国际版官网</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.mycleanmymac.com/">中文官网</a></p>
-<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>因为 <code>CleanMyMac</code> 对不同的版本有不同的授权信息。</p>
-<p>下面地址均为官网下载地址 <code>https://dl.devmate.com</code> 开头。</p>
-<p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.CleanMyMac3/CleanMyMac3.dmg">国际版 CleanMyMac 3</a></p>
-<p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg">国际版  CleanMyMac X</a></p>
-<p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac3/CleanMyMacChinese.dmg">中文版 CleanMyMac 3</a></p>
-<p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac4/CleanMyMacXChinese.dmg">中文版 CleanMyMac X</a></p>
-<h3 id="MacPaw支持"><a href="#MacPaw支持" class="headerlink" title="MacPaw支持"></a>MacPaw 支持</h3><p>可在支持中心查询许可证，或者当换机不成功时可以通过支持中心进行许可证重置。</p>
-<p><a target="_blank" rel="noopener" href="https://macpaw.com/zh/support">支持中心</a></p>
-
       
     </div>
 

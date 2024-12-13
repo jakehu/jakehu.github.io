@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,119 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2015/Windows-Composer-Error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2015/Windows-Composer-Error/" class="post-title-link" itemprop="url">论如何解决在 Windows 下使用 Composer 时出现的这些问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-10-28 00:00:00" itemprop="dateCreated datePublished" datetime="2015-10-28T00:00:00+00:00">2015-10-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2015/Windows-Composer-Error/" class="post-meta-item leancloud_visitors" data-flag-title="论如何解决在 Windows 下使用 Composer 时出现的这些问题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>158</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Fatal error: Call to undefined method Composer\Package\CompletePackage::getTrans</span><br><span class="line">portOptions() <span class="keyword">in</span> C:\Users\idiot\AppData\Roaming\Composer\vendor\fxp\composer-ass</span><br><span class="line">et-plugin\Package\AbstractLazyCompletePackage.php on line 184</span><br></pre></td></tr></tbody></table></figure>
+<p>解决办法：<br>下载最新的 composer.phar<br><a target="_blank" rel="noopener" href="https://getcomposer.org/download/">https://getcomposer.org/download/</a></p>
+<h3 id="问题二："><a href="#问题二：" class="headerlink" title="问题二："></a>问题二：</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Could not fetch https://api.github.com/repos/jquery/jquery, enter your GitHub cr</span><br><span class="line">edentials to go over the API rate <span class="built_in">limit</span></span><br><span class="line">The credentials will be swapped <span class="keyword">for</span> an OAuth token stored <span class="keyword">in</span> C:/Users/idiot/AppD</span><br><span class="line">ata/Roaming/Composer/auth.json, your password will not be stored</span><br><span class="line">To revoke access to this token you can visit https://github.com/settings/applica</span><br><span class="line">tions</span><br><span class="line">Username: </span><br></pre></td></tr></tbody></table></figure>
+<p>解决办法：<br>1、更新 Composer 到最新版本</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php composer.phar self-update</span><br></pre></td></tr></tbody></table></figure>
+<p>2、登录到 Github <a target="_blank" rel="noopener" href="https://github.com/settings/applications">https://github.com/settings/applications</a> “generated a token” 增加一个新的 Token<br>3、运行</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php composer.phar config -g github-oauth.github.com token</span><br></pre></td></tr></tbody></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2015/Shijing-Caiwei/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +390,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -386,7 +499,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -503,7 +616,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -619,7 +732,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -741,7 +854,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -851,7 +964,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -967,7 +1080,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:41:03" itemprop="dateModified" datetime="2024-12-13T13:41:03+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 13:46:39" itemprop="dateModified" datetime="2024-12-13T13:46:39+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
