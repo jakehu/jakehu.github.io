@@ -176,6 +176,25 @@
     
     
     <entry>
+      <title>Python Orm Peewee 错误</title>
+      <link href="/2023/python-orm-peewee-error-1i6oow/"/>
+      <url>/2023/python-orm-peewee-error-1i6oow/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peewee.OperationalError: (2013, 'Lost connection to MySQL server during query ([Errno 104] Connection reset by peer)')</span><br></pre></td></tr></tbody></table></figure><p>原因是 peewee 不会主动去重连数据库</p><p><a href="https://github.com/coleifer/peewee/issues/1992">https://github.com/coleifer/peewee/issues/1992</a></p><p>如果在事务中也不会主动链接可以用如下方式</p><p><a href="https://github.com/coleifer/peewee/issues/2628">https://github.com/coleifer/peewee/issues/2628</a></p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    MysqlClient.connect()</span><br><span class="line">    <span class="keyword">with</span> MysqlClient.atomic():</span><br><span class="line">        <span class="keyword">for</span> batch <span class="keyword">in</span> chunked(lists, <span class="number">100</span>):</span><br><span class="line">            ProjectResourceUtilization.insert_many(</span><br><span class="line">                batch,</span><br><span class="line">                [</span><br><span class="line">                    <span class="string">"cluster_name"</span></span><br><span class="line">                ],</span><br><span class="line">            ).execute()</span><br><span class="line">    MysqlClient.close()</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span>, <span class="literal">None</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">    logging.info(<span class="string">"项目资源使用率："</span> + <span class="built_in">str</span>(error))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span>, <span class="built_in">str</span>(error)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><p>‍</p><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>记 Python 之 Orm Peewee 部分使用方法</title>
       <link href="/2023/python-peewee/"/>
       <url>/2023/python-peewee/</url>

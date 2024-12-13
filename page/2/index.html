@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,122 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2023/python-orm-peewee-error-1i6oow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/python-orm-peewee-error-1i6oow/" class="post-title-link" itemprop="url">Python Orm Peewee 错误</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-01 14:57:33" itemprop="dateCreated datePublished" datetime="2023-12-01T14:57:33+00:00">2023-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 22:00:46" itemprop="dateModified" datetime="2024-12-13T22:00:46+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2023/python-orm-peewee-error-1i6oow/" class="post-meta-item leancloud_visitors" data-flag-title="Python Orm Peewee 错误" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>99</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peewee.OperationalError: (2013, 'Lost connection to MySQL server during query ([Errno 104] Connection reset by peer)')</span><br></pre></td></tr></tbody></table></figure>
+
+<p>原因是 peewee 不会主动去重连数据库</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/coleifer/peewee/issues/1992">https://github.com/coleifer/peewee/issues/1992</a></p>
+<p>如果在事务中也不会主动链接可以用如下方式</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/coleifer/peewee/issues/2628">https://github.com/coleifer/peewee/issues/2628</a></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    MysqlClient.connect()</span><br><span class="line">    <span class="keyword">with</span> MysqlClient.atomic():</span><br><span class="line">        <span class="keyword">for</span> batch <span class="keyword">in</span> chunked(lists, <span class="number">100</span>):</span><br><span class="line">            ProjectResourceUtilization.insert_many(</span><br><span class="line">                batch,</span><br><span class="line">                [</span><br><span class="line">                    <span class="string">"cluster_name"</span></span><br><span class="line">                ],</span><br><span class="line">            ).execute()</span><br><span class="line">    MysqlClient.close()</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span>, <span class="literal">None</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">    logging.info(<span class="string">"项目资源使用率："</span> + <span class="built_in">str</span>(error))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span>, <span class="built_in">str</span>(error)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>‍</p>
+<p>‍</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2023/python-peewee/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +393,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -392,7 +508,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -501,7 +617,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -618,7 +734,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -727,7 +843,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -836,7 +952,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -951,7 +1067,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1058,7 +1174,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1173,7 +1289,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1245,124 +1361,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2022/centos-kubebuilder/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/centos-kubebuilder/" class="post-title-link" itemprop="url">Centos 下搭建 kubebuilder 开发环境</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-07-19 09:07:00" itemprop="dateCreated datePublished" datetime="2022-07-19T09:07:00+00:00">2022-07-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/centos-kubebuilder/" class="post-meta-item leancloud_visitors" data-flag-title="Centos 下搭建 kubebuilder 开发环境" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>155</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>昨天在 <code>Windows</code> 上成功安装了 <code>kubebuilder</code> 但是在最后 <code>make install</code> 环节一直过不去，想想算了，还是用 <code>Centos</code> 吧</p>
-<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p>这是官方给出的需求依赖</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">go version v1.17.9+</span><br><span class="line">docker version 17.03+.</span><br><span class="line">kubectl version v1.11.3+.</span><br><span class="line">Access to a Kubernetes v1.11.3+ cluster.</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="GO"><a href="#GO" class="headerlink" title="GO"></a>GO</h4><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz</span><br><span class="line"><span class="built_in">rm</span> -rf /usr/local/go &amp;&amp; tar -C /usr/local -xzf go1.18.4.linux-amd64.tar.gz</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/local/go/bin</span><br><span class="line">go version</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/">Centos Docker 安装文档</a></p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自启动Docker</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker.service</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="K8S"><a href="#K8S" class="headerlink" title="K8S"></a>K8S</h4><p><a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/start/">Minikube 安装</a></p>
-<p>问题 1：<code>X Exiting due to DRV_AS_ROOT: The "docker" driver should not be used with root privileges.</code></p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start --force --driver=docker</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="kubebuilder"><a href="#kubebuilder" class="headerlink" title="kubebuilder"></a>kubebuilder</h3><p><a target="_blank" rel="noopener" href="https://book.kubebuilder.io/quick-start.html">kubebuilder 安装</a></p>
-<hr>
-<p>到此 <code>kubebuilder</code> 环境就算搭建完成</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1389,14 +1387,14 @@ var _hmt = _hmt || [];
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">37k</span>
+    <span title="站点总字数">38k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:16</span>
+    <span title="站点阅读时长">2:17</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

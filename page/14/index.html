@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,131 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/beanstalkd-bsw/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/beanstalkd-bsw/" class="post-title-link" itemprop="url">beanstalkd 之 Nodejs 客户端 bsw</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-03 15:53:30" itemprop="dateCreated datePublished" datetime="2018-12-03T15:53:30+00:00">2018-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/beanstalkd-bsw/" class="post-meta-item leancloud_visitors" data-flag-title="beanstalkd 之 Nodejs 客户端 bsw" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>284</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd">Beanstalkd</a> - 一个高性能、轻量级的分布式内存队列系统。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/blob/master/doc/protocol.txt">英文协议</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/blob/master/doc/protocol.zh-CN.md">中文协议</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里我们用 <code>Docker</code> 来运行。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd</span><br><span class="line">docker run -d -p 11300:11300 schickling/beanstalkd</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>beanstalkd</code> 管理 <code>WEB</code> 平台，主要用来看看以后的任务详情。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd-console</span><br><span class="line">docker run -d -p 2080:2080 --link beanstalkd:beanstalkd schickling/beanstalkd-console</span><br></pre></td></tr></tbody></table></figure>
+<p>通过 <code>127.0.0.1:2080</code> 访问</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>官方客户端推荐列表 <a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/wiki/Client-Libraries">Client</a></p>
+<p>下面我们主要介绍 <code>Nodejs</code> 客户端 <code>bsw</code></p>
+<h4 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i bsw --save</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="客户端示例"><a href="#客户端示例" class="headerlink" title="客户端示例"></a>客户端示例</h4><p>这里我们用阿里开源框架 <code>eggjs</code> 做测试。<br><code>app.js</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const { Consumer } = require('bsw');</span><br><span class="line">module.exports = app =&gt; {</span><br><span class="line">  app.beforeStart(async () =&gt; {</span><br><span class="line">    const consumer = new Consumer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">      async handler(payload, job_info) {</span><br><span class="line">        console.log('processing job: ', payload);</span><br><span class="line">        console.log('processing job_info: ', job_info);</span><br><span class="line">        // 这里进行业务操作</span><br><span class="line">        return 'success';</span><br><span class="line">      },</span><br><span class="line">    });</span><br><span class="line">    consumer.on('error', e =&gt; {</span><br><span class="line">      console.log(e);</span><br><span class="line">    });</span><br><span class="line">    console.log('beanstalkd启动了');</span><br><span class="line">    await consumer.start();</span><br><span class="line">  });</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p><code>home.js</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const Controller = require('egg').Controller;</span><br><span class="line">const { Producer } = require('bsw');</span><br><span class="line">class HomeController extends Controller {</span><br><span class="line">  async index() {</span><br><span class="line">    const producer = new Producer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">    });</span><br><span class="line">    await producer.start();</span><br><span class="line">    await producer.putJob({</span><br><span class="line">      payload: JSON.stringify({ throw: true, result: 'success' }),</span><br><span class="line">      priority: 0, // 优先级</span><br><span class="line">      delay: 30, // 延时单位(s)</span><br><span class="line">      ttr: 60, // 允许worker执行的最大秒数</span><br><span class="line">    });</span><br><span class="line">    producer.stop();</span><br><span class="line">    this.ctx.body = 'hi, egg';</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">module.exports = HomeController;</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>天若有情天亦老，月如无恨月长圆</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/Java-Utils/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +402,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -423,7 +548,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -542,7 +667,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -651,7 +776,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -769,7 +894,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -884,7 +1009,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1030,7 +1155,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1154,7 +1279,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 13:59:55" itemprop="dateModified" datetime="2024-12-13T13:59:55+00:00">2024-12-13</time>
+      <time title="修改时间：2024-12-13 14:01:07" itemprop="dateModified" datetime="2024-12-13T14:01:07+00:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1339,113 +1464,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2015/Ubuntu-Dropbox/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2015/Ubuntu-Dropbox/" class="post-title-link" itemprop="url">Ubuntu 下利用 proxychains 高大上的安装 Dropbox</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2015-12-26 15:36:42 / 修改时间：16:19:15" itemprop="dateCreated datePublished" datetime="2015-12-26T15:36:42+00:00">2015-12-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2015/Ubuntu-Dropbox/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu 下利用 proxychains 高大上的安装 Dropbox" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>226</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>对 Ubuntu 的折腾也有几年了吧，但是一直都是双系统或是虚拟机，最近将 windows 彻底的抛弃了。<br>接下来说我们今天的主角 Dropbox，一直以来都是利用 Dropbox 进行资料同步。转入 Ubuntu 也不例外，在安装的时候由于 Dropbox 已经被墙了所以想到了走代理。</p>
-<h3 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h3><p>这里也就不多说了，<a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-qt5">Shadowsocks-Qt5</a>。</p>
-<h3 id="proxychains"><a href="#proxychains" class="headerlink" title="proxychains"></a><a target="_blank" rel="noopener" href="https://github.com/rofl0r/proxychains-ng">proxychains</a></h3><p>在使用 3 版本中的时候遇到了一些问题，所以我建议直接使用 4 版本。</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/rofl0r/proxychains-ng.git</span><br><span class="line">./configure --prefix=/usr --sysconfdir=/etc</span><br><span class="line">make</span><br><span class="line"><span class="built_in">sudo</span> make install</span><br><span class="line"><span class="built_in">sudo</span> make install-config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 socks4 127.0.0.1 9050改为socks5 127.0.0.1 1080</span></span><br><span class="line">vi /usr/local/etc/proxychains.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">proxychains4 telnet google.com 80</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Dropbox"><a href="#Dropbox" class="headerlink" title="Dropbox"></a>Dropbox</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 dropbox start -i</span><br></pre></td></tr></tbody></table></figure>
-<p>Dropbox 启动后就会自动下载并安装，登录过后可以通过配置选项走代理。</p>
-<h3 id="题外话："><a href="#题外话：" class="headerlink" title="题外话："></a>题外话：</h3><p><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/bf05fb3a4709">解决 Ubuntu 下 Sublime Text 3 无法输入中文</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1472,14 +1490,14 @@ var _hmt = _hmt || [];
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">37k</span>
+    <span title="站点总字数">38k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:16</span>
+    <span title="站点阅读时长">2:17</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
