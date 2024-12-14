@@ -241,6 +241,25 @@
     
     
     <entry>
+      <title>Calibre-web 服务器安装配置</title>
+      <link href="/2023/calibreweb-server-installation-configuration-jb4vo/"/>
+      <url>/2023/calibreweb-server-installation-configuration-jb4vo/</url>
+      
+        <content type="html"><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://fugary.com/?p=238">https://fugary.com/?p=238</a></p><p><a href="https://liyuyu.cn/post/synology-calibre-web-jour/">https://liyuyu.cn/post/synology-calibre-web-jour/</a></p><p><a href="https://github.com/janeczku/calibre-web/blob/master/library/metadata.db">https://github.com/janeczku/calibre-web/blob/master/library/metadata.db</a></p><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker create \</span><br><span class="line">  --name calibre-web \</span><br><span class="line">  -p 8080:8080 \</span><br><span class="line">  -p 8083:8083 \</span><br><span class="line">  -e UID=0 \</span><br><span class="line">  -e GID=0 \</span><br><span class="line">  -e ENABLE_CALIBRE_SERVER=true \</span><br><span class="line">  -e ENABLE_CALIBRE_SERVER_OPDS=true \</span><br><span class="line">  -e CALIBRE_SERVER_USER=admin \</span><br><span class="line">  -e CALIBRE_SERVER_PASSWORD=england_Spending_untagged4 \</span><br><span class="line">  -e CALIBRE_SERVER_WEB_LANGUAGE=zh_CN \</span><br><span class="line">  -e CALIBRE_WEB_LANGUAGE=zh_Hans_CN \</span><br><span class="line">  -v /volume1/docker/calibre-web:/config \</span><br><span class="line">  -v /volume1/books/calibre:/library \</span><br><span class="line">  -v /volume1/books/plug-in:/usr/local/calibre-web/app/cps/metadata_provider \</span><br><span class="line">  -v /volume1/books/autoaddbooks:/autoaddbooks \</span><br><span class="line">  johngong/calibre-web:0.6.23-7.9.0</span><br></pre></td></tr></tbody></table></figure><p>需要手动启动容器</p><h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><p>1、web 或者 opds 下载图书 404</p><p>参考：<a href="https://github.com/gshang2017/docker/issues/233">https://github.com/gshang2017/docker/issues/233</a></p><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac 下终端中使用 Http 代理</title>
       <link href="/2023/mac-http-proxy/"/>
       <url>/2023/mac-http-proxy/</url>
