@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,122 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/gin-router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/gin-router/" class="post-title-link" itemprop="url">Gin 框架项目路由规划</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-24 09:49:00" itemprop="dateCreated datePublished" datetime="2021-12-24T09:49:00+00:00">2021-12-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/gin-router/" class="post-meta-item leancloud_visitors" data-flag-title="Gin 框架项目路由规划" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>290</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在用 <code>Python</code> 或 <code>Nodejs</code> 做项目的时候我喜欢把项目的路由分文件存放在 <code>routers</code> 文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在 <code>Gin</code> 中实现</p>
+<h3 id="main-go"><a href="#main-go" class="headerlink" title="main.go"></a>main.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r := gin.Default()</span><br><span class="line">routers.Router(r) <span class="comment">// 路由</span></span><br><span class="line">r.Run(<span class="string">":8888"</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>就 <code>3</code> 行代码，<code>Router</code> 方法用来加载所有的路由，接下来看 <code>Router</code> 方法具体实现</p>
+<h3 id="routers-router-go"><a href="#routers-router-go" class="headerlink" title="routers/router.go"></a>routers/router.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Router</span><span class="params">(e *gin.Engine)</span></span> {</span><br><span class="line">	<span class="comment">// V1版本</span></span><br><span class="line">	v1 := e.Group(<span class="string">"/v1"</span>)</span><br><span class="line">	{</span><br><span class="line">		RouterUser(v1)</span><br><span class="line">		<span class="comment">// 其他模块路由</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// V2版本</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><code>Router</code> 方法主要是去把当前<code>包</code>下的其他模块的路由加载进来，这里使用了<code>路由组</code>，如果不需要<code>路由组</code>的话去掉即可，接来下看看 <code>RouterUser</code> 方法具体实现</p>
+<h3 id="routers-user-go"><a href="#routers-user-go" class="headerlink" title="routers/user.go"></a>routers/user.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RouterUser</span><span class="params">(e *gin.RouterGroup)</span></span> {</span><br><span class="line">	e.GET(<span class="string">"/user/list"</span>, controllers.UserList)</span><br><span class="line">	e.POST(<span class="string">"/user/add"</span>, controllers.UserAdd)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>使用<code>路由组</code>接收的参数是 <code>RouterGroup</code> 不使用<code>路由组</code>接收的参数是 <code>Engine</code>，这里需要注意一下</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>最后规划下来的目录如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── app</span><br><span class="line">│&nbsp;&nbsp; └── controllers</span><br><span class="line">│&nbsp;&nbsp;     └── user.go</span><br><span class="line">├── go.mod</span><br><span class="line">├── go.sum</span><br><span class="line">├── main.go</span><br><span class="line">└── routers</span><br><span class="line"> &nbsp;&nbsp; ├── router.go</span><br><span class="line"> &nbsp;&nbsp; └── user.go</span><br></pre></td></tr></tbody></table></figure>
+<p>这样规划的话，就只需要维护 <code>router.go</code> 和其他的对应模块自己的路由规则，<code>main.go</code> 也就会变得非常的简洁</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/es-reserved-characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +393,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -389,7 +505,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -503,7 +619,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -612,7 +728,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -733,7 +849,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -849,7 +965,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -960,7 +1076,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1077,7 +1193,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1194,7 +1310,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1249,127 +1365,6 @@ var _hmt = _hmt || [];
 
 <hr>
 <p><a target="_blank" rel="noopener" href="https://github.com/logstash-plugins/logstash-patterns-core/blob/main/patterns/ecs-v1/grok-patterns">常用正则表达式参考</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/python-webservice/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/python-webservice/" class="post-title-link" itemprop="url">Python 调用 Webservice 并解析 Xml</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-12-07 11:33:00" itemprop="dateCreated datePublished" datetime="2021-12-07T11:33:00+00:00">2021-12-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/python-webservice/" class="post-meta-item leancloud_visitors" data-flag-title="Python 调用 Webservice 并解析 Xml" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>295</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p><code>Python</code> 中的 <code>Webservice</code> 客户端 <code>suds</code> 常用的有两个包</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/cackharot/suds-py3">suds-py3</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/suds-community/suds">suds</a></p>
-<p>目前选择的是 <code>suds</code>，安装</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install suds</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>具体实现如下：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> suds.client <span class="keyword">import</span> Client</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://172.19.7.7/PSIGW/PeopleSoftServiceListeningConnector/PSFT_HR/CST_INF_SERVICE.13.wsdl"</span></span><br><span class="line">client = Client(url)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(client)</span><br><span class="line"></span><br><span class="line">result = client.service.CST_INF_JOBCODE_OUT(</span><br><span class="line">    BATCH_NUM=<span class="string">"xxx"</span>,</span><br><span class="line">    IFAC_CODE=<span class="string">"xxx"</span>,</span><br><span class="line">    REQUEST_DATA=<span class="string">"&lt;![CDATA[&lt;ROOT&gt;&lt;CST_PAGENUMBER&gt;1&lt;/CST_PAGENUMBER&gt;&lt;CST_PAGESIZE&gt;300&lt;/CST_PAGESIZE&gt;&lt;RUN_TYPE&gt;ALL&lt;/RUN_TYPE&gt;&lt;TOKENID&gt;xxx&lt;/TOKENID&gt;&lt;SYSTEM&gt;xxx&lt;/SYSTEM&gt;&lt;/ROOT&gt;]]&gt;"</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">root = ET.fromstring(result[<span class="string">"RETURN_DATA"</span>])</span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> root:</span><br><span class="line">    <span class="built_in">print</span>(child[<span class="number">2</span>].text)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>先看看看 <code>client</code> 中的方法</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Suds ( https://fedorahosted.org/suds/ )  version: 1.0.0</span><br><span class="line"></span><br><span class="line">Service ( CST_INF_SERVICE ) tns="http://xmlns.oracle.com/Enterprise/Tools/services/CST_INF_SERVICE.13"</span><br><span class="line">   Prefixes (2)</span><br><span class="line">      ns0 = "http://xmlns.oracle.com/Enterprise/Tools/schemas/CST_INF_REQ.V1"</span><br><span class="line">      ns1 = "http://xmlns.oracle.com/Enterprise/Tools/schemas/CST_INF_RSP.V1"</span><br><span class="line">   Ports (1):</span><br><span class="line">      (CST_INF_SERVICE_Port)</span><br><span class="line">         Methods (1):</span><br><span class="line">            CST_INF_JOBCODE_OUT(xs:string BATCH_NUM, xs:string IFAC_CODE, xs:string REQUEST_DATA)</span><br><span class="line">         Types (2):</span><br><span class="line">            ns0:REQUEST</span><br><span class="line">            ns1:RESPONSE</span><br></pre></td></tr></tbody></table></figure>
-<p>如上所示 <code>CST_INF_JOBCODE_OUT</code> 方法有 <code>3</code> 个参数而且都是 <code>string</code> 类型，这里重点说说 <code>REQUEST_DATA</code>，原生请求 <code>Xml</code></p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">soapenv:Envelope</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:soapenv</span>=<span class="string">"http://schemas.xmlsoap.org/soap/envelope/"</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:erp</span>=<span class="string">"http://xmlns.oracle.com/Enterprise/Tools/schemas/CST_INF_R</span></span></span><br><span class="line"><span class="string"><span class="tag">EQ.V1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">soapenv:Header</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">soapenv:Body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">erp:REQUEST</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">erp:BATCH_NUM</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">erp:BATCH_NUM</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">erp:IFAC_CODE</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">erp:IFAC_CODE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">erp:REQUEST_DATA</span>&gt;</span></span><br><span class="line">&lt;![CDATA[</span><br><span class="line">&lt;ROOT&gt;</span><br><span class="line">&lt;CST_PAGENUMBER&gt;100&lt;/CST_PAGENUMBER&gt;</span><br><span class="line">&lt;CST_PAGESIZE&gt;1&lt;/CST_PAGESIZE&gt;</span><br><span class="line">&lt;RUN_TYPE&gt;ALL&lt;/RUN_TYPE&gt;</span><br><span class="line">&lt;TOKENID&gt;xxx&lt;/TOKENID&gt;</span><br><span class="line">&lt;SYSTEM&gt;xxx&lt;/SYSTEM&gt;</span><br><span class="line">&lt;/ROOT&gt;]]&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">erp:REQUEST_DATA</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">erp:REQUEST</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">soapenv:Body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">soapenv:Envelope</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>对于 <code>REQUEST_DATA</code> 中的 <code>CDATA</code> 包裹部分应该选择原样传入</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;![CDATA[</span><br><span class="line">&lt;ROOT&gt;</span><br><span class="line">&lt;CST_PAGENUMBER&gt;100&lt;/CST_PAGENUMBER&gt;</span><br><span class="line">&lt;CST_PAGESIZE&gt;1&lt;/CST_PAGESIZE&gt;</span><br><span class="line">&lt;RUN_TYPE&gt;ALL&lt;/RUN_TYPE&gt;</span><br><span class="line">&lt;TOKENID&gt;xxx&lt;/TOKENID&gt;</span><br><span class="line">&lt;SYSTEM&gt;xxx&lt;/SYSTEM&gt;</span><br><span class="line">&lt;/ROOT&gt;]]&gt;</span><br></pre></td></tr></tbody></table></figure>
-<p>最后是对 <code>xml</code> 的解析可以利用 <code>ElementTree</code>，具体可以参考</p>
-<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/xml.etree.elementtree.html#module-xml.etree.ElementTree">ElementTree</a></p>
 
       
     </div>

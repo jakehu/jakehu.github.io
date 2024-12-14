@@ -119,6 +119,25 @@
     
     
     <entry>
+      <title>Naive 客户端</title>
+      <link href="/2024/naive-client-z2dt3ok/"/>
+      <url>/2024/naive-client-z2dt3ok/</url>
+      
+        <content type="html"><![CDATA[<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><p><a href="https://github.com/ktver/NgX">https://github.com/ktver/NgX</a> 注：会修改底层 Wifi 中的代理设置</p><h4 id="Win"><a href="#Win" class="headerlink" title="Win"></a>Win</h4><p><a href="https://github.com/2dust/v2rayN">https://github.com/2dust/v2rayN</a></p><p><a href="https://github.com/KevinSHIT/NaiveSharp">https://github.com/KevinSHIT/NaiveSharp</a></p><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/klzgrad/naiveproxy/issues/158">https://github.com/klzgrad/naiveproxy/issues/158</a></p><h4 id="NgX"><a href="#NgX" class="headerlink" title="NgX"></a>NgX</h4><ol><li>NgX 不要给超管，会起一个 socks5 的代理在 10800 端口上</li><li>可以手动在电脑 Wifi - 详细信息 - 代理 中设置 SOCKS 代理，用以利用 NgX 的代理规则</li><li>可以设置不走代理域，如：* <em>.jakehu.me,192.168.</em> .*</li></ol><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>k8s kubectl 自动补全</title>
       <link href="/2024/k8s-kubectl-automatic-completion-z1dxnqt/"/>
       <url>/2024/k8s-kubectl-automatic-completion-z1dxnqt/</url>
