@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>博客 hexo 部署在 github 的方式</title>
+      <link href="/2024/blog-hexo-is-deployed-in-github-1zysbf/"/>
+      <url>/2024/blog-hexo-is-deployed-in-github-1zysbf/</url>
+      
+        <content type="html"><![CDATA[<h4 id="方式一：源码部署"><a href="#方式一：源码部署" class="headerlink" title="方式一：源码部署"></a>方式一：源码部署</h4><p>参考官方文档：<a href="https://hexo.io/zh-cn/docs/github-pages">https://hexo.io/zh-cn/docs/github-pages</a></p><h4 id="方式二：一键部署"><a href="#方式二：一键部署" class="headerlink" title="方式二：一键部署"></a>方式二：一键部署</h4><p>参考官方文档：<a href="https://hexo.io/zh-cn/docs/github-pages">https://hexo.io/zh-cn/docs/github-pages</a></p><h4 id="方式三：我的方式"><a href="#方式三：我的方式" class="headerlink" title="方式三：我的方式"></a>方式三：我的方式</h4><ol><li>将源码传入到 github 私有仓库（因为有部分东西不想对公暴露）</li><li>利用私有所在仓库 Actions 进行 build</li><li> 再利用 Actions 传入到另一个仓库（jakehu.github.io）</li></ol><h5 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h5><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: {</span><br><span class="line">  <span class="string">"gen"</span>: <span class="string">"hexo cl &amp;&amp; hexo g"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h5 id="github-workflows-deployment-yml"><a href="#github-workflows-deployment-yml" class="headerlink" title=".github/workflows/deployment.yml"></a>.github/workflows/deployment.yml</h5><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">name: Publish Hexo to gitpage</span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - master</span><br><span class="line"><span class="built_in">jobs</span>:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">    - uses: actions/checkout@v2</span><br><span class="line">    - name: Install dependencies</span><br><span class="line">      run: |</span><br><span class="line">        npm install -g hexo-cli <span class="comment"># 安装 Hexo CLI</span></span><br><span class="line">        npm install             <span class="comment"># 安装 package.json 中记录的插件</span></span><br><span class="line">    - name: Generate Hexo site</span><br><span class="line">      run: |</span><br><span class="line">        npm run gen</span><br><span class="line">    - name: Deploy to B repo</span><br><span class="line">      uses: peaceiris/actions-gh-pages@v3</span><br><span class="line">      with:</span><br><span class="line">        personal_token: <span class="variable">${{ secrets.ACCESS_TOKEN }</span>} <span class="comment"># Personal access token</span></span><br><span class="line">        external_repository: jakehu/jakehu.github.io  <span class="comment"># 发布的仓库地址</span></span><br><span class="line">        PUBLISH_BRANCH: master</span><br><span class="line">        PUBLISH_DIR: ./public</span><br></pre></td></tr></tbody></table></figure><p>ACCESS_TOKEN 变量需要在源码仓库 <code>Settings-&gt;Secrets and variables-&gt;Actions</code>​下进行设置</p><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>redisson 错误</title>
       <link href="/2024/redisson-error-z2pbspa/"/>
       <url>/2024/redisson-error-z2pbspa/</url>

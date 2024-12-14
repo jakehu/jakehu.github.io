@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">162</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -232,6 +232,125 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2024/blog-hexo-is-deployed-in-github-1zysbf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/blog-hexo-is-deployed-in-github-1zysbf/" class="post-title-link" itemprop="url">博客 hexo 部署在 github 的方式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-13 15:14:49" itemprop="dateCreated datePublished" datetime="2024-12-13T15:14:49+00:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 12:36:37" itemprop="dateModified" datetime="2024-12-14T12:36:37+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2024/blog-hexo-is-deployed-in-github-1zysbf/" class="post-meta-item leancloud_visitors" data-flag-title="博客 hexo 部署在 github 的方式" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>214</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="方式一：源码部署"><a href="#方式一：源码部署" class="headerlink" title="方式一：源码部署"></a>方式一：源码部署</h4><p>参考官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/github-pages">https://hexo.io/zh-cn/docs/github-pages</a></p>
+<h4 id="方式二：一键部署"><a href="#方式二：一键部署" class="headerlink" title="方式二：一键部署"></a>方式二：一键部署</h4><p>参考官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/github-pages">https://hexo.io/zh-cn/docs/github-pages</a></p>
+<h4 id="方式三：我的方式"><a href="#方式三：我的方式" class="headerlink" title="方式三：我的方式"></a>方式三：我的方式</h4><ol>
+<li>将源码传入到 github 私有仓库（因为有部分东西不想对公暴露）</li>
+<li>利用私有所在仓库 Actions 进行 build</li>
+<li> 再利用 Actions 传入到另一个仓库（jakehu.github.io）</li>
+</ol>
+<h5 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h5><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: {</span><br><span class="line">  <span class="string">"gen"</span>: <span class="string">"hexo cl &amp;&amp; hexo g"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="github-workflows-deployment-yml"><a href="#github-workflows-deployment-yml" class="headerlink" title=".github/workflows/deployment.yml"></a>.github/workflows/deployment.yml</h5><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">name: Publish Hexo to gitpage</span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - master</span><br><span class="line"><span class="built_in">jobs</span>:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">    - uses: actions/checkout@v2</span><br><span class="line">    - name: Install dependencies</span><br><span class="line">      run: |</span><br><span class="line">        npm install -g hexo-cli <span class="comment"># 安装 Hexo CLI</span></span><br><span class="line">        npm install             <span class="comment"># 安装 package.json 中记录的插件</span></span><br><span class="line">    - name: Generate Hexo site</span><br><span class="line">      run: |</span><br><span class="line">        npm run gen</span><br><span class="line">    - name: Deploy to B repo</span><br><span class="line">      uses: peaceiris/actions-gh-pages@v3</span><br><span class="line">      with:</span><br><span class="line">        personal_token: <span class="variable">${{ secrets.ACCESS_TOKEN }</span>} <span class="comment"># Personal access token</span></span><br><span class="line">        external_repository: jakehu/jakehu.github.io  <span class="comment"># 发布的仓库地址</span></span><br><span class="line">        PUBLISH_BRANCH: master</span><br><span class="line">        PUBLISH_DIR: ./public</span><br></pre></td></tr></tbody></table></figure>
+
+<p>ACCESS_TOKEN 变量需要在源码仓库 <code>Settings-&gt;Secrets and variables-&gt;Actions</code>​下进行设置</p>
+<p>‍</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1219,116 +1338,6 @@ var _hmt = _hmt || [];
 <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/centos">https://developer.aliyun.com/mirror/centos</a></p>
 <p><a target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/mirrorDetail/5ea14ecab05943f36fb75ee5">https://mirrors.huaweicloud.com/mirrorDetail/5ea14ecab05943f36fb75ee5</a></p>
 <p>‍</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2024/centos-rpm-package-production-2hdobu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/centos-rpm-package-production-2hdobu/" class="post-title-link" itemprop="url">Centos RPM 包制作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-08-08 20:12:43" itemprop="dateCreated datePublished" datetime="2024-08-08T20:12:43+00:00">2024-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 11:39:11" itemprop="dateModified" datetime="2024-12-14T11:39:11+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2024/centos-rpm-package-production-2hdobu/" class="post-meta-item leancloud_visitors" data-flag-title="Centos RPM 包制作" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>88</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a>ansible</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、安装yumdownloader</span></span><br><span class="line">yum install yum-utils -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、获取ansible安装包及依赖</span></span><br><span class="line"><span class="built_in">mkdir</span> /tmp/ansible</span><br><span class="line">yumdownloader --resolve --destdir /tmp/ansible ansible</span><br><span class="line">tar zcf ansible.tar.gz /tmp/ansible</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、在离线服务器上解压压缩包</span></span><br><span class="line">tar zxf /tmp/ansible.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、执行安装</span></span><br><span class="line">rpm -ivh ansible-2.9.27-1.el7.noarch.rpm</span><br></pre></td></tr></tbody></table></figure>
-
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/wgrice/notebook/blob/master/devops/ansible/ansible%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85.md">https://github.com/wgrice/notebook/blob/master/devops/ansible/ansible%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85.md</a></p>
 
       
     </div>
