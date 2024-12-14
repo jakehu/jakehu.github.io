@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">160</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,123 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/sanic-docker-supervisor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/sanic-docker-supervisor/" class="post-title-link" itemprop="url">把 Sanic 部署到 Docker 中并用 Supervisor 来守护</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-09 10:11:00" itemprop="dateCreated datePublished" datetime="2021-12-09T10:11:00+00:00">2021-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/sanic-docker-supervisor/" class="post-meta-item leancloud_visitors" data-flag-title="把 Sanic 部署到 Docker 中并用 Supervisor 来守护" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>288</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近开发 <code>Python</code> 一直在用 <code>Sanic</code>，感觉还不错；看看如何将 <code>Sanic</code> 部署到 <code>Docker</code> 中并用 <code>Supervisor</code> 来守护</p>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>这里利用 <code>Python 3.9</code> 来构建基础镜像</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.9</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">'s/dl-cdn.alpinelinux.org/repo.huaweicloud.com/g'</span> /etc/apk/repositories</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk update \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk add --no-cache build-base \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk add --no-cache libffi-dev</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /usr/src/app/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./supervisor/supervisord.conf /etc/supervisord.conf</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /usr/src/app</span></span><br><span class="line"><span class="keyword">ENV</span> PYTHONPATH /usr/src/app</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip3 install supervisor \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; pip3 install -r requirements.txt --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">"supervisord"</span>, <span class="string">"-c"</span>, <span class="string">"/etc/supervisord.conf"</span>]</span></span><br></pre></td></tr></tbody></table></figure>
+<p>这里利用华为的 <code>alpine</code> 源和 <code>pypi</code> 源</p>
+<h3 id="Supervisor"><a href="#Supervisor" class="headerlink" title="Supervisor"></a>Supervisor</h3><figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[unix_http_server]</span></span><br><span class="line"><span class="attr">file</span>=/var/run/supervisor.sock</span><br><span class="line"></span><br><span class="line"><span class="section">[supervisord]</span></span><br><span class="line"><span class="attr">logfile</span>=/var/log/supervisord.log</span><br><span class="line"><span class="attr">logfile_maxbytes</span>=<span class="number">50</span>MB</span><br><span class="line"><span class="attr">logfile_backups</span>=<span class="number">10</span></span><br><span class="line"><span class="attr">loglevel</span>=info</span><br><span class="line"><span class="attr">pidfile</span>=/var/run/supervisord.pid</span><br><span class="line"><span class="attr">nodaemon</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">silent</span>=<span class="literal">false</span></span><br><span class="line"><span class="attr">minfds</span>=<span class="number">1024</span></span><br><span class="line"><span class="attr">minprocs</span>=<span class="number">200</span></span><br><span class="line"></span><br><span class="line"><span class="section">[rpcinterface:supervisor]</span></span><br><span class="line"><span class="attr">supervisor.rpcinterface_factory</span> = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line"><span class="section">[supervisorctl]</span></span><br><span class="line"><span class="attr">serverurl</span>=unix:///var/run/supervisor.sock</span><br><span class="line"></span><br><span class="line"><span class="section">[program:sanic]</span></span><br><span class="line"><span class="attr">user</span> = root</span><br><span class="line"><span class="attr">directory</span>=/usr/src/app</span><br><span class="line"><span class="attr">command</span>=sanic server.app --host=<span class="number">0.0</span>.<span class="number">0.0</span> --port=<span class="number">8888</span> --workers=<span class="number">4</span></span><br><span class="line"><span class="attr">stdout_logfile_backups</span>=<span class="number">20</span></span><br><span class="line"><span class="attr">stdout_logfile_maxbytes</span>=<span class="number">50</span>MB</span><br><span class="line"><span class="attr">stdout_logfile</span> = /var/log/sanic.log</span><br><span class="line"><span class="attr">stderr_logfile</span> = /var/log/sanic.err</span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://supervisord.org/configuration.html">Supervisor 配置参考</a></p>
+<hr>
+<p><strong>题外话：</strong></p>
+<p>容器运行 <code>Supervisor</code> 记得设置 <code>nodaemon=true</code>，或则会出现 <code>Unlinking stale socket /var/run/supervisor.sock</code></p>
+<p>因为 <code>Supervisor</code> 默认是 <code>deamon</code> 模式，启动命令结束后 <code>Supervisor</code> 会在后台运行，而容器运行启动命令返回 <code>0</code> 后自己关闭了，导致一直出现无法运行的现象</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/pip-error/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +394,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +511,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -511,7 +628,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -632,7 +749,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -741,7 +858,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -860,7 +977,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -976,7 +1093,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1102,7 +1219,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1223,7 +1340,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1287,143 +1404,8 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2021/install-efk/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/install-efk/" class="post-title-link" itemprop="url">单机版 Elasticsearch&Kibana&Filebeat 安装与配置</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-14 13:46:00" itemprop="dateCreated datePublished" datetime="2021-10-14T13:46:00+00:00">2021-10-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/install-efk/" class="post-meta-item leancloud_visitors" data-flag-title="单机版 Elasticsearch&Kibana&Filebeat 安装与配置" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>572</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>ELK</code> 对于日志管理来说毫无疑问是最好的选择，但有的时候觉得 <code>Logstash</code> 比较的笨重，相反 <code>Filebeat</code> 也不失为一个好的选择。</p>
-<p>此次安装的版本为 <code>7.15.0</code></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>对于几个组件的安装都是非常的简单，可以直接利用官方打好的包就好</p>
-<p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html">Elasticsearch 安装文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/kibana/current/install.html">Kibana 安装文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html">Filebeat 安装文档</a></p>
-<p>安装时建议通过 RPM 包安装，这样能固定版本减少一些兼容性问题如：</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-7.15.0-x86_64.rpm</span><br><span class="line">shasum -a 512 kibana-7.15.0-x86_64.rpm</span><br><span class="line">sudo rpm --install kibana-7.15.0-x86_64.rpm</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h4><p>如果只是单机版的话 <code>Elasticsearch</code> 配置倒是不用过多修改，接下来配置一下 <code>Elasticsearch</code> 开启密码访问就可以了</p>
-<p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-passwords.html">设置密码文档</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chaiguanxin.com/articles/2019/06/10/1560143174513.html">安全配置参考</a></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpack.security.enabled: true # 普通的安全设置</span><br></pre></td></tr></tbody></table></figure>
-<p>最后再通过下面命令设置各个用户的密码</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto</span><br></pre></td></tr></tbody></table></figure>
-<p>上面命令会设置各个内置用户的密码</p>
-<p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html">内置用户文档</a></p>
-<h4 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h4><p><code>Kibana</code> 只需要配置如下几个项目即可</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server.port: 5601 # 端口</span><br><span class="line">server.host: "0.0.0.0" # 允许远程连接</span><br><span class="line">elasticsearch.hosts: ["http://localhost:9200"] # ES的地址</span><br><span class="line">elasticsearch.username: "kibana_system" # 上面设置的用户和密码</span><br><span class="line">elasticsearch.password: "password"</span><br><span class="line">i18n.locale: "zh-CN" # 页面支持中文</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="Filebeat"><a href="#Filebeat" class="headerlink" title="Filebeat"></a>Filebeat</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">output.elasticsearch:</span><br><span class="line">  # Array of hosts to connect to.</span><br><span class="line">  hosts: ["localhost:9200"]</span><br><span class="line">  username: "elastic"</span><br><span class="line">  password: "elastic"</span><br><span class="line">  index: "filebeat-%{+yyyy.MM.dd}"</span><br><span class="line">  indices:</span><br><span class="line">    - index: "filebeat-nginx-access-%{+yyyy.MM.dd}"</span><br><span class="line">      when.equals:</span><br><span class="line">        fields.type: nginx.access</span><br><span class="line">    - index: "filebeat-nginx-error-%{+yyyy.MM.dd}"</span><br><span class="line">      when.equals:</span><br><span class="line">        fields.type: nginx.error</span><br><span class="line"></span><br><span class="line">setup.ilm.enabled: false # 索引生命周期</span><br><span class="line">setup.ilm.check_exists: false</span><br><span class="line">setup.template.enabled: true # 索引模版</span><br><span class="line">setup.template.name: "filebeat"</span><br><span class="line">setup.template.pattern: "filebeat-*"</span><br></pre></td></tr></tbody></table></figure>
-<p>对于 <code>Filebeat</code> 的设置，这里的 <code>username</code> 需要用 <code>elastic</code> 用户。如果用 <code>beats_system</code> 用户的话会提示 <code>403</code> 无权限。</p>
-<p>具体可以参考：<a target="_blank" rel="noopener" href="https://discuss.elastic.co/t/security-error-with-beats-system-account-and-filebeat-with-system-module/146822">Security error with beats_system account and Filebeat with system module</a></p>
-<h4 id="Filebeat-Module"><a href="#Filebeat-Module" class="headerlink" title="Filebeat Module"></a>Filebeat Module</h4><p>以 <code>nginx</code> 为例打开 <code>nginx.access</code> 和 <code>nginx.error</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/filebeat/modules.d/nginx.yml</span><br><span class="line"></span><br><span class="line">  access:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths: ["/var/log/nginx/access.log"]</span><br><span class="line">    input:</span><br><span class="line">      fields:</span><br><span class="line">        type: nginx.access</span><br><span class="line"></span><br><span class="line">  error:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths: ["/var/log/nginx/error.log"]</span><br><span class="line">    input:</span><br><span class="line">      fields:</span><br><span class="line">        type: nginx.error</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>进入 <code>Kibana</code> 管理页面，新建索引<br><code>Management-&gt;Stack Management-&gt;索引模式-&gt;创建索引模式</code></p>
-<h4 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h4><p>配置到<code>索引</code>时就已经可以在 <code>Kibana</code> 中看到有 <code>nginx</code> 默认的日志进来，但如果我们有自定义的日志格式，就需要用到 <code>Pipeline</code></p>
-<p><code>Pipeline</code> 所存放的位置 <code>/usr/share/filebeat/module/nginx/access/ingest/pipeline.yml</code></p>
-<p>也可通过开发工具查询 <code>GET _ingest/pipeline/filebeat-7.15.0-nginx-access-pipeline</code></p>
-<p><a target="_blank" rel="noopener" href="http://grokdebug.herokuapp.com/">Grok Debugger</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

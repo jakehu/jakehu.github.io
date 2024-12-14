@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>redisson 错误</title>
+      <link href="/2024/redisson-error-z2pbspa/"/>
+      <url>/2024/redisson-error-z2pbspa/</url>
+      
+        <content type="html"><![CDATA[<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SlaveConnectionPool no available Redis entries</span><br></pre></td></tr></tbody></table></figure><h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>升级版本 3.27.0 以上</p><p>参考：<a href="https://github.com/redisson/redisson/blob/master/CHANGELOG.md">https://github.com/redisson/redisson/blob/master/CHANGELOG.md</a></p><p>‍</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Rancher 更新 kubelet 证书</title>
       <link href="/2024/rancher-update-the-kubelet-certificate-2hih8c/"/>
       <url>/2024/rancher-update-the-kubelet-certificate-2hih8c/</url>

@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">160</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,123 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2020/home-assistant/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/home-assistant/" class="post-title-link" itemprop="url">家庭助理之 Home Assistant 初体验</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-10 16:28:00" itemprop="dateCreated datePublished" datetime="2020-05-10T16:28:00+00:00">2020-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/home-assistant/" class="post-meta-item leancloud_visitors" data-flag-title="家庭助理之 Home Assistant 初体验" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>227</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>其实安装挺简单的，因为家里有群晖，所以只需要在 <code>docker</code> 插件上进行安装即可</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="http"><a href="#http" class="headerlink" title="http"></a>http</h4><p>由于群晖中容器安装，所以需要设置 <code>http</code> 访问地址，不然会出现以下错误</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/lib/python3.7/site-packages/aiohttp/web_protocol.py", line 275, in data_received</span><br><span class="line">    messages, upgraded, tail = self._request_parser.feed_data(data)</span><br><span class="line">  File "aiohttp\_http_parser.pyx", line 523, in aiohttp._http_parser.HttpParser.feed_data</span><br><span class="line">aiohttp.http_exceptions.BadStatusLine: invalid HTTP method</span><br><span class="line">2020-05-01 16:19:34 ERROR (MainThread) [aiohttp.server] Error handling request</span><br></pre></td></tr></tbody></table></figure>
+<p>配置如下：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http:</span></span><br><span class="line">    <span class="attr">base_url:</span> <span class="string">http://xx.xxx.com:8123</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><p>默认是用的 <code>sqlite</code> 数据库，如果数据量比较大的话建议可以用 <code>mysql</code> 配置如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">recorder:</span><br><span class="line">    db_url: mysql://user:password@SERVER_IP/DB_NAME?charset=utf8</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>对于 <code>docker</code> 安装的版本只有核心，并没有 <code>hass.io</code> 插件模块，对于这块可以看以下文章，不过官方好像已经放弃这种方式了：</p>
+<p><a target="_blank" rel="noopener" href="https://community.home-assistant.io/t/hass-io-via-docker/60720">Hass.io via Docker</a></p>
+<hr>
+<p>估计还是需要上树莓派才是王道</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2020/zsh-plugins/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +394,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +511,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -515,7 +632,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -642,7 +759,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -754,7 +871,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -892,7 +1009,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1015,7 +1132,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1127,7 +1244,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1241,7 +1358,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:40:40" itemprop="dateModified" datetime="2024-12-14T03:40:40+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1323,131 +1440,8 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/GitLab-Java-Runner/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/GitLab-Java-Runner/" class="post-title-link" itemprop="url">搭建 GitLab Runner For Java</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-06-21 10:16:00" itemprop="dateCreated datePublished" datetime="2019-06-21T10:16:00+00:00">2019-06-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/GitLab-Java-Runner/" class="post-meta-item leancloud_visitors" data-flag-title="搭建 GitLab Runner For Java" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>251</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>之前在使用 <code>gitlab runner</code> 时大多使用 <code>docker</code> 方式进行 <code>CI</code>，但是对于 <code>Java and Maven</code> 每次都需要下载费时很久，所以后来我选择 <code>shell</code> 方式。接下来我们看看 <code>shell</code> 方式的 <code>runner</code> 应该怎样搭建</p>
-<h3 id="NO-1"><a href="#NO-1" class="headerlink" title="NO.1"></a>NO.1</h3><p>第一步 我们首先安装 <code>Docker</code>，因为后面 CI 的时候我们需要打包成 <code>Docker</code> 镜像</p>
-<p><a target="_blank" rel="noopener" href="https://docs.docker.com/install/">Docker Install</a></p>
-<h3 id="NO-2"><a href="#NO-2" class="headerlink" title="NO.2"></a>NO.2</h3><p>第二步 我们需要安装 <code>Java</code> 和 <code>Maven</code></p>
-<ol>
-<li>Installing Java 8 on CentOS 7</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Step 1: Update</span><br><span class="line">yum -y update</span><br><span class="line"></span><br><span class="line"># Step 2: Install Java 8</span><br><span class="line">yum install java-1.8.0-openjdk</span><br><span class="line"></span><br><span class="line"># Step 3:  Verify Java is Installed</span><br><span class="line"># Example Output:</span><br><span class="line">java -version</span><br><span class="line">openjdk version "1.8.0_212"</span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_212-b04)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.212-b04, mixed mode)</span><br></pre></td></tr></tbody></table></figure>
-<ol start="2">
-<li>Installing Maven 8 on CentOS 7</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里我们直接有用yum默认安装</span><br><span class="line">yum install maven</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="No-3"><a href="#No-3" class="headerlink" title="No.3"></a>No.3</h3><p>第三步 我们需要安装 <code>gitlab-runner</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 添加GitLab的官方存储库</span><br><span class="line"># For RHEL/CentOS/Fedora</span><br><span class="line">curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash</span><br><span class="line"></span><br><span class="line"># 安装gitlab-runner</span><br><span class="line">sudo yum install gitlab-runner</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="No-4"><a href="#No-4" class="headerlink" title="No.4"></a>No.4</h3><p>第四步 就是注册 <code>runner</code> 这里不过多赘述</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
