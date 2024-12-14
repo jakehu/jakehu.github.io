@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,121 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/mybatis-plus-page/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/mybatis-plus-page/" class="post-title-link" itemprop="url">Mybatis-Plus 注解方式自定义分页实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-11-26 14:23:09" itemprop="dateCreated datePublished" datetime="2018-11-26T14:23:09+00:00">2018-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/mybatis-plus-page/" class="post-meta-item leancloud_visitors" data-flag-title="Mybatis-Plus 注解方式自定义分页实现" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>164</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>毫无疑问，<code>Mybatis-Plus</code> 是优秀的。<br>在 <code>Mybatis-Plus</code> 官网的文档中，自定义分页只能只支持 <code>xml</code> 方式，但是鉴于本人对 <code>xml</code> 并不是太喜欢，而是喜欢用注解的方式。</p>
+<p>于是，记录了在 <code>Mybatis-Plus</code> 中注解分页方式实现。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>首先讲一下我的请求：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">controller-&gt;service-&gt;mapper-&gt;entity</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>UserService.java</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public Object getAll() {</span><br><span class="line">    Page userList = new Page&lt;&gt;(1, 5);</span><br><span class="line">    Map&lt;String, Object&gt; param = new HashMap&lt;&gt;();</span><br><span class="line">    param.put("name", "测试788");</span><br><span class="line">    param.put("page", userList);</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; userListArr = mapper.getAllUserGoodsSQLPage(param);</span><br><span class="line">    userList.setRecords(userListArr);</span><br><span class="line"></span><br><span class="line">    return userList;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>UserMapper.java</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Select("&lt;script&gt;SELECT u.id,u.name from " + TABLE + " as u " +</span><br><span class="line">        "left join " + G_TABLE + " as g " +</span><br><span class="line">        "on u.id = g.uid " +</span><br><span class="line">        "where u.name =  #{name}" +</span><br><span class="line">        "&lt;if test = 'id != null'&gt;" +</span><br><span class="line">        "   and u.id = #{id}" +</span><br><span class="line">        "&lt;/if&gt;" +</span><br><span class="line">        "&lt;/script&gt;")</span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; getAllUserGoodsSQLPage(Map&lt;String, Object&gt; param);</span><br></pre></td></tr></tbody></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/mysql-usage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +392,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -423,7 +538,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -547,7 +662,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -883,7 +998,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1006,7 +1121,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1121,7 +1236,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1236,7 +1351,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1292,115 +1407,6 @@ var _hmt = _hmt || [];
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2015/Shijing-Zhenwei/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2015/Shijing-Zhenwei/" class="post-title-link" itemprop="url">《诗经・国风・郑风・溱洧》</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2015-10-31 00:00:00" itemprop="dateCreated datePublished" datetime="2015-10-31T00:00:00+00:00">2015-10-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%A8%E6%B0%B4%E4%B8%80%E6%96%B9/" itemprop="url" rel="index"><span itemprop="name">在水一方</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2015/Shijing-Zhenwei/" class="post-meta-item leancloud_visitors" data-flag-title="《诗经・国风・郑风・溱洧》" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>214</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>溱水流，洧水淌，两条河水哗哗奔流。小伙子和大姑娘，手中兰花散发着芳香。妹说：“咱们一块儿去看热闹吧？” 哥说：“我已经去过一趟了。” 姑娘说：“再陪我去一趟也无妨！” 洧水外，河岸边，地方宽敞，人儿喜洋洋，男女相伴，有说有笑，心花怒放。送支芍药花，以表真挚的情意。<br><img src="https://img.jakehu.me/20151031122000.jpg"><br>溱与洧，方涣涣兮。士与女，方秉蕳兮。女曰观乎？士曰既且。且往观乎？洧之外，洵訏且乐。维士与女，伊其相谑，赠之以勺药。<br>溱与洧，浏其清矣。士与女，殷其盈矣。女曰观乎？士曰既且。且往观乎？洧之外，洵訏且乐。维士与女，伊其将谑，赠之以勺药。</p>
-<hr>
-<p>维士与女，伊其将谑，赠之以勺药。</p>
-
       
     </div>
 

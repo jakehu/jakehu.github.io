@@ -119,6 +119,25 @@
     
     
     <entry>
+      <title>Centos RPM 包制作</title>
+      <link href="/2024/centos-rpm-package-production-2hdobu/"/>
+      <url>/2024/centos-rpm-package-production-2hdobu/</url>
+      
+        <content type="html"><![CDATA[<h4 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a>ansible</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、安装yumdownloader</span></span><br><span class="line">yum install yum-utils -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、获取ansible安装包及依赖</span></span><br><span class="line"><span class="built_in">mkdir</span> /tmp/ansible</span><br><span class="line">yumdownloader --resolve --destdir /tmp/ansible ansible</span><br><span class="line">tar zcf ansible.tar.gz /tmp/ansible</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、在离线服务器上解压压缩包</span></span><br><span class="line">tar zxf /tmp/ansible.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、执行安装</span></span><br><span class="line">rpm -ivh ansible-2.9.27-1.el7.noarch.rpm</span><br></pre></td></tr></tbody></table></figure><p>参考：</p><p><a href="https://github.com/wgrice/notebook/blob/master/devops/ansible/ansible%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85.md">https://github.com/wgrice/notebook/blob/master/devops/ansible/ansible%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85.md</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Naive 客户端</title>
       <link href="/2024/naive-client-z2dt3ok/"/>
       <url>/2024/naive-client-z2dt3ok/</url>

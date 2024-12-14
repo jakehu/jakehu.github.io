@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,120 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/python-pip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/python-pip/" class="post-title-link" itemprop="url">pip 之 No module named 'pip._internal'</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-01-15 17:20:00" itemprop="dateCreated datePublished" datetime="2019-01-15T17:20:00+00:00">2019-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/python-pip/" class="post-meta-item leancloud_visitors" data-flag-title="pip 之 No module named 'pip._internal'" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>142</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说本地环境 <code>Deepin 15.8</code>，<code>Python2</code> 与 <code>Python3</code> 共存</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>问题如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip3</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip3", line 7, in &lt;module&gt;</span><br><span class="line">    from pip._internal import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal'</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip", line 7, in &lt;module&gt;</span><br><span class="line">    from pip._internal import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal'</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>如 <code>pip</code> 与 <code>pip3</code> 均不可使用</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip</span><br><span class="line">Searching for pip</span><br><span class="line">Best match: pip 10.0.1</span><br><span class="line">Adding pip 10.0.1 to easy-install.pth file</span><br><span class="line">Installing pip script to /usr/local/bin</span><br><span class="line">Installing pip3.6 script to /usr/local/bin</span><br><span class="line">Installing pip3 script to /usr/local/bin</span><br><span class="line"></span><br><span class="line">Using /usr/local/lib/python2.7/dist-packages</span><br><span class="line">Processing dependencies for pip</span><br><span class="line">Finished processing dependencies for pip</span><br></pre></td></tr></tbody></table></figure>
+<p>完美解决</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/java-k8s/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +391,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -404,7 +518,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -523,7 +637,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -672,7 +786,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -788,7 +902,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -904,7 +1018,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1015,7 +1129,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1144,7 +1258,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1259,7 +1373,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1316,119 +1430,6 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></tbody></table></figure>
 <p>最后在安装好 <code>node</code> 之后不要忘记设置 <code>alias default</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm alias default 8.14.0</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/node-utils/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/node-utils/" class="post-title-link" itemprop="url">Nodejs 工具函数集</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-12-05 11:38:00" itemprop="dateCreated datePublished" datetime="2018-12-05T11:38:00+00:00">2018-12-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:38:57" itemprop="dateModified" datetime="2024-12-14T03:38:57+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2018/node-utils/" class="post-meta-item leancloud_visitors" data-flag-title="Nodejs 工具函数集" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>241</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="对数组中的对象进行排序"><a href="#对数组中的对象进行排序" class="headerlink" title="对数组中的对象进行排序"></a>对数组中的对象进行排序</h3><p>函数：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function keysort (key, desc) {</span><br><span class="line">  return function (a, b) {</span><br><span class="line">    return desc ? (a[key] &lt; b[key]) : (a[key] &gt; b[key]);</span><br><span class="line">  };</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [{"id":2,"name":"2"},{"id":1,"name":"1"}]</span><br><span class="line">arr.sort(keysort('name', 'desc'));</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="判断是否是Float浮点"><a href="#判断是否是Float浮点" class="headerlink" title="判断是否是Float浮点"></a>判断是否是 Float 浮点</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isFloat (num) {</span><br><span class="line">  return num !== parseInt(num);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="保留两位小数，同时不四舍五入"><a href="#保留两位小数，同时不四舍五入" class="headerlink" title="保留两位小数，同时不四舍五入"></a>保留两位小数，同时不四舍五入</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// number</span><br><span class="line">// num 保留位数</span><br><span class="line">function toFixedNum (number, num) {</span><br><span class="line">  const type = typeof (number);</span><br><span class="line">  let number_arr = [];</span><br><span class="line">  if (type === 'number') {</span><br><span class="line">    const str = number.toString();</span><br><span class="line">    number_arr = str.split('.');</span><br><span class="line">  } else if (type === 'string') {</span><br><span class="line">    number_arr = number.split('.');</span><br><span class="line">  }</span><br><span class="line">  if (number_arr.length &gt; 1) {</span><br><span class="line">    number = number_arr[0] + '.' + number_arr[1].substr(0, num);</span><br><span class="line">  }</span><br><span class="line">  return parseFloat(number);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="给出开始时间和结束时间，算出中间所有的日期"><a href="#给出开始时间和结束时间，算出中间所有的日期" class="headerlink" title="给出开始时间和结束时间，算出中间所有的日期"></a>给出开始时间和结束时间，算出中间所有的日期</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// start ： 2018-01-01</span><br><span class="line">// end ： 2018-01-03</span><br><span class="line">// return : ["2018-01-01","2018-01-02","2018-01-03"]</span><br><span class="line">function getDate (start, end) {</span><br><span class="line">  start = new Date(start).getTime();</span><br><span class="line">  end = new Date(end).getTime();</span><br><span class="line">  const date = [];</span><br><span class="line">  for (; start &lt;= end; start += 86400000) {</span><br><span class="line">    const tmp = new Date(start);</span><br><span class="line">    date.push(tmp.getFullYear() + '-' + (tmp.getMonth() + 1) + '-' + tmp.getDate());</span><br><span class="line">  }</span><br><span class="line">  return date;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="从数组中随机取出N个元素"><a href="#从数组中随机取出N个元素" class="headerlink" title="从数组中随机取出N个元素"></a>从数组中随机取出 N 个元素</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getRandomArrayElements (arr, count) {</span><br><span class="line">  const shuffled = arr.slice(0);</span><br><span class="line">  let i = arr.length;</span><br><span class="line">  const min = i - count;</span><br><span class="line">  let temp,</span><br><span class="line">    index;</span><br><span class="line">  while (i-- &gt; min) {</span><br><span class="line">    index = Math.floor((i + 1) * Math.random());</span><br><span class="line">    temp = shuffled[index];</span><br><span class="line">    shuffled[index] = shuffled[i];</span><br><span class="line">    shuffled[i] = temp;</span><br><span class="line">  }</span><br><span class="line">  return shuffled.slice(min);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 
