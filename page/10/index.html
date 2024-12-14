@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-count">157</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,120 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2020/openldap-gogs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/openldap-gogs/" class="post-title-link" itemprop="url">Ldap 按分组控制权限并接入 Gogs 系统</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-20 13:45:00" itemprop="dateCreated datePublished" datetime="2020-05-20T13:45:00+00:00">2020-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ldap/" itemprop="url" rel="index"><span itemprop="name">ldap</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/openldap-gogs/" class="post-meta-item leancloud_visitors" data-flag-title="Ldap 按分组控制权限并接入 Gogs 系统" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>236</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>之前安装了 <code>openldap</code> 服务和 <code>lam</code> 管理平台，接下来我们看看如何在 <code>ldap</code> 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。</p>
+<h4 id="创建Group"><a href="#创建Group" class="headerlink" title="创建Group"></a>创建 Group</h4><p>先创建一个组，如图：<br><img src="https://img.jakehu.me/20200520103212.png"></p>
+<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p>在刚才创建的组里创建用户，如图：<br><img src="https://img.jakehu.me/20200520103333.png"></p>
+<h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建 Group 组</h4><p>创建 <code>objectClass</code> 属性为 <code>groupOfUniqueNames</code> 的组 <code>gogs</code> 用于 <code>gogs</code> 登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中 <code>cn</code> 为组名，<code>uniqueMember</code> 为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
+<h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为 Gogs 添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code> 管理员的 <code>DN</code><br><code>绑定密码</code>：<code>Ldap</code> 管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code> 用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是 <code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
+<h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在 <code>gogs</code> 用户改为 <code>ldap</code> 认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
+<hr>
+<p>题外话：禅道 (<code>zentao</code>) 接入 <code>Ldap</code> <a target="_blank" rel="noopener" href="https://github.com/anjia0532/zentao-ldap">参考</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2020/ldap-docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +391,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +508,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -507,7 +621,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
 
   
@@ -614,7 +728,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -728,7 +842,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -843,7 +957,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -960,7 +1074,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1077,7 +1191,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1198,7 +1312,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:37:52" itemprop="dateModified" datetime="2024-12-14T03:37:52+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1281,118 +1395,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2019/docker-image/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/docker-image/" class="post-title-link" itemprop="url">Docker 底层镜像之选择困难症</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-23 16:12:00" itemprop="dateCreated datePublished" datetime="2019-07-23T16:12:00+00:00">2019-07-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:35:12" itemprop="dateModified" datetime="2024-12-14T03:35:12+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/docker-image/" class="post-meta-item leancloud_visitors" data-flag-title="Docker 底层镜像之选择困难症" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>344</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Scratch"><a href="#Scratch" class="headerlink" title="Scratch"></a>Scratch</h3><p><code>scratch</code> 是一个空镜像，只能用于构建其他镜像，比如你要运行一个包含所有依赖的二进制文件，如 <code>Golang</code> 程序，可以直接使用 <code>scratch</code> 作为基础镜像</p>
-<h3 id="Busybox"><a href="#Busybox" class="headerlink" title="Busybox"></a>Busybox</h3><p><code>scratch</code> 是个空镜像，如果希望镜像里可以包含一些常用的 <code>Linux</code> 工具，<code>busybox</code> 镜像是个不错选择，镜像本身只有 <code>763KB</code>，非常便于构建小镜像</p>
-<p><code>BusyBox</code> 是一个集成了一百多个最常用 <code>Linux</code> 命令和工具（如 <code>cat</code>、<code>echo</code>、<code>grep</code>、<code>mount</code>、<code>telnet</code> 等）的精简工具箱，它只需要<code>几百KB</code> 的大小，很方便进行各种快速验证，被誉为 <code>Linux 系统的瑞士军刀</code></p>
-<p><code>BusyBox</code> 可运行于多款 <code>POSIX</code> 环境的操作系统中，如 <code>Linux</code>(包括 <code>Android</code>)、<code>Hurd</code>、<code>FreeBSD</code> 等</p>
-<h3 id="Alpine"><a href="#Alpine" class="headerlink" title="Alpine"></a>Alpine</h3><p><code>Alpine</code> 采用了 <code>musl libc</code> 和 <code>busybox</code> 以减小系统的体积和运行时资源消耗，但功能上比 <code>busybox</code> 又完善的多，<code>Alpine</code> 还提供了自己的包管理工具 <code>apk</code>，可以通过 <a target="_blank" rel="noopener" href="https://pkgs.alpinelinux.org/packages"><code>packages</code></a>网站上查询包信息，也可以直接通过 apk 命令直接查询和安装各种软件</p>
-<p><code>Alpine Docker</code> 镜像也继承了 <code>Alpine Linux</code> 发行版的这些优势。相比于其他 <code>Docker</code> 镜像，它的容量非常小，仅仅只有 <code>5 MB</code> 左右（对比 <code>Ubuntu</code> 系列镜像接近 <code>200</code>MB），且拥有非常友好的包管理机制</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1426,7 +1428,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:17</span>
+    <span title="站点阅读时长">2:18</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
