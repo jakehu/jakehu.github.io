@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -241,6 +241,124 @@ var _hmt = _hmt || [];
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/k8s-ui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/k8s-ui/" class="post-title-link" itemprop="url">这些个 Kubernetes 集群管理平台你值得拥有</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-11-26 15:06:08" itemprop="dateCreated datePublished" datetime="2018-11-26T15:06:08+00:00">2018-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/k8s-ui/" class="post-meta-item leancloud_visitors" data-flag-title="这些个 Kubernetes 集群管理平台你值得拥有" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>423</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <div class="note danger"><p>我们不生产 <code>k8s</code> 管理平台，我们只是开源项目的搬运工</p>
+</div>
+
+<h4 id="Rancher"><a href="#Rancher" class="headerlink" title="Rancher"></a>Rancher</h4><p><a target="_blank" rel="noopener" href="https://rancher.com/">Rancher</a> 是一个开源的企业级容器管理平台。通过 Rancher，企业再也不必自己使用一系列的开源软件去从头搭建容器服务平台。Rancher 提供了在生产环境中使用的管理 Docker 和 Kubernetes 的全栈化容器部署与管理平台。</p>
+<h4 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h4><p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">Kubernetes Dashboard</a> 是 Kubernetes 集群的基于 Web 的通用 UI。它允许用户管理在群集中运行的应用程序并对其进行故障排除，以及管理群集本身。</p>
+<h4 id="Wayne"><a href="#Wayne" class="headerlink" title="Wayne"></a>Wayne</h4><p><a target="_blank" rel="noopener" href="https://github.com/Qihoo360/wayne">Wayne</a> 是一个通用的、基于 Web 的 Kubernetes 多集群管理平台。通过可视化 Kubernetes 对象模板编辑的方式，降低业务接入成本， 拥有完整的权限管理系统，适应多租户场景，是一款适合企业级集群使用的发布平台。</p>
+<h4 id="Naftis"><a href="#Naftis" class="headerlink" title="Naftis"></a>Naftis</h4><p><a target="_blank" rel="noopener" href="https://github.com/XiaoMi/naftis">Naftis</a> 是一个基于 web 的 Istio dashboard，通过任务模板的方式来帮助用户更方便地执行 Istio 任务。 用户可以在 Naftis 中定义自己的任务模板，并填充变量来构造单个或多个构造任务实例，从而完成各种服务治理功能。</p>
+<h4 id="Breeze"><a href="#Breeze" class="headerlink" title="Breeze"></a>Breeze</h4><p><a target="_blank" rel="noopener" href="https://github.com/wise2c-devops/breeze">Breeze</a> 是睿云智合提供的图形化 Kubernetes 部署工具。</p>
+<h4 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h4><p><a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/">Nacos</a> 是阿里巴巴的新开源项目，其核心定位是 “一个更易于帮助构建云原生应用的动态服务发现、配置和服务管理平台”。</p>
+<p><code>Nacos</code> 可能更多的是为了支持一整套微服务。包括 <code>Dubbo</code>，<code>Spring Cloud</code> 以及 <code>Kubernetes</code> 等。</p>
+<hr>
+<p>最后相对来说，我还是比较喜欢用 <code>Rancher</code>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2018/mybatis-plus-page/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -277,7 +395,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -392,7 +510,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -538,7 +656,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -662,7 +780,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -998,7 +1116,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1121,7 +1239,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1236,7 +1354,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-14 03:39:50" itemprop="dateModified" datetime="2024-12-14T03:39:50+00:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1307,123 +1425,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.jakehu.me/2015/Sublime-Text-Package/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2015/Sublime-Text-Package/" class="post-title-link" itemprop="url">带你在 Sublime Text 的世界里装逼 and 飞！</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2015-11-10 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-10T00:00:00+00:00">2015-11-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 03:39:31" itemprop="dateModified" datetime="2024-12-14T03:39:31+00:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2015/Sublime-Text-Package/" class="post-meta-item leancloud_visitors" data-flag-title="带你在 Sublime Text 的世界里装逼 and 飞！" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>946</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Sublime Text 是什么，用来干什么就不用我说了哈！</p>
-<p>这货的官网是 <a target="_blank" rel="noopener" href="http://www.sublimetext.com/">Sublime Text</a>；然并卵，这不是我们要介绍的重点。介绍哈 Sublime Text 的插件管理 <a target="_blank" rel="noopener" href="https://packagecontrol.io/">Package Control</a>,Package Control 是 Sublime Text 的插件管理平台，我想应该是类似于 PHP 的 Composer 吧！好吧，其实我也不知道。哈哈</p>
-<p>看这货就长这熊样：<br><img src="https://img.jakehu.me/20151103141134.png"><br>我们来介绍哈怎么在 Sublime Text 中安装 Package Control，Sublime Text2 和 Sublime Text3 分别有不同的安装方式。</p>
-<p>首先：我们可以在菜单栏__View-&gt;Show Console__打开 Console，或者是__Ctrl+`__打开 Console。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2015/Sublime-Text-Package/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1457,7 +1458,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:18</span>
+    <span title="站点阅读时长">2:19</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

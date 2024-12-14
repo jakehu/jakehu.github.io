@@ -119,6 +119,25 @@
     
     
     <entry>
+      <title>Centos 镜像源报错</title>
+      <link href="/2024/centos-mirror-source-report-error-1vibdp/"/>
+      <url>/2024/centos-mirror-source-report-error-1vibdp/</url>
+      
+        <content type="html"><![CDATA[<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&amp;<span class="built_in">arch</span>=x86_64&amp;repo=os&amp;infra=container error was</span><br><span class="line">14: curl#6 - <span class="string">"Could not resolve host: mirrorlist.centos.org; Unknown error"</span></span><br></pre></td></tr></tbody></table></figure><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.huaweicloud.com/repository/conf/CentOS-7-anon.repo</span><br></pre></td></tr></tbody></table></figure><p>替换成华为源</p><p>参考：</p><p><a href="https://developer.aliyun.com/mirror/centos">https://developer.aliyun.com/mirror/centos</a></p><p><a href="https://mirrors.huaweicloud.com/mirrorDetail/5ea14ecab05943f36fb75ee5">https://mirrors.huaweicloud.com/mirrorDetail/5ea14ecab05943f36fb75ee5</a></p><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Centos RPM 包制作</title>
       <link href="/2024/centos-rpm-package-production-2hdobu/"/>
       <url>/2024/centos-rpm-package-production-2hdobu/</url>
