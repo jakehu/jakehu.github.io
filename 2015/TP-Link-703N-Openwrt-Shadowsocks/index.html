@@ -21,19 +21,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。http:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;g">
+    <meta name="description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。https:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TP-Link 703N 路由器刷 Openwrt+Shadowsocks 实现 OpenWRT 路由器自动翻墙">
 <meta property="og:url" content="http://www.jakehu.me/2015/TP-Link-703N-Openwrt-Shadowsocks/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。http:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;g">
+<meta property="og:description" content="说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。 一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。https:&#x2F;&#x2F;downloads.openwrt.org&#x2F;barrier_breaker&#x2F;14.07&#x2F;ar71xx&#x2F;generic&#x2F; 二、进入原路由器（192.168.1.1）在【系统工具】-&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/62972015.jpg">
 <meta property="og:image" content="https://img.jakehu.me/64175937.jpg">
 <meta property="og:image" content="https://img.jakehu.me/12133462.jpg">
 <meta property="og:image" content="https://img.jakehu.me/61677427.jpg">
 <meta property="article:published_time" content="2015-10-27T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-14T04:36:54.726Z">
+<meta property="article:modified_time" content="2024-12-17T08:26:26.579Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Openwrt">
 <meta property="article:tag" content="Shadowsocks">
@@ -287,7 +287,7 @@ var _hmt = _hmt || [];
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-14 04:36:54" itemprop="dateModified" datetime="2024-12-14T04:36:54+00:00">2024-12-14</time>
+      <time title="修改时间：2024-12-17 08:26:26" itemprop="dateModified" datetime="2024-12-17T08:26:26+00:00">2024-12-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -331,7 +331,7 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody"><p>说明：此篇文章是作者刷机过程中遇到的一些问题和解决方案，其中有自己的也有其他网友提供的一些方案；希望这篇文章能够帮助到大家。</p>
-<h3 id="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"><a href="#一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。" class="headerlink" title="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"></a>一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。</h3><p><a target="_blank" rel="noopener" href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/">http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/</a></p>
+<h3 id="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"><a href="#一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。" class="headerlink" title="一、前往Openwrt官网下载703n官方固件，我下载的是最新的版本。"></a>一、前往 Openwrt 官网下载 703n 官方固件，我下载的是最新的版本。</h3><p><a target="_blank" rel="noopener" href="https://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/">https://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/</a></p>
 <h3 id="二、进入原路由器（192-168-1-1）在【系统工具】-【软件升级】中升级刚才在Openwrt官网下载的固件。"><a href="#二、进入原路由器（192-168-1-1）在【系统工具】-【软件升级】中升级刚才在Openwrt官网下载的固件。" class="headerlink" title="二、进入原路由器（192.168.1.1）在【系统工具】->【软件升级】中升级刚才在Openwrt官网下载的固件。"></a>二、进入原路由器（192.168.1.1）在【系统工具】-&gt;【软件升级】中升级刚才在 Openwrt 官网下载的固件。</h3><h4 id="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"><a href="#（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。" class="headerlink" title="（1）首先用一根网线将703N的Lan口和你电脑相连，电脑上设置为DHCP模式。"></a>（1）首先用一根网线将 703N 的 Lan 口和你电脑相连，电脑上设置为 DHCP 模式。</h4><h4 id="（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。"><a href="#（2）然后运行cmd-exe，输入telnet-192-168-1-1成功后出现OpenWrt的欢迎界面。" class="headerlink" title="（2）然后运行cmd.exe，输入telnet 192.168.1.1成功后出现OpenWrt的欢迎界面。"></a>（2）然后运行 cmd.exe，输入 telnet 192.168.1.1 成功后出现 OpenWrt 的欢迎界面。</h4><h4 id="（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"><a href="#（3）输入passwd更改root密码后dropbear-SSH-服务-就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。" class="headerlink" title="（3）输入passwd更改root密码后dropbear(SSH 服务)就运行了，输入exit退出telnet；以后就可以通过ssh管理OpenWrt。"></a>（3）输入 passwd 更改 root 密码后 dropbear (SSH 服务) 就运行了，输入 exit 退出 telnet；以后就可以通过 ssh 管理 OpenWrt。</h4><p>注：最新版默认已经安装和启用 Luci 管理界面，你可以直接通过访问 192.168.1.1 进入 Luci Web 管理界面。</p>
 <span id="more"></span>
 <p>默认 Luci 管理界面是没有中文的，中文包安装如下：</p>
@@ -348,7 +348,7 @@ var _hmt = _hmt || [];
 <p>设置并激活 swap 分区，修改 fstab 文件，激活</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkswap /dev/sda2</span><br><span class="line">config swap</span><br><span class="line">        option device   /dev/sda2</span><br><span class="line">        option enabled  1</span><br></pre></td></tr></tbody></table></figure>
 <p>重启路由器，再次”df -h” 一下，可以看到路由器的空间已经扩展成功了。<br><img src="https://img.jakehu.me/12133462.jpg"></p>
-<h3 id="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："><a href="#四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：" class="headerlink" title="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："></a>四、接下来我们就来安装 Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：</h3><p><a target="_blank" rel="noopener" href="http://cokebar.info/archives/664">http://cokebar.info/archives/664</a><br>按上面的教程设置好了就只能正常的使用和翻墙了。<br>这里我也秀一张最后的成品<br><img src="https://img.jakehu.me/61677427.jpg"></p>
+<h3 id="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："><a href="#四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：" class="headerlink" title="四、接下来我们就来安装Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往："></a>四、接下来我们就来安装 Shadowsocks，这步已经有网友有成熟案例和教程了。我这里就不多说了，具体请前往：</h3><p><a target="_blank" rel="noopener" href="https://cokebar.info/archives/664">https://cokebar.info/archives/664</a><br>按上面的教程设置好了就只能正常的使用和翻墙了。<br>这里我也秀一张最后的成品<br><img src="https://img.jakehu.me/61677427.jpg"></p>
 
     </div>
 
