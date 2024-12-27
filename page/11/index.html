@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-count">164</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,106 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2020/git-auto-push/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/git-auto-push/" class="post-title-link" itemprop="url">基于 Docker+Python 对 Git 项目自动提交</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-11 19:50:08" itemprop="dateCreated datePublished" datetime="2020-05-11T19:50:08+00:00">2020-05-11</time>
+    </span>
+
+  
+    <span id="/2020/git-auto-push/" class="post-meta-item leancloud_visitors" data-flag-title="基于 Docker+Python 对 Git 项目自动提交" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>241</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>基于 Docker+Python 对 git 项目自动提交</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="第一个使用场景"><a href="#第一个使用场景" class="headerlink" title="第一个使用场景"></a>第一个使用场景</h4><p>自己本地有几个私有库，如 <code>hexo</code>、<code>资料记载</code>等… 这些个私有库有事没事就需要 <code>push</code> 更改，所以需要自动提交</p>
+<h4 id="第二个使用场景"><a href="#第二个使用场景" class="headerlink" title="第二个使用场景"></a>第二个使用场景</h4><p><code>home-assistant</code> 安装在树莓派上，但是对于 <code>home-assistant</code> 的配置文件希望用 <code>git</code> 管理起来</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以上两个使用场景其实都是需要外挂盘符来操作的，接下来编写 <code>docker-compose.yml</code> 文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">version: '2'</span><br><span class="line">services:</span><br><span class="line">  git-auto-push:</span><br><span class="line">    image: jakehu/git-auto-push:latest</span><br><span class="line">    container_name: git-auto-push</span><br><span class="line">    restart: always</span><br><span class="line">    volumes:</span><br><span class="line">      - /Web/项目1:/opt/Web/项目1</span><br><span class="line">      - /Web/项目2:/opt/Web/项目2</span><br><span class="line">      - /Web/项目3:/opt/Web/项目3</span><br><span class="line">      - /you_dir/.ssh/:/root/.ssh/</span><br></pre></td></tr></tbody></table></figure>
+<p><code>/opt/Web/</code> 勿修改，程序会自动读取 <code>/opt/Web/</code> 下一级目录作为需要监听的项目，<code>.ssh</code> 挂载进去主要是不用单独去配置 <code>ssh key</code></p>
+<p>启动：<code>docker-compose up -d</code></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://github.com/jakehu/git-auto-push">Github 地址</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://note.qidong.name/2018/01/gitpython/">GitPython 操作 Git</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1253,111 +1353,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2019/weixin-js-sdk-npm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/weixin-js-sdk-npm/" class="post-title-link" itemprop="url">从发布 weixin js sdk 看如何将自己的包发布到 npmjs</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-05 11:31:00" itemprop="dateCreated datePublished" datetime="2019-07-05T11:31:00+00:00">2019-07-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/weixin-js-sdk-npm/" class="post-meta-item leancloud_visitors" data-flag-title="从发布 weixin js sdk 看如何将自己的包发布到 npmjs" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>56</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>发布的命令很简单，但开始之前请前往 <code>npmjs.com</code> 注册一个账号</p>
-<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p><code>npm init</code></p>
-<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p><code>npm login</code></p>
-<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p><code>npm publish</code></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>包参考：<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/weixin-js-sdk-official">weixin-js-sdk-official</a></p>
-<p>代码参考：<a target="_blank" rel="noopener" href="https://github.com/jakehu/wechat-js-sdk">wechat-js-sdk</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1384,7 +1379,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">38k</span>
+    <span title="站点总字数">39k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">

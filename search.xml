@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>SwitchyOmega 的平替 ZeroOmega</title>
+      <link href="/2024/switchyomega-s-flattening-zeroomega-mqw00/"/>
+      <url>/2024/switchyomega-s-flattening-zeroomega-mqw00/</url>
+      
+        <content type="html"><![CDATA[<p>ZeroOmega 是在 ProxySwitchyOmega 的基础上改进而来，并全面支持新版 manifestV3。其管理界面几乎与 SwitchyOmega 完全相同，使得从 SwitchyOmega 迁移的用户能够实现无缝替换。此外，ZeroOmega 支持配置文件的导入与导出功能，极大地方便了用户操作。目前，ZeroOmega 兼容 Chrome、Firefox 和 Edge 浏览器客户端。</p><p><a href="https://github.com/sn-o-w/ZeroOmega">项目地址</a></p><p><a href="https://chromewebstore.google.com/detail/proxy-switchyomega-3-zero/pfnededegaaopdmhkdmcofjmoldfiped">插件地址</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>opensearch (es) 修改分片</title>
       <link href="/2024/opensearch-es-modify-saber-2upq0i/"/>
       <url>/2024/opensearch-es-modify-saber-2upq0i/</url>

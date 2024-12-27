@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-count">164</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,125 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/elasticsearch-curator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/elasticsearch-curator/" class="post-title-link" itemprop="url">用 Curator 来管理 Elasticsearch 的索引</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-05 13:50:00" itemprop="dateCreated datePublished" datetime="2021-11-05T13:50:00+00:00">2021-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/elasticsearch-curator/" class="post-meta-item leancloud_visitors" data-flag-title="用 Curator 来管理 Elasticsearch 的索引" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>301</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>Curator</code> 是 <code>Elastic</code> 官方发布的一个管理 <code>Elasticsearch</code> 索引的工具，可以完成许多索引生命周期的管理工作，例如清理创建时间超过 7 天的索引、每天定时备份指定的索引、定时将索引从热节点迁移至冷节点等等。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="PIP"><a href="#PIP" class="headerlink" title="PIP"></a>PIP</h4><p>如果没有安装 <code>pip</code> 先安装 <code>pip</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br></pre></td></tr></tbody></table></figure>
+<p>利用阿里的 <code>epel</code> 源</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install python-pip</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="Curator"><a href="#Curator" class="headerlink" title="Curator"></a>Curator</h4><p><code>Curator</code> 本身是基于 <code>Python</code> 实现，所以可以使用 <code>pip</code> 安装</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install elasticsearch-curator</span><br></pre></td></tr></tbody></table></figure>
+<p>升级</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U elasticsearch-curator</span><br></pre></td></tr></tbody></table></figure>
+<p>查看版本</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># curator --version</span><br><span class="line">curator, version 5.8.4</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>新建配置文件 <code>curator.yml</code>，具体格式可以参考官方默认的配置文件</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">client:</span></span><br><span class="line">  <span class="attr">hosts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9200</span></span><br><span class="line">  <span class="attr">url_prefix:</span></span><br><span class="line">  <span class="attr">use_ssl:</span> <span class="literal">False</span></span><br><span class="line">  <span class="attr">certificate:</span></span><br><span class="line">  <span class="attr">client_cert:</span></span><br><span class="line">  <span class="attr">client_key:</span></span><br><span class="line">  <span class="attr">ssl_no_validate:</span> <span class="literal">False</span></span><br><span class="line">  <span class="attr">username:</span> <span class="string">elastic</span> <span class="comment"># elastic用户</span></span><br><span class="line">  <span class="attr">password:</span> <span class="string">password</span> <span class="comment"># elastic密码</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="number">30</span></span><br><span class="line">  <span class="attr">master_only:</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">loglevel:</span> <span class="string">INFO</span></span><br><span class="line">  <span class="attr">logfile:</span></span><br><span class="line">  <span class="attr">logformat:</span> <span class="string">default</span></span><br><span class="line">  <span class="attr">blacklist:</span> [<span class="string">'elasticsearch'</span>, <span class="string">'urllib3'</span>]</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>新建执行动作文件 <code>delete_indices.yml</code>，比如我执行<code>删除7天前的索引</code></p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">actions:</span></span><br><span class="line">  <span class="attr">1:</span></span><br><span class="line">    <span class="attr">action:</span> <span class="string">delete_indices</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">"delete the index 7 days ago"</span></span><br><span class="line">    <span class="attr">filters:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">filtertype:</span> <span class="string">pattern</span></span><br><span class="line">      <span class="attr">kind:</span> <span class="string">prefix</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">filebeat-nginx-error-</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">filtertype:</span> <span class="string">age</span></span><br><span class="line">      <span class="attr">source:</span> <span class="string">name</span></span><br><span class="line">      <span class="attr">direction:</span> <span class="string">older</span></span><br><span class="line">      <span class="attr">timestring:</span> <span class="string">'%Y.%m.%d'</span></span><br><span class="line">      <span class="attr">unit:</span> <span class="string">days</span></span><br><span class="line">      <span class="attr">unit_count:</span> <span class="number">7</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curator --config /etc/curator/config.yml /etc/curator/action/delete_indices.yml</span><br></pre></td></tr></tbody></table></figure>
+<p>执行结果如下：<br><img src="https://img.jakehu.me/2021/11/05/9LIl87.png"></p>
+<hr>
+<p>未完待续</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1218,119 +1337,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/sanic-database/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/sanic-database/" class="post-title-link" itemprop="url">Sanic 下最好用 ORM 之 databases </a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-27 16:22:00" itemprop="dateCreated datePublished" datetime="2021-08-27T16:22:00+00:00">2021-08-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/sanic-database/" class="post-meta-item leancloud_visitors" data-flag-title="Sanic 下最好用 ORM 之 databases " title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>329</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>在使用 <code>Sanic</code> 的过程中对 <code>ORM</code> 的选择可谓是痛苦的，用过官方推荐的 <code>Tortoise ORM</code>，也用过 <code>SQLAlchemy</code></p>
-<p>比起使用 <code>ORM</code> 我更喜欢原生 <code>SQL</code>，当我看见 <code>databases</code> 的时候我发现它满足了的我所有要求，支持异步驱动 <code>aiomysql</code>，支持原生 <code>SQL</code> 写法，还封装进了 <code>SQLAlchemy</code>，只要你想你也可以把 <code>databases</code> 当作 <code>SQLAlchemy</code> 使用</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装 <code>databases</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install databases</span><br></pre></td></tr></tbody></table></figure>
-<p>安装数据库驱动</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install aiomysql</span><br></pre></td></tr></tbody></table></figure>
-<p>在安装 <code>databases</code> 的时候会自动的安装 <code>SQLAlchemy</code> 目前已经支持 <code>1.4</code> 版本</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>利用监听器去控制数据库的连接和断开，并将句柄放入到应用上下文中 <code>app.ctx.db</code></p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">./server.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sanic <span class="keyword">import</span> Sanic</span><br><span class="line"><span class="keyword">from</span> databases <span class="keyword">import</span> Database</span><br><span class="line"></span><br><span class="line">app = Sanic(<span class="string">'jakehu'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库</span></span><br><span class="line">database = Database(<span class="string">'mysql://localhost/example'</span>)</span><br><span class="line"><span class="comment"># 服务开启之前</span></span><br><span class="line"><span class="meta">@app.listener(<span class="params"><span class="string">"before_server_start"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">startup_db</span>(<span class="params">app, loop</span>):</span><br><span class="line">    <span class="keyword">await</span> database.connect()</span><br><span class="line"><span class="comment"># 服务结束之后</span></span><br><span class="line"><span class="meta">@app.listener(<span class="params"><span class="string">"after_server_stop"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">shutdown_db</span>(<span class="params">app, loop</span>):</span><br><span class="line">    <span class="keyword">await</span> database.disconnect()</span><br><span class="line">app.ctx.db = database</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">"/"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">foo_handler</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> text(<span class="string">"Hello World!"</span>)</span><br><span class="line"></span><br><span class="line">app.run(host=<span class="string">'0.0.0.0'</span>, debug=<span class="literal">True</span>, auto_reload=<span class="literal">True</span>)</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>最后看如何在函数中使用，利用应用上下文中的句柄进行操作，最后在利用<code>_mapping</code> 属性进行转换</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">"/"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">foo_handler</span>(<span class="params">request</span>):</span><br><span class="line">    database= request.app.ctx.db</span><br><span class="line">    query = <span class="string">"SELECT * FROM table"</span></span><br><span class="line">    rows = <span class="keyword">await</span> database.fetch_all(query=query)</span><br><span class="line">    result = [<span class="built_in">dict</span>(row._mapping) <span class="keyword">for</span> row <span class="keyword">in</span> rows]</span><br><span class="line">    <span class="keyword">return</span> json(result)</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<p>关于如何将 <code>sqlalchemy.engine.row.Row</code> 转化为 <code>dict</code> 可以参考</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/encode/databases/issues/375">示例</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1357,7 +1363,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">38k</span>
+    <span title="站点总字数">39k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">

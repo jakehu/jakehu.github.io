@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-count">164</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,119 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/sanic-database/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/sanic-database/" class="post-title-link" itemprop="url">Sanic 下最好用 ORM 之 databases </a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-27 16:22:00" itemprop="dateCreated datePublished" datetime="2021-08-27T16:22:00+00:00">2021-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/sanic-database/" class="post-meta-item leancloud_visitors" data-flag-title="Sanic 下最好用 ORM 之 databases " title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>329</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>在使用 <code>Sanic</code> 的过程中对 <code>ORM</code> 的选择可谓是痛苦的，用过官方推荐的 <code>Tortoise ORM</code>，也用过 <code>SQLAlchemy</code></p>
+<p>比起使用 <code>ORM</code> 我更喜欢原生 <code>SQL</code>，当我看见 <code>databases</code> 的时候我发现它满足了的我所有要求，支持异步驱动 <code>aiomysql</code>，支持原生 <code>SQL</code> 写法，还封装进了 <code>SQLAlchemy</code>，只要你想你也可以把 <code>databases</code> 当作 <code>SQLAlchemy</code> 使用</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装 <code>databases</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install databases</span><br></pre></td></tr></tbody></table></figure>
+<p>安装数据库驱动</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install aiomysql</span><br></pre></td></tr></tbody></table></figure>
+<p>在安装 <code>databases</code> 的时候会自动的安装 <code>SQLAlchemy</code> 目前已经支持 <code>1.4</code> 版本</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>利用监听器去控制数据库的连接和断开，并将句柄放入到应用上下文中 <code>app.ctx.db</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">./server.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sanic <span class="keyword">import</span> Sanic</span><br><span class="line"><span class="keyword">from</span> databases <span class="keyword">import</span> Database</span><br><span class="line"></span><br><span class="line">app = Sanic(<span class="string">'jakehu'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库</span></span><br><span class="line">database = Database(<span class="string">'mysql://localhost/example'</span>)</span><br><span class="line"><span class="comment"># 服务开启之前</span></span><br><span class="line"><span class="meta">@app.listener(<span class="params"><span class="string">"before_server_start"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">startup_db</span>(<span class="params">app, loop</span>):</span><br><span class="line">    <span class="keyword">await</span> database.connect()</span><br><span class="line"><span class="comment"># 服务结束之后</span></span><br><span class="line"><span class="meta">@app.listener(<span class="params"><span class="string">"after_server_stop"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">shutdown_db</span>(<span class="params">app, loop</span>):</span><br><span class="line">    <span class="keyword">await</span> database.disconnect()</span><br><span class="line">app.ctx.db = database</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">"/"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">foo_handler</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> text(<span class="string">"Hello World!"</span>)</span><br><span class="line"></span><br><span class="line">app.run(host=<span class="string">'0.0.0.0'</span>, debug=<span class="literal">True</span>, auto_reload=<span class="literal">True</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>最后看如何在函数中使用，利用应用上下文中的句柄进行操作，最后在利用<code>_mapping</code> 属性进行转换</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">"/"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">foo_handler</span>(<span class="params">request</span>):</span><br><span class="line">    database= request.app.ctx.db</span><br><span class="line">    query = <span class="string">"SELECT * FROM table"</span></span><br><span class="line">    rows = <span class="keyword">await</span> database.fetch_all(query=query)</span><br><span class="line">    result = [<span class="built_in">dict</span>(row._mapping) <span class="keyword">for</span> row <span class="keyword">in</span> rows]</span><br><span class="line">    <span class="keyword">return</span> json(result)</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>关于如何将 <code>sqlalchemy.engine.row.Row</code> 转化为 <code>dict</code> 可以参考</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/encode/databases/issues/375">示例</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1205,114 +1318,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/mysql-adjoin-diff/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/mysql-adjoin-diff/" class="post-title-link" itemprop="url">试一试，MySQL 计算相邻两行某列差值</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-05-27 16:13:00" itemprop="dateCreated datePublished" datetime="2021-05-27T16:13:00+00:00">2021-05-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/mysql-adjoin-diff/" class="post-meta-item leancloud_visitors" data-flag-title="试一试，MySQL 计算相邻两行某列差值" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>249</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>当我们需要统计累积量的时候就需要计算<code>同一业务</code>以及<code>相邻</code>两行的<code>差值</code></p>
-<h4 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h4><p>接下来我们模拟一个业务，就是统计每天数据表的行数增加量。首先我们需要每天将当天表的数据行数写入到数据库</p>
-<p>表结构如下：</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `table_logs` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `table_name` <span class="type">char</span>(<span class="number">64</span>) <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'_'</span> COMMENT <span class="string">'table_name'</span>,</span><br><span class="line">  `row_num` <span class="type">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> COMMENT <span class="string">'行数'</span>,</span><br><span class="line">  `created_at` datetime <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">current_timestamp</span>() COMMENT <span class="string">'创建时间'</span>,</span><br><span class="line">  `updated_at` datetime <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">current_timestamp</span>() <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">current_timestamp</span>(),</span><br><span class="line">  <span class="keyword">PRIMARY KEY</span> (`id`),</span><br><span class="line">  KEY `uuid` (`uuid`),</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">1</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>方法：<code>t1.rownum = t2.rownum - 1</code></p>
-<p>代码：</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        (<span class="variable">@rownum</span> :<span class="operator">=</span> <span class="variable">@rownum</span> <span class="operator">+</span> <span class="number">1</span>) <span class="keyword">AS</span> rownum,</span><br><span class="line">        `id`,</span><br><span class="line">        `table_name`,</span><br><span class="line">        `row_num`</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        table_logs,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="variable">@rownum</span> :<span class="operator">=</span> <span class="number">0</span>) t</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">        <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">       `table_name` <span class="keyword">desc</span>, `id` <span class="keyword">desc</span></span><br><span class="line">  ) <span class="keyword">as</span> t1</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        (<span class="variable">@INDEX</span> :<span class="operator">=</span> <span class="variable">@INDEX</span> <span class="operator">+</span> <span class="number">1</span>) <span class="keyword">AS</span> rownum,</span><br><span class="line">        `id`,</span><br><span class="line">        `table_name`,</span><br><span class="line">        `row_num`</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        table_logs,</span><br><span class="line">        (<span class="keyword">SELECT</span> <span class="variable">@rownum</span> :<span class="operator">=</span> <span class="number">0</span>) t</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">        <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">       `table_name` <span class="keyword">desc</span>, `id` <span class="keyword">desc</span></span><br><span class="line"> ) <span class="keyword">as</span> t2 <span class="keyword">on</span> t1.rownum <span class="operator">=</span> t2.rownum <span class="operator">-</span> <span class="number">1</span> <span class="keyword">and</span> t1.table_name <span class="operator">=</span> t2.table_name</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<p>最后只需要将 <code>t1.row_num-t2.row_num</code> 就可以实现我们的需求</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1339,7 +1344,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">38k</span>
+    <span title="站点总字数">39k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
