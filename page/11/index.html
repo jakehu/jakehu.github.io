@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">165</span>
+          <span class="site-state-item-count">166</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,116 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2020/ldap-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/ldap-docker/" class="post-title-link" itemprop="url">利用 Docker 为自己打造一套 OpenLdap 认证系统</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-16 16:13:00" itemprop="dateCreated datePublished" datetime="2020-05-16T16:13:00+00:00">2020-05-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ldap/" itemprop="url" rel="index"><span itemprop="name">ldap</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/ldap-docker/" class="post-meta-item leancloud_visitors" data-flag-title="利用 Docker 为自己打造一套 OpenLdap 认证系统" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>432</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Ldap"><a href="#Ldap" class="headerlink" title="Ldap"></a>Ldap</h3><p>轻型目录访问协议（英文：<code>Lightweight Directory Access Protocol</code>，缩写：<code>LDAP</code>，<code>/ˈɛldæp/</code>）是一个开放的，中立的，工业标准的应用协议，通过 <code>IP</code> 协议提供访问控制和维护分布式信息的目录信息。</p>
+<p>摘自维基百科，关于 <code>LDAP</code> 概念和原理可以看看这篇文章 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wilburxu/p/9174353.html">LDAP 概念和原理介绍</a></p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull osixia/openldap:1.3.0</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 389:389 --name openldap --restart=always \</span><br><span class="line">--env LDAP_ORGANISATION="jakehu" \</span><br><span class="line">--env LDAP_DOMAIN="jakehu.me" \</span><br><span class="line">--env LDAP_ADMIN_PASSWORD="jakehu" \</span><br><span class="line">--env LDAP_CONFIG_PASSWORD="jakehu" \</span><br><span class="line">--volume /data/database:/var/lib/ldap \</span><br><span class="line">--volume /data/config:/etc/ldap/slapd.d \</span><br><span class="line">--detach osixia/openldap:1.3.0</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>端口：默认服务端口使用 <code>389</code> 端口<br><code>LDAP_ORGANISATION</code>：机构组织<br><code>LDAP_DOMAIN</code>：域<br><code>LDAP_ADMIN_PASSWORD</code>：管理员 (<code>admin</code>) 密码<br><code>LDAP_CONFIG_PASSWORD</code>：配置管理密码<br><code>/etc/ldap/slapd.d</code>：配置文件<br><code>/var/lib/ldap</code>：后端数据，默认为 <code>mdb</code></p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><h4 id="镜像-1"><a href="#镜像-1" class="headerlink" title="镜像"></a>镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ldapaccountmanager/lam:7.2.RC1</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="容器-1"><a href="#容器-1" class="headerlink" title="容器"></a>容器</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always --name ldapaccountmanager -p 9880:80 \</span><br><span class="line">--link openldap:openldap \</span><br><span class="line">--env LDAP_DOMAIN=jakehu.me \</span><br><span class="line">--env LAM_LANG=zh_CN \</span><br><span class="line">--env LDAP_SERVER=ldap://openldap:389 \</span><br><span class="line">--env LAM_PASSWORD=jakehu \</span><br><span class="line">--detach ldapaccountmanager/lam:7.2.RC1</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><p><code>LAM_LANG</code>：语言<br><code>LDAP_SERVER</code>：<code>Ldap</code> 服务器<br><code>LAM_PASSWORD</code>：<code>lam</code> 密码，默认用户名 <code>lam</code></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>接下来访问 <code>http://IP:9880</code> 就能看到下面画面<br><img src="https://img.jakehu.me/20200517183325.png"><br>点击 <code>LAM configuration</code> 进入配置界面<br><img src="https://img.jakehu.me/20200517183522.png"><br><img src="https://img.jakehu.me/20200517183558.png"><br>这里的密码，就是我们设置的 <code>LAM_PASSWORD</code><br><img src="https://img.jakehu.me/20200517183843.png"><br>另外设置的 <code>LDAP_SERVER</code> 和 <code>LDAP_DOMAIN</code> 都被体现出来了，最后在 <code>Account types</code> 中修改默认创建的两个组，这两个组会在首次登陆系统时提示创建<br><img src="https://img.jakehu.me/20200517184331.png"><br>然后登陆创建我们刚设置的两个组<br><img src="https://img.jakehu.me/20200517184454.png"><br>看下结构树，两个分组已经被创建了<br><img src="https://img.jakehu.me/20200517184617.png"><br>到此就已经完成 <code>docker</code> 版的 <code>openldap</code> 和 <code>lam</code> 的安装配置</p>
+<hr>
+<p>o – organization（组织 - 公司）<br>ou – organization unit（组织单元 - 部门）<br>c - countryName（国家）<br>dc - domainComponent（域名）<br>sn – suer name（真实名称）<br>cn - common name（常用名称）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1212,137 +1322,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2019/synology-lede/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/synology-lede/" class="post-title-link" itemprop="url">在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-10 14:09:00" itemprop="dateCreated datePublished" datetime="2019-07-10T14:09:00+00:00">2019-07-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/synology-lede/" class="post-meta-item leancloud_visitors" data-flag-title="在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>482</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>为什么要软路由？目前家里的拓扑是</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; 路由器 -&gt; NAS/BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
-<p>路由器负责了<code>拨号</code>、<code>科学上网</code>、<code>广告过滤</code>等</p>
-<p>之前已经将 <code>Frp</code> 移到了 <code>NAS</code> 的 <code>Docker</code> 里面</p>
-<p><a href="/2019/frp-onekey/">FRP 资源</a></p>
-<p><a href="/2019/synology-frp-https/">FRP 教程</a></p>
-<p>至于为什么要软路由原因：</p>
-<ol>
-<li><code>AC66U_B1</code> 时常不够稳定，将 <code>frp</code> 迁移至 <code>nas</code> 后深有感受</li>
-<li><code>AC66U_B1</code> 固件中插件有限而且越来越不好用，所以更多的是想将路由上的功能转一部分到软路由上</li>
-</ol>
-<p>改造后拓扑为：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; NAS软路由 -&gt; NAS/硬路由-&gt;BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="硬件改造"><a href="#硬件改造" class="headerlink" title="硬件改造"></a>硬件改造</h3><p>改造前现有的硬件设备：</p>
-<blockquote>
-<p>机箱：乔思伯 V2<br>主板：华擎 N3150TM-ITX 主板<br>电源：绿巨能笔记本 DC 电源<br>硬盘：西部数据 (WD) 红盘 4TB * 2<br>内存：金士顿 DDR3L 4G</p>
-</blockquote>
-<p>改造前如图：<br><img src="https://img.jakehu.me/20190712105802.jpg"></p>
-<p>改造部分为<code>更换机箱</code>以及<code>增加网卡</code></p>
-<blockquote>
-<p>机箱：金河田（Golden field）预见 N-1<br>网卡：EDUP EP-9602 PCI-E 千兆网卡</p>
-</blockquote>
-<p>改造后如图：<br><img src="https://img.jakehu.me/20190712110017.jpg"></p>
-<h3 id="LEDE安装"><a href="#LEDE安装" class="headerlink" title="LEDE安装"></a>LEDE 安装</h3><h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>在 <a target="_blank" rel="noopener" href="https://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/">https://firmware.koolshare.cn/LEDE_X64_fw867 / 虚拟机转盘或 PE 下写盘专用 /</a> 下载 <code>combined-squashfs.img.gz</code> 固件，解压后上传至群晖，如图：<br><img src="https://img.jakehu.me/20190712093324.png"></p>
-<h4 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h4><p>好吧，被坑了，还一直没找到问题所在。</p>
-<p>最开始上了 <code>EDUP EP-9602 PCI-E千兆网卡（RTL8111芯片）</code>，在群晖的网络界面能识别，在 <code>VMM</code> 网络界面添加虚拟交换机时无法识别；后面又换了 <code>LR-LINK 联瑞pciex1台式机千兆有线网卡intelI211芯片支持linux LREC9202CT</code> 还是无法识别；后来又换了<code>胜为（shengwei）PCI-E千兆网卡 以太网rj45台式机电脑10/100/1000自适应网卡 单口 带唤醒 PEC-2051</code> 还是无法识别</p>
-<p>算了，不玩儿了</p>
-<h3 id="终结"><a href="#终结" class="headerlink" title="终结"></a>终结</h3><p>网卡无法识别原因寻找中</p>
-<p>未完待续…</p>
-<hr>
-<p>关于群晖部分问题可以看各位网友的总结：</p>
-<p><a target="_blank" rel="noopener" href="https://wp.gxnas.com/2450.html">黑群晖常见问题</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1376,7 +1355,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:22</span>
+    <span title="站点阅读时长">2:23</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
