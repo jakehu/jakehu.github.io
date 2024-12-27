@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">166</span>
+          <span class="site-state-item-count">165</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,137 +231,6 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2019/synology-lede/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/synology-lede/" class="post-title-link" itemprop="url">在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-07-10 14:09:00" itemprop="dateCreated datePublished" datetime="2019-07-10T14:09:00+00:00">2019-07-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/synology-lede/" class="post-meta-item leancloud_visitors" data-flag-title="在群晖上利用 Virtual Machine Manager 玩转软路由之 LEDE" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>482</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>为什么要软路由？目前家里的拓扑是</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; 路由器 -&gt; NAS/BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
-<p>路由器负责了<code>拨号</code>、<code>科学上网</code>、<code>广告过滤</code>等</p>
-<p>之前已经将 <code>Frp</code> 移到了 <code>NAS</code> 的 <code>Docker</code> 里面</p>
-<p><a href="/2019/frp-onekey/">FRP 资源</a></p>
-<p><a href="/2019/synology-frp-https/">FRP 教程</a></p>
-<p>至于为什么要软路由原因：</p>
-<ol>
-<li><code>AC66U_B1</code> 时常不够稳定，将 <code>frp</code> 迁移至 <code>nas</code> 后深有感受</li>
-<li><code>AC66U_B1</code> 固件中插件有限而且越来越不好用，所以更多的是想将路由上的功能转一部分到软路由上</li>
-</ol>
-<p>改造后拓扑为：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; NAS软路由 -&gt; NAS/硬路由-&gt;BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="硬件改造"><a href="#硬件改造" class="headerlink" title="硬件改造"></a>硬件改造</h3><p>改造前现有的硬件设备：</p>
-<blockquote>
-<p>机箱：乔思伯 V2<br>主板：华擎 N3150TM-ITX 主板<br>电源：绿巨能笔记本 DC 电源<br>硬盘：西部数据 (WD) 红盘 4TB * 2<br>内存：金士顿 DDR3L 4G</p>
-</blockquote>
-<p>改造前如图：<br><img src="https://img.jakehu.me/20190712105802.jpg"></p>
-<p>改造部分为<code>更换机箱</code>以及<code>增加网卡</code></p>
-<blockquote>
-<p>机箱：金河田（Golden field）预见 N-1<br>网卡：EDUP EP-9602 PCI-E 千兆网卡</p>
-</blockquote>
-<p>改造后如图：<br><img src="https://img.jakehu.me/20190712110017.jpg"></p>
-<h3 id="LEDE安装"><a href="#LEDE安装" class="headerlink" title="LEDE安装"></a>LEDE 安装</h3><h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>在 <a target="_blank" rel="noopener" href="https://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/">https://firmware.koolshare.cn/LEDE_X64_fw867 / 虚拟机转盘或 PE 下写盘专用 /</a> 下载 <code>combined-squashfs.img.gz</code> 固件，解压后上传至群晖，如图：<br><img src="https://img.jakehu.me/20190712093324.png"></p>
-<h4 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h4><p>好吧，被坑了，还一直没找到问题所在。</p>
-<p>最开始上了 <code>EDUP EP-9602 PCI-E千兆网卡（RTL8111芯片）</code>，在群晖的网络界面能识别，在 <code>VMM</code> 网络界面添加虚拟交换机时无法识别；后面又换了 <code>LR-LINK 联瑞pciex1台式机千兆有线网卡intelI211芯片支持linux LREC9202CT</code> 还是无法识别；后来又换了<code>胜为（shengwei）PCI-E千兆网卡 以太网rj45台式机电脑10/100/1000自适应网卡 单口 带唤醒 PEC-2051</code> 还是无法识别</p>
-<p>算了，不玩儿了</p>
-<h3 id="终结"><a href="#终结" class="headerlink" title="终结"></a>终结</h3><p>网卡无法识别原因寻找中</p>
-<p>未完待续…</p>
-<hr>
-<p>关于群晖部分问题可以看各位网友的总结：</p>
-<p><a target="_blank" rel="noopener" href="https://wp.gxnas.com/2450.html">黑群晖常见问题</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -1410,6 +1279,128 @@ var _hmt = _hmt || [];
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2019/weixin-token/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/weixin-token/" class="post-title-link" itemprop="url">Eggjs 与微信公众平台 (Wechat) 对接之不得不说</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-29 14:58:00" itemprop="dateCreated datePublished" datetime="2019-03-29T14:58:00+00:00">2019-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/weixin-token/" class="post-meta-item leancloud_visitors" data-flag-title="Eggjs 与微信公众平台 (Wechat) 对接之不得不说" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>421</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近在开发一个项目是用的 <code>eggjs</code> 同时又需要对接到微信公众平台，所以记录下自己 <code>Egg</code> 对接微信的过程</p>
+<h3 id="验证Token"><a href="#验证Token" class="headerlink" title="验证Token"></a>验证 Token</h3><p>我们知道在微信开发时都需在公众开发配置中对 <code>Token</code> 验证一次，接下来谈谈验证的步骤</p>
+<h4 id="第一步确定验证URL"><a href="#第一步确定验证URL" class="headerlink" title="第一步确定验证URL"></a>第一步确定验证 URL</h4><p>比如我的是 <code>https://www.jakehu.me/wechat</code>，那么先对 <code>eggjs</code> 路由改造</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// app/router.js</span><br><span class="line"></span><br><span class="line">module.exports = app =&gt; {</span><br><span class="line">  app.router.get('/wechat', app.controller.wechat.index);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>改造完路由后我们还必须对<code>安全</code>这块进行设置，屏蔽对路由 <code>/wechat</code> 的 <code>csrf</code> 验证</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.<span class="property">security</span> = {</span><br><span class="line">    <span class="attr">csrf</span>: {</span><br><span class="line">      <span class="attr">ignore</span>: <span class="string">'/wechat'</span>,</span><br><span class="line">    },</span><br><span class="line">  };</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="第二步编写验证Controller"><a href="#第二步编写验证Controller" class="headerlink" title="第二步编写验证Controller"></a>第二步编写验证 Controller</h4><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">index</span> () {</span><br><span class="line">    <span class="keyword">const</span> query = <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">request</span>.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">const</span> signature = query.<span class="property">signature</span>;</span><br><span class="line">    <span class="keyword">const</span> timestamp = query.<span class="property">timestamp</span>;</span><br><span class="line">    <span class="keyword">const</span> nonce = query.<span class="property">nonce</span>;</span><br><span class="line">    <span class="keyword">const</span> echostr = query.<span class="property">echostr</span>;</span><br><span class="line"> &nbsp; &nbsp;<span class="keyword">if</span> (<span class="keyword">await</span> <span class="variable language_">this</span>.<span class="title function_">check</span>(timestamp, nonce, signature, <span class="string">'token'</span>)) {</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">body</span> = echostr;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">body</span> = <span class="string">'It is not from weixin'</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">check</span> (timestamp, nonce, signature, token) {</span><br><span class="line">    <span class="keyword">const</span> tmp = [ token, timestamp, nonce ].<span class="title function_">sort</span>().<span class="title function_">join</span>(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">const</span> currSign = crypto.<span class="title function_">createHash</span>(<span class="string">'sha1'</span>).<span class="title function_">update</span>(tmp).<span class="title function_">digest</span>(<span class="string">'hex'</span>);</span><br><span class="line">    <span class="keyword">return</span> (currSign === signature);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后就可以在<code>开发者配置</code>进行验证就好了</p>
+<blockquote>
+<p>注：上面代码中的 <code>token</code> 即为你在<code>开发者配置</code>页面中填写的 <code>token</code></p>
+</blockquote>
+<h3 id="接入开发"><a href="#接入开发" class="headerlink" title="接入开发"></a>接入开发</h3><h4 id="第一步安装必要组件"><a href="#第一步安装必要组件" class="headerlink" title="第一步安装必要组件"></a>第一步安装必要组件</h4><p>这里我们用到了 <code>co-wechat</code> 插件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i co-wechat -s</span><br></pre></td></tr></tbody></table></figure>
+<p>安装后对插件进行配置</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.<span class="property">wechat</span> = {</span><br><span class="line">    <span class="attr">token</span>: <span class="string">'token'</span>,</span><br><span class="line">    <span class="attr">appid</span>: <span class="string">'appid'</span>,</span><br><span class="line">    <span class="attr">encodingAESKey</span>: <span class="string">'encodingAESKey'</span>,</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="编写对接代码"><a href="#编写对接代码" class="headerlink" title="编写对接代码"></a>编写对接代码</h4><p>首先是 <code>Controller</code> 的编写</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> wechat = <span class="built_in">require</span>(<span class="string">'co-wechat'</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">app</span> =&gt;</span> {</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">WechatController</span> <span class="keyword">extends</span> <span class="title class_ inherited__">app.Controller</span> { }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 因为 Egg 需要用类的形式来组织，而 wechat 是通过 middleware 方法来生成中间件</span></span><br><span class="line">  <span class="title class_">WechatController</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">wechat</span> = <span class="title function_">wechat</span>({</span><br><span class="line">    <span class="attr">token</span>: <span class="string">'token'</span>,</span><br><span class="line">    <span class="attr">appid</span>: <span class="string">'appid'</span>,</span><br><span class="line">    <span class="attr">encodingAESKey</span>: <span class="string">'encodingAESKey'</span>,</span><br><span class="line">  }).<span class="title function_">middleware</span>(<span class="title function_">async</span> (message, ctx) =&gt; {</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(message);</span><br><span class="line">    <span class="keyword">return</span> { <span class="attr">type</span>: <span class="string">'text'</span>, <span class="attr">content</span>: <span class="string">'Hello world!'</span> };</span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">WechatController</span>;</span><br><span class="line">};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>其次我们对路由再进行改造</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/router.js</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">app</span> =&gt;</span> {</span><br><span class="line">  app.<span class="property">router</span>.<span class="title function_">post</span>(<span class="string">'/wechat'</span>, app.<span class="property">controller</span>.<span class="property">wechat</span>.<span class="property">wechat</span>);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>到此就结束了，完美对接！！！</p>
+<hr>
+<p>完美对接！！！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1443,7 +1434,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:23</span>
+    <span title="站点阅读时长">2:22</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

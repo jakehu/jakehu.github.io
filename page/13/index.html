@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">166</span>
+          <span class="site-state-item-count">165</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,128 +231,6 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2019/weixin-token/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/weixin-token/" class="post-title-link" itemprop="url">Eggjs 与微信公众平台 (Wechat) 对接之不得不说</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-03-29 14:58:00" itemprop="dateCreated datePublished" datetime="2019-03-29T14:58:00+00:00">2019-03-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/weixin-token/" class="post-meta-item leancloud_visitors" data-flag-title="Eggjs 与微信公众平台 (Wechat) 对接之不得不说" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>421</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近在开发一个项目是用的 <code>eggjs</code> 同时又需要对接到微信公众平台，所以记录下自己 <code>Egg</code> 对接微信的过程</p>
-<h3 id="验证Token"><a href="#验证Token" class="headerlink" title="验证Token"></a>验证 Token</h3><p>我们知道在微信开发时都需在公众开发配置中对 <code>Token</code> 验证一次，接下来谈谈验证的步骤</p>
-<h4 id="第一步确定验证URL"><a href="#第一步确定验证URL" class="headerlink" title="第一步确定验证URL"></a>第一步确定验证 URL</h4><p>比如我的是 <code>https://www.jakehu.me/wechat</code>，那么先对 <code>eggjs</code> 路由改造</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// app/router.js</span><br><span class="line"></span><br><span class="line">module.exports = app =&gt; {</span><br><span class="line">  app.router.get('/wechat', app.controller.wechat.index);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<p>改造完路由后我们还必须对<code>安全</code>这块进行设置，屏蔽对路由 <code>/wechat</code> 的 <code>csrf</code> 验证</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.<span class="property">security</span> = {</span><br><span class="line">    <span class="attr">csrf</span>: {</span><br><span class="line">      <span class="attr">ignore</span>: <span class="string">'/wechat'</span>,</span><br><span class="line">    },</span><br><span class="line">  };</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="第二步编写验证Controller"><a href="#第二步编写验证Controller" class="headerlink" title="第二步编写验证Controller"></a>第二步编写验证 Controller</h4><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">index</span> () {</span><br><span class="line">    <span class="keyword">const</span> query = <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">request</span>.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">const</span> signature = query.<span class="property">signature</span>;</span><br><span class="line">    <span class="keyword">const</span> timestamp = query.<span class="property">timestamp</span>;</span><br><span class="line">    <span class="keyword">const</span> nonce = query.<span class="property">nonce</span>;</span><br><span class="line">    <span class="keyword">const</span> echostr = query.<span class="property">echostr</span>;</span><br><span class="line"> &nbsp; &nbsp;<span class="keyword">if</span> (<span class="keyword">await</span> <span class="variable language_">this</span>.<span class="title function_">check</span>(timestamp, nonce, signature, <span class="string">'token'</span>)) {</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">body</span> = echostr;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">body</span> = <span class="string">'It is not from weixin'</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">check</span> (timestamp, nonce, signature, token) {</span><br><span class="line">    <span class="keyword">const</span> tmp = [ token, timestamp, nonce ].<span class="title function_">sort</span>().<span class="title function_">join</span>(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">const</span> currSign = crypto.<span class="title function_">createHash</span>(<span class="string">'sha1'</span>).<span class="title function_">update</span>(tmp).<span class="title function_">digest</span>(<span class="string">'hex'</span>);</span><br><span class="line">    <span class="keyword">return</span> (currSign === signature);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>然后就可以在<code>开发者配置</code>进行验证就好了</p>
-<blockquote>
-<p>注：上面代码中的 <code>token</code> 即为你在<code>开发者配置</code>页面中填写的 <code>token</code></p>
-</blockquote>
-<h3 id="接入开发"><a href="#接入开发" class="headerlink" title="接入开发"></a>接入开发</h3><h4 id="第一步安装必要组件"><a href="#第一步安装必要组件" class="headerlink" title="第一步安装必要组件"></a>第一步安装必要组件</h4><p>这里我们用到了 <code>co-wechat</code> 插件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i co-wechat -s</span><br></pre></td></tr></tbody></table></figure>
-<p>安装后对插件进行配置</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">config.<span class="property">wechat</span> = {</span><br><span class="line">    <span class="attr">token</span>: <span class="string">'token'</span>,</span><br><span class="line">    <span class="attr">appid</span>: <span class="string">'appid'</span>,</span><br><span class="line">    <span class="attr">encodingAESKey</span>: <span class="string">'encodingAESKey'</span>,</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="编写对接代码"><a href="#编写对接代码" class="headerlink" title="编写对接代码"></a>编写对接代码</h4><p>首先是 <code>Controller</code> 的编写</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controller/wechat.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> wechat = <span class="built_in">require</span>(<span class="string">'co-wechat'</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">app</span> =&gt;</span> {</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">WechatController</span> <span class="keyword">extends</span> <span class="title class_ inherited__">app.Controller</span> { }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 因为 Egg 需要用类的形式来组织，而 wechat 是通过 middleware 方法来生成中间件</span></span><br><span class="line">  <span class="title class_">WechatController</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">wechat</span> = <span class="title function_">wechat</span>({</span><br><span class="line">    <span class="attr">token</span>: <span class="string">'token'</span>,</span><br><span class="line">    <span class="attr">appid</span>: <span class="string">'appid'</span>,</span><br><span class="line">    <span class="attr">encodingAESKey</span>: <span class="string">'encodingAESKey'</span>,</span><br><span class="line">  }).<span class="title function_">middleware</span>(<span class="title function_">async</span> (message, ctx) =&gt; {</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(message);</span><br><span class="line">    <span class="keyword">return</span> { <span class="attr">type</span>: <span class="string">'text'</span>, <span class="attr">content</span>: <span class="string">'Hello world!'</span> };</span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">WechatController</span>;</span><br><span class="line">};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>其次我们对路由再进行改造</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/router.js</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">app</span> =&gt;</span> {</span><br><span class="line">  app.<span class="property">router</span>.<span class="title function_">post</span>(<span class="string">'/wechat'</span>, app.<span class="property">controller</span>.<span class="property">wechat</span>.<span class="property">wechat</span>);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-<p>到此就结束了，完美对接！！！</p>
-<hr>
-<p>完美对接！！！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -1459,6 +1337,148 @@ var _hmt = _hmt || [];
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2018/LCN-GTS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/LCN-GTS/" class="post-title-link" itemprop="url">分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-22 16:30:00" itemprop="dateCreated datePublished" datetime="2018-12-22T16:30:00+00:00">2018-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/LCN-GTS/" class="post-meta-item leancloud_visitors" data-flag-title="分布式事务 LCN 和 GTS 比较 and 你更喜欢谁？" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>896</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="LCN简介"><a href="#LCN简介" class="headerlink" title="LCN简介"></a>LCN 简介</h3><ol>
+<li>LCN 分布式事务框架的核心功能是对本地事务的协调控制，框架本身并不创建事务，只是对本地事务做协调控制</li>
+<li>因此该框架与其他第三方的框架兼容性强，支持所有的关系型数据库事务，支持多数据源，支持与第三方数据库框架一块使用</li>
+<li>在使用框架的时候只需要添加分布式事务的注解即可，对业务的侵入性低</li>
+</ol>
+<h3 id="LCN核心步骤"><a href="#LCN核心步骤" class="headerlink" title="LCN核心步骤"></a>LCN 核心步骤</h3><ol>
+<li>创建事务组，是指在事务发起方开始执行业务代码之前先调用 TxManager 创建事务组对象，然后拿到事务标示 GroupId 的过程</li>
+<li>添加事务组，添加事务组是指参与方在执行完业务方法以后，将该模块的事务信息添加通知给 TxManager 的操作</li>
+<li>关闭事务组，是指在发起方执行完业务代码以后，将发起方执行结果状态通知给 TxManager 的动作。当执行完关闭事务组的方法以后，TxManager 将根据事务组信息来通知相应的参与模块提交或回滚事务</li>
+</ol>
+<h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN 事务控制原理</h3><p>LCN 事务控制原理是由事务模块 TxClient 下的代理连接池与 TxManager 的协调配合完成的事务协调控制 TxClient 的代理连接池实现了 javax.sql.DataSource 接口，并重写了 close 方法，事务模块在提交关闭以后 TxClient 连接池将执行” 假关闭” 操作，等待 TxManager 协调完成事务以后在关闭连接<br><img src="https://img.jakehu.me/1.png"></p>
+<h3 id="阿里云GTS全局事务服务"><a href="#阿里云GTS全局事务服务" class="headerlink" title="阿里云GTS全局事务服务"></a>阿里云 GTS 全局事务服务</h3><ol>
+<li>全局事务服务（Global Transaction Service，简称 GTS）是一款高性能、高可靠、接入简单的分布式事务中间件，用于解决分布式环境下的事务一致性问题</li>
+<li> GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合 EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
+</ol>
+<h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS 模拟场景演示</h3><p><img src="https://img.jakehu.me/2.png"></p>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>GTS 通过大量创新，解决了事务 ACID 特性与高性能、高可用、低侵入不可兼得的问题。单事务分支的平均响应时间在 2ms 左右，3 台服务器组成的集群可以支撑 3 万 TPS 以上的分布式事务请求</p>
+<p>LCN 性能参考：<a target="_blank" rel="noopener" href="http://springcloud.cn/view/374">http://springcloud.cn/view/374</a>在众多开源分布式事务框架中，LCN 性能是处于前列的</p>
+<h3 id="LCN总结"><a href="#LCN总结" class="headerlink" title="LCN总结"></a>LCN 总结</h3><p>优点:</p>
+<ul>
+<li>性能优秀</li>
+<li>可靠性强</li>
+<li> LCN 实现的分布式事务处理模式，编码复杂性和入侵代码量低</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>需额外部署 tx-manager 服务节点</li>
+<li>由于需要 lock 资源这种处理方式，如果集中更新某几个热门商品时，LCN 的性能衰减量大于 TCC 模式</li>
+<li>服务超时时，会造成其他服务的资源被锁住，比如支付服务超时过程中，相关商品库存会一直无法操作</li>
+<li>不支持 SpringCloud 2.0.0 及以上版本（目前已通过修改源码实现支持）</li>
+</ul>
+<h3 id="GTS总结"><a href="#GTS总结" class="headerlink" title="GTS总结"></a>GTS 总结</h3><p>优点:</p>
+<ul>
+<li>性能优秀 (有淘宝双十一作为示例）</li>
+<li>可靠性强</li>
+<li>代码入侵性小（相比 LCN 多一点）</li>
+<li>支持 SpringCloud 2.0.0 及以上版本</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>无法在本地进行测试</li>
+<li>只能在阿里云内网使用，或者购买专有云</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1492,7 +1512,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:23</span>
+    <span title="站点阅读时长">2:22</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
