@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">164</span>
+          <span class="site-state-item-count">166</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,218 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2024/prometheus-black-box-monitoring-blackboxexporter-zuyhfe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/prometheus-black-box-monitoring-blackboxexporter-zuyhfe/" class="post-title-link" itemprop="url">Prometheus 黑盒监控 (blackbox_exporter)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-27 11:04:12" itemprop="dateCreated datePublished" datetime="2024-08-27T11:04:12+00:00">2024-08-27</time>
+    </span>
+
+  
+    <span id="/2024/prometheus-black-box-monitoring-blackboxexporter-zuyhfe/" class="post-meta-item leancloud_visitors" data-flag-title="Prometheus 黑盒监控 (blackbox_exporter)" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>197</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://ghproxy.com/https://github.com/prometheus/blackbox_exporter/releases/download/v0.25.0/blackbox_exporter-0.25.0.linux-amd64.tar.gz</span><br><span class="line">tar -zxvf blackbox_exporter-0.25.0.linux-amd64.tar.gz</span><br><span class="line"><span class="built_in">mkdir</span> /opt/blackbox_exporter</span><br><span class="line"><span class="built_in">cp</span> blackbox_exporter-0.25.0.linux-amd64/blackbox_exporter /opt/blackbox_exporter/blackbox_exporter</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><p>​<code>vim /opt/blackbox_exporter/config.yml</code>​</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">modules:</span><br><span class="line">  http_2xx:</span><br><span class="line">    prober: http</span><br><span class="line">    http:</span><br><span class="line">      method: GET</span><br><span class="line">  http_post_2xx:</span><br><span class="line">    prober: http</span><br><span class="line">    http:</span><br><span class="line">      method: POST</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><p>​<code>vim /usr/lib/systemd/system/blackbox_exporter.service</code>​</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Blackbox Exporter</span><br><span class="line">Documentation=https://github.com/prometheus/blackbox_exporter</span><br><span class="line">Wants=network-online.target</span><br><span class="line">After=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/opt/blackbox_exporter/blackbox_exporter \</span><br><span class="line">  --config.file=/opt/blackbox_exporter/config.yml \</span><br><span class="line">  --web.listen-address=:9116</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start blackbox_exporter</span><br><span class="line">systemctl <span class="built_in">enable</span> blackbox_exporter</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -iv <span class="string">"http://127.0.0.1:9116/probe?module=http_2xx&amp;target=baidu.com"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="Prometheus配置"><a href="#Prometheus配置" class="headerlink" title="Prometheus配置"></a>Prometheus 配置</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- job_name: <span class="string">'blackbox'</span></span><br><span class="line">  metrics_path: /probe</span><br><span class="line">  params:</span><br><span class="line">    module: [http_2xx]</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets:</span><br><span class="line">      - http://10.113.75.134:5000/v1/datasets/8a9302de-ded1-493c-8a12-e8acf3d80772/files?apikey=ka-admin123</span><br><span class="line">  relabel_configs:</span><br><span class="line">    - source_labels: [__address__]</span><br><span class="line">      target_label: __param_target</span><br><span class="line">    - source_labels: [__param_target]</span><br><span class="line">      regex: <span class="string">'(http|https)://([^/]+)/.*'</span></span><br><span class="line">      replacement: <span class="string">'${2}'</span></span><br><span class="line">      target_label: site</span><br><span class="line">    - source_labels: [__param_target]</span><br><span class="line">      target_label: instance</span><br><span class="line">    - target_label: __address__</span><br><span class="line">      replacement: 127.0.0.1:9116</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -xe -u blackbox_exporter</span><br></pre></td></tr></tbody></table></figure>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://flashcat.cloud/docs/content/flashcat-partner/prometheus/exporter/commonly/blackbox-exporter/">https://flashcat.cloud/docs/content/flashcat-partner/prometheus/exporter/commonly/blackbox-exporter/</a></p>
+<p>‍</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2024/no-route-to-host-1fthpi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/no-route-to-host-1fthpi/" class="post-title-link" itemprop="url">No route to host</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-16 16:40:09" itemprop="dateCreated datePublished" datetime="2024-08-16T16:40:09+00:00">2024-08-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2024/no-route-to-host-1fthpi/" class="post-meta-item leancloud_visitors" data-flag-title="No route to host" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>31</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No route to host</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>目标服务器防火墙导致</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></tbody></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1077,224 +1289,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2024/postgres-container-docker-solution-1cviwy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/postgres-container-docker-solution-1cviwy/" class="post-title-link" itemprop="url">Postgres 容器 Docker 解决方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-11 17:00:14" itemprop="dateCreated datePublished" datetime="2024-05-11T17:00:14+00:00">2024-05-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2024/postgres-container-docker-solution-1cviwy/" class="post-meta-item leancloud_visitors" data-flag-title="Postgres 容器 Docker 解决方案" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>79</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://github.com/ccakes/nomad-pgsql-patroni">https://github.com/ccakes/nomad-pgsql-patroni</a></p>
-<h3 id="Highly-available-elephant-herd-HA-PostgreSQL-cluster-using-Docker"><a href="#Highly-available-elephant-herd-HA-PostgreSQL-cluster-using-Docker" class="headerlink" title="Highly available elephant herd: HA PostgreSQL cluster using Docker"></a>Highly available elephant herd: HA PostgreSQL cluster using Docker</h3><p><a target="_blank" rel="noopener" href="https://github.com/zalando/spilo">https://github.com/zalando/spilo</a></p>
-<h3 id="HA解决方案"><a href="#HA解决方案" class="headerlink" title="HA解决方案"></a>HA 解决方案</h3><p><a target="_blank" rel="noopener" href="https://github.com/bitnami/containers/tree/main/bitnami/postgresql-repmgr">https://github.com/bitnami/containers/tree/main/bitnami/postgresql-repmgr</a></p>
-<h3 id="patroni方案"><a href="#patroni方案" class="headerlink" title="patroni方案"></a>patroni 方案</h3><p><a target="_blank" rel="noopener" href="https://github.com/zalando/patroni/blob/master/docker-compose.yml">https://github.com/zalando/patroni/blob/master/docker-compose.yml</a></p>
-<h3 id="Cluster解决方案-不支持Docker"><a href="#Cluster解决方案-不支持Docker" class="headerlink" title="Cluster解决方案(不支持Docker)"></a>Cluster 解决方案 (不支持 Docker)</h3><p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/PostgreSQL/comments/1251yp3/docker_patroni_haproxy_etcd_pgbouncer/"> Patroni + HAProxy + Etcd + PgBouncer</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/vitabaks/postgresql_cluster">https://github.com/vitabaks/postgresql_cluster</a></p>
-<h3 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a>其他方案</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2fd3f4096493">https://www.jianshu.com/p/2fd3f4096493</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fly910905/article/details/125291186">https://blog.csdn.net/fly910905/article/details/125291186</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/640147253">https://zhuanlan.zhihu.com/p/640147253</a></p>
-<p>‍</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2023/python-orm-peewee-error-1i6oow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/python-orm-peewee-error-1i6oow/" class="post-title-link" itemprop="url">Python Orm Peewee 错误</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-01 14:57:33" itemprop="dateCreated datePublished" datetime="2023-12-01T14:57:33+00:00">2023-12-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2023/python-orm-peewee-error-1i6oow/" class="post-meta-item leancloud_visitors" data-flag-title="Python Orm Peewee 错误" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>99</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peewee.OperationalError: (2013, 'Lost connection to MySQL server during query ([Errno 104] Connection reset by peer)')</span><br></pre></td></tr></tbody></table></figure>
-
-<p>原因是 peewee 不会主动去重连数据库</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/coleifer/peewee/issues/1992">https://github.com/coleifer/peewee/issues/1992</a></p>
-<p>如果在事务中也不会主动链接可以用如下方式</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/coleifer/peewee/issues/2628">https://github.com/coleifer/peewee/issues/2628</a></p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    MysqlClient.connect()</span><br><span class="line">    <span class="keyword">with</span> MysqlClient.atomic():</span><br><span class="line">        <span class="keyword">for</span> batch <span class="keyword">in</span> chunked(lists, <span class="number">100</span>):</span><br><span class="line">            ProjectResourceUtilization.insert_many(</span><br><span class="line">                batch,</span><br><span class="line">                [</span><br><span class="line">                    <span class="string">"cluster_name"</span></span><br><span class="line">                ],</span><br><span class="line">            ).execute()</span><br><span class="line">    MysqlClient.close()</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span>, <span class="literal">None</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">    logging.info(<span class="string">"项目资源使用率："</span> + <span class="built_in">str</span>(error))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span>, <span class="built_in">str</span>(error)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-<p>‍</p>
-<p>‍</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1328,7 +1322,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:20</span>
+    <span title="站点阅读时长">2:23</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
