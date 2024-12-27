@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">162</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,114 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2023/calibreweb-server-installation-configuration-jb4vo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/calibreweb-server-installation-configuration-jb4vo/" class="post-title-link" itemprop="url">Calibre-web 服务器安装配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-05 17:30:09" itemprop="dateCreated datePublished" datetime="2023-06-05T17:30:09+00:00">2023-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2023/calibreweb-server-installation-configuration-jb4vo/" class="post-meta-item leancloud_visitors" data-flag-title="Calibre-web 服务器安装配置" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>120</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://fugary.com/?p=238">https://fugary.com/?p=238</a></p>
+<p><a target="_blank" rel="noopener" href="https://liyuyu.cn/post/synology-calibre-web-jour/">https://liyuyu.cn/post/synology-calibre-web-jour/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/janeczku/calibre-web/blob/master/library/metadata.db">https://github.com/janeczku/calibre-web/blob/master/library/metadata.db</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker create \</span><br><span class="line">  --name calibre-web \</span><br><span class="line">  -p 8080:8080 \</span><br><span class="line">  -p 8083:8083 \</span><br><span class="line">  -e UID=0 \</span><br><span class="line">  -e GID=0 \</span><br><span class="line">  -e ENABLE_CALIBRE_SERVER=true \</span><br><span class="line">  -e ENABLE_CALIBRE_SERVER_OPDS=true \</span><br><span class="line">  -e CALIBRE_SERVER_USER=admin \</span><br><span class="line">  -e CALIBRE_SERVER_PASSWORD=england_Spending_untagged4 \</span><br><span class="line">  -e CALIBRE_SERVER_WEB_LANGUAGE=zh_CN \</span><br><span class="line">  -e CALIBRE_WEB_LANGUAGE=zh_Hans_CN \</span><br><span class="line">  -v /volume1/docker/calibre-web:/config \</span><br><span class="line">  -v /volume1/books/calibre:/library \</span><br><span class="line">  -v /volume1/books/plug-in:/usr/local/calibre-web/app/cps/metadata_provider \</span><br><span class="line">  -v /volume1/books/autoaddbooks:/autoaddbooks \</span><br><span class="line">  johngong/calibre-web:0.6.23-7.9.0</span><br></pre></td></tr></tbody></table></figure>
+
+<p>需要手动启动容器</p>
+<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><p>1、web 或者 opds 下载图书 404</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/gshang2017/docker/issues/233">https://github.com/gshang2017/docker/issues/233</a></p>
+<p>‍</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1184,125 +1292,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2022/windows-cygwin-kubebuilder/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/windows-cygwin-kubebuilder/" class="post-title-link" itemprop="url">Windows 下通过 Cygwin 来安装 kubebuilder</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-07-18 11:00:00" itemprop="dateCreated datePublished" datetime="2022-07-18T11:00:00+00:00">2022-07-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/windows-cygwin-kubebuilder/" class="post-meta-item leancloud_visitors" data-flag-title="Windows 下通过 Cygwin 来安装 kubebuilder" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>275</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Cygwin"><a href="#Cygwin" class="headerlink" title="Cygwin"></a>Cygwin</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><code>Cygwin</code> 就是一个 <code>Windows</code> 软件，该软件就是在 <code>Windows</code> 上仿真 <code>Linux</code> 操作系统</p>
-<p>基础模块：<code>Base</code>、<code>Devel</code>、<code>Libs</code>、<code>Net</code>、<code>System</code>、<code>Utils</code></p>
-<p>这里我们安装 <code>Base</code>、<code>Devel</code> 就够了</p>
-<p><code>Cygwin</code> 包可以通过 UI 界面进行安装，也可以通过将下载来下来的 <code>exe</code> 文件放在 <code>C:\cygwin64\bin</code> 目录下</p>
-<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/cygwin/">Cygwin 镜像</a></p>
-<h4 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h4><p>除了上面说的，我们还可以使用第三发的包管理工具 <code>apt-cyg</code></p>
-<p>安装：</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -O https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg</span><br><span class="line"><span class="built_in">mv</span> apt-cyg /bin/apt-cyg</span><br><span class="line"><span class="built_in">chmod</span> +x /bin/apt-cyg</span><br></pre></td></tr></tbody></table></figure>
-<p>使用：</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cyg install wget</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Kubebuilder"><a href="#Kubebuilder" class="headerlink" title="Kubebuilder"></a>Kubebuilder</h3><h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">go version v1.17.9+</span><br><span class="line">docker version 17.03+.</span><br><span class="line">kubectl version v1.11.3+.</span><br><span class="line">Access to a Kubernetes v1.11.3+ cluster.</span><br></pre></td></tr></tbody></table></figure>
-<p>还需要安装 <code>Make</code></p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cyg install make</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:kubernetes-sigs/kubebuilder.git</span><br><span class="line"><span class="built_in">cd</span> kubebuilder</span><br><span class="line">make install</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h4><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> kubebuilder</span><br><span class="line">/cygdrive/c/Users/jakehu/go/bin/kubebuilder</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go mod init jakehu.me</span><br><span class="line">kubebuilder init --domain jakehu.me</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">tree</span><br><span class="line">.</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── Makefile</span><br><span class="line">├── PROJECT</span><br><span class="line">├── README.md</span><br><span class="line">├── config</span><br><span class="line">│&nbsp;&nbsp; ├── default</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; ├── kustomization.yaml</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; ├── manager_auth_proxy_patch.yaml</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; └── manager_config_patch.yaml</span><br><span class="line">│&nbsp;&nbsp; ├── manager</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; ├── controller_manager_config.yaml</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; ├── kustomization.yaml</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; └── manager.yaml</span><br><span class="line">│&nbsp;&nbsp; ├── prometheus</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; ├── kustomization.yaml</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; └── monitor.yaml</span><br><span class="line">│&nbsp;&nbsp; └── rbac</span><br><span class="line">│&nbsp;&nbsp;     ├── auth_proxy_client_clusterrole.yaml</span><br><span class="line">│&nbsp;&nbsp;     ├── auth_proxy_role.yaml</span><br><span class="line">│&nbsp;&nbsp;     ├── auth_proxy_role_binding.yaml</span><br><span class="line">│&nbsp;&nbsp;     ├── auth_proxy_service.yaml</span><br><span class="line">│&nbsp;&nbsp;     ├── kustomization.yaml</span><br><span class="line">│&nbsp;&nbsp;     ├── leader_election_role.yaml</span><br><span class="line">│&nbsp;&nbsp;     ├── leader_election_role_binding.yaml</span><br><span class="line">│&nbsp;&nbsp;     ├── role_binding.yaml</span><br><span class="line">│&nbsp;&nbsp;     └── service_account.yaml</span><br><span class="line">├── go.mod</span><br><span class="line">├── go.sum</span><br><span class="line">├── hack</span><br><span class="line">│&nbsp;&nbsp; └── boilerplate.go.txt</span><br><span class="line">└── main.go</span><br><span class="line"></span><br><span class="line">6 directories, 25 files</span><br></pre></td></tr></tbody></table></figure>
-<hr>
-<p><a target="_blank" rel="noopener" href="https://book.kubebuilder.io/quick-start.html">kubebuilder 文档</a></p>
-<p>题外话：<code>make</code> 下载失败的时候请走代理</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">"127.0.0.1:10809"</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">"127.0.0.1:10809"</span></span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1336,7 +1325,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:19</span>
+    <span title="站点阅读时长">2:20</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

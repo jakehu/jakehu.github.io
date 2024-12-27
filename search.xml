@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>opensearch (es) 修改分片</title>
+      <link href="/2024/opensearch-es-modify-saber-2upq0i/"/>
+      <url>/2024/opensearch-es-modify-saber-2upq0i/</url>
+      
+        <content type="html"><![CDATA[<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><p>Fluentd 向 ES 写入数据的时候如下报错：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2024-12-27 01:33:27 +0000 [warn]: <span class="comment">#0 fluent/log.rb:381:warn: send an error event to @ERROR: error_class=Fluent::Plugin::ElasticsearchErrorHandler::ElasticsearchError error="400 - Rejected by Elasticsearch [error type]: illegal_argument_exception [reason]: 'Validation Failed: 1: this action would add [2] total shards, but this cluster currently has [3000]/[3000] maximum shards open;'" location=nil tag="kubernetes.var.log.containers.dataops-ds-worker-fbc64df5f-k6xrm_dataops_dataops-ds-worker-494d705e1a173657644f86708f16041cf8d429038c969f1237d7f040bbaa313e.log" time=2024-12-27 01:33:21.135254232 +0000</span></span><br></pre></td></tr></tbody></table></figure><h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT -u admin:xxxxxx --insecure https://172.23.8.175:9200/_cluster/settings -H <span class="string">'Content-Type: application/json'</span> -d <span class="string">'{</span></span><br><span class="line"><span class="string">  "persistent": {</span></span><br><span class="line"><span class="string">    "cluster.max_shards_per_node": 5000</span></span><br><span class="line"><span class="string">  }</span></span><br><span class="line"><span class="string">}'</span></span><br></pre></td></tr></tbody></table></figure><h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET -u admin:xxxxxx --insecure https://172.23.8.175:9200/_cat/shards?v</span><br><span class="line">curl -X GET -u admin:xxxxxx --insecure https://172.23.8.175:9200/_cluster/stats?pretty</span><br></pre></td></tr></tbody></table></figure><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客 hexo 部署在 github 的方式</title>
       <link href="/2024/blog-hexo-is-deployed-in-github-1zysbf/"/>
       <url>/2024/blog-hexo-is-deployed-in-github-1zysbf/</url>
