@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">166</span>
+          <span class="site-state-item-count">167</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,113 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2024/colima-sets-an-unsafe-registry-z26x3ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/colima-sets-an-unsafe-registry-z26x3ai/" class="post-title-link" itemprop="url">colima 设置不安全的注册表 & 加速 & Proxy</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-14 16:53:55" itemprop="dateCreated datePublished" datetime="2024-06-14T16:53:55+00:00">2024-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2024/colima-sets-an-unsafe-registry-z26x3ai/" class="post-meta-item leancloud_visitors" data-flag-title="colima 设置不安全的注册表 & 加速 & Proxy" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>106</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="注册表-加速"><a href="#注册表-加速" class="headerlink" title="注册表&amp;加速"></a>注册表 &amp; 加速</h4><p>参考：<a target="_blank" rel="noopener" href="https://github.com/abiosoft/colima/issues/834">https://github.com/abiosoft/colima/issues/834</a></p>
+<p>比起加速，代理更快</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置</span></span><br><span class="line">colima start --edit</span><br><span class="line">docker:</span><br><span class="line">  insecure-registries:</span><br><span class="line">    - harbor.jakehu.me:31104</span><br><span class="line">  registry-mirrors:</span><br><span class="line">    - https://docker.registry.huwenxi.com</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看配置</span></span><br><span class="line">colima ssh -- cat /etc/docker/daemon.json; echo</span><br><span class="line">{</span><br><span class="line">  "exec-opts": [</span><br><span class="line">    "native.cgroupdriver=cgroupfs"</span><br><span class="line">  ],</span><br><span class="line">  "features": {</span><br><span class="line">    "buildkit": true</span><br><span class="line">  },</span><br><span class="line">  "host-gateway-ip": "192.168.5.2",</span><br><span class="line">  "insecure-registries": [</span><br><span class="line">    "harbor.jakehu.me:31104"</span><br><span class="line">  ],</span><br><span class="line">  "registry-mirrors": [</span><br><span class="line">    "https://docker.registry.huwenxi.com"</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="Docker代理"><a href="#Docker代理" class="headerlink" title="Docker代理"></a>Docker 代理</h4><p>参考：<a target="_blank" rel="noopener" href="https://github.com/abiosoft/colima/issues/294">https://github.com/abiosoft/colima/issues/294</a></p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置</span></span><br><span class="line">colima start --edit</span><br><span class="line">env:</span><br><span class="line">  HTTP_PROXY: http://10.168.64.147:1080</span><br><span class="line">  HTTPS_PROXY: http://10.168.64.147:1080</span><br><span class="line">  NO_PROXY: localhost,127.0.0.1,y2-harbor.geega.com,y2-harbor.geega.com:31104</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">校验</span></span><br><span class="line">docker info | grep "Proxy"</span><br></pre></td></tr></tbody></table></figure>
+
+<p>‍</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1173,106 +1280,6 @@ var _hmt = _hmt || [];
 <hr>
 <p>题外话：<code>Chrome</code> 翻译插件可以用<code>火山翻译</code>，字节出品还比较好用</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2022/go-password/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/go-password/" class="post-title-link" itemprop="url">Go 语言中生成密码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-09-06 14:46:00" itemprop="dateCreated datePublished" datetime="2022-09-06T14:46:00+00:00">2022-09-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/go-password/" class="post-meta-item leancloud_visitors" data-flag-title="Go 语言中生成密码" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>134</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>Go</code> 语言中生成特定长度和特定组合的密码</p>
-<figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> utils</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	NUmStr  = <span class="string">"0123456789"</span></span><br><span class="line">	CharStr = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</span></span><br><span class="line">	SpecStr = <span class="string">"!@#$%&amp;"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GeneratePasswd</span><span class="params">(length <span class="type">int</span>, charset <span class="type">string</span>)</span></span> <span class="type">string</span> {</span><br><span class="line">	<span class="keyword">var</span> passwd []<span class="type">byte</span> = <span class="built_in">make</span>([]<span class="type">byte</span>, length, length)</span><br><span class="line">	<span class="keyword">var</span> sourceStr <span class="type">string</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> charset == <span class="string">"num"</span> { <span class="comment">// 数字</span></span><br><span class="line">		sourceStr = NUmStr</span><br><span class="line">	} <span class="keyword">else</span> <span class="keyword">if</span> charset == <span class="string">"char"</span> { <span class="comment">// 字母</span></span><br><span class="line">		sourceStr = charset</span><br><span class="line">	} <span class="keyword">else</span> <span class="keyword">if</span> charset == <span class="string">"mix"</span> { <span class="comment">// 数字、字母混合模式</span></span><br><span class="line">		sourceStr = fmt.Sprintf(<span class="string">"%s%s"</span>, NUmStr, CharStr)</span><br><span class="line">	} <span class="keyword">else</span> <span class="keyword">if</span> charset == <span class="string">"advance"</span> { <span class="comment">// 数字、字母、字符混合模式</span></span><br><span class="line">		sourceStr = fmt.Sprintf(<span class="string">"%s%s%s"</span>, NUmStr, CharStr, SpecStr)</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		sourceStr = NUmStr</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// fmt.Println("source:", sourceStr)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 生成密码</span></span><br><span class="line">	rand.Seed(time.Now().UnixNano())</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length; i++ {</span><br><span class="line">		index := rand.Intn(<span class="built_in">len</span>(sourceStr))</span><br><span class="line">		passwd[i] = sourceStr[index]</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="type">string</span>(passwd)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 

@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">166</span>
+          <span class="site-state-item-count">167</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -231,6 +231,108 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/vue-nodejs-bytes-format/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/vue-nodejs-bytes-format/" class="post-title-link" itemprop="url">Vue 或者 NodeJs 中将 Bytes 格式化成 KB、MB、GB、TB</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-01 16:18:00" itemprop="dateCreated datePublished" datetime="2021-12-01T16:18:00+00:00">2021-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/vue-nodejs-bytes-format/" class="post-meta-item leancloud_visitors" data-flag-title="Vue 或者 NodeJs 中将 Bytes 格式化成 KB、MB、GB、TB" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>72</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>自适应将 <code>Bytes</code> 格式化为可读性更高的单位</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">formatSize(bytes) {</span><br><span class="line">    const sizes = ["Bytes", "KB", "MB", "GB", "TB"];</span><br><span class="line">    if (bytes == 0) {</span><br><span class="line">    return bytes + " " + sizes[0];</span><br><span class="line">    }</span><br><span class="line">    let flag = "";</span><br><span class="line">    if (bytes &lt; 0) {</span><br><span class="line">    bytes = Math.abs(bytes);</span><br><span class="line">    flag = "-";</span><br><span class="line">    }</span><br><span class="line">    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));</span><br><span class="line">    if (i == 0) {</span><br><span class="line">    return bytes + " " + sizes[i];</span><br><span class="line">    }</span><br><span class="line">    return flag + (bytes / Math.pow(1024, i)).toFixed(4) + " " + sizes[i];</span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
+<p>效果图如下：<br><img src="https://img.jakehu.me/2021/12/01/FJyKB0.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1221,112 +1323,6 @@ var _hmt = _hmt || [];
 <h3 id="OCB"><a href="#OCB" class="headerlink" title="OCB"></a>OCB</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64encode, b64decode</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Random <span class="keyword">import</span> get_random_bytes</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AesOcb</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="variable language_">self</span>.bs = AES.block_size</span><br><span class="line">        <span class="variable language_">self</span>.key = key</span><br><span class="line">        <span class="variable language_">self</span>.mode = AES.MODE_OCB</span><br><span class="line">        <span class="variable language_">self</span>.json_k = [<span class="string">'nonce'</span>, <span class="string">'header'</span>, <span class="string">'ciphertext'</span>, <span class="string">'tag'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">self, header, data</span>):</span><br><span class="line">        header = header</span><br><span class="line">        cipher = AES.new(<span class="variable language_">self</span>.key, <span class="variable language_">self</span>.mode)</span><br><span class="line">        cipher.update(header)</span><br><span class="line">        ciphertext, tag = cipher.encrypt_and_digest(data)</span><br><span class="line">        json_v = [b64encode(x).decode(<span class="string">'utf-8'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> [cipher.nonce, header, ciphertext, tag]]</span><br><span class="line">        <span class="keyword">return</span> json.dumps(<span class="built_in">dict</span>(<span class="built_in">zip</span>(<span class="variable language_">self</span>.json_k, json_v)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">decrypt</span>(<span class="params">self, json_input</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            b64 = json.loads(json_input)</span><br><span class="line">            jv = {k: b64decode(b64[k]) <span class="keyword">for</span> k <span class="keyword">in</span> <span class="variable language_">self</span>.json_k}</span><br><span class="line">            cipher = AES.new(<span class="variable language_">self</span>.key, <span class="variable language_">self</span>.mode, nonce=jv[<span class="string">'nonce'</span>])</span><br><span class="line">            cipher.update(jv[<span class="string">'header'</span>])</span><br><span class="line">            plaintext = cipher.decrypt_and_verify(jv[<span class="string">'ciphertext'</span>], jv[<span class="string">'tag'</span>])</span><br><span class="line">            <span class="keyword">return</span> plaintext.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">        <span class="keyword">except</span> (ValueError, KeyError) <span class="keyword">as</span> err:</span><br><span class="line">            <span class="comment"># 解密错误</span></span><br><span class="line">            <span class="built_in">print</span>(err)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    data = <span class="string">"需要加密的数据"</span>.encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    key = get_random_bytes(<span class="number">16</span>)  <span class="comment"># Bytes</span></span><br><span class="line">    header = <span class="string">b'header'</span></span><br><span class="line"></span><br><span class="line">    aes_cipher = AesOcb(key)</span><br><span class="line"></span><br><span class="line">    encrypt_reuslt = aes_cipher.encrypt(header, data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"密文: "</span>, encrypt_reuslt)</span><br><span class="line"></span><br><span class="line">    plaintext = aes_cipher.decrypt(encrypt_reuslt)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"原文: "</span>, plaintext)</span><br></pre></td></tr></tbody></table></figure>
 <p>结果：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">密文:  {"nonce": "9Wd6sA1QGSdjXHu1zACA", "header": "aGVhZGVy", "ciphertext": "tyaCFrLuriy6F3xJqs0CehNWe3g7", "tag": "IqDrP9zX00aZMRe7DuCRzQ=="}</span><br><span class="line">原文:  需要加密的数据</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/api-signature/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/api-signature/" class="post-title-link" itemprop="url">Sanic 实现简单的 API 接口签名认证</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-01 15:03:00" itemprop="dateCreated datePublished" datetime="2021-09-01T15:03:00+00:00">2021-09-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/api-signature/" class="post-meta-item leancloud_visitors" data-flag-title="Sanic 实现简单的 API 接口签名认证" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>270</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>API 为什么需要设计签名验证？为了有一定的数据抓取防御能力。<br>需要考虑的点：</p>
-<blockquote>
-<p>请求参数是否已被篡改<br>请求来源是否合法<br>请求是否具有唯一性</p>
-</blockquote>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>参数签名方式：它要求客户端按照约定好的算法生成签名字符串，作为请求的一部分像接口请求，服务端验算签名即可知是否合法。</p>
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">key = <span class="string">"xxx"</span> <span class="comment"># 密钥，由服务端颁发</span></span><br><span class="line"></span><br><span class="line">client = <span class="string">"local"</span> <span class="comment"># 客户端</span></span><br><span class="line">server = <span class="string">"kafka"</span> <span class="comment"># 服务端</span></span><br><span class="line">env = <span class="string">"test"</span> <span class="comment"># 环境</span></span><br><span class="line">timestamp = <span class="built_in">str</span>(time.time())[:<span class="number">10</span>] <span class="comment"># 时间</span></span><br><span class="line">sign_str = client+server+env+timestamp+key</span><br><span class="line">sign = hashlib.md5(sign_str.encode(encoding=<span class="string">'utf-8'</span>)).hexdigest() <span class="comment"># md5</span></span><br><span class="line"></span><br><span class="line">headers = <span class="built_in">dict</span>(client=client, server=server, env=env, timestamp=timestamp, sign=sign)</span><br><span class="line"></span><br><span class="line">r1 = requests.get(<span class="string">"https://www.xxx.com/hello"</span>, headers=headers)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sanic <span class="keyword">import</span> Sanic</span><br><span class="line"><span class="keyword">from</span> sanic.response <span class="keyword">import</span> text, json</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line">app = Sanic(<span class="string">"My Hello, world app"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">"/hello"</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">request</span>):</span><br><span class="line"></span><br><span class="line">      key = <span class="string">"xxx"</span>  <span class="comment"># 密钥</span></span><br><span class="line"></span><br><span class="line">      client = request.headers.get(<span class="string">"client"</span>)</span><br><span class="line">      server = request.headers.get(<span class="string">"server"</span>)</span><br><span class="line">      env = request.headers.get(<span class="string">"env"</span>)</span><br><span class="line">      timestamp = request.headers.get(<span class="string">"timestamp"</span>)</span><br><span class="line">      sign = request.headers.get(<span class="string">"sign"</span>)</span><br><span class="line"></span><br><span class="line">      _sign_str = client+server+env+timestamp+key</span><br><span class="line">      _sign = hashlib.md5(_sign_str.encode(encoding=<span class="string">'utf-8'</span>)).hexdigest()</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> sign==_sign:</span><br><span class="line">            <span class="keyword">return</span> json(<span class="built_in">list</span>(request.headers.items()))</span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> text(<span class="string">"验证失败"</span>)</span><br><span class="line">app.run(host=<span class="string">'0.0.0.0'</span>,debug=<span class="literal">True</span>,auto_reload=<span class="literal">True</span>)</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
 
