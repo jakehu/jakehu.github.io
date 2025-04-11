@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Python 包及环境管理工具 UV</title>
+      <link href="/2025/python-package-and-environment-management-tool-uv-z1z7jny/"/>
+      <url>/2025/python-package-and-environment-management-tool-uv-z1z7jny/</url>
+      
+        <content type="html"><![CDATA[<p>之前 Python 主要是利用 Pyenv 做环境管理，pip 做包管理，接下来试试 UV</p><h4 id="安装UV"><a href="#安装UV" class="headerlink" title="安装UV"></a>安装 UV</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -LsSf https://astral.sh/uv/install.sh | sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.local/bin:$PATH"'</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></tbody></table></figure><h4 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装 Python</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示已经安装或可安装版本</span></span><br><span class="line">uv python list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装指定的Python版本</span></span><br><span class="line">uv python install 3.12 3.13</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载指定的版本</span></span><br><span class="line">uv python uninstall 3.12</span><br></pre></td></tr></tbody></table></figure><h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化项目，最低兼容3.10版本Python</span></span><br><span class="line">uv init mcpss --python=3.10</span><br></pre></td></tr></tbody></table></figure><h4 id="设置虚拟环境"><a href="#设置虚拟环境" class="headerlink" title="设置虚拟环境"></a>设置虚拟环境</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建虚拟环境</span></span><br><span class="line">uv venv --python 3.12</span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活环境</span></span><br><span class="line"><span class="built_in">source</span> .venv/bin/activate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出环境</span></span><br><span class="line">deactivate</span><br></pre></td></tr></tbody></table></figure><h4 id="安装卸载依赖"><a href="#安装卸载依赖" class="headerlink" title="安装卸载依赖"></a>安装卸载依赖</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">uv pip install requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">uv pip list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">uv pip uninstall requests</span><br></pre></td></tr></tbody></table></figure><p>‍</p><hr><p>未完待续…</p><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker Bip 自定义网段备忘</title>
       <link href="/2025/docker-bip-custom-network-segment-memo-zhscas/"/>
       <url>/2025/docker-bip-custom-network-segment-memo-zhscas/</url>
