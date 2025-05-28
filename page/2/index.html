@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">168</span>
+          <span class="site-state-item-count">169</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -253,6 +253,120 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2024/consul-vm-automatic-discovery-monitoring-host-ziyi7p/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/consul-vm-automatic-discovery-monitoring-host-ziyi7p/" class="post-title-link" itemprop="url">consul+vm 自动发现监控主机</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-28 17:26:31" itemprop="dateCreated datePublished" datetime="2024-08-28T17:26:31+00:00">2024-08-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2024/consul-vm-automatic-discovery-monitoring-host-ziyi7p/" class="post-meta-item leancloud_visitors" data-flag-title="consul+vm 自动发现监控主机" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>250</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="Consul安装"><a href="#Consul安装" class="headerlink" title="Consul安装"></a>Consul 安装</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker-compose.yaml</span></span><br><span class="line">version: <span class="string">'3.6'</span></span><br><span class="line">services:</span><br><span class="line">  consul:</span><br><span class="line">    image: swr.cn-south-1.myhuaweicloud.com/starsl.cn/consul:latest</span><br><span class="line">    hostname: consul</span><br><span class="line">    container_name: consul</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">"8500:8500"</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/consul/data:/consul/data</span><br><span class="line">      - /opt/consul/config:/consul/config</span><br><span class="line">      - /usr/share/zoneinfo/PRC:/etc/localtime</span><br><span class="line">    <span class="built_in">command</span>: <span class="string">"agent"</span></span><br><span class="line">    networks:</span><br><span class="line">      - TenSunS</span><br><span class="line">networks:</span><br><span class="line">  TenSunS:</span><br><span class="line">    name: TenSunS</span><br><span class="line">    driver: bridge</span><br><span class="line">    ipam:</span><br><span class="line">      driver: default</span><br><span class="line"><span class="comment"># TenSunS 为consul 管理界面</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>WEB UI：<a target="_blank" rel="noopener" href="http://10.168.140.45:8500/ui/dc1/services">http://10.168.140.45:8500/ui/dc1/services</a> 可以直接访问 8500 端口</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">log_level = <span class="string">"error"</span></span><br><span class="line">data_dir = <span class="string">"/consul/data"</span></span><br><span class="line">client_addr = <span class="string">"0.0.0.0"</span></span><br><span class="line">ui_config{</span><br><span class="line">  enabled = <span class="literal">true</span></span><br><span class="line">}</span><br><span class="line">ports = {</span><br><span class="line">  grpc = -1</span><br><span class="line">  https = -1</span><br><span class="line">  dns = -1</span><br><span class="line">  grpc_tls = -1</span><br><span class="line">  serf_wan = -1</span><br><span class="line">}</span><br><span class="line">peering {</span><br><span class="line">  enabled = <span class="literal">false</span></span><br><span class="line">}</span><br><span class="line">connect {</span><br><span class="line">  enabled = <span class="literal">false</span></span><br><span class="line">}</span><br><span class="line">server = <span class="literal">true</span></span><br><span class="line">bootstrap_expect=1</span><br><span class="line">acl = {</span><br><span class="line">  enabled = <span class="literal">true</span></span><br><span class="line">  default_policy = <span class="string">"deny"</span></span><br><span class="line">  enable_token_persistence = <span class="literal">true</span></span><br><span class="line">  tokens {</span><br><span class="line">    initial_management = <span class="string">"9602e8a5-c754-43f0-b0ce-861b0df1b5df"</span></span><br><span class="line">    agent = <span class="string">"9602e8a5-c754-43f0-b0ce-861b0df1b5df"</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>默认配置：</p>
+<p><a target="_blank" rel="noopener" href="https://developer.hashicorp.com/consul/docs/agent/config/config-files">https://developer.hashicorp.com/consul/docs/agent/config/config-files</a></p>
+<h4 id="数据注册"><a href="#数据注册" class="headerlink" title="数据注册"></a>数据注册</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 结构类似于</span></span><br><span class="line">ConsulData{</span><br><span class="line">		ID:      sid,</span><br><span class="line">		Name:    <span class="string">"node_exporter"</span>,</span><br><span class="line">		Address: ip,</span><br><span class="line">		Port:    9100,</span><br><span class="line">		Tags:    []string{vendor},</span><br><span class="line">		Meta: map[string]string{</span><br><span class="line">			<span class="string">"vendor"</span>:             vendor,</span><br><span class="line">			<span class="string">"region"</span>:             region,</span><br><span class="line">			<span class="string">"name"</span>:               name,</span><br><span class="line">			<span class="string">"projectChineseName"</span>: projectFullName,</span><br><span class="line">			<span class="string">"projectShortName"</span>:   projectShortName,</span><br><span class="line">			<span class="string">"instance"</span>:           exportAddress,</span><br><span class="line">			<span class="string">"env"</span>:                <span class="built_in">env</span>,</span><br><span class="line">		},</span><br><span class="line">		Check: map[string]string{</span><br><span class="line">			<span class="string">"tcp"</span>:      exportAddress,</span><br><span class="line">			<span class="string">"interval"</span>: <span class="string">"60s"</span>,</span><br><span class="line">		},</span><br><span class="line">	}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>服务注册文档：</p>
+<p><a target="_blank" rel="noopener" href="https://developer.hashicorp.com/consul/api-docs/agent/service#register-service">https://developer.hashicorp.com/consul/api-docs/agent/service#register-service</a></p>
+<h4 id="VM配置"><a href="#VM配置" class="headerlink" title="VM配置"></a>VM 配置</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">scrape_configs:</span><br><span class="line">  <span class="comment"># Scrape OpenStack instances</span></span><br><span class="line">  - job_name: <span class="string">"Openstack"</span></span><br><span class="line">    consul_sd_configs:</span><br><span class="line">    - server: <span class="string">"10.168.140.45:8500"</span></span><br><span class="line">      datacenter: <span class="string">'dc1'</span></span><br><span class="line">      token: <span class="string">'9602e8a5-c754-43f0-b0ce-861b0df1b5df'</span></span><br><span class="line">    relabel_configs:</span><br><span class="line">     - source_labels: [__meta_consul_service]</span><br><span class="line">       regex: <span class="string">"consul"</span></span><br><span class="line">       action: drop</span><br><span class="line">     - regex: __meta_consul_service_metadata_(.+)</span><br><span class="line">       replacement: <span class="variable">${1}</span></span><br><span class="line">       action: labelmap</span><br></pre></td></tr></tbody></table></figure>
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1611091">https://cloud.tencent.com/developer/article/1611091</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1212,111 +1326,6 @@ var _hmt = _hmt || [];
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2024/native-k8s-update-kubelet-certificate-zdaymj/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/native-k8s-update-kubelet-certificate-zdaymj/" class="post-title-link" itemprop="url">原生 K8S 更新 kubelet 证书</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-18 15:19:48" itemprop="dateCreated datePublished" datetime="2024-07-18T15:19:48+00:00">2024-07-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2024/native-k8s-update-kubelet-certificate-zdaymj/" class="post-meta-item leancloud_visitors" data-flag-title="原生 K8S 更新 kubelet 证书" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>121</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h4><p>k8s 集群某一个节点 kubelet 挂了，无法启动</p>
-<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">cat</span> /var/log/messages | grep kubelet | grep failed</span></span><br><span class="line">failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/kubelet/pki/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">大于1.20的版本</span></span><br><span class="line">kubectl get cm kubeadm-config -n kube-system -o=jsonpath="{.data.ClusterConfiguration}" &gt; kubeadm.yaml</span><br><span class="line">kubeadm kubeconfig user --org system:nodes --client-name system:node:$(hostname) --config kubeadm.yaml &gt; /etc/kubernetes/kubelet.conf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">小于1.20的版本</span></span><br><span class="line">kubeadm alpha kubeconfig user --org system:nodes --client-name system:node:$(hostname) &gt; /etc/kubernetes/kubelet.conf</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="其他解决方案"><a href="#其他解决方案" class="headerlink" title="其他解决方案"></a>其他解决方案</h4><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/margu_168/article/details/135844420">https://blog.csdn.net/margu_168/article/details/135844420</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1343,7 +1352,7 @@ var _hmt = _hmt || [];
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">39k</span>
+    <span title="站点总字数">40k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">

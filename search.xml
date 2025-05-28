@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Pod 一直 Pending 问题排查 (Docker 假死)</title>
+      <link href="/2025/pod-has-been-investigating-problems-docker-pretends-to-die-zwhcyj/"/>
+      <url>/2025/pod-has-been-investigating-problems-docker-pretends-to-die-zwhcyj/</url>
+      
+        <content type="html"><![CDATA[<h4 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h4><p>POD 重启后一直 Pending，且 describe 无事件显示</p><h4 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h4><p>发现是 kube-scheduler 挂了</p><h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><p>1、重启了 kube-scheduler 后发现并为恢复</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart kube-scheduler</span><br></pre></td></tr></tbody></table></figure><p>2、重启了 Docker 后恢复 (这里忘记看 Docker 的状态了)</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line"></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></tbody></table></figure><h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>Docker 假死</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> k8s </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python 包及环境管理工具 UV</title>
       <link href="/2025/python-package-and-environment-management-tool-uv-z1z7jny/"/>
       <url>/2025/python-package-and-environment-management-tool-uv-z1z7jny/</url>
@@ -1750,9 +1775,9 @@
       
         <tags>
             
-            <tag>  ORM </tag>
-            
             <tag> Sanic </tag>
+            
+            <tag>  ORM </tag>
             
         </tags>
       
