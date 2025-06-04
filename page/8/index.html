@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -207,7 +207,7 @@ var _hmt = _hmt || [];
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">147</span>
+        <span class="site-state-item-count">148</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -253,6 +253,112 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/redis-distributed-lock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/redis-distributed-lock/" class="post-title-link" itemprop="url">Redis 分布式锁在 Python 中的客户端 Aioredlock</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-22 16:11:00" itemprop="dateCreated datePublished" datetime="2021-09-22T16:11:00+00:00">2021-09-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/redis-distributed-lock/" class="post-meta-item leancloud_visitors" data-flag-title="Redis 分布式锁在 Python 中的客户端 Aioredlock" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>407</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>最近遇到一个需求，每 <code>60S</code> 刷新数据库数据到 <code>Redis</code> 缓存中，但应用又不止一个进程。此需求中对<code>原子性</code>并无太大的要求，只是如果每次只有一个进程执行，那么数据库的压力就会小很多。</p>
+<p>于是想到用分布式锁来解决这个问题，最终选择了通过 <code>Redis</code> 来实现。</p>
+<p>关于 <code>Redis</code> 实现分布式锁可以查看下面的文章:<br><a target="_blank" rel="noopener" href="https://xiaomi-info.github.io/2019/12/17/redis-distributed-lock/">分布式锁的实现之 redis 篇</a></p>
+<h4 id="Aioredlock"><a href="#Aioredlock" class="headerlink" title="Aioredlock"></a>Aioredlock</h4><p>在众多的官方推荐的分布式锁客户端中，我选择了 <code>Aioredlock</code></p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/topics/distlock">Distributed locks with Redis</a></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">aioredlock</span>():</span><br><span class="line">    <span class="comment"># retry_count 重试次数，这里配置为1，杜绝进程重复去获取</span></span><br><span class="line">    lock_manager = Aioredlock([{<span class="string">'host'</span>: <span class="string">'localhost'</span>, <span class="string">'port'</span>: <span class="number">6379</span>, <span class="string">'db'</span>: <span class="number">1</span>}],retry_count=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 每秒钟去检测锁的状态，如果锁被其他进程占用就跳过</span></span><br><span class="line">        <span class="comment"># lock_timeout 锁的时间为 65S，相当于进程拿到锁后最大65秒后释放</span></span><br><span class="line">        <span class="comment"># 业务逻辑执行 小于 65秒，业务逻辑执行完后当即释放锁</span></span><br><span class="line">        <span class="comment"># 每60秒执行一次 sleep 59s即可，因为检测已经sleep了1s</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">await</span> lock_manager.is_locked(<span class="string">"_ztsg_auto_generate_code"</span>):</span><br><span class="line">            <span class="comment">#logger.info('The resource is already acquired')</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">async</span> <span class="keyword">with</span> <span class="keyword">await</span> lock_manager.lock(<span class="string">"_ztsg_auto_generate_code"</span>, lock_timeout=<span class="number">65</span>) <span class="keyword">as</span> lock:</span><br><span class="line"></span><br><span class="line">                <span class="keyword">assert</span> lock.valid <span class="keyword">is</span> <span class="literal">True</span></span><br><span class="line">                <span class="keyword">assert</span> <span class="keyword">await</span> lock_manager.is_locked(<span class="string">"_ztsg_auto_generate_code"</span>) <span class="keyword">is</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">                <span class="comment"># 每60s钟运行一次任务</span></span><br><span class="line">                <span class="keyword">await</span> asyncio.sleep(<span class="number">59</span>)</span><br><span class="line"></span><br><span class="line">                logger.info(<span class="string">'Start Tick! The time is '</span>+<span class="built_in">str</span>(os.getpid())+<span class="string">': %s'</span> % datetime.now())</span><br><span class="line">                <span class="comment"># 业务代码</span></span><br><span class="line">                logger.info(<span class="string">'Stop Tick! The time is '</span>+<span class="built_in">str</span>(os.getpid())+<span class="string">': %s'</span> % datetime.now())</span><br><span class="line">        <span class="keyword">except</span> LockAcquiringError:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'Something happened during normal operation. We just log it.'</span>)</span><br><span class="line">        <span class="keyword">except</span> LockError:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'Something is really wrong and we prefer to raise the exception'</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(e)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'Something else went wrong'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>通过上面代码就能实现，需求所要求</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1222,109 +1328,6 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path = <span class="string">"/user/data/web/upload"</span> <span class="comment"># 这里注意path是绝对路径</span></span><br><span class="line">app.static(<span class="string">"/upload"</span>, path)</span><br></pre></td></tr></tbody></table></figure>
 <p>最后访问路径为：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.域名.com/upload/uuid.png</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2021/next-utterances/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/next-utterances/" class="post-title-link" itemprop="url">果然，和 Next 相配的还是 Utterances</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-04 12:38:00" itemprop="dateCreated datePublished" datetime="2021-08-04T12:38:00+00:00">2021-08-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/next-utterances/" class="post-meta-item leancloud_visitors" data-flag-title="果然，和 Next 相配的还是 Utterances" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>127</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>从用 <code>Hexo</code> 和 <code>Next</code> 开始都不知道换了多少次评论系统了，最开始的多说，后来的 <code>Valine</code>，再后来的 <code>Disqus</code>。换来换去最后还是决定用 <code>utterances</code> 吧</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="utterances"><a href="#utterances" class="headerlink" title="utterances"></a>utterances</h4><p>第一步只需要访问：<code>https://github.com/apps/utterances</code> 进行安装<br><img src="https://img.jakehu.me/2021/08/04/fmY9GN.png"><br>第二步选择存放 <code>issues</code> 的项目，可以跟 <code>Github pages</code> 放在同一个项目<br><img src="https://img.jakehu.me/2021/08/04/xx3Lxj.png"></p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">utterances:</span><br><span class="line">  enable: true</span><br><span class="line">  repo: jakehu/jakehu.github.io</span><br><span class="line">  issue_term: pathname</span><br><span class="line">  theme: github-light</span><br></pre></td></tr></tbody></table></figure>
-<p>最后只需要在主题配置文件中进行如上配置即可</p>
-
       
     </div>
 

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Linux 镜像源 &amp; 软件源</title>
+      <link href="/2025/linux-image-source-2mkjrl/"/>
+      <url>/2025/linux-image-source-2mkjrl/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://github.com/SuperManito/LinuxMirrors">https://github.com/SuperManito/LinuxMirrors</a></p><p><a href="https://linuxmirrors.cn/use/">https://linuxmirrors.cn/use/</a></p><h4 id="替换源"><a href="#替换源" class="headerlink" title="替换源"></a>替换源</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GNU/Linux 更换系统软件源</span></span><br><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Docker 安装与换源</span></span><br><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/docker.sh)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Docker 更换镜像加速器</span></span><br><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/docker.sh) --only-registry</span><br></pre></td></tr></tbody></table></figure><h4 id="还原源"><a href="#还原源" class="headerlink" title="还原源"></a>还原源</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> -rf /etc/yum.repos.d.bak /etc/yum.repos.d</span><br><span class="line">yum makecache</span><br></pre></td></tr></tbody></table></figure><h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><p>1、检测到系统存在已备份的 repo 源文件，是否跳过覆盖备份？</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里选择 “否” 尽量不要覆盖最开始备份</span><br></pre></td></tr></tbody></table></figure><p>2、使用阿里云镜像站的 Rocky Linux 软件源</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh) \</span><br><span class="line">  --source mirrors.aliyun.com \</span><br><span class="line">  --branch rockylinux</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术渣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag>  Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Pod 一直 Pending 问题排查 (Docker 假死)</title>
       <link href="/2025/pod-has-been-investigating-problems-docker-pretends-to-die-zwhcyj/"/>
       <url>/2025/pod-has-been-investigating-problems-docker-pretends-to-die-zwhcyj/</url>
@@ -1775,9 +1800,9 @@
       
         <tags>
             
-            <tag> Sanic </tag>
-            
             <tag>  ORM </tag>
+            
+            <tag> Sanic </tag>
             
         </tags>
       

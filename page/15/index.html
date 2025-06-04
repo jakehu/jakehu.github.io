@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -207,7 +207,7 @@ var _hmt = _hmt || [];
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">147</span>
+        <span class="site-state-item-count">148</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -253,6 +253,117 @@ var _hmt = _hmt || [];
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2018/Homebrew-nvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
+      <meta itemprop="name" content="jakehu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨曦's Blog">
+      <meta itemprop="description" content="提笔为青春，人生正当时">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 晨曦's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/Homebrew-nvm/" class="post-title-link" itemprop="url">Homebrew 安装 Node 版本管理 nvm 之不得不说的坑！</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-06 09:12:00" itemprop="dateCreated datePublished" datetime="2018-12-06T09:12:00+00:00">2018-12-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/Homebrew-nvm/" class="post-meta-item leancloud_visitors" data-flag-title="Homebrew 安装 Node 版本管理 nvm 之不得不说的坑！" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>257</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>首先终端已经换为 <code>zsh</code> 了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法</p>
+<p><a target="_blank" rel="noopener" href="http://achillessatan.github.io/2016/02/15/2016021503/">Homebrew install zsh &amp; oh-my-zsh</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>在<code>.bash_profile</code> 加入以下这行，让你可以直接在 <code>shell</code> 使用 <code>nvm</code> 指令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></tbody></table></figure>
+<p>重新 <code>source .bash_profile</code> 来让设定生效</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以上操作看似没有任何问题，安装 <code>node</code> 后也能使用。但是，当你第二次重新打开终端时 <code>node</code> 将不能使用，提示错误 <code>Run nvm use --delete-prefix v8.14.0 to unset it.</code></p>
+<p>后面在 <code>nvm</code> 文档看到这段话 <code>Homebrew installation is not supported. If you have issues with homebrew-installed nvm, please brew uninstall it, and install it using the instructions below, before filing an issue.</code>，额… 看来没事还是要多看看文档啊，同时也有网友对此提有 <a target="_blank" rel="noopener" href="https://github.com/creationix/nvm/issues/855">Issues</a></p>
+<h3 id="正确安装"><a href="#正确安装" class="headerlink" title="正确安装"></a>正确安装</h3><p>推荐使用官方<code>script</code>安装</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></tbody></table></figure>
+<p>最后在安装好 <code>node</code> 之后不要忘记设置 <code>alias default</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm alias default 8.14.0</span><br></pre></td></tr></tbody></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1247,117 +1358,6 @@ var _hmt = _hmt || [];
 <h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><p>记录下自己所选择的方式。</p>
 <p>我选择在 <code>Dockerfile</code> 文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RUN echo "Asia/Shanghai" &gt; /etc/timezone \</span><br><span class="line">    &amp;&amp; dpkg-reconfigure -f noninteractive tzdata</span><br></pre></td></tr></tbody></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.jakehu.me/2018/k8s-ui/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://img.jakehu.me/avatar.png">
-      <meta itemprop="name" content="jakehu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨曦's Blog">
-      <meta itemprop="description" content="提笔为青春，人生正当时">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 晨曦's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/k8s-ui/" class="post-title-link" itemprop="url">这些个 Kubernetes 集群管理平台你值得拥有</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-11-26 15:06:08" itemprop="dateCreated datePublished" datetime="2018-11-26T15:06:08+00:00">2018-11-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%B8%A3/" itemprop="url" rel="index"><span itemprop="name">技术渣</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2018/k8s-ui/" class="post-meta-item leancloud_visitors" data-flag-title="这些个 Kubernetes 集群管理平台你值得拥有" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>423</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <div class="note danger"><p>我们不生产 <code>k8s</code> 管理平台，我们只是开源项目的搬运工</p>
-</div>
-
-<h4 id="Rancher"><a href="#Rancher" class="headerlink" title="Rancher"></a>Rancher</h4><p><a target="_blank" rel="noopener" href="https://rancher.com/">Rancher</a> 是一个开源的企业级容器管理平台。通过 Rancher，企业再也不必自己使用一系列的开源软件去从头搭建容器服务平台。Rancher 提供了在生产环境中使用的管理 Docker 和 Kubernetes 的全栈化容器部署与管理平台。</p>
-<h4 id="Kubernetes-Dashboard"><a href="#Kubernetes-Dashboard" class="headerlink" title="Kubernetes Dashboard"></a>Kubernetes Dashboard</h4><p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">Kubernetes Dashboard</a> 是 Kubernetes 集群的基于 Web 的通用 UI。它允许用户管理在群集中运行的应用程序并对其进行故障排除，以及管理群集本身。</p>
-<h4 id="Wayne"><a href="#Wayne" class="headerlink" title="Wayne"></a>Wayne</h4><p><a target="_blank" rel="noopener" href="https://github.com/Qihoo360/wayne">Wayne</a> 是一个通用的、基于 Web 的 Kubernetes 多集群管理平台。通过可视化 Kubernetes 对象模板编辑的方式，降低业务接入成本， 拥有完整的权限管理系统，适应多租户场景，是一款适合企业级集群使用的发布平台。</p>
-<h4 id="Naftis"><a href="#Naftis" class="headerlink" title="Naftis"></a>Naftis</h4><p><a target="_blank" rel="noopener" href="https://github.com/XiaoMi/naftis">Naftis</a> 是一个基于 web 的 Istio dashboard，通过任务模板的方式来帮助用户更方便地执行 Istio 任务。 用户可以在 Naftis 中定义自己的任务模板，并填充变量来构造单个或多个构造任务实例，从而完成各种服务治理功能。</p>
-<h4 id="Breeze"><a href="#Breeze" class="headerlink" title="Breeze"></a>Breeze</h4><p><a target="_blank" rel="noopener" href="https://github.com/wise2c-devops/breeze">Breeze</a> 是睿云智合提供的图形化 Kubernetes 部署工具。</p>
-<h4 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h4><p><a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/">Nacos</a> 是阿里巴巴的新开源项目，其核心定位是 “一个更易于帮助构建云原生应用的动态服务发现、配置和服务管理平台”。</p>
-<p><code>Nacos</code> 可能更多的是为了支持一整套微服务。包括 <code>Dubbo</code>，<code>Spring Cloud</code> 以及 <code>Kubernetes</code> 等。</p>
-<hr>
-<p>最后相对来说，我还是比较喜欢用 <code>Rancher</code>。</p>
-
       
     </div>
 
