@@ -335,12 +335,12 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>很少在 <code>Mac</code> 上调试 <code>Shell</code>，今天在 <code>Mac</code> 调试 <code>Shell</code> 的时候发现 <code>sed</code> 的用法还有点不一样，报错：</p>
+          <p>很少在<code>Mac</code>上调试<code>Shell</code>，今天在<code>Mac</code>调试<code>Shell</code>的时候发现<code>sed</code>的用法还有点不一样，报错：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed: 1: "02.data.sql": invalid command code .</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>在 <code>-i</code> 后面增加<code>''</code> 变成 <code>-i ''</code> 即可</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>在<code>-i</code>后面增加<code>''</code>变成<code>-i ''</code>即可</p>
 <h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">public_domain=<span class="string">"auth.xxx.com"</span></span><br><span class="line">private_domain=<span class="string">"authconsole.xxx.com"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="subst">$(sed -i '' s/ztsg.xxx.com/${public_domain}/ 02.data.sql)</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"public_domain update success"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="subst">$(sed -i '' s/ztsgconsole.xxx.com/${private_domain}/ 02.data.sql)</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"private_domain update success"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></tbody></table></figure>
 <h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">public_domain=<span class="string">"auth.xxx.com"</span></span><br><span class="line">private_domain=<span class="string">"authconsole.xxx.com"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="subst">$(sed -i s/ztsg.xxx.com/${public_domain}/ 02.data.sql)</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"public_domain update success"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="subst">$(sed -i s/ztsgconsole.xxx.com/${private_domain}/ 02.data.sql)</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"private_domain update success"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></tbody></table></figure>
-<p><code>Mac</code> 和 <code>Linux</code> 下分别用以上两种写法就可以了</p>
+<p><code>Mac</code>和<code>Linux</code>下分别用以上两种写法就可以了</p>
 
       
     </div>
@@ -440,11 +440,11 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>说到写 <code>Shell</code> 第一反应肯定都是 <code>Vim</code>，接下来我们看看如何通过 <code>VsCode</code> 的插件把 <code>VsCode</code> 打造成一个 <code>Shell IDE</code></p>
-<h3 id="shellman"><a href="#shellman" class="headerlink" title="shellman"></a>shellman</h3><p>说到 <code>IDE</code> 最起码的需要自动提示和补全，这就需要 <code>shellman</code> 效果如下：<br><img src="https://img.jakehu.me/2021/12/27/bt2nnr.png"></p>
-<h3 id="ShellCheck"><a href="#ShellCheck" class="headerlink" title="ShellCheck"></a>ShellCheck</h3><p>有了提示和自动补全，还需要校验我们写得代码是否优雅，这就需要 <code>ShellCheck</code> 语法检验，效果如下：<br><img src="https://img.jakehu.me/2021/12/27/ZhIH0i.png"></p>
-<p>而且 <code>shellcheck</code> 和 <code>shellman</code> 是兼容的<br><code>shellcheck compatible (99.99%).</code></p>
-<h3 id="shell-format"><a href="#shell-format" class="headerlink" title="shell-format"></a>shell-format</h3><p>最后就是格式化插件 <code>shell-format</code>，写完代码风格还是需要格式化一下的</p>
+          <p>说到写<code>Shell</code>第一反应肯定都是<code>Vim</code>，接下来我们看看如何通过<code>VsCode</code>的插件把<code>VsCode</code>打造成一个<code>Shell IDE</code></p>
+<h3 id="shellman"><a href="#shellman" class="headerlink" title="shellman"></a>shellman</h3><p>说到<code>IDE</code>最起码的需要自动提示和补全，这就需要<code>shellman</code>效果如下：<br><img src="https://img.jakehu.me/2021/12/27/bt2nnr.png"></p>
+<h3 id="ShellCheck"><a href="#ShellCheck" class="headerlink" title="ShellCheck"></a>ShellCheck</h3><p>有了提示和自动补全，还需要校验我们写得代码是否优雅，这就需要<code>ShellCheck</code>语法检验，效果如下：<br><img src="https://img.jakehu.me/2021/12/27/ZhIH0i.png"></p>
+<p>而且<code>shellcheck</code>和<code>shellman</code>是兼容的<br><code>shellcheck compatible (99.99%).</code></p>
+<h3 id="shell-format"><a href="#shell-format" class="headerlink" title="shell-format"></a>shell-format</h3><p>最后就是格式化插件<code>shell-format</code>，写完代码风格还是需要格式化一下的</p>
 
       
     </div>
@@ -544,16 +544,16 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在用 <code>Python</code> 或 <code>Nodejs</code> 做项目的时候我喜欢把项目的路由分文件存放在 <code>routers</code> 文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在 <code>Gin</code> 中实现</p>
+          <p>在用<code>Python</code>或<code>Nodejs</code>做项目的时候我喜欢把项目的路由分文件存放在<code>routers</code>文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在<code>Gin</code>中实现</p>
 <h3 id="main-go"><a href="#main-go" class="headerlink" title="main.go"></a>main.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r := gin.Default()</span><br><span class="line">routers.Router(r) <span class="comment">// 路由</span></span><br><span class="line">r.Run(<span class="string">":8888"</span>)</span><br></pre></td></tr></tbody></table></figure>
-<p>就 <code>3</code> 行代码，<code>Router</code> 方法用来加载所有的路由，接下来看 <code>Router</code> 方法具体实现</p>
+<p>就<code>3</code>行代码，<code>Router</code>方法用来加载所有的路由，接下来看<code>Router</code>方法具体实现</p>
 <h3 id="routers-router-go"><a href="#routers-router-go" class="headerlink" title="routers/router.go"></a>routers/router.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Router</span><span class="params">(e *gin.Engine)</span></span> {</span><br><span class="line">	<span class="comment">// V1版本</span></span><br><span class="line">	v1 := e.Group(<span class="string">"/v1"</span>)</span><br><span class="line">	{</span><br><span class="line">		RouterUser(v1)</span><br><span class="line">		<span class="comment">// 其他模块路由</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// V2版本</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><code>Router</code> 方法主要是去把当前<code>包</code>下的其他模块的路由加载进来，这里使用了<code>路由组</code>，如果不需要<code>路由组</code>的话去掉即可，接来下看看 <code>RouterUser</code> 方法具体实现</p>
+<p><code>Router</code>方法主要是去把当前<code>包</code>下的其他模块的路由加载进来，这里使用了<code>路由组</code>，如果不需要<code>路由组</code>的话去掉即可，接来下看看<code>RouterUser</code>方法具体实现</p>
 <h3 id="routers-user-go"><a href="#routers-user-go" class="headerlink" title="routers/user.go"></a>routers/user.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RouterUser</span><span class="params">(e *gin.RouterGroup)</span></span> {</span><br><span class="line">	e.GET(<span class="string">"/user/list"</span>, controllers.UserList)</span><br><span class="line">	e.POST(<span class="string">"/user/add"</span>, controllers.UserAdd)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>使用<code>路由组</code>接收的参数是 <code>RouterGroup</code> 不使用<code>路由组</code>接收的参数是 <code>Engine</code>，这里需要注意一下</p>
+<p>使用<code>路由组</code>接收的参数是<code>RouterGroup</code>不使用<code>路由组</code>接收的参数是<code>Engine</code>，这里需要注意一下</p>
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>最后规划下来的目录如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── app</span><br><span class="line">│&nbsp;&nbsp; └── controllers</span><br><span class="line">│&nbsp;&nbsp;     └── user.go</span><br><span class="line">├── go.mod</span><br><span class="line">├── go.sum</span><br><span class="line">├── main.go</span><br><span class="line">└── routers</span><br><span class="line"> &nbsp;&nbsp; ├── router.go</span><br><span class="line"> &nbsp;&nbsp; └── user.go</span><br></pre></td></tr></tbody></table></figure>
-<p>这样规划的话，就只需要维护 <code>router.go</code> 和其他的对应模块自己的路由规则，<code>main.go</code> 也就会变得非常的简洁</p>
+<p>这样规划的话，就只需要维护<code>router.go</code>和其他的对应模块自己的路由规则，<code>main.go</code>也就会变得非常的简洁</p>
 
       
     </div>
@@ -598,7 +598,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/es-reserved-characters/" class="post-title-link" itemprop="url">Elasticsearch 保留字符查询如：*、$、: 等</a>
+          <a href="/2021/es-reserved-characters/" class="post-title-link" itemprop="url">Elasticsearch 保留字符查询如：*、$、:等</a>
         </h2>
 
         <div class="post-meta-container">
@@ -622,7 +622,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2021/es-reserved-characters/" class="post-meta-item leancloud_visitors" data-flag-title="Elasticsearch 保留字符查询如：*、$、: 等" title="阅读次数">
+    <span id="/2021/es-reserved-characters/" class="post-meta-item leancloud_visitors" data-flag-title="Elasticsearch 保留字符查询如：*、$、:等" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -653,9 +653,9 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>一个非常简单的需求，需要在 <code>ES</code> 中去匹配 <code>IPV6</code> 的 <code>2409:8a10:*</code> 段的数据，看看如何查询</p>
+          <p>一个非常简单的需求，需要在<code>ES</code>中去匹配<code>IPV6</code>的<code>2409:8a10:*</code>段的数据，看看如何查询</p>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">GET logstash-nginx-*/doc/_search</span><br><span class="line">{</span><br><span class="line">  "_source": "remote_ip",</span><br><span class="line">  "query": {</span><br><span class="line">    "bool": {</span><br><span class="line">      "must": [</span><br><span class="line">        {</span><br><span class="line">          "query_string": {</span><br><span class="line">            "fields": [</span><br><span class="line">              "remote_ip.keyword"</span><br><span class="line">            ],</span><br><span class="line">            "query": """2409\:8a10\:*""",</span><br><span class="line">            "analyzer": "keyword",</span><br><span class="line">            "analyze_wildcard": true</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">      ],</span><br><span class="line">      "filter": {</span><br><span class="line">        "range": {</span><br><span class="line">          "@timestamp": {</span><br><span class="line">            "gte": "2021-12-14T09:54:00.000000+0800",</span><br><span class="line">            "lt": "2021-12-16T09:55:00.000000+0800"</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>这里的重点是 <code>"""2409\:8a10\:*"""</code> 也可以写成 <code>"2409\\:8a10\\:*"</code>，其他的符号也可按此类推即可</p>
+<p>这里的重点是<code>"""2409\:8a10\:*"""</code>也可以写成<code>"2409\\:8a10\\:*"</code>，其他的符号也可按此类推即可</p>
 <p>最后效果：<br><img src="https://img.jakehu.me/2021/12/16/hc6IYv.png"></p>
 <hr>
 <p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html">ES 相关参考</a></p>
@@ -758,14 +758,14 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在 <code>Python</code> 中需要热加载是非常简单的，以 <code>Sanic</code> 为例只需要设置 <code>auto_reload=True</code>，但是在 <code>Gin</code> 中没有内置相应的功能，这里我们可以利用 <code>Go</code> 中的一些其他包实现，即更改源码，保存后，自动触发更新，浏览器上刷新即可。免去了杀进程、重新启动之苦</p>
-<h4 id="Fresh"><a href="#Fresh" class="headerlink" title="Fresh"></a>Fresh</h4><p>试了下 <code>github.com/gravityblast/fresh</code> 还觉得不错<br>安装：</p>
+          <p>在<code>Python</code>中需要热加载是非常简单的，以<code>Sanic</code>为例只需要设置<code>auto_reload=True</code>，但是在<code>Gin</code>中没有内置相应的功能，这里我们可以利用<code>Go</code>中的一些其他包实现，即更改源码，保存后，自动触发更新，浏览器上刷新即可。免去了杀进程、重新启动之苦</p>
+<h4 id="Fresh"><a href="#Fresh" class="headerlink" title="Fresh"></a>Fresh</h4><p>试了下<code>github.com/gravityblast/fresh</code>还觉得不错<br>安装：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/pilu/fresh</span><br></pre></td></tr></tbody></table></figure>
 <p>使用：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fresh</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>记录一下其他实现框架<br>Air：<code>https://github.com/cosmtrek/air</code><br>Bee：<code>https://github.com/beego/bee</code><br>Realize：<code>https://github.com/oxequa/realize</code><br>Gin：<code>https://github.com/codegangsta/gin</code><br>gowatch：<code>https://github.com/silenceper/gowatch</code></p>
 <hr>
-<p>题外话：<br>在安装非项目使用的包时如：<code>fresh</code>，最好是不要在项目根目录下进行 <code>go get</code> 或者会被写入到项目的 <code>go.mod</code> 中</p>
+<p>题外话：<br>在安装非项目使用的包时如：<code>fresh</code>，最好是不要在项目根目录下进行<code>go get</code>或者会被写入到项目的<code>go.mod</code> 中</p>
 
       
     </div>
@@ -865,9 +865,9 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近需要实现通过 <code>Supervisor</code> 来守护 <code>Haproxy</code>，折腾了半天记录下实现配置</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近需要实现通过<code>Supervisor</code>来守护<code>Haproxy</code>，折腾了半天记录下实现配置</p>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[program:haproxy]</span><br><span class="line">command=/usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds</span><br><span class="line">process_name=haproxy</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=true</span><br><span class="line">startretries=1</span><br></pre></td></tr></tbody></table></figure>
-<p>这里的重点是 <code>-p /run/haproxy.pid</code> 必须要指定 <code>pid</code> 的路径，要不然没法获取到 <code>program</code> 状态</p>
+<p>这里的重点是<code>-p /run/haproxy.pid</code>必须要指定<code>pid</code>的路径，要不然没法获取到<code>program</code>状态</p>
 
       
     </div>
@@ -967,13 +967,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="类型"><a href="#类型" class="headerlink" title="类型?"></a>类型？</h4><p><code>type</code> 定义的<code>结构体</code>和<code>接口</code>都是<code>类型</code></p>
-<h4 id="导出名"><a href="#导出名" class="headerlink" title="导出名"></a>导出名</h4><p>在 <code>Go</code> 中，如果一个名字以大写字母开头，那么它就是已导出的，在导入一个包时，你只能引用其中已导出的名字。任何<code>未导出</code>的名字在该包外均无法访问<br>类似其他语言 <code>Public</code> 与 <code>Private</code> 修饰符</p>
-<h4 id="命名返回值"><a href="#命名返回值" class="headerlink" title="命名返回值"></a>命名返回值</h4><p><code>Go</code> 的返回值可被命名，它们会被视作定义在函数顶部的变量。返回值的名称应当具有一定的意义，它可以作为文档使用。没有参数的 <code>return</code> 语句返回已命名的返回值。也就是<code>直接</code>返回</p>
-<h4 id="短变量声明"><a href="#短变量声明" class="headerlink" title="短变量声明"></a>短变量声明</h4><p>函数中，简洁赋值语句<code>:=</code> 可在类型明确的地方代替 <code>var</code> 声明<br>函数外的每个语句都必须以关键字开始（<code>var</code>, <code>func</code> 等等），因此 <code>:=</code> 结构不能在函数外使用</p>
+          <h4 id="类型"><a href="#类型" class="headerlink" title="类型?"></a>类型?</h4><p><code>type</code>定义的<code>结构体</code>和<code>接口</code>都是<code>类型</code></p>
+<h4 id="导出名"><a href="#导出名" class="headerlink" title="导出名"></a>导出名</h4><p>在<code>Go</code>中，如果一个名字以大写字母开头，那么它就是已导出的，在导入一个包时，你只能引用其中已导出的名字。任何<code>未导出</code>的名字在该包外均无法访问<br>类似其他语言<code>Public</code>与<code>Private</code>修饰符</p>
+<h4 id="命名返回值"><a href="#命名返回值" class="headerlink" title="命名返回值"></a>命名返回值</h4><p><code>Go</code>的返回值可被命名，它们会被视作定义在函数顶部的变量。返回值的名称应当具有一定的意义，它可以作为文档使用。没有参数的<code>return</code>语句返回已命名的返回值。也就是<code>直接</code>返回</p>
+<h4 id="短变量声明"><a href="#短变量声明" class="headerlink" title="短变量声明"></a>短变量声明</h4><p>函数中，简洁赋值语句<code>:=</code>可在类型明确的地方代替<code>var</code>声明<br>函数外的每个语句都必须以关键字开始（<code>var</code>, <code>func</code> 等等），因此 <code>:=</code>结构不能在函数外使用</p>
 <h4 id="零值"><a href="#零值" class="headerlink" title="零值"></a>零值</h4><p>没有明确初始值的变量声明会被赋予它们的<code>零值</code>，<code>0</code>、<code>false</code>、<code>""（空字符串）</code></p>
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>使用 <code>const</code> 关键字声明，常量不能用<code>:=</code> 语法声明</p>
-<h4 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h4><p><code>defer</code> 语句会将函数推迟到外层函数返回之后执行，推迟调用的函数其参数会立即求值，但直到外层函数返回前该函数都不会被调用<br>推迟的函数调用会被压入一个栈中。当外层函数返回时，被推迟的函数会按照<code>后进先出</code>的顺序调用<strong>可以看做是倒序执行</strong></p>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>使用<code>const</code>关键字声明，常量不能用<code>:=</code>语法声明</p>
+<h4 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h4><p><code>defer</code>语句会将函数推迟到外层函数返回之后执行，推迟调用的函数其参数会立即求值，但直到外层函数返回前该函数都不会被调用<br>推迟的函数调用会被压入一个栈中。当外层函数返回时，被推迟的函数会按照<code>后进先出</code>的顺序调用<strong>可以看做是倒序执行</strong></p>
 <h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><p>指针保存了值的内存地址</p>
 <h4 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h4><p>它会选择一个半开区间，包括第一个元素，但排除最后一个元素<br>切片并不存储任何数据，它只是<strong>描述了底层数组中的一段</strong>。更改切片的元素会修改其底层数组中对应的元素。与它共享底层数组的切片都会观测到这些修改</p>
 <h4 id="匿名函数与闭包"><a href="#匿名函数与闭包" class="headerlink" title="匿名函数与闭包"></a>匿名函数与闭包</h4><p>有了匿名函数，就可以在函数中再定义函数（函数嵌套），定义的这个匿名函数，也可以称为内部函数。更重要的是，在函数内定义的内部函数，可以使用外部函数的变量等，这种方式也称为闭包</p>
@@ -1081,13 +1081,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>国内的 <code>PYPI</code> 源也挺多的，经过实际使用下来，还是觉得华为的 <code>PYPI</code> 源包的版本最为齐全，推荐用华为的源进行加速</p>
+          <p>国内的<code>PYPI</code>源也挺多的，经过实际使用下来，还是觉得华为的<code>PYPI</code>源包的版本最为齐全，推荐用华为的源进行加速</p>
 <h4 id="临时使用"><a href="#临时使用" class="headerlink" title="临时使用"></a>临时使用</h4><p>运行以下命令使用华为源：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple</span><br></pre></td></tr></tbody></table></figure>
 <p>或者</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple sanic</span><br></pre></td></tr></tbody></table></figure>
 <p>通过上面的方式安装单个包</p>
-<h4 id="设为默认"><a href="#设为默认" class="headerlink" title="设为默认"></a>设为默认</h4><p><code>Pip</code> 的配置文件为用户根目录下的：<code>~/.pip/pip.conf</code>（<code>Windows</code> 路径为：<code>C:\Users\&lt;UserName&gt;\pip\pip.ini</code>）, 您可以配置如下内容：</p>
+<h4 id="设为默认"><a href="#设为默认" class="headerlink" title="设为默认"></a>设为默认</h4><p><code>Pip</code>的配置文件为用户根目录下的：<code>~/.pip/pip.conf</code>（<code>Windows</code>路径为：<code>C:\Users\&lt;UserName&gt;\pip\pip.ini</code>）, 您可以配置如下内容：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://repo.huaweicloud.com/repository/pypi/simple</span><br><span class="line">trusted-host = repo.huaweicloud.com</span><br><span class="line">timeout = 120</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>其他国内镜像源：</p>
@@ -1190,7 +1190,7 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>个人推荐使用华为的 <code>Alpine</code> 源，通过我的测试华为的源最为齐全</p>
+          <p>个人推荐使用华为的<code>Alpine</code>源，通过我的测试华为的源最为齐全</p>
 <h4 id="华为"><a href="#华为" class="headerlink" title="华为"></a>华为</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/dl-cdn.alpinelinux.org/repo.huaweicloud.com/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="阿里"><a href="#阿里" class="headerlink" title="阿里"></a>阿里</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="科大"><a href="#科大" class="headerlink" title="科大"></a>科大</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories</span><br></pre></td></tr></tbody></table></figure>
@@ -1294,17 +1294,17 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>最近开发 <code>Python</code> 一直在用 <code>Sanic</code>，感觉还不错；看看如何将 <code>Sanic</code> 部署到 <code>Docker</code> 中并用 <code>Supervisor</code> 来守护</p>
-<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>这里利用 <code>Python 3.9</code> 来构建基础镜像</p>
+          <p>最近开发<code>Python</code>一直在用<code>Sanic</code>，感觉还不错；看看如何将<code>Sanic</code>部署到 <code>Docker</code>中并用<code>Supervisor</code>来守护</p>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>这里利用<code>Python 3.9</code>来构建基础镜像</p>
 <figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.9</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">'s/dl-cdn.alpinelinux.org/repo.huaweicloud.com/g'</span> /etc/apk/repositories</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk update \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk add --no-cache build-base \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk add --no-cache libffi-dev</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /usr/src/app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /usr/src/app/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./supervisor/supervisord.conf /etc/supervisord.conf</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /usr/src/app</span></span><br><span class="line"><span class="keyword">ENV</span> PYTHONPATH /usr/src/app</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip3 install supervisor \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; pip3 install -r requirements.txt --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">"supervisord"</span>, <span class="string">"-c"</span>, <span class="string">"/etc/supervisord.conf"</span>]</span></span><br></pre></td></tr></tbody></table></figure>
-<p>这里利用华为的 <code>alpine</code> 源和 <code>pypi</code> 源</p>
+<p>这里利用华为的<code>alpine</code>源和<code>pypi</code>源</p>
 <h3 id="Supervisor"><a href="#Supervisor" class="headerlink" title="Supervisor"></a>Supervisor</h3><figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[unix_http_server]</span></span><br><span class="line"><span class="attr">file</span>=/var/run/supervisor.sock</span><br><span class="line"></span><br><span class="line"><span class="section">[supervisord]</span></span><br><span class="line"><span class="attr">logfile</span>=/var/log/supervisord.log</span><br><span class="line"><span class="attr">logfile_maxbytes</span>=<span class="number">50</span>MB</span><br><span class="line"><span class="attr">logfile_backups</span>=<span class="number">10</span></span><br><span class="line"><span class="attr">loglevel</span>=info</span><br><span class="line"><span class="attr">pidfile</span>=/var/run/supervisord.pid</span><br><span class="line"><span class="attr">nodaemon</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">silent</span>=<span class="literal">false</span></span><br><span class="line"><span class="attr">minfds</span>=<span class="number">1024</span></span><br><span class="line"><span class="attr">minprocs</span>=<span class="number">200</span></span><br><span class="line"></span><br><span class="line"><span class="section">[rpcinterface:supervisor]</span></span><br><span class="line"><span class="attr">supervisor.rpcinterface_factory</span> = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line"><span class="section">[supervisorctl]</span></span><br><span class="line"><span class="attr">serverurl</span>=unix:///var/run/supervisor.sock</span><br><span class="line"></span><br><span class="line"><span class="section">[program:sanic]</span></span><br><span class="line"><span class="attr">user</span> = root</span><br><span class="line"><span class="attr">directory</span>=/usr/src/app</span><br><span class="line"><span class="attr">command</span>=sanic server.app --host=<span class="number">0.0</span>.<span class="number">0.0</span> --port=<span class="number">8888</span> --workers=<span class="number">4</span></span><br><span class="line"><span class="attr">stdout_logfile_backups</span>=<span class="number">20</span></span><br><span class="line"><span class="attr">stdout_logfile_maxbytes</span>=<span class="number">50</span>MB</span><br><span class="line"><span class="attr">stdout_logfile</span> = /var/log/sanic.log</span><br><span class="line"><span class="attr">stderr_logfile</span> = /var/log/sanic.err</span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p><a target="_blank" rel="noopener" href="http://supervisord.org/configuration.html">Supervisor 配置参考</a></p>
 <hr>
 <p><strong>题外话：</strong></p>
-<p>容器运行 <code>Supervisor</code> 记得设置 <code>nodaemon=true</code>，或则会出现 <code>Unlinking stale socket /var/run/supervisor.sock</code></p>
-<p>因为 <code>Supervisor</code> 默认是 <code>deamon</code> 模式，启动命令结束后 <code>Supervisor</code> 会在后台运行，而容器运行启动命令返回 <code>0</code> 后自己关闭了，导致一直出现无法运行的现象</p>
+<p>容器运行<code>Supervisor</code>记得设置<code>nodaemon=true</code>，或则会出现<code>Unlinking stale socket /var/run/supervisor.sock</code></p>
+<p>因为<code>Supervisor</code>默认是<code>deamon</code>模式，启动命令结束后<code>Supervisor</code>会在后台运行，而容器运行启动命令返回<code>0</code>后自己关闭了，导致一直出现无法运行的现象</p>
 
       
     </div>

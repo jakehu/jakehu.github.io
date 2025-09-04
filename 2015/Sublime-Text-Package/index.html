@@ -22,16 +22,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Sublime Text 是什么，用来干什么就不用我说了哈！ 这货的官网是 Sublime Text；然并卵，这不是我们要介绍的重点。介绍哈 Sublime Text 的插件管理 Package Control,Package Control 是 Sublime Text 的插件管理平台，我想应该是类似于 PHP 的 Composer 吧！好吧，其实我也不知道。哈哈 看这货就长这熊样：我们来介绍哈">
+    <meta name="description" content="Sublime Text 是什么，用来干什么就不用我说了哈！ 这货的官网是Sublime Text；然并卵，这不是我们要介绍的重点。介绍哈 Sublime Text 的插件管理Package Control,Package Control 是 Sublime Text 的插件管理平台，我想应该是类似于 PHP 的 Composer 吧！好吧，其实我也不知道。哈哈 看这货就长这熊样：我们来介绍哈怎么">
 <meta property="og:type" content="article">
 <meta property="og:title" content="带你在 Sublime Text 的世界里装逼 and 飞！">
 <meta property="og:url" content="https://www.jakehu.me/2015/Sublime-Text-Package/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="Sublime Text 是什么，用来干什么就不用我说了哈！ 这货的官网是 Sublime Text；然并卵，这不是我们要介绍的重点。介绍哈 Sublime Text 的插件管理 Package Control,Package Control 是 Sublime Text 的插件管理平台，我想应该是类似于 PHP 的 Composer 吧！好吧，其实我也不知道。哈哈 看这货就长这熊样：我们来介绍哈">
+<meta property="og:description" content="Sublime Text 是什么，用来干什么就不用我说了哈！ 这货的官网是Sublime Text；然并卵，这不是我们要介绍的重点。介绍哈 Sublime Text 的插件管理Package Control,Package Control 是 Sublime Text 的插件管理平台，我想应该是类似于 PHP 的 Composer 吧！好吧，其实我也不知道。哈哈 看这货就长这熊样：我们来介绍哈怎么">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/20151103141134.png">
 <meta property="article:published_time" content="2015-11-10T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.571Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.562Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Sublime Text">
 <meta property="article:tag" content="packagecontrol">
@@ -341,7 +341,7 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody"><p>Sublime Text 是什么，用来干什么就不用我说了哈！</p>
-<p>这货的官网是 <a target="_blank" rel="noopener" href="http://www.sublimetext.com/">Sublime Text</a>；然并卵，这不是我们要介绍的重点。介绍哈 Sublime Text 的插件管理 <a target="_blank" rel="noopener" href="https://packagecontrol.io/">Package Control</a>,Package Control 是 Sublime Text 的插件管理平台，我想应该是类似于 PHP 的 Composer 吧！好吧，其实我也不知道。哈哈</p>
+<p>这货的官网是<a target="_blank" rel="noopener" href="http://www.sublimetext.com/">Sublime Text</a>；然并卵，这不是我们要介绍的重点。介绍哈 Sublime Text 的插件管理<a target="_blank" rel="noopener" href="https://packagecontrol.io/">Package Control</a>,Package Control 是 Sublime Text 的插件管理平台，我想应该是类似于 PHP 的 Composer 吧！好吧，其实我也不知道。哈哈</p>
 <p>看这货就长这熊样：<br><img src="https://img.jakehu.me/20151103141134.png"><br>我们来介绍哈怎么在 Sublime Text 中安装 Package Control，Sublime Text2 和 Sublime Text3 分别有不同的安装方式。</p>
 <p>首先：我们可以在菜单栏__View-&gt;Show Console__打开 Console，或者是__Ctrl+`__打开 Console。</p>
 <span id="more"></span>
@@ -351,25 +351,25 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)</span><br></pre></td></tr></tbody></table></figure>
 <p>Package Control 就安装好了，至于 Sublime Text 的快捷方式什么的在这里也不说了，因为实在是__太多了__；好吧，我承认其实就是我懒。</p>
 <p>重点介绍哈使用得比较顺手的几个插件，仅仅是我使用得顺手的。Sublime Text 插件太多有待自己的探索。</p>
-<p><strong>Ctrl+Shift+p</strong>(就是因为这个功能爱上了 Sublime Text，太好用了！) 打开控制台，输入并选择 <code>Install Package</code> 然后就可以开始安装插件了！</p>
-<p><strong>Emmet</strong><br>不得不用的一款前端开发方面的插件，Write less , show more. 安装后可直接使用，Tab 键触发，Alt+Shift+W 是个代码机器</p>
-<p><strong>Alignment</strong><br>代码对齐，写几个变量，选中这几行，Ctrl+Alt+A，哇，齐了</p>
-<p><strong>Prefixr</strong><br>写 CSS 可自动添加 -webkit 等私有词缀，Ctrl+Alt+X 触发</p>
+<p><strong>Ctrl+Shift+p</strong>(就是因为这个功能爱上了 Sublime Text，太好用了！) 打开控制台，输入并选择<code>Install Package</code>然后就可以开始安装插件了！</p>
+<p><strong>Emmet</strong><br>不得不用的一款前端开发方面的插件，Write less , show more. 安装后可直接使用，Tab 键触发，Alt + Shift + W 是个代码机器</p>
+<p><strong>Alignment</strong><br>代码对齐，写几个变量，选中这几行，Ctrl + Alt + A，哇，齐了</p>
+<p><strong>Prefixr</strong><br>写 CSS 可自动添加 -webkit 等私有词缀，Ctrl + Alt + X 触发</p>
 <p><strong>Tag</strong><br>Html 格式化，右键 Auto-Format Tags on Ducument</p>
 <p><strong>JS Format</strong><br>一个 JS 代码格式化插件</p>
 <p><strong>sublimeCodeIntel</strong><br>代码提示插件，支持的语言包括：PHP, Python, RHTML, JavaScript, Smarty, Mason, Node.js, XBL, Tcl, HTML, HTML5, TemplateToolkit, XUL, Django, Perl, Ruby, Python3</p>
 <p><strong>Sublimerge Pro</strong><br>文件对比插件</p>
 <p><strong>MarkdownEditing</strong><br>这个我不想多说，因为此刻我正在用这个插件写这篇文章</p>
-<p><strong>Markdown Preview</strong><br>这玩意儿你只需要轻轻的 <code>Ctrl+B</code> 就能吧.md 文件转换为.html 文件</p>
-<p><strong>Sublime​Linter-php</strong><br>一个支持 lint 语法的插件，ctrl+alt+l 呼出 (与 qq 的锁定冲突，自己去改热键吧) 可以高亮 linter 认为有错误的代码行</p>
-<p><strong>sublime-jsdocs(DocBlockr)</strong><br>自动注释，完全符合 jsdoc 标准，按 /** 即可，再也不用为注释烦恼啦，设置及配置参考<br><a target="_blank" rel="noopener" href="https://github.com/spadgos/sublime-jsdocs">https://github.com/spadgos/sublime-jsdocs</a></p>
+<p><strong>Markdown Preview</strong><br>这玩意儿你只需要轻轻的<code>Ctrl+B</code>就能吧.md 文件转换为.html 文件</p>
+<p><strong>Sublime​Linter-php</strong><br>一个支持 lint 语法的插件，ctrl + alt + l 呼出 (与 qq 的锁定冲突，自己去改热键吧) 可以高亮 linter 认为有错误的代码行</p>
+<p><strong>sublime-jsdocs(DocBlockr)</strong><br>自动注释，完全符合 jsdoc 标准，按/** 即可，再也不用为注释烦恼啦, 设置及配置参考<br><a target="_blank" rel="noopener" href="https://github.com/spadgos/sublime-jsdocs">https://github.com/spadgos/sublime-jsdocs</a></p>
 <p><strong>Pretty JSON</strong><br>JSON 美化扩展</p>
 <p><strong>Color​Picker</strong><br>跨平台取色器插件</p>
 <p><strong>jQuery</strong><br>用 jquery 的同学不容错过啊，写完后按 tab 键，有惊喜</p>
-<p><strong>Clipboard History</strong><br>剪贴板历史记录，显示更多历史复制，Ctrl+Shift+V 触发</p>
+<p><strong>Clipboard History</strong><br>剪贴板历史记录，显示更多历史复制，Ctrl + Shift + V 触发</p>
 <p><strong>SideBarEnhancements</strong><br>侧栏右键功能增强，非常实用</p>
 <p><strong>BracketHighlighter</strong><br>Bracket​Highlighter 是一个括号、引号、标签高亮插件，支持 []、()、{}、””、’’和 等，比 Sublime Text 自带的高亮要明显得多</p>
-<p><strong>Theme–Soda</strong><br>完美的编码主题，用过的都说好，Setting user 里面添加”theme”: “Soda Dark.sublime-theme”</p>
+<p><strong>Theme–Soda</strong><br>完美的编码主题，用过的都说好，Setting user 里面添加” theme”: “Soda Dark.sublime-theme”</p>
 <p><strong>GBK to UTF8</strong><br>将文件编码从 GBK 转黄成 UTF8，菜单 - File 里面找</p>
 <p><strong>SFTP</strong><br>直接编辑 FTP 或 SFTP 服务器上的文件，绝对 FTP 浮云</p>
 <p><strong>WordPress</strong><br>集成一些 WordPress 的函数，对于像我这种经常要写 WP 模版和插件的人特别有用</p>

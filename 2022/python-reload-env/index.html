@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记利用 Puppet 做远程脚本执行的时候，发现 Python 脚本无法获取到环境变量 解决在执行脚本前去获取到环境变量，这样就可以获取到环境变量了，或者重写 os.environ 123456789101112131415def get_env():    try:        source_profile_cmd &#x3D; &quot;source &#x2F;etc&#x2F;profile &amp;&amp; env&quot;">
+    <meta name="description" content="前记利用Puppet做远程脚本执行的时候，发现Python脚本无法获取到环境变量 解决在执行脚本前去获取到环境变量，这样就可以获取到环境变量了，或者重写os.environ 123456789101112131415def get_env():    try:        source_profile_cmd &#x3D; &quot;source &#x2F;etc&#x2F;profile &amp;&amp; env&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 远程执行动态加载环境变量">
 <meta property="og:url" content="https://www.jakehu.me/2022/python-reload-env/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记利用 Puppet 做远程脚本执行的时候，发现 Python 脚本无法获取到环境变量 解决在执行脚本前去获取到环境变量，这样就可以获取到环境变量了，或者重写 os.environ 123456789101112131415def get_env():    try:        source_profile_cmd &#x3D; &quot;source &#x2F;etc&#x2F;profile &amp;&amp; env&quot;">
+<meta property="og:description" content="前记利用Puppet做远程脚本执行的时候，发现Python脚本无法获取到环境变量 解决在执行脚本前去获取到环境变量，这样就可以获取到环境变量了，或者重写os.environ 123456789101112131415def get_env():    try:        source_profile_cmd &#x3D; &quot;source &#x2F;etc&#x2F;profile &amp;&amp; env&quot;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-07T12:43:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.576Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.567Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="env">
@@ -339,8 +339,8 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>利用 <code>Puppet</code> 做远程脚本执行的时候，发现 <code>Python</code> 脚本无法获取到环境变量</p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>在执行脚本前去获取到环境变量，这样就可以获取到环境变量了，或者重写 <code>os.environ</code></p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>利用<code>Puppet</code>做远程脚本执行的时候，发现<code>Python</code>脚本无法获取到环境变量</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>在执行脚本前去获取到环境变量，这样就可以获取到环境变量了，或者重写<code>os.environ</code></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_env</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        source_profile_cmd = <span class="string">"source /etc/profile &amp;&amp; env"</span></span><br><span class="line">        status, out = commands.getstatusoutput(source_profile_cmd)</span><br><span class="line">        envs = {}</span><br><span class="line">        <span class="keyword">for</span> info <span class="keyword">in</span> out.split(<span class="string">"\n"</span>):</span><br><span class="line">            env = info.split(<span class="string">"="</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(env) == <span class="number">2</span>:</span><br><span class="line">                envs[env[<span class="number">0</span>]] = env[<span class="number">1</span>]</span><br><span class="line">                <span class="comment"># os.environ[env[0]] = env[1]</span></span><br><span class="line">        <span class="keyword">return</span> envs</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> {}</span><br><span class="line">        </span><br><span class="line">get_env()</span><br></pre></td></tr></tbody></table></figure>
     </div>
 

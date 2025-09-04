@@ -335,18 +335,18 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>首先终端已经换为 <code>zsh</code> 了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法</p>
+          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>首先终端已经换为<code>zsh</code>了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法</p>
 <p><a target="_blank" rel="noopener" href="http://achillessatan.github.io/2016/02/15/2016021503/">Homebrew install zsh &amp; oh-my-zsh</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>在<code>.bash_profile</code> 加入以下这行，让你可以直接在 <code>shell</code> 使用 <code>nvm</code> 指令</p>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>在<code>.bash_profile</code>加入以下这行，让你可以直接在<code>shell</code>使用<code>nvm</code>指令</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></tbody></table></figure>
-<p>重新 <code>source .bash_profile</code> 来让设定生效</p>
+<p>重新<code>source .bash_profile</code>来让设定生效</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以上操作看似没有任何问题，安装 <code>node</code> 后也能使用。但是，当你第二次重新打开终端时 <code>node</code> 将不能使用，提示错误 <code>Run nvm use --delete-prefix v8.14.0 to unset it.</code></p>
-<p>后面在 <code>nvm</code> 文档看到这段话 <code>Homebrew installation is not supported. If you have issues with homebrew-installed nvm, please brew uninstall it, and install it using the instructions below, before filing an issue.</code>，额… 看来没事还是要多看看文档啊，同时也有网友对此提有 <a target="_blank" rel="noopener" href="https://github.com/creationix/nvm/issues/855">Issues</a></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以上操作看似没有任何问题，安装<code>node</code>后也能使用。但是，当你第二次重新打开终端时<code>node</code>将不能使用，提示错误<code>Run nvm use --delete-prefix v8.14.0 to unset it.</code></p>
+<p>后面在<code>nvm</code>文档看到这段话<code>Homebrew installation is not supported. If you have issues with homebrew-installed nvm, please brew uninstall it, and install it using the instructions below, before filing an issue.</code>，额… 看来没事还是要多看看文档啊，同时也有网友对此提有 <a target="_blank" rel="noopener" href="https://github.com/creationix/nvm/issues/855">Issues</a></p>
 <h3 id="正确安装"><a href="#正确安装" class="headerlink" title="正确安装"></a>正确安装</h3><p>推荐使用官方<code>script</code>安装</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></tbody></table></figure>
-<p>最后在安装好 <code>node</code> 之后不要忘记设置 <code>alias default</code></p>
+<p>最后在安装好<code>node</code>之后不要忘记设置<code>alias default</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm alias default 8.14.0</span><br></pre></td></tr></tbody></table></figure>
       
     </div>
@@ -552,11 +552,11 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>CleanMyMac X</code> 是一款强大的 <code>Mac</code> 系统垃圾清理工具，可以清除 <code>Mac</code> 系统多余的语言包、系统缓存、应用程序、<code>PowerPc</code> 软件运行库等，是硬盘瘦身的好工具</p>
+          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>CleanMyMac X</code>是一款强大的<code>Mac</code>系统垃圾清理工具，可以清除<code>Mac</code>系统多余的语言包、系统缓存、应用程序、<code>PowerPc</code>软件运行库等，是硬盘瘦身的好工具</p>
 <h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><p><a target="_blank" rel="noopener" href="https://macpaw.com/">国际版官网</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.mycleanmymac.com/">中文官网</a></p>
-<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>因为 <code>CleanMyMac</code> 对不同的版本有不同的授权信息。</p>
-<p>下面地址均为官网下载地址 <code>https://dl.devmate.com</code> 开头。</p>
+<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>因为<code>CleanMyMac</code>对不同的版本有不同的授权信息。</p>
+<p>下面地址均为官网下载地址<code>https://dl.devmate.com</code>开头。</p>
 <p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.CleanMyMac3/CleanMyMac3.dmg">国际版 CleanMyMac 3</a></p>
 <p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.CleanMyMac4/CleanMyMacX.dmg">国际版  CleanMyMac X</a></p>
 <p><a target="_blank" rel="noopener" href="https://dl.devmate.com/com.macpaw.zh.CleanMyMac3/CleanMyMacChinese.dmg">中文版 CleanMyMac 3</a></p>
@@ -665,11 +665,11 @@ var _hmt = _hmt || [];
           <h3 id="说在前面"><a href="#说在前面" class="headerlink" title="说在前面"></a>说在前面</h3><p>压缩页面无非就是减小页面大小加快博客访问时间</p>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i gulp gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify -s</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="gulp配置"><a href="#gulp配置" class="headerlink" title="gulp配置"></a>gulp 配置</h4><p>在根目录下创建 <code>gulpfile.js</code> 文件</p>
+<h4 id="gulp配置"><a href="#gulp配置" class="headerlink" title="gulp配置"></a>gulp 配置</h4><p>在根目录下创建<code>gulpfile.js</code>文件</p>
 <p><code>gulpfile.js</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require('gulp');</span><br><span class="line">var minifycss = require('gulp-minify-css');</span><br><span class="line">var uglify = require('gulp-uglify');</span><br><span class="line">var htmlmin = require('gulp-htmlmin');</span><br><span class="line">var htmlclean = require('gulp-htmlclean');</span><br><span class="line">// 压缩 public 目录 css</span><br><span class="line">gulp.task('minify-css', function () {</span><br><span class="line">    return gulp.src('./public/**/*.css')</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 压缩 public 目录 html</span><br><span class="line">gulp.task('minify-html', function () {</span><br><span class="line">    return gulp.src('./public/**/*.html')</span><br><span class="line">        .pipe(htmlclean())</span><br><span class="line">        .pipe(htmlmin({</span><br><span class="line">            removeComments: true,</span><br><span class="line">            minifyJS: true,</span><br><span class="line">            minifyCSS: true,</span><br><span class="line">            minifyURLs: true,</span><br><span class="line">        }))</span><br><span class="line">        .pipe(gulp.dest('./public'))</span><br><span class="line">});</span><br><span class="line">// 压缩 public/js 目录 js</span><br><span class="line">gulp.task('minify-js', function () {</span><br><span class="line">    return gulp.src('./public/**/*.js')</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest('./public'));</span><br><span class="line">});</span><br><span class="line">// 执行 gulp 命令时执行的任务</span><br><span class="line">gulp.task('default', [</span><br><span class="line">    'minify-html', 'minify-css', 'minify-js'</span><br><span class="line">]);</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h4><p>在 <code>package.json</code> 中加入如下 <code>script</code></p>
+<h4 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h4><p>在<code>package.json</code>中加入如下<code>script</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": {</span><br><span class="line">  "push": "hexo cl &amp;&amp; hexo g &amp;&amp; gulp &amp;&amp; hexo d"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>然后在部署的时候只需要运行</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run push</span><br></pre></td></tr></tbody></table></figure>
@@ -776,9 +776,9 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Show number of visitors to each article.</span><br><span class="line"># You can visit https://leancloud.cn get AppID and AppKey.</span><br><span class="line">leancloud_visitors:</span><br><span class="line">  enable: true</span><br><span class="line">  app_id: &lt;&lt;your app id&gt;&gt;</span><br><span class="line">  app_key: &lt;&lt;your app key&gt;&gt;</span><br><span class="line">  # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security</span><br><span class="line">  # If you don't care about security in lc counter and just want to use it directly</span><br><span class="line">  # (without hexo-leancloud-counter-security plugin), set the `security` to `false`.</span><br><span class="line">  security: true</span><br><span class="line">  betterPerformance: false</span><br></pre></td></tr></tbody></table></figure>
 <p>如上述两个解决办法：</p>
 <ol>
-<li><p>安装 <code>hexo-leancloud-counter-security</code> 并设置 <code>leancloud</code> 的 <code>app_id</code> 和 <code>app_key</code></p>
+<li><p>安装<code>hexo-leancloud-counter-security</code>并设置<code>leancloud</code>的<code>app_id</code>和<code>app_key</code></p>
 </li>
-<li><p>将 <code>security</code> 设置为 <code>security: false</code></p>
+<li><p>将<code>security</code>设置为<code>security: false</code></p>
 </li>
 </ol>
 <p>因为懒所以选择了第二方案。</p>
@@ -988,16 +988,16 @@ var _hmt = _hmt || [];
           <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd">Beanstalkd</a> - 一个高性能、轻量级的分布式内存队列系统。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/blob/master/doc/protocol.txt">英文协议</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/blob/master/doc/protocol.zh-CN.md">中文协议</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里我们用 <code>Docker</code> 来运行。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里我们用<code>Docker</code>来运行。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd</span><br><span class="line">docker run -d -p 11300:11300 schickling/beanstalkd</span><br></pre></td></tr></tbody></table></figure>
 
-<p><code>beanstalkd</code> 管理 <code>WEB</code> 平台，主要用来看看以后的任务详情。</p>
+<p><code>beanstalkd</code>管理<code>WEB</code>平台，主要用来看看以后的任务详情。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull schickling/beanstalkd-console</span><br><span class="line">docker run -d -p 2080:2080 --link beanstalkd:beanstalkd schickling/beanstalkd-console</span><br></pre></td></tr></tbody></table></figure>
-<p>通过 <code>127.0.0.1:2080</code> 访问</p>
+<p>通过<code>127.0.0.1:2080</code>访问</p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>官方客户端推荐列表 <a target="_blank" rel="noopener" href="https://github.com/beanstalkd/beanstalkd/wiki/Client-Libraries">Client</a></p>
-<p>下面我们主要介绍 <code>Nodejs</code> 客户端 <code>bsw</code></p>
+<p>下面我们主要介绍<code>Nodejs</code>客户端<code>bsw</code></p>
 <h4 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i bsw --save</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="客户端示例"><a href="#客户端示例" class="headerlink" title="客户端示例"></a>客户端示例</h4><p>这里我们用阿里开源框架 <code>eggjs</code> 做测试。<br><code>app.js</code></p>
+<h4 id="客户端示例"><a href="#客户端示例" class="headerlink" title="客户端示例"></a>客户端示例</h4><p>这里我们用阿里开源框架<code>eggjs</code>做测试。<br><code>app.js</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const { Consumer } = require('bsw');</span><br><span class="line">module.exports = app =&gt; {</span><br><span class="line">  app.beforeStart(async () =&gt; {</span><br><span class="line">    const consumer = new Consumer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">      async handler(payload, job_info) {</span><br><span class="line">        console.log('processing job: ', payload);</span><br><span class="line">        console.log('processing job_info: ', job_info);</span><br><span class="line">        // 这里进行业务操作</span><br><span class="line">        return 'success';</span><br><span class="line">      },</span><br><span class="line">    });</span><br><span class="line">    consumer.on('error', e =&gt; {</span><br><span class="line">      console.log(e);</span><br><span class="line">    });</span><br><span class="line">    console.log('beanstalkd启动了');</span><br><span class="line">    await consumer.start();</span><br><span class="line">  });</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
 <p><code>home.js</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">'use strict';</span><br><span class="line">const Controller = require('egg').Controller;</span><br><span class="line">const { Producer } = require('bsw');</span><br><span class="line">class HomeController extends Controller {</span><br><span class="line">  async index() {</span><br><span class="line">    const producer = new Producer({</span><br><span class="line">      host: 'localhost',</span><br><span class="line">      port: '11300',</span><br><span class="line">      tube: 'node',</span><br><span class="line">    });</span><br><span class="line">    await producer.start();</span><br><span class="line">    await producer.putJob({</span><br><span class="line">      payload: JSON.stringify({ throw: true, result: 'success' }),</span><br><span class="line">      priority: 0, // 优先级</span><br><span class="line">      delay: 30, // 延时单位(s)</span><br><span class="line">      ttr: 60, // 允许worker执行的最大秒数</span><br><span class="line">    });</span><br><span class="line">    producer.stop();</span><br><span class="line">    this.ctx.body = 'hi, egg';</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">module.exports = HomeController;</span><br></pre></td></tr></tbody></table></figure>
@@ -1106,11 +1106,11 @@ var _hmt = _hmt || [];
           <h3 id="commons-lang3"><a href="#commons-lang3" class="headerlink" title="commons-lang3"></a>commons-lang3</h3><blockquote>
 <p>概述</p>
 </blockquote>
-<p><code>Apache Commons-Lang3</code> 库提供了 <code>Java</code> 的 <code>API</code> 的核心类的操作支持。此支持包括处理字符串，数字，日期，并发，对象反射等的方法。</p>
+<p><code>Apache Commons-Lang3</code>库提供了<code>Java</code>的<code>API</code>的核心类的操作支持。此支持包括处理字符串，数字，日期，并发，对象反射等的方法。</p>
 <blockquote>
 <p>Maven 依赖</p>
 </blockquote>
-<p>要使用 <code>commons-lang3</code> 库，只需使用以下依赖项从中央 Maven 存储库中提取它</p>
+<p>要使用<code>commons-lang3</code>库，只需使用以下依赖项从中央 Maven 存储库中提取它</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;3.8.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
@@ -1120,7 +1120,7 @@ var _hmt = _hmt || [];
 <h3 id="Hutool"><a href="#Hutool" class="headerlink" title="Hutool"></a>Hutool</h3><blockquote>
 <p>概述</p>
 </blockquote>
-<p><code>Hutool</code> 是一个 <code>Java</code> 工具包，也只是一个工具包，它帮助我们简化每一行代码，减少每一个方法，让 <code>Java</code> 语言也可以 “甜甜的”。</p>
+<p><code>Hutool</code>是一个<code>Java</code>工具包，也只是一个工具包，它帮助我们简化每一行代码，减少每一个方法，让<code>Java</code>语言也可以 “甜甜的”。</p>
 <blockquote>
 <p>Maven 依赖</p>
 </blockquote>
@@ -1133,7 +1133,7 @@ var _hmt = _hmt || [];
 <h3 id="easy-okhttp"><a href="#easy-okhttp" class="headerlink" title="easy-okhttp"></a>easy-okhttp</h3><blockquote>
 <p>概述</p>
 </blockquote>
-<p><code>easy-okhttp</code> 是对 <code>OkHttp</code> 网络框架封装，提供文件上传和下载，表单 (含文件) 提交，链式调用，支持 <code>HTTPS</code> 和自定义签名证书等特性。</p>
+<p><code>easy-okhttp</code>是对<code>OkHttp</code>网络框架封装，提供文件上传和下载，表单 (含文件) 提交，链式调用，支持<code>HTTPS</code>和自定义签名证书等特性。</p>
 <blockquote>
 <p>Maven 依赖</p>
 </blockquote>
@@ -1250,7 +1250,7 @@ var _hmt = _hmt || [];
 <p>当同一镜像被多个储存库引用时，就需要强制删除镜像</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f 镜像ID</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="删除tag为的所有镜像"><a href="#删除tag为的所有镜像" class="headerlink" title="删除tag为<none>的所有镜像"></a>删除 tag 为 <code>&lt;none&gt;</code> 的所有镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker images|grep none|awk '{print $3}'|xargs docker rmi</span><br><span class="line"></span><br><span class="line">docker rmi $(docker images -f "dangling=true" -q)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="删除tag为的所有镜像"><a href="#删除tag为的所有镜像" class="headerlink" title="删除tag为<none>的所有镜像"></a>删除 tag 为<code>&lt;none&gt;</code>的所有镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker images|grep none|awk '{print $3}'|xargs docker rmi</span><br><span class="line"></span><br><span class="line">docker rmi $(docker images -f "dangling=true" -q)</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="删除已经PUSH带有DIGEST参数镜像"><a href="#删除已经PUSH带有DIGEST参数镜像" class="headerlink" title="删除已经PUSH带有DIGEST参数镜像"></a>删除已经 PUSH 带有 DIGEST 参数镜像</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker images --digests</span><br><span class="line">REPOSITORY                     TAG       DIGEST                                                                    IMAGE ID        CREATED         SIZE</span><br><span class="line">localhost:5000/nodeservice    &lt;none&gt;    sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf   4986bf8c1536    9 weeks ago     2.43 MB</span><br><span class="line"></span><br><span class="line">$ docker rmi localhost:5000/nodeservice@sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <font color="red">
@@ -1354,9 +1354,9 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>公司部分业务使用的是阿里的 <code>docker swarm</code> 服务，在配置 <code>nodejs</code> 应用时发现时区不对。</p>
+          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>公司部分业务使用的是阿里的<code>docker swarm</code>服务，在配置<code>nodejs</code>应用时发现时区不对。</p>
 <h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><p>记录下自己所选择的方式。</p>
-<p>我选择在 <code>Dockerfile</code> 文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。</p>
+<p>我选择在<code>Dockerfile</code>文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RUN echo "Asia/Shanghai" &gt; /etc/timezone \</span><br><span class="line">    &amp;&amp; dpkg-reconfigure -f noninteractive tzdata</span><br></pre></td></tr></tbody></table></figure>
       
     </div>

@@ -335,14 +335,14 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p><code>autojump</code>：实现目录间快速跳转，想去哪个目录直接 <code>j</code>，不用再有事没事就 <code>cd</code> 了<br><code>zsh-autosuggestions</code>：输入命令时可提示自动补全以及之前的历史记录，然后按键盘<code>→</code>即可<br><code>zsh-syntax-highlighting</code>：日常用的命令会高亮显示，命令错误显示红色</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>安装前我们可以在配置文件中查看 <code>plugins</code> 目录如下</p>
+          <h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p><code>autojump</code>：实现目录间快速跳转，想去哪个目录直接<code>j</code>，不用再有事没事就<code>cd</code>了<br><code>zsh-autosuggestions</code>：输入命令时可提示自动补全以及之前的历史记录，然后按键盘<code>→</code>即可<br><code>zsh-syntax-highlighting</code>：日常用的命令会高亮显示，命令错误显示红色</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>安装前我们可以在配置文件中查看<code>plugins</code>目录如下</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Standard plugins can be found in ~/.oh-my-zsh/plugins/*</span><br><span class="line"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span><br></pre></td></tr></tbody></table></figure>
-<p><code>autojump</code> 安装如下：</p>
+<p><code>autojump</code>安装如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install autojump</span><br></pre></td></tr></tbody></table></figure>
-<p><code>zsh-autosuggestions</code> 安装如下：</p>
+<p><code>zsh-autosuggestions</code>安装如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions</span><br></pre></td></tr></tbody></table></figure>
-<p><code>zsh-syntax-highlighting</code> 安装如下：</p>
+<p><code>zsh-syntax-highlighting</code>安装如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">autojump</span><br><span class="line">zsh-autosuggestions</span><br><span class="line">zsh-syntax-highlighting</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><p><code> source .zshrc</code></p>
@@ -445,13 +445,13 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理 <code>gogs</code> 和对应的 <code>mysql</code> 都部署在家用群晖的 <code>Docker</code> 上，今早发现 <code>gogs</code> 报 <code>500</code> 错误无法访问，经过查询日志确定是 <code>mysql 5.7</code> 密码已过期，如下错误</p>
+          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理<code>gogs</code>和对应的<code>mysql</code>都部署在家用群晖的<code>Docker</code>上，今早发现<code>gogs</code>报<code>500</code>错误无法访问，经过查询日志确定是<code>mysql 5.7</code>密码已过期，如下错误</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error 1862: Your password has expired. To log in you must change it using a client that supports expired passwords.</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code> 登陆到群晖</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code>登陆到群晖</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh admin@192.168.1.x -p xx22</span><br></pre></td></tr></tbody></table></figure>
-<p>首先我们需要对群晖 <code>admin</code> 账户提权</p>
+<p>首先我们需要对群晖<code>admin</code>账户提权</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></tbody></table></figure>
-<p>然后进入对应的 <code>docker</code> 容器并登陆到 <code>mysql</code> 客户端，这里说明一下客户端的密码是不会过期的</p>
+<p>然后进入对应的<code>docker</code>容器并登陆到<code>mysql</code>客户端，这里说明一下客户端的密码是不会过期的</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql1 mysql -uroot -ppassword</span><br></pre></td></tr></tbody></table></figure>
 <p>然后重置密码</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = password('newpassword');</span><br></pre></td></tr></tbody></table></figure>
@@ -459,7 +459,7 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
 <p>最后设置密码永不过期</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL default_password_lifetime = 0;</span><br></pre></td></tr></tbody></table></figure>
-<p>到此问题就解决了，又可以愉快的访问 <code>gogs</code> 了</p>
+<p>到此问题就解决了，又可以愉快的访问<code>gogs</code>了</p>
 
       
     </div>
@@ -559,26 +559,26 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p><code>6.2</code> 系列引导已经出了一年多了，最近想升级 <code>6.2</code> 试试，于是踩进了坑</p>
+          <h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p><code>6.2</code>系列引导已经出了一年多了，最近想升级<code>6.2</code>试试，于是踩进了坑</p>
 <p>当前配置：</p>
 <ul>
 <li>型号：<code>DS3615xs</code></li>
 <li>系统：<code>6.1.7</code></li>
 </ul>
 <h4 id="踩坑步骤"><a href="#踩坑步骤" class="headerlink" title="踩坑步骤"></a>踩坑步骤</h4><ul>
-<li>新做 <code>1号U盘（6.2引导盘）</code></li>
-<li>拔出 <code>2号U盘（6.1.7引导盘）</code>换上 <code>1号U盘（6.2引导盘）</code></li>
+<li>新做<code>1号U盘（6.2引导盘）</code></li>
+<li>拔出<code>2号U盘（6.1.7引导盘）</code>换上<code>1号U盘（6.2引导盘）</code></li>
 <li>启动 - 联机 - 迁移（<code>6.2.2</code>）- 重启</li>
-<li>做完上面步骤后开机找不到 <code>IP</code>（这里已经改 <code>BIOS</code> 传统启动方式了）</li>
-<li>用原 <code>2号U盘（6.1.7引导盘）</code>重新引导</li>
+<li>做完上面步骤后开机找不到<code>IP</code>（这里已经改<code>BIOS</code>传统启动方式了）</li>
+<li>用原<code>2号U盘（6.1.7引导盘）</code>重新引导</li>
 <li>启动 - 联机 - 提示还原 - 还原 - 重启</li>
-<li>做完上面步骤后又找不到 <code>IP</code> 了</li>
+<li>做完上面步骤后又找不到<code>IP</code>了</li>
 </ul>
 <h4 id="降级处理"><a href="#降级处理" class="headerlink" title="降级处理"></a>降级处理</h4><ul>
-<li>新做 <code>1号U盘（6.1.7引导盘）</code>型号为 <code>DS3617xs</code></li>
+<li>新做<code>1号U盘（6.1.7引导盘）</code>型号为<code>DS3617xs</code></li>
 <li>启动 - 联机 - 全新安装（如果用迁移依然没法降级安装）- 重启</li>
 </ul>
-<p>做完以上步骤重启发现仅系统盘丢失，数据盘依然存在，如：<code>docker</code> 容器等</p>
+<p>做完以上步骤重启发现仅系统盘丢失，数据盘依然存在，如：<code>docker</code>容器等</p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a target="_blank" rel="noopener" href="https://xpenology.com/forum/">XPEnology Community</a></p>
 
       
@@ -679,12 +679,12 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Scratch"><a href="#Scratch" class="headerlink" title="Scratch"></a>Scratch</h3><p><code>scratch</code> 是一个空镜像，只能用于构建其他镜像，比如你要运行一个包含所有依赖的二进制文件，如 <code>Golang</code> 程序，可以直接使用 <code>scratch</code> 作为基础镜像</p>
-<h3 id="Busybox"><a href="#Busybox" class="headerlink" title="Busybox"></a>Busybox</h3><p><code>scratch</code> 是个空镜像，如果希望镜像里可以包含一些常用的 <code>Linux</code> 工具，<code>busybox</code> 镜像是个不错选择，镜像本身只有 <code>763KB</code>，非常便于构建小镜像</p>
-<p><code>BusyBox</code> 是一个集成了一百多个最常用 <code>Linux</code> 命令和工具（如 <code>cat</code>、<code>echo</code>、<code>grep</code>、<code>mount</code>、<code>telnet</code> 等）的精简工具箱，它只需要<code>几百KB</code> 的大小，很方便进行各种快速验证，被誉为 <code>Linux 系统的瑞士军刀</code></p>
-<p><code>BusyBox</code> 可运行于多款 <code>POSIX</code> 环境的操作系统中，如 <code>Linux</code>(包括 <code>Android</code>)、<code>Hurd</code>、<code>FreeBSD</code> 等</p>
-<h3 id="Alpine"><a href="#Alpine" class="headerlink" title="Alpine"></a>Alpine</h3><p><code>Alpine</code> 采用了 <code>musl libc</code> 和 <code>busybox</code> 以减小系统的体积和运行时资源消耗，但功能上比 <code>busybox</code> 又完善的多，<code>Alpine</code> 还提供了自己的包管理工具 <code>apk</code>，可以通过 <a target="_blank" rel="noopener" href="https://pkgs.alpinelinux.org/packages"><code>packages</code></a>网站上查询包信息，也可以直接通过 apk 命令直接查询和安装各种软件</p>
-<p><code>Alpine Docker</code> 镜像也继承了 <code>Alpine Linux</code> 发行版的这些优势。相比于其他 <code>Docker</code> 镜像，它的容量非常小，仅仅只有 <code>5 MB</code> 左右（对比 <code>Ubuntu</code> 系列镜像接近 <code>200</code>MB），且拥有非常友好的包管理机制</p>
+          <h3 id="Scratch"><a href="#Scratch" class="headerlink" title="Scratch"></a>Scratch</h3><p><code>scratch</code>是一个空镜像，只能用于构建其他镜像，比如你要运行一个包含所有依赖的二进制文件，如<code>Golang</code>程序，可以直接使用<code>scratch</code>作为基础镜像</p>
+<h3 id="Busybox"><a href="#Busybox" class="headerlink" title="Busybox"></a>Busybox</h3><p><code>scratch</code>是个空镜像，如果希望镜像里可以包含一些常用的<code>Linux</code>工具，<code>busybox</code>镜像是个不错选择，镜像本身只有<code>763KB</code>，非常便于构建小镜像</p>
+<p><code>BusyBox</code>是一个集成了一百多个最常用<code>Linux</code>命令和工具（如<code>cat</code>、<code>echo</code>、<code>grep</code>、<code>mount</code>、<code>telnet</code>等）的精简工具箱，它只需要<code>几百KB</code>的大小，很方便进行各种快速验证，被誉为<code>Linux 系统的瑞士军刀</code></p>
+<p><code>BusyBox</code>可运行于多款<code>POSIX</code>环境的操作系统中，如<code>Linux</code> (包括<code>Android</code>)、<code>Hurd</code>、<code>FreeBSD</code> 等</p>
+<h3 id="Alpine"><a href="#Alpine" class="headerlink" title="Alpine"></a>Alpine</h3><p><code>Alpine</code>采用了 <code>musl libc</code>和<code>busybox</code>以减小系统的体积和运行时资源消耗，但功能上比<code>busybox</code>又完善的多，<code>Alpine</code>还提供了自己的包管理工具<code>apk</code>，可以通过<a target="_blank" rel="noopener" href="https://pkgs.alpinelinux.org/packages"><code>packages</code></a>网站上查询包信息，也可以直接通过 apk 命令直接查询和安装各种软件</p>
+<p><code>Alpine Docker</code>镜像也继承了<code>Alpine Linux</code>发行版的这些优势。相比于其他<code>Docker</code>镜像，它的容量非常小，仅仅只有<code>5 MB</code>左右（对比<code>Ubuntu</code>系列镜像接近<code>200</code> MB），且拥有非常友好的包管理机制</p>
 
       
     </div>
@@ -787,29 +787,29 @@ var _hmt = _hmt || [];
           <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>为什么要软路由？目前家里的拓扑是</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; 路由器 -&gt; NAS/BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
 <p>路由器负责了<code>拨号</code>、<code>科学上网</code>、<code>广告过滤</code>等</p>
-<p>之前已经将 <code>Frp</code> 移到了 <code>NAS</code> 的 <code>Docker</code> 里面</p>
+<p>之前已经将<code>Frp</code>移到了<code>NAS</code>的<code>Docker</code>里面</p>
 <p><a href="/2019/frp-onekey/">FRP 资源</a></p>
 <p><a href="/2019/synology-frp-https/">FRP 教程</a></p>
 <p>至于为什么要软路由原因：</p>
 <ol>
-<li><code>AC66U_B1</code> 时常不够稳定，将 <code>frp</code> 迁移至 <code>nas</code> 后深有感受</li>
-<li><code>AC66U_B1</code> 固件中插件有限而且越来越不好用，所以更多的是想将路由上的功能转一部分到软路由上</li>
+<li><code>AC66U_B1</code>时常不够稳定，将<code>frp</code>迁移至<code>nas</code>后深有感受</li>
+<li><code>AC66U_B1</code>固件中插件有限而且越来越不好用，所以更多的是想将路由上的功能转一部分到软路由上</li>
 </ol>
 <p>改造后拓扑为：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网 -&gt; NAS软路由 -&gt; NAS/硬路由-&gt;BOOK/PHONE</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="硬件改造"><a href="#硬件改造" class="headerlink" title="硬件改造"></a>硬件改造</h3><p>改造前现有的硬件设备：</p>
 <blockquote>
-<p>机箱：乔思伯 V2<br>主板：华擎 N3150TM-ITX 主板<br>电源：绿巨能笔记本 DC 电源<br>硬盘：西部数据 (WD) 红盘 4TB * 2<br>内存：金士顿 DDR3L 4G</p>
+<p>机箱：乔思伯 V2<br>主板：华擎 N3150TM - ITX 主板<br>电源：绿巨能笔记本 DC 电源<br>硬盘：西部数据 (WD) 红盘 4TB * 2<br>内存：金士顿 DDR3L 4G</p>
 </blockquote>
 <p>改造前如图：<br><img src="https://img.jakehu.me/20190712105802.jpg"></p>
 <p>改造部分为<code>更换机箱</code>以及<code>增加网卡</code></p>
 <blockquote>
-<p>机箱：金河田（Golden field）预见 N-1<br>网卡：EDUP EP-9602 PCI-E 千兆网卡</p>
+<p>机箱：金河田（Golden field）预见 N-1<br>网卡：EDUP EP-9602 PCI - E 千兆网卡</p>
 </blockquote>
 <p>改造后如图：<br><img src="https://img.jakehu.me/20190712110017.jpg"></p>
-<h3 id="LEDE安装"><a href="#LEDE安装" class="headerlink" title="LEDE安装"></a>LEDE 安装</h3><h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>在 <a target="_blank" rel="noopener" href="https://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/">https://firmware.koolshare.cn/LEDE_X64_fw867 / 虚拟机转盘或 PE 下写盘专用 /</a> 下载 <code>combined-squashfs.img.gz</code> 固件，解压后上传至群晖，如图：<br><img src="https://img.jakehu.me/20190712093324.png"></p>
+<h3 id="LEDE安装"><a href="#LEDE安装" class="headerlink" title="LEDE安装"></a>LEDE 安装</h3><h4 id="上传镜像"><a href="#上传镜像" class="headerlink" title="上传镜像"></a>上传镜像</h4><p>在<a target="_blank" rel="noopener" href="https://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/">https://firmware.koolshare.cn/LEDE_X64_fw867/虚拟机转盘或 PE 下写盘专用/</a> 下载<code>combined-squashfs.img.gz</code>固件，解压后上传至群晖，如图：<br><img src="https://img.jakehu.me/20190712093324.png"></p>
 <h4 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h4><p>好吧，被坑了，还一直没找到问题所在。</p>
-<p>最开始上了 <code>EDUP EP-9602 PCI-E千兆网卡（RTL8111芯片）</code>，在群晖的网络界面能识别，在 <code>VMM</code> 网络界面添加虚拟交换机时无法识别；后面又换了 <code>LR-LINK 联瑞pciex1台式机千兆有线网卡intelI211芯片支持linux LREC9202CT</code> 还是无法识别；后来又换了<code>胜为（shengwei）PCI-E千兆网卡 以太网rj45台式机电脑10/100/1000自适应网卡 单口 带唤醒 PEC-2051</code> 还是无法识别</p>
+<p>最开始上了<code>EDUP EP-9602 PCI-E千兆网卡（RTL8111芯片）</code>，在群晖的网络界面能识别，在<code>VMM</code>网络界面添加虚拟交换机时无法识别；后面又换了<code>LR-LINK 联瑞pciex1台式机千兆有线网卡intelI211芯片支持linux LREC9202CT</code>还是无法识别；后来又换了<code>胜为（shengwei）PCI-E千兆网卡 以太网rj45台式机电脑10/100/1000自适应网卡 单口 带唤醒 PEC-2051</code>还是无法识别</p>
 <p>算了，不玩儿了</p>
 <h3 id="终结"><a href="#终结" class="headerlink" title="终结"></a>终结</h3><p>网卡无法识别原因寻找中</p>
 <p>未完待续…</p>
@@ -1031,7 +1031,7 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>发布的命令很简单，但开始之前请前往 <code>npmjs.com</code> 注册一个账号</p>
+          <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>发布的命令很简单，但开始之前请前往<code>npmjs.com</code>注册一个账号</p>
 <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p><code>npm init</code></p>
 <h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p><code>npm login</code></p>
 <h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p><code>npm publish</code></p>
@@ -1136,8 +1136,8 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>鉴于电信运营商对公网 <code>IP</code> 的<code>吝啬</code>之前一直使用 <code>frp</code> 对家里的 <code>Nas</code> 进行公网暴露，不过之前 <code>frpc</code> 一直是放在<code>路由器梅林</code>上的，这次将 <code>frpc</code> 移到了<code>群晖Docker</code> 里面，所以制作了下面一键安装脚本以及 <code>Docker</code> 镜像以供使用</p>
-<h3 id="frps-onekey"><a href="#frps-onekey" class="headerlink" title="frps-onekey"></a>frps-onekey</h3><p>此脚本根据 <a target="_blank" rel="noopener" href="https://github.com/clangcn/onekey-install-shell/tree/master/frps">clangcn/onekey-install-shell</a> 脚本制作，感谢 <code>Clang</code> 大大</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>鉴于电信运营商对公网<code>IP</code>的<code>吝啬</code>之前一直使用<code>frp</code>对家里的<code>Nas</code>进行公网暴露，不过之前<code>frpc</code>一直是放在<code>路由器梅林</code>上的，这次将<code>frpc</code>移到了<code>群晖Docker</code>里面，所以制作了下面一键安装脚本以及<code>Docker</code>镜像以供使用</p>
+<h3 id="frps-onekey"><a href="#frps-onekey" class="headerlink" title="frps-onekey"></a>frps-onekey</h3><p>此脚本根据<a target="_blank" rel="noopener" href="https://github.com/clangcn/onekey-install-shell/tree/master/frps">clangcn/onekey-install-shell</a> 脚本制作，感谢<code>Clang</code>大大</p>
 <h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/jakehu/frp/master/frps-onekey/install-frps.sh -O ./install-frps.sh</span><br><span class="line"><span class="built_in">chmod</span> 700 ./install-frps.sh</span><br><span class="line">./install-frps.sh install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">./install-frps.sh uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">./install-frps.sh update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 管理</span></span><br><span class="line">frps {start|stop|restart|status|config|version}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="frpc-docker"><a href="#frpc-docker" class="headerlink" title="frpc-docker"></a>frpc-docker</h3><h3 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">docker run -d --restart always -v /data/frpc.ini:/frp/frpc.ini jakehu/frpc-docker</span><br></pre></td></tr></tbody></table></figure>
 
@@ -1246,19 +1246,19 @@ var _hmt = _hmt || [];
           <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说我目前的整个服务器的配置以及链路</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)</span><br></pre></td></tr></tbody></table></figure>
 
-<p>由于上 <code>https</code> 我想对整个 <code>frp</code> 放在群晖中去做一个映射，而不是放在路由器上</p>
+<p>由于上<code>https</code>我想对整个<code>frp</code>放在群晖中去做一个映射，而不是放在路由器上</p>
 <p>改造过后的链路为</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="Frp服务器"><a href="#Frp服务器" class="headerlink" title="Frp服务器"></a>Frp 服务器</h3><p><code>Frp</code> 服务器的安装这里可以看我做的一键安装脚本</p>
+<h3 id="Frp服务器"><a href="#Frp服务器" class="headerlink" title="Frp服务器"></a>Frp 服务器</h3><p><code>Frp</code>服务器的安装这里可以看我做的一键安装脚本</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/jakehu/frp">Frps 一件脚本</a></p>
-<h3 id="Https证书申请"><a href="#Https证书申请" class="headerlink" title="Https证书申请"></a>Https 证书申请</h3><p>可以是选择阿里云 <code>Symantec 免费版 SSL</code>，可以自行前往阿里云控制台申请</p>
-<p>我这里是用的 <a target="_blank" rel="noopener" href="https://www.sslforfree.com/">sslforfree</a> 在线申请的</p>
+<h3 id="Https证书申请"><a href="#Https证书申请" class="headerlink" title="Https证书申请"></a>Https 证书申请</h3><p>可以是选择阿里云<code>Symantec 免费版 SSL</code>，可以自行前往阿里云控制台申请</p>
+<p>我这里是用的<a target="_blank" rel="noopener" href="https://www.sslforfree.com/">sslforfree</a> 在线申请的</p>
 <p>当然也还可以通过其他的方式比如：<a target="_blank" rel="noopener" href="https://github.com/Neilpang/acme.sh">acme.sh</a> 等</p>
-<h3 id="Frp客户端"><a href="#Frp客户端" class="headerlink" title="Frp客户端"></a>Frp 客户端</h3><p>在群晖上 <code>Frp</code> 客户端可以用 <code>docker</code> 镜像，这里同样可以看我制作的镜像</p>
+<h3 id="Frp客户端"><a href="#Frp客户端" class="headerlink" title="Frp客户端"></a>Frp 客户端</h3><p>在群晖上<code>Frp</code>客户端可以用<code>docker</code>镜像，这里同样可以看我制作的镜像</p>
 <p><a target="_blank" rel="noopener" href="https://hub.docker.com/r/jakehu/frpc-docker">Frpc Docker 镜像</a></p>
 <p>在安装好服务端和客户端后，我们下载证书上传到群晖服务器上，同时我们像下图一样挂载<code>配置文件</code>和<code>证书目录</code><br><img src="https://img.jakehu.me/20190627153942.png"></p>
-<p>最后我们需要对 <code>https</code> 进行配置</p>
+<p>最后我们需要对<code>https</code>进行配置</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 127.0.0.1</span><br><span class="line">server_port = 5443</span><br><span class="line"></span><br><span class="line">[test]</span><br><span class="line">type = https</span><br><span class="line">custom_domains = test.jakehu.me</span><br><span class="line">plugin = https2http</span><br><span class="line">plugin_local_addr = 192.168.1.1:80</span><br><span class="line"># HTTPS 证书相关的配置</span><br><span class="line">plugin_crt_path = /frp/certificate/certificate.crt</span><br><span class="line">plugin_key_path = /frp/certificate/private.key</span><br><span class="line">plugin_host_header_rewrite = 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
@@ -1362,12 +1362,12 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>之前在使用 <code>gitlab runner</code> 时大多使用 <code>docker</code> 方式进行 <code>CI</code>，但是对于 <code>Java and Maven</code> 每次都需要下载费时很久，所以后来我选择 <code>shell</code> 方式。接下来我们看看 <code>shell</code> 方式的 <code>runner</code> 应该怎样搭建</p>
-<h3 id="NO-1"><a href="#NO-1" class="headerlink" title="NO.1"></a>NO.1</h3><p>第一步 我们首先安装 <code>Docker</code>，因为后面 CI 的时候我们需要打包成 <code>Docker</code> 镜像</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>之前在使用<code>gitlab runner</code>时大多使用<code>docker</code>方式进行<code>CI</code>，但是对于<code>Java and Maven</code>每次都需要下载费时很久，所以后来我选择<code>shell</code>方式。接下来我们看看<code>shell</code>方式的<code>runner</code>应该怎样搭建</p>
+<h3 id="NO-1"><a href="#NO-1" class="headerlink" title="NO.1"></a>NO.1</h3><p>第一步 我们首先安装<code>Docker</code>，因为后面 CI 的时候我们需要打包成<code>Docker</code>镜像</p>
 <p><a target="_blank" rel="noopener" href="https://docs.docker.com/install/">Docker Install</a></p>
-<h3 id="NO-2"><a href="#NO-2" class="headerlink" title="NO.2"></a>NO.2</h3><p>第二步 我们需要安装 <code>Java</code> 和 <code>Maven</code></p>
+<h3 id="NO-2"><a href="#NO-2" class="headerlink" title="NO.2"></a>NO.2</h3><p>第二步 我们需要安装<code>Java</code>和<code>Maven</code></p>
 <ol>
-<li>Installing Java 8 on CentOS 7</li>
+<li> Installing Java 8 on CentOS 7</li>
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Step 1: Update</span><br><span class="line">yum -y update</span><br><span class="line"></span><br><span class="line"># Step 2: Install Java 8</span><br><span class="line">yum install java-1.8.0-openjdk</span><br><span class="line"></span><br><span class="line"># Step 3:  Verify Java is Installed</span><br><span class="line"># Example Output:</span><br><span class="line">java -version</span><br><span class="line">openjdk version "1.8.0_212"</span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_212-b04)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.212-b04, mixed mode)</span><br></pre></td></tr></tbody></table></figure>
 <ol start="2">
@@ -1375,10 +1375,10 @@ var _hmt = _hmt || [];
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里我们直接有用yum默认安装</span><br><span class="line">yum install maven</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="No-3"><a href="#No-3" class="headerlink" title="No.3"></a>No.3</h3><p>第三步 我们需要安装 <code>gitlab-runner</code></p>
+<h3 id="No-3"><a href="#No-3" class="headerlink" title="No.3"></a>No.3</h3><p>第三步 我们需要安装<code>gitlab-runner</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 添加GitLab的官方存储库</span><br><span class="line"># For RHEL/CentOS/Fedora</span><br><span class="line">curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash</span><br><span class="line"></span><br><span class="line"># 安装gitlab-runner</span><br><span class="line">sudo yum install gitlab-runner</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="No-4"><a href="#No-4" class="headerlink" title="No.4"></a>No.4</h3><p>第四步 就是注册 <code>runner</code> 这里不过多赘述</p>
+<h3 id="No-4"><a href="#No-4" class="headerlink" title="No.4"></a>No.4</h3><p>第四步 就是注册<code>runner</code>这里不过多赘述</p>
 
       
     </div>

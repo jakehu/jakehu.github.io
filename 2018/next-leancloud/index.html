@@ -30,7 +30,7 @@
 <meta property="og:description" content="前因版本：NexT.Pisces v6.6.0Error： 阅读次数：Counter not initialized! See more at console err msg. 解决出现上述之错误，遂查看配置文件之说明 1234567891011# Show number of visitors to each article.# You can visit https:&#x2F;&#x2F;leancloud.c">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-04T10:17:21.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.575Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.566Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Next">
 <meta property="article:tag" content="Leancloud">
@@ -344,9 +344,9 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Show number of visitors to each article.</span><br><span class="line"># You can visit https://leancloud.cn get AppID and AppKey.</span><br><span class="line">leancloud_visitors:</span><br><span class="line">  enable: true</span><br><span class="line">  app_id: &lt;&lt;your app id&gt;&gt;</span><br><span class="line">  app_key: &lt;&lt;your app key&gt;&gt;</span><br><span class="line">  # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security</span><br><span class="line">  # If you don't care about security in lc counter and just want to use it directly</span><br><span class="line">  # (without hexo-leancloud-counter-security plugin), set the `security` to `false`.</span><br><span class="line">  security: true</span><br><span class="line">  betterPerformance: false</span><br></pre></td></tr></tbody></table></figure>
 <p>如上述两个解决办法：</p>
 <ol>
-<li><p>安装 <code>hexo-leancloud-counter-security</code> 并设置 <code>leancloud</code> 的 <code>app_id</code> 和 <code>app_key</code></p>
+<li><p>安装<code>hexo-leancloud-counter-security</code>并设置<code>leancloud</code>的<code>app_id</code>和<code>app_key</code></p>
 </li>
-<li><p>将 <code>security</code> 设置为 <code>security: false</code></p>
+<li><p>将<code>security</code>设置为<code>security: false</code></p>
 </li>
 </ol>
 <p>因为懒所以选择了第二方案。</p>

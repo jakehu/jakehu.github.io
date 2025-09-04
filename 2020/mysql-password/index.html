@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记自用代码管理 gogs 和对应的 mysql 都部署在家用群晖的 Docker 上，今早发现 gogs 报 500 错误无法访问，经过查询日志确定是 mysql 5.7 密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expi">
+    <meta name="description" content="前记自用代码管理gogs和对应的mysql都部署在家用群晖的Docker上，今早发现gogs报500错误无法访问，经过查询日志确定是mysql 5.7密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expired password">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gogs 报 500 错误，Mysql 密码到期了？">
 <meta property="og:url" content="https://www.jakehu.me/2020/mysql-password/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记自用代码管理 gogs 和对应的 mysql 都部署在家用群晖的 Docker 上，今早发现 gogs 报 500 错误无法访问，经过查询日志确定是 mysql 5.7 密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expi">
+<meta property="og:description" content="前记自用代码管理gogs和对应的mysql都部署在家用群晖的Docker上，今早发现gogs报500错误无法访问，经过查询日志确定是mysql 5.7密码已过期，如下错误 1Error 1862: Your password has expired. To log in you must change it using a client that supports expired password">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-31T11:21:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.575Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.566Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
@@ -338,13 +338,13 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理 <code>gogs</code> 和对应的 <code>mysql</code> 都部署在家用群晖的 <code>Docker</code> 上，今早发现 <code>gogs</code> 报 <code>500</code> 错误无法访问，经过查询日志确定是 <code>mysql 5.7</code> 密码已过期，如下错误</p>
+    <div class="post-body" itemprop="articleBody"><h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>自用代码管理<code>gogs</code>和对应的<code>mysql</code>都部署在家用群晖的<code>Docker</code>上，今早发现<code>gogs</code>报<code>500</code>错误无法访问，经过查询日志确定是<code>mysql 5.7</code>密码已过期，如下错误</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error 1862: Your password has expired. To log in you must change it using a client that supports expired passwords.</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code> 登陆到群晖</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p><code>ssh</code>登陆到群晖</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh admin@192.168.1.x -p xx22</span><br></pre></td></tr></tbody></table></figure>
-<p>首先我们需要对群晖 <code>admin</code> 账户提权</p>
+<p>首先我们需要对群晖<code>admin</code>账户提权</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></tbody></table></figure>
-<p>然后进入对应的 <code>docker</code> 容器并登陆到 <code>mysql</code> 客户端，这里说明一下客户端的密码是不会过期的</p>
+<p>然后进入对应的<code>docker</code>容器并登陆到<code>mysql</code>客户端，这里说明一下客户端的密码是不会过期的</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql1 mysql -uroot -ppassword</span><br></pre></td></tr></tbody></table></figure>
 <p>然后重置密码</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = password('newpassword');</span><br></pre></td></tr></tbody></table></figure>
@@ -352,7 +352,7 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
 <p>最后设置密码永不过期</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL default_password_lifetime = 0;</span><br></pre></td></tr></tbody></table></figure>
-<p>到此问题就解决了，又可以愉快的访问 <code>gogs</code> 了</p>
+<p>到此问题就解决了，又可以愉快的访问<code>gogs</code>了</p>
 
     </div>
 

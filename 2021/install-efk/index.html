@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前言ELK 对于日志管理来说毫无疑问是最好的选择，但有的时候觉得 Logstash 比较的笨重，相反 Filebeat 也不失为一个好的选择。 此次安装的版本为 7.15.0 安装对于几个组件的安装都是非常的简单，可以直接利用官方打好的包就好 Elasticsearch 安装文档 Kibana 安装文档 Filebeat 安装文档 安装时建议通过 RPM 包安装，这样能固定版本减少一些兼容性问题如">
+    <meta name="description" content="前言ELK对于日志管理来说毫无疑问是最好的选择，但有的时候觉得Logstash比较的笨重，相反Filebeat也不失为一个好的选择。 此次安装的版本为7.15.0 安装对于几个组件的安装都是非常的简单，可以直接利用官方打好的包就好 Elasticsearch 安装文档 Kibana 安装文档 Filebeat 安装文档 安装时建议通过 RPM 包安装，这样能固定版本减少一些兼容性问题如： 123w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单机版 Elasticsearch&amp;Kibana&amp;Filebeat 安装与配置">
+<meta property="og:title" content="单机版 Elasticsearch &amp; Kibana &amp; Filebeat 安装与配置">
 <meta property="og:url" content="https://www.jakehu.me/2021/install-efk/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前言ELK 对于日志管理来说毫无疑问是最好的选择，但有的时候觉得 Logstash 比较的笨重，相反 Filebeat 也不失为一个好的选择。 此次安装的版本为 7.15.0 安装对于几个组件的安装都是非常的简单，可以直接利用官方打好的包就好 Elasticsearch 安装文档 Kibana 安装文档 Filebeat 安装文档 安装时建议通过 RPM 包安装，这样能固定版本减少一些兼容性问题如">
+<meta property="og:description" content="前言ELK对于日志管理来说毫无疑问是最好的选择，但有的时候觉得Logstash比较的笨重，相反Filebeat也不失为一个好的选择。 此次安装的版本为7.15.0 安装对于几个组件的安装都是非常的简单，可以直接利用官方打好的包就好 Elasticsearch 安装文档 Kibana 安装文档 Filebeat 安装文档 安装时建议通过 RPM 包安装，这样能固定版本减少一些兼容性问题如： 123w">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-14T13:46:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.574Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.565Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Elasticsearch">
 <meta property="article:tag" content="Kibana">
@@ -41,10 +41,10 @@
 <link rel="canonical" href="https://www.jakehu.me/2021/install-efk/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.jakehu.me/2021/install-efk/","path":"2021/install-efk/","title":"单机版 Elasticsearch&Kibana&Filebeat 安装与配置"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.jakehu.me/2021/install-efk/","path":"2021/install-efk/","title":"单机版 Elasticsearch & Kibana & Filebeat 安装与配置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>单机版 Elasticsearch&Kibana&Filebeat 安装与配置 | 晨曦's Blog</title>
+<title>单机版 Elasticsearch & Kibana & Filebeat 安装与配置 | 晨曦's Blog</title>
   
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-G9MLY7XV45","only_pageview":true,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js" defer></script>
@@ -281,12 +281,12 @@ var _hmt = _hmt || [];
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="单机版 Elasticsearch&amp;Kibana&amp;Filebeat 安装与配置 | 晨曦's Blog">
+      <meta itemprop="name" content="单机版 Elasticsearch &amp; Kibana &amp; Filebeat 安装与配置 | 晨曦's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          单机版 Elasticsearch&Kibana&Filebeat 安装与配置
+          单机版 Elasticsearch & Kibana & Filebeat 安装与配置
         </h1>
 
         <div class="post-meta-container">
@@ -310,7 +310,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2021/install-efk/" class="post-meta-item leancloud_visitors" data-flag-title="单机版 Elasticsearch&Kibana&Filebeat 安装与配置" title="阅读次数">
+    <span id="/2021/install-efk/" class="post-meta-item leancloud_visitors" data-flag-title="单机版 Elasticsearch & Kibana & Filebeat 安装与配置" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -340,15 +340,15 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>ELK</code> 对于日志管理来说毫无疑问是最好的选择，但有的时候觉得 <code>Logstash</code> 比较的笨重，相反 <code>Filebeat</code> 也不失为一个好的选择。</p>
-<p>此次安装的版本为 <code>7.15.0</code></p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>ELK</code>对于日志管理来说毫无疑问是最好的选择，但有的时候觉得<code>Logstash</code>比较的笨重，相反<code>Filebeat</code>也不失为一个好的选择。</p>
+<p>此次安装的版本为<code>7.15.0</code></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>对于几个组件的安装都是非常的简单，可以直接利用官方打好的包就好</p>
 <p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html">Elasticsearch 安装文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/kibana/current/install.html">Kibana 安装文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html">Filebeat 安装文档</a></p>
 <p>安装时建议通过 RPM 包安装，这样能固定版本减少一些兼容性问题如：</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-7.15.0-x86_64.rpm</span><br><span class="line">shasum -a 512 kibana-7.15.0-x86_64.rpm</span><br><span class="line">sudo rpm --install kibana-7.15.0-x86_64.rpm</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h4><p>如果只是单机版的话 <code>Elasticsearch</code> 配置倒是不用过多修改，接下来配置一下 <code>Elasticsearch</code> 开启密码访问就可以了</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h4><p>如果只是单机版的话<code>Elasticsearch</code>配置倒是不用过多修改，接下来配置一下<code>Elasticsearch</code>开启密码访问就可以了</p>
 <p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-passwords.html">设置密码文档</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.chaiguanxin.com/articles/2019/06/10/1560143174513.html">安全配置参考</a></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpack.security.enabled: true # 普通的安全设置</span><br></pre></td></tr></tbody></table></figure>
@@ -356,17 +356,17 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto</span><br></pre></td></tr></tbody></table></figure>
 <p>上面命令会设置各个内置用户的密码</p>
 <p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html">内置用户文档</a></p>
-<h4 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h4><p><code>Kibana</code> 只需要配置如下几个项目即可</p>
+<h4 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h4><p><code>Kibana</code>只需要配置如下几个项目即可</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server.port: 5601 # 端口</span><br><span class="line">server.host: "0.0.0.0" # 允许远程连接</span><br><span class="line">elasticsearch.hosts: ["http://localhost:9200"] # ES的地址</span><br><span class="line">elasticsearch.username: "kibana_system" # 上面设置的用户和密码</span><br><span class="line">elasticsearch.password: "password"</span><br><span class="line">i18n.locale: "zh-CN" # 页面支持中文</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="Filebeat"><a href="#Filebeat" class="headerlink" title="Filebeat"></a>Filebeat</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">output.elasticsearch:</span><br><span class="line">  # Array of hosts to connect to.</span><br><span class="line">  hosts: ["localhost:9200"]</span><br><span class="line">  username: "elastic"</span><br><span class="line">  password: "elastic"</span><br><span class="line">  index: "filebeat-%{+yyyy.MM.dd}"</span><br><span class="line">  indices:</span><br><span class="line">    - index: "filebeat-nginx-access-%{+yyyy.MM.dd}"</span><br><span class="line">      when.equals:</span><br><span class="line">        fields.type: nginx.access</span><br><span class="line">    - index: "filebeat-nginx-error-%{+yyyy.MM.dd}"</span><br><span class="line">      when.equals:</span><br><span class="line">        fields.type: nginx.error</span><br><span class="line"></span><br><span class="line">setup.ilm.enabled: false # 索引生命周期</span><br><span class="line">setup.ilm.check_exists: false</span><br><span class="line">setup.template.enabled: true # 索引模版</span><br><span class="line">setup.template.name: "filebeat"</span><br><span class="line">setup.template.pattern: "filebeat-*"</span><br></pre></td></tr></tbody></table></figure>
-<p>对于 <code>Filebeat</code> 的设置，这里的 <code>username</code> 需要用 <code>elastic</code> 用户。如果用 <code>beats_system</code> 用户的话会提示 <code>403</code> 无权限。</p>
+<p>对于<code>Filebeat</code>的设置，这里的<code>username</code>需要用<code>elastic</code>用户。如果用<code>beats_system</code>用户的话会提示<code>403</code>无权限。</p>
 <p>具体可以参考：<a target="_blank" rel="noopener" href="https://discuss.elastic.co/t/security-error-with-beats-system-account-and-filebeat-with-system-module/146822">Security error with beats_system account and Filebeat with system module</a></p>
-<h4 id="Filebeat-Module"><a href="#Filebeat-Module" class="headerlink" title="Filebeat Module"></a>Filebeat Module</h4><p>以 <code>nginx</code> 为例打开 <code>nginx.access</code> 和 <code>nginx.error</code></p>
+<h4 id="Filebeat-Module"><a href="#Filebeat-Module" class="headerlink" title="Filebeat Module"></a>Filebeat Module</h4><p>以<code>nginx</code>为例打开<code>nginx.access</code>和<code>nginx.error</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/filebeat/modules.d/nginx.yml</span><br><span class="line"></span><br><span class="line">  access:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths: ["/var/log/nginx/access.log"]</span><br><span class="line">    input:</span><br><span class="line">      fields:</span><br><span class="line">        type: nginx.access</span><br><span class="line"></span><br><span class="line">  error:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths: ["/var/log/nginx/error.log"]</span><br><span class="line">    input:</span><br><span class="line">      fields:</span><br><span class="line">        type: nginx.error</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>进入 <code>Kibana</code> 管理页面，新建索引<br><code>Management-&gt;Stack Management-&gt;索引模式-&gt;创建索引模式</code></p>
-<h4 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h4><p>配置到<code>索引</code>时就已经可以在 <code>Kibana</code> 中看到有 <code>nginx</code> 默认的日志进来，但如果我们有自定义的日志格式，就需要用到 <code>Pipeline</code></p>
-<p><code>Pipeline</code> 所存放的位置 <code>/usr/share/filebeat/module/nginx/access/ingest/pipeline.yml</code></p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>进入<code>Kibana</code>管理页面，新建索引<br><code>Management-&gt;Stack Management-&gt;索引模式-&gt;创建索引模式</code></p>
+<h4 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h4><p>配置到<code>索引</code>时就已经可以在<code>Kibana</code>中看到有<code>nginx</code>默认的日志进来，但如果我们有自定义的日志格式，就需要用到<code>Pipeline</code></p>
+<p><code>Pipeline</code>所存放的位置<code>/usr/share/filebeat/module/nginx/access/ingest/pipeline.yml</code></p>
 <p>也可通过开发工具查询 <code>GET _ingest/pipeline/filebeat-7.15.0-nginx-access-pipeline</code></p>
 <p><a target="_blank" rel="noopener" href="http://grokdebug.herokuapp.com/">Grok Debugger</a></p>
 

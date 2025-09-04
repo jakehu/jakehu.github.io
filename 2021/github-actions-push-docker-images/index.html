@@ -22,17 +22,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前言目前 Docker Hub 上普通用户已经不能自动构建了，于是想通过 Github Actions 来实现打包并推送到 Docker Hub 实现第一步第一步先在项目下建一个 yml 文件，路径：.github&#x2F;workflows&#x2F;push2hub.yml 内容如下： 12345678910111213141516171819202122name: Publish Docker imageon">
+    <meta name="description" content="前言目前Docker Hub上普通用户已经不能自动构建了，于是想通过Github Actions来实现打包并推送到Docker Hub 实现第一步第一步先在项目下建一个yml文件，路径：.github&#x2F;workflows&#x2F;push2hub.yml 内容如下： 12345678910111213141516171819202122name: Publish Docker imageon:  push">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初探 Github Actions 推送 Docker 镜像到 Docker Hub">
 <meta property="og:url" content="https://www.jakehu.me/2021/github-actions-push-docker-images/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前言目前 Docker Hub 上普通用户已经不能自动构建了，于是想通过 Github Actions 来实现打包并推送到 Docker Hub 实现第一步第一步先在项目下建一个 yml 文件，路径：.github&#x2F;workflows&#x2F;push2hub.yml 内容如下： 12345678910111213141516171819202122name: Publish Docker imageon">
+<meta property="og:description" content="前言目前Docker Hub上普通用户已经不能自动构建了，于是想通过Github Actions来实现打包并推送到Docker Hub 实现第一步第一步先在项目下建一个yml文件，路径：.github&#x2F;workflows&#x2F;push2hub.yml 内容如下： 12345678910111213141516171819202122name: Publish Docker imageon:  push">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/2021/09/01/UMJEbb.png">
 <meta property="og:image" content="https://img.jakehu.me/2021/09/01/kCVfE8.png">
 <meta property="article:published_time" content="2021-09-01T14:50:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.573Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.564Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="Github">
@@ -342,13 +342,13 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>目前 <code>Docker Hub</code> 上普通用户已经不能自动构建了，于是想通过 <code>Github Actions</code> 来实现打包并推送到 <code>Docker Hub</code></p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>第一步先在项目下建一个 <code>yml</code> 文件，路径：<code>.github/workflows/push2hub.yml</code></p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>目前<code>Docker Hub</code>上普通用户已经不能自动构建了，于是想通过<code>Github Actions</code>来实现打包并推送到<code>Docker Hub</code></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>第一步先在项目下建一个<code>yml</code>文件，路径：<code>.github/workflows/push2hub.yml</code></p>
 <p>内容如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">name: Publish Docker image</span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - master</span><br><span class="line">jobs:</span><br><span class="line">  push_to_registry:</span><br><span class="line">    name: Push Docker image to Docker Hub</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - name: Check out the repo</span><br><span class="line">        uses: actions/checkout@v2</span><br><span class="line">      - name: Log in to Docker Hub</span><br><span class="line">        uses: docker/login-action@v1</span><br><span class="line">        with:</span><br><span class="line">          username: ${{ secrets.DOCKER_USERNAME }}</span><br><span class="line">          password: ${{ secrets.DOCKER_PASSWORD }}</span><br><span class="line">      - name: Push to Docker Hub</span><br><span class="line">        uses: docker/build-push-action@v2</span><br><span class="line">        with:</span><br><span class="line">          push: true</span><br><span class="line">          tags: jakehu/scripts:latest</span><br></pre></td></tr></tbody></table></figure>
-<p>上面 <code>Yaml</code> 的功能是，在每一次推送到 <code>Master</code> 分支上的时候，就将项目推送到 <code>Docker Hub</code> 上的 <code>jakehu</code> 用户下的 <code>scripts</code> 仓库里的 <code>latest Tag</code> 上</p>
-<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>第二步需要在 <code>github</code> 上设置 <code>DOCKER_USERNAME</code> 和 <code>DOCKER_PASSWORD</code> 两个变量<br><img src="https://img.jakehu.me/2021/09/01/UMJEbb.png" alt="UMJEbb"></p>
-<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>第三步只需要对 <code>Master</code> 分支进行推送即可，然后我们就能在 <code>Actions</code> 里面看到对应的流水线信息<br><img src="https://img.jakehu.me/2021/09/01/kCVfE8.png" alt="kCVfE8"></p>
+<p>上面<code>Yaml</code>的功能是，在每一次推送到<code>Master</code>分支上的时候，就将项目推送到<code>Docker Hub</code>上的<code>jakehu</code>用户下的<code>scripts</code>仓库里的<code>latest Tag</code>上</p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>第二步需要在<code>github</code>上设置<code>DOCKER_USERNAME</code>和<code>DOCKER_PASSWORD</code>两个变量<br><img src="https://img.jakehu.me/2021/09/01/UMJEbb.png" alt="UMJEbb"></p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>第三步只需要对<code>Master</code>分支进行推送即可，然后我们就能在<code>Actions</code>里面看到对应的流水线信息<br><img src="https://img.jakehu.me/2021/09/01/kCVfE8.png" alt="kCVfE8"></p>
 <hr>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/cn/actions">Github Actions 文档</a></p>
 

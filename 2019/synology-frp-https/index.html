@@ -22,16 +22,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)  由于上 https 我想对整个 frp 放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器  Frp 服务器F">
+    <meta name="description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)  由于上https我想对整个frp放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器  Frp 服务器Frp服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何利用 Frp &amp; https 暴露你在内网的群晖">
 <meta property="og:url" content="https://www.jakehu.me/2019/synology-frp-https/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)  由于上 https 我想对整个 frp 放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器  Frp 服务器F">
+<meta property="og:description" content="前记说说我目前的整个服务器的配置以及链路 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)  由于上https我想对整个frp放在群晖中去做一个映射，而不是放在路由器上 改造过后的链路为 1Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器  Frp 服务器Frp服务">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/20190627153942.png">
 <meta property="article:published_time" content="2019-06-27T11:05:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.577Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.568Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="frp">
 <meta property="article:tag" content="群晖">
@@ -345,19 +345,19 @@ var _hmt = _hmt || [];
     <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说我目前的整个服务器的配置以及链路</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(内网ASUS路由器) -&gt; NAS(群晖)</span><br></pre></td></tr></tbody></table></figure>
 
-<p>由于上 <code>https</code> 我想对整个 <code>frp</code> 放在群晖中去做一个映射，而不是放在路由器上</p>
+<p>由于上<code>https</code>我想对整个<code>frp</code>放在群晖中去做一个映射，而不是放在路由器上</p>
 <p>改造过后的链路为</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome -&gt; Frp服务器 -&gt; Frp客户端(群晖) -&gt; NAS(群晖) || 路由器</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="Frp服务器"><a href="#Frp服务器" class="headerlink" title="Frp服务器"></a>Frp 服务器</h3><p><code>Frp</code> 服务器的安装这里可以看我做的一键安装脚本</p>
+<h3 id="Frp服务器"><a href="#Frp服务器" class="headerlink" title="Frp服务器"></a>Frp 服务器</h3><p><code>Frp</code>服务器的安装这里可以看我做的一键安装脚本</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/jakehu/frp">Frps 一件脚本</a></p>
-<h3 id="Https证书申请"><a href="#Https证书申请" class="headerlink" title="Https证书申请"></a>Https 证书申请</h3><p>可以是选择阿里云 <code>Symantec 免费版 SSL</code>，可以自行前往阿里云控制台申请</p>
-<p>我这里是用的 <a target="_blank" rel="noopener" href="https://www.sslforfree.com/">sslforfree</a> 在线申请的</p>
+<h3 id="Https证书申请"><a href="#Https证书申请" class="headerlink" title="Https证书申请"></a>Https 证书申请</h3><p>可以是选择阿里云<code>Symantec 免费版 SSL</code>，可以自行前往阿里云控制台申请</p>
+<p>我这里是用的<a target="_blank" rel="noopener" href="https://www.sslforfree.com/">sslforfree</a> 在线申请的</p>
 <p>当然也还可以通过其他的方式比如：<a target="_blank" rel="noopener" href="https://github.com/Neilpang/acme.sh">acme.sh</a> 等</p>
-<h3 id="Frp客户端"><a href="#Frp客户端" class="headerlink" title="Frp客户端"></a>Frp 客户端</h3><p>在群晖上 <code>Frp</code> 客户端可以用 <code>docker</code> 镜像，这里同样可以看我制作的镜像</p>
+<h3 id="Frp客户端"><a href="#Frp客户端" class="headerlink" title="Frp客户端"></a>Frp 客户端</h3><p>在群晖上<code>Frp</code>客户端可以用<code>docker</code>镜像，这里同样可以看我制作的镜像</p>
 <p><a target="_blank" rel="noopener" href="https://hub.docker.com/r/jakehu/frpc-docker">Frpc Docker 镜像</a></p>
 <p>在安装好服务端和客户端后，我们下载证书上传到群晖服务器上，同时我们像下图一样挂载<code>配置文件</code>和<code>证书目录</code><br><img src="https://img.jakehu.me/20190627153942.png"></p>
-<p>最后我们需要对 <code>https</code> 进行配置</p>
+<p>最后我们需要对<code>https</code>进行配置</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 127.0.0.1</span><br><span class="line">server_port = 5443</span><br><span class="line"></span><br><span class="line">[test]</span><br><span class="line">type = https</span><br><span class="line">custom_domains = test.jakehu.me</span><br><span class="line">plugin = https2http</span><br><span class="line">plugin_local_addr = 192.168.1.1:80</span><br><span class="line"># HTTPS 证书相关的配置</span><br><span class="line">plugin_crt_path = /frp/certificate/certificate.crt</span><br><span class="line">plugin_key_path = /frp/certificate/private.key</span><br><span class="line">plugin_host_header_rewrite = 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>

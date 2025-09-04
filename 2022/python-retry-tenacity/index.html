@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记最近在做监控 Spring Boot &#x2F;actuator&#x2F;health 的时候，总是会出现一些莫名其妙的网络超时中断，于是想到了用重试机制来进行重试请求。 下面看看 Python 的第三方库 Tenacity 安装1pip install Tenacity 使用12345678910111213141516import requestsfrom tenacity import retry, s">
+    <meta name="description" content="前记最近在做监控Spring Boot &#x2F;actuator&#x2F;health的时候，总是会出现一些莫名其妙的网络超时中断，于是想到了用重试机制来进行重试请求。 下面看看Python的第三方库Tenacity 安装1pip install Tenacity 使用12345678910111213141516import requestsfrom tenacity import retry, stop_a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 重试机制框架 tenacity 使用">
 <meta property="og:url" content="https://www.jakehu.me/2022/python-retry-tenacity/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记最近在做监控 Spring Boot &#x2F;actuator&#x2F;health 的时候，总是会出现一些莫名其妙的网络超时中断，于是想到了用重试机制来进行重试请求。 下面看看 Python 的第三方库 Tenacity 安装1pip install Tenacity 使用12345678910111213141516import requestsfrom tenacity import retry, s">
+<meta property="og:description" content="前记最近在做监控Spring Boot &#x2F;actuator&#x2F;health的时候，总是会出现一些莫名其妙的网络超时中断，于是想到了用重试机制来进行重试请求。 下面看看Python的第三方库Tenacity 安装1pip install Tenacity 使用12345678910111213141516import requestsfrom tenacity import retry, stop_a">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-13T11:22:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.576Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.567Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="tenacity">
 <meta property="article:tag" content="retry">
@@ -339,14 +339,14 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做监控 <code>Spring Boot /actuator/health</code> 的时候，总是会出现一些莫名其妙的网络超时中断，于是想到了用重试机制来进行重试请求。</p>
-<p>下面看看 <code>Python</code> 的第三方库 <code>Tenacity</code></p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做监控<code>Spring Boot /actuator/health</code>的时候，总是会出现一些莫名其妙的网络超时中断，于是想到了用重试机制来进行重试请求。</p>
+<p>下面看看<code>Python</code>的第三方库<code>Tenacity</code></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Tenacity</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> tenacity <span class="keyword">import</span> retry, stop_after_attempt, wait_fixed</span><br><span class="line"></span><br><span class="line"><span class="comment"># reraise 表示是否抛出原异常，默认为 False</span></span><br><span class="line"><span class="comment"># stop_after_attempt 表示最大尝试次数</span></span><br><span class="line"><span class="comment"># wait_fixed 表示等待时间</span></span><br><span class="line"><span class="meta">@retry(<span class="params">reraise=<span class="literal">True</span>, stop=stop_after_attempt(<span class="params"><span class="number">2</span></span>), wait=wait_fixed(<span class="params"><span class="number">2</span></span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Start Try "</span> + <span class="built_in">str</span>(main.retry.statistics[<span class="string">"attempt_number"</span>]))</span><br><span class="line">    resp = requests.get(<span class="string">"https://httpstat.us/200?sleep=5000"</span>, timeout=<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(resp.status_code)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    main()</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">str</span>(e))</span><br></pre></td></tr></tbody></table></figure>
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Start Try 1</span><br><span class="line">Start Try 2</span><br><span class="line">HTTPSConnectionPool(host='httpstat.us', port=443): Read timed out. (read timeout=3)</span><br></pre></td></tr></tbody></table></figure>
-<p>上面示例中，设定超时为 <code>3s</code> 请求却 <code>sleep=5000</code> 此请求必然会超时</p>
-<p><code>tenacity</code> 只要遇见 <code>raise</code> 就会触发重试，上面代码中 <code>requests</code> 底层已经 <code>raise</code>，所以即使 <code>main</code> 函数中没有 <code>raise</code> 依然会重试</p>
+<p>上面示例中，设定超时为<code>3s</code>请求却<code>sleep=5000</code>此请求必然会超时</p>
+<p><code>tenacity</code>只要遇见<code>raise</code>就会触发重试，上面代码中<code>requests</code>底层已经<code>raise</code>，所以即使<code>main</code>函数中没有<code>raise</code>依然会重试</p>
 <p><a target="_blank" rel="noopener" href="https://tenacity.readthedocs.io/en/latest/">参考文档</a></p>
 
     </div>

@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Headless Chrome什么是 Headless Chrome？ 在 Chrome59 中开始搭载 Headless Chrome。这是一种在无需显示 headless 的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 Chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink 渲染引擎提供的所有现代 Web 平台的功能都带入了命令行。 into">
+    <meta name="description" content="Headless Chrome什么是Headless Chrome？ 在Chrome59中开始搭载Headless Chrome。这是一种在无需显示headless的环境下运行Chrome 浏览器的方式。从本质上来说，就是不用Chrome浏览器来运行Chrome的功能！它将Chromium和Blink渲染引擎提供的所有现代Web平台的功能都带入了命令行。 intoli开始安装之前我们来了解一下这家">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos7 之安装 Headless Chrome">
 <meta property="og:url" content="https://www.jakehu.me/2019/centos-chrome-headles/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="Headless Chrome什么是 Headless Chrome？ 在 Chrome59 中开始搭载 Headless Chrome。这是一种在无需显示 headless 的环境下运行 Chrome 浏览器的方式。从本质上来说，就是不用 Chrome 浏览器来运行 Chrome 的功能！它将 Chromium 和 Blink 渲染引擎提供的所有现代 Web 平台的功能都带入了命令行。 into">
+<meta property="og:description" content="Headless Chrome什么是Headless Chrome？ 在Chrome59中开始搭载Headless Chrome。这是一种在无需显示headless的环境下运行Chrome 浏览器的方式。从本质上来说，就是不用Chrome浏览器来运行Chrome的功能！它将Chromium和Blink渲染引擎提供的所有现代Web平台的功能都带入了命令行。 intoli开始安装之前我们来了解一下这家">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-19T17:16:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.572Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.563Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Headless">
 <meta property="article:tag" content="Chrome">
@@ -339,19 +339,19 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="Headless-Chrome"><a href="#Headless-Chrome" class="headerlink" title="Headless Chrome"></a>Headless Chrome</h3><p>什么是 <code>Headless Chrome</code>？</p>
-<p>在 <code>Chrome59</code> 中开始搭载 <code>Headless Chrome</code>。这是一种在无需显示 <code>headless</code> 的环境下运行 <code>Chrome</code> 浏览器的方式。从本质上来说，就是不用 <code>Chrome</code> 浏览器来运行 <code>Chrome</code> 的功能！它将 <code>Chromium</code> 和 <code>Blink</code> 渲染引擎提供的所有现代 <code>Web</code> 平台的功能都带入了命令行。</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="Headless-Chrome"><a href="#Headless-Chrome" class="headerlink" title="Headless Chrome"></a>Headless Chrome</h3><p>什么是<code>Headless Chrome</code>？</p>
+<p>在<code>Chrome59</code>中开始搭载<code>Headless Chrome</code>。这是一种在无需显示<code>headless</code>的环境下运行<code>Chrome</code> 浏览器的方式。从本质上来说，就是不用<code>Chrome</code>浏览器来运行<code>Chrome</code>的功能！它将<code>Chromium</code>和<code>Blink</code>渲染引擎提供的所有现代<code>Web</code>平台的功能都带入了命令行。</p>
 <h3 id="intoli"><a href="#intoli" class="headerlink" title="intoli"></a>intoli</h3><p>开始安装之前我们来了解一下这家公司</p>
 <p><code>我们(intoli)是一家在数据采集，处理和分析方面具有深厚专业知识的咨询机构。</code></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>intoli</code> 在其博客上介绍了几种安装 <code>Headless Chrome</code> 的方式，我们采用如下方式安装：</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>intoli</code>在其博客上介绍了几种安装<code>Headless Chrome</code>的方式，我们采用如下方式安装：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://intoli.com/install-google-chrome.sh | bash</span><br></pre></td></tr></tbody></table></figure>
 <p>安装完成提示：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Successfully installed Google Chrome!</span><br></pre></td></tr></tbody></table></figure>
 <p><a target="_blank" rel="noopener" href="https://intoli.com/blog/installing-google-chrome-on-centos/">intoli 安装文档</a></p>
-<h3 id="运行chrome"><a href="#运行chrome" class="headerlink" title="运行chrome"></a>运行 chrome</h3><p>我们可以通过如下命令来启动 <code>Chrome</code>，同时将博客截图保存</p>
+<h3 id="运行chrome"><a href="#运行chrome" class="headerlink" title="运行chrome"></a>运行 chrome</h3><p>我们可以通过如下命令来启动<code>Chrome</code>，同时将博客截图保存</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">google-chrome-stable --no-sandbox --headless --disable-gpu --screenshot https://www.jakehu.me</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="Chromedriver"><a href="#Chromedriver" class="headerlink" title="Chromedriver"></a>Chromedriver</h3><p><code>chromedriver</code> 可以前往<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/chromedriver">淘宝镜像</a>下载，同时通过下面命令进行验证：</p>
+<h3 id="Chromedriver"><a href="#Chromedriver" class="headerlink" title="Chromedriver"></a>Chromedriver</h3><p><code>chromedriver</code>可以前往<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/chromedriver">淘宝镜像</a>下载，同时通过下面命令进行验证：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./chromedriver</span><br><span class="line">Starting ChromeDriver 73.0.3683.68 (47787ec04b6e38e22703e856e101e840b65afe72) on port 9515</span><br><span class="line">Only local connections are allowed.</span><br><span class="line">Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.</span><br></pre></td></tr></tbody></table></figure>
 <p>如果有如上输出则表示驱动正常运行</p>
 

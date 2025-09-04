@@ -335,18 +335,18 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p><code>Kubeadm</code> 是一个工具，通过提供 <code>kubeadm init</code> 和 <code>kubeadm join</code> 来作为创建 <code>Kubernetes</code> 集群的最佳实践 “快速路径”</p>
-<p>简单理解就跟 <code>Docker swarm</code> 差不多吧，<code>Kubeadm</code> 的 <code>GA</code> 版本都已经发布了，那还等什么呢？</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p><code>Kubeadm</code>是一个工具，通过提供<code>kubeadm init</code>和<code>kubeadm join</code>来作为创建<code>Kubernetes</code>集群的最佳实践 “快速路径”</p>
+<p>简单理解就跟<code>Docker swarm</code>差不多吧，<code>Kubeadm</code>的<code>GA</code>版本都已经发布了，那还等什么呢？</p>
 <h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><h5 id="资源版本"><a href="#资源版本" class="headerlink" title="资源版本"></a>资源版本</h5><ol>
 <li><code>CentOS 7.6 64</code></li>
 <li><code>Kubernetes version: v1.13.2</code></li>
 <li><code>Docker version 18.06</code></li>
 </ol>
 <blockquote>
-<p>这里为什么使用 <code>Docker 18.06</code> 是因为 <code>kubeadm now properly recognizes Docker 18.09.0 and newer, but still treats 18.06 as the default supported version.</code></p>
+<p>这里为什么使用<code>Docker 18.06</code>是因为<code>kubeadm now properly recognizes Docker 18.09.0 and newer, but still treats 18.06 as the default supported version.</code></p>
 </blockquote>
-<p>所以我们默认还是使用 <code>18.06</code></p>
-<h5 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h5><p>这里我们使用 <code>CentOS 7.6 64</code>，同时测试环境为阿里云服务器</p>
+<p>所以我们默认还是使用<code>18.06</code></p>
+<h5 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h5><p>这里我们使用<code>CentOS 7.6 64</code>，同时测试环境为阿里云服务器</p>
 <table>
 <thead>
 <tr>
@@ -376,44 +376,44 @@ var _hmt = _hmt || [];
 </tr>
 </tbody></table>
 <blockquote>
-<p>这里注意一下服务器系统，目前官方已支持 <code>Ubuntu 16.04+</code>、<code>Debian 9</code>、<code>CentOS 7</code>、<code>RHEL 7</code> 等</p>
+<p>这里注意一下服务器系统，目前官方已支持<code>Ubuntu 16.04+</code>、<code>Debian 9</code>、<code>CentOS 7</code>、<code>RHEL 7</code>等</p>
 </blockquote>
 <h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>关闭防火墙</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setenforce 0</span><br><span class="line">sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config</span><br><span class="line">systemctl stop firewalld &amp;&amp; systemctl disable firewalld</span><br></pre></td></tr></tbody></table></figure>
-<p>设定 <code>/etc/hosts</code></p>
+<p>设定<code>/etc/hosts</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.16.1.86 Master</span><br><span class="line">172.16.1.87 Node1</span><br><span class="line">172.16.1.88 Node2</span><br></pre></td></tr></tbody></table></figure>
-<p>禁用 <code>Swap</code></p>
+<p>禁用<code>Swap</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; sysctl -w vm.swappiness=0</span><br></pre></td></tr></tbody></table></figure>
-<p>将配置中 <code>net.bridge.bridge-nf-call-iptables</code> 被设为 1</p>
+<p>将配置中<code>net.bridge.bridge-nf-call-iptables</code>被设为 1</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt;  /etc/sysctl.d/k8s.conf</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装 Docker</h5><p>在 3 台服务器上都安装上 <code>Docker</code>，此次实验 <code>Docker</code> 版本：<code>Docker version 18.06</code></p>
+<h5 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装 Docker</h5><p>在 3 台服务器上都安装上<code>Docker</code>，此次实验<code>Docker</code>版本：<code>Docker version 18.06</code></p>
 <p><a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/centos/">Centos Docker 安装文档</a></p>
-<p>安装完成启动 <code>Docker</code></p>
+<p>安装完成启动<code>Docker</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker.service</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="安装K8s"><a href="#安装K8s" class="headerlink" title="安装K8s"></a>安装 K8s</h5><p>在 3 台服务器上配置 <code>YUM</code> 源为阿里镜像源</p>
+<h5 id="安装K8s"><a href="#安装K8s" class="headerlink" title="安装K8s"></a>安装 K8s</h5><p>在 3 台服务器上配置<code>YUM</code>源为阿里镜像源</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
 <p>您需要在每台机器上都安装以下的软件包：</p>
 <ol>
 <li>kubeadm: 用来初始化集群的指令。</li>
-<li>kubelet: 在集群中的每个节点上用来启动 <code>pod</code> 和 <code>container</code> 等。</li>
+<li>kubelet: 在集群中的每个节点上用来启动<code>pod</code>和<code>container</code>等。</li>
 <li>kubectl: 用来与集群通信的命令行工具。</li>
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes</span><br><span class="line">systemctl enable kubelet &amp;&amp; systemctl start kubelet</span><br></pre></td></tr></tbody></table></figure>
 <p>版本：<code>Kubernetes version: v1.13.2</code></p>
-<h5 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h5><p>在 <code>Master</code> 节点上配置 <code>kubelet</code> 所需的 <code>cgroup</code> 驱动</p>
+<h5 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h5><p>在<code>Master</code>节点上配置<code>kubelet</code>所需的<code>cgroup</code>驱动</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt;  /var/lib/kubelet/kubeadm-flags.env</span><br><span class="line">KUBELET_EXTRA_ARGS=--cgroup-driver=cgroupfs</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
-<p>需要重启 <code>kubelet</code>：</p>
+<p>需要重启<code>kubelet</code>：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart kubelet</span><br></pre></td></tr></tbody></table></figure>
-<p><code>k8s.gcr.io</code> 镜像本地化</p>
+<p><code>k8s.gcr.io</code>镜像本地化</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images list //查看所需要的镜像</span><br><span class="line"></span><br><span class="line">// 编辑脚本从hub获取镜像</span><br><span class="line">vim k8s.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">docker pull coredns/coredns:1.2.6</span><br><span class="line">docker tag coredns/coredns:1.2.6 k8s.gcr.io/coredns:1.2.6</span><br><span class="line">docker rmi coredns/coredns:1.2.6</span><br><span class="line">images=(</span><br><span class="line">    kube-apiserver:v1.13.2</span><br><span class="line">    kube-controller-manager:v1.13.2</span><br><span class="line">    kube-scheduler:v1.13.2</span><br><span class="line">    kube-proxy:v1.13.2</span><br><span class="line">    pause:3.1</span><br><span class="line">    etcd:3.2.24</span><br><span class="line">)</span><br><span class="line">for imageName in ${images[@]} ; do</span><br><span class="line">  docker pull mirrorgooglecontainers/$imageName</span><br><span class="line">  docker tag mirrorgooglecontainers/$imageName k8s.gcr.io/$imageName</span><br><span class="line">  docker rmi mirrorgooglecontainers/$imageName</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 编辑脚本权限</span><br><span class="line">chmod +x k8s.sh</span><br><span class="line"></span><br><span class="line">// 执行脚本</span><br><span class="line">./k8s.sh</span><br></pre></td></tr></tbody></table></figure>
 
-<p>初始化 <code>Master</code></p>
+<p>初始化<code>Master</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --kubernetes-version=v1.13.2 --pod-network-cidr=10.244.0.0/16</span><br></pre></td></tr></tbody></table></figure>
-<p>配置 <code>kubectl</code> 认证信息</p>
+<p>配置<code>kubectl</code>认证信息</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 非root用户</span><br><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br><span class="line"></span><br><span class="line"># root用户</span><br><span class="line">export KUBECONFIG=/etc/kubernetes/admin.conf</span><br><span class="line">echo "export KUBECONFIG=/etc/kubernetes/admin.conf" &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></tbody></table></figure>
-<p>安装网络插件 <code>flannel</code></p>
+<p>安装网络插件<code>flannel</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h5><p><code>Node</code> 镜像本地化</p>
+<h5 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h5><p><code>Node</code>镜像本地化</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 编辑脚本从hub获取镜像</span><br><span class="line">vim k8s.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">images=(</span><br><span class="line">    kube-proxy:v1.13.2</span><br><span class="line">    pause:3.1</span><br><span class="line">)</span><br><span class="line">for imageName in ${images[@]} ; do</span><br><span class="line">  docker pull mirrorgooglecontainers/$imageName</span><br><span class="line">  docker tag mirrorgooglecontainers/$imageName k8s.gcr.io/$imageName</span><br><span class="line">  docker rmi mirrorgooglecontainers/$imageName</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 编辑脚本权限</span><br><span class="line">chmod +x k8s.sh</span><br><span class="line"></span><br><span class="line">// 执行脚本</span><br><span class="line">./k8s.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>将节点加入集群</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm join 172.16.1.86:6443 --token xxx --discovery-token-ca-cert-hash xxx</span><br></pre></td></tr></tbody></table></figure>
@@ -422,7 +422,7 @@ var _hmt = _hmt || [];
 <hr>
 <p>题外话：</p>
 <blockquote>
-<p>安装过程中可以用 <code>tail -f 100 /var/log/messages</code> 查看日志，便于找到问题所在</p>
+<p>安装过程中可以用<code>tail -f 100 /var/log/messages</code>查看日志，便于找到问题所在</p>
 </blockquote>
 
       
@@ -523,12 +523,12 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说本地环境 <code>Deepin 15.8</code>，<code>Python2</code> 与 <code>Python3</code> 共存</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>说说本地环境<code>Deepin 15.8</code>，<code>Python2</code>与<code>Python3</code>共存</p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>问题如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip3</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip3", line 7, in &lt;module&gt;</span><br><span class="line">    from pip._internal import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal'</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/local/bin/pip", line 7, in &lt;module&gt;</span><br><span class="line">    from pip._internal import main</span><br><span class="line">ModuleNotFoundError: No module named 'pip._internal'</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>如 <code>pip</code> 与 <code>pip3</code> 均不可使用</p>
+<p>如<code>pip</code>与<code>pip3</code>均不可使用</p>
 <h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip</span><br><span class="line">Searching for pip</span><br><span class="line">Best match: pip 10.0.1</span><br><span class="line">Adding pip 10.0.1 to easy-install.pth file</span><br><span class="line">Installing pip script to /usr/local/bin</span><br><span class="line">Installing pip3.6 script to /usr/local/bin</span><br><span class="line">Installing pip3 script to /usr/local/bin</span><br><span class="line"></span><br><span class="line">Using /usr/local/lib/python2.7/dist-packages</span><br><span class="line">Processing dependencies for pip</span><br><span class="line">Finished processing dependencies for pip</span><br></pre></td></tr></tbody></table></figure>
 <p>完美解决</p>
 
@@ -630,11 +630,11 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="公共包的处理"><a href="#公共包的处理" class="headerlink" title="公共包的处理"></a>公共包的处理</h3><p>解决方案是将公共包打包在 <code>runner</code> 服务器上，其他模块打包时自动应用公共包<code>.gitlab-ci.yml</code> 如下：</p>
+          <h3 id="公共包的处理"><a href="#公共包的处理" class="headerlink" title="公共包的处理"></a>公共包的处理</h3><p>解决方案是将公共包打包在<code>runner</code>服务器上，其他模块打包时自动应用公共包<code>.gitlab-ci.yml</code>如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stages:</span><br><span class="line">  - deploy</span><br><span class="line">maven-build:</span><br><span class="line">  stage: deploy</span><br><span class="line">  script: </span><br><span class="line">    - mvn install</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="注册中心地址"><a href="#注册中心地址" class="headerlink" title="注册中心地址"></a>注册中心地址</h3><p><code>Eureka</code> 地址应为 <code>http://[service name]:[port]/eureka</code></p>
-<p>切记 <code>http</code> 协议</p>
-<h3 id="runner提权"><a href="#runner提权" class="headerlink" title="runner提权"></a>runner 提权</h3><p>在 <code>gitlab-runner</code> 装好后并不能通过 <code>CI</code> 执行，因为 <code>gitlab-runner</code> 是通过 <code>gitlab-runner</code> 用户及用户组运行的，并不是 <code>ROOT</code> 权限，所以这里就需要对 <code>gitlab-runner</code> 用户进行提权</p>
+<h3 id="注册中心地址"><a href="#注册中心地址" class="headerlink" title="注册中心地址"></a>注册中心地址</h3><p><code>Eureka</code>地址应为<code>http://[service name]:[port]/eureka</code></p>
+<p>切记<code>http</code>协议</p>
+<h3 id="runner提权"><a href="#runner提权" class="headerlink" title="runner提权"></a>runner 提权</h3><p>在<code>gitlab-runner</code>装好后并不能通过<code>CI</code>执行，因为<code>gitlab-runner</code>是通过<code>gitlab-runner</code>用户及用户组运行的，并不是<code>ROOT</code>权限，所以这里就需要对<code>gitlab-runner</code>用户进行提权</p>
 <p>说到提权这里说两种方式</p>
 <blockquote>
 <ol>
@@ -756,9 +756,9 @@ var _hmt = _hmt || [];
 <li>Mac beta 版，通过<a target="_blank" rel="noopener" href="https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-for-mac/distribution_groups/all-users-of-microsoft-remote-desktop-for-mac">【appcenter】</a>下载</li>
 <li>商店之外正版<a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?linkid=868963">下载</a>，参考：<a target="_blank" rel="noopener" href="https://community.spiceworks.com/topic/2123651-microsoft-remote-desktop-now-available-outside-the-app-store">Microsoft Remote Desktop now available outside the App Store</a></li>
 </ol>
-<h4 id="Mos"><a href="#Mos" class="headerlink" title="Mos"></a>Mos</h4><p>一个用于在 macOS 上平滑你的鼠标滚动效果或单独设置滚动方向的小工具，让你的滚轮爽如触控板</p>
+<h4 id="Mos"><a href="#Mos" class="headerlink" title="Mos"></a>Mos</h4><p>一个用于在 macOS 上平滑你的鼠标滚动效果或单独设置滚动方向的小工具, 让你的滚轮爽如触控板</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Caldis/Mos">Mos</a></p>
-<h4 id="Redis客户端"><a href="#Redis客户端" class="headerlink" title="Redis客户端"></a>Redis 客户端</h4><p><code>Redis</code> 客户端众多，安利两款自己用过，还觉得不错的</p>
+<h4 id="Redis客户端"><a href="#Redis客户端" class="headerlink" title="Redis客户端"></a>Redis 客户端</h4><p><code>Redis</code>客户端众多，安利两款自己用过，还觉得不错的</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/qishibo/AnotherRedisDesktopManager">AnotherRedisDesktopManager</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/luin/medis">Medis</a></p>
 <hr>
@@ -875,7 +875,7 @@ var _hmt = _hmt || [];
 <h3 id="LCN事务控制原理"><a href="#LCN事务控制原理" class="headerlink" title="LCN事务控制原理"></a>LCN 事务控制原理</h3><p>LCN 事务控制原理是由事务模块 TxClient 下的代理连接池与 TxManager 的协调配合完成的事务协调控制 TxClient 的代理连接池实现了 javax.sql.DataSource 接口，并重写了 close 方法，事务模块在提交关闭以后 TxClient 连接池将执行” 假关闭” 操作，等待 TxManager 协调完成事务以后在关闭连接<br><img src="https://img.jakehu.me/1.png"></p>
 <h3 id="阿里云GTS全局事务服务"><a href="#阿里云GTS全局事务服务" class="headerlink" title="阿里云GTS全局事务服务"></a>阿里云 GTS 全局事务服务</h3><ol>
 <li>全局事务服务（Global Transaction Service，简称 GTS）是一款高性能、高可靠、接入简单的分布式事务中间件，用于解决分布式环境下的事务一致性问题</li>
-<li> GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合 EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
+<li>GTS 支持 DRDS、RDS、MySQL 等多种数据源，可以配合 EDAS 和 SpringCloud 等微服务框架使用， 兼容 MQ 实现事务消息。通过各种组合，可以轻松实现分布式数据库事务、多库事务、消息事务、服务链路级事务等多种业务需求</li>
 </ol>
 <h3 id="GTS模拟场景演示"><a href="#GTS模拟场景演示" class="headerlink" title="GTS模拟场景演示"></a>GTS 模拟场景演示</h3><p><img src="https://img.jakehu.me/2.png"></p>
 <h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>GTS 通过大量创新，解决了事务 ACID 特性与高性能、高可用、低侵入不可兼得的问题。单事务分支的平均响应时间在 2ms 左右，3 台服务器组成的集群可以支撑 3 万 TPS 以上的分布式事务请求</p>
@@ -884,7 +884,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>性能优秀</li>
 <li>可靠性强</li>
-<li> LCN 实现的分布式事务处理模式，编码复杂性和入侵代码量低</li>
+<li>LCN 实现的分布式事务处理模式，编码复杂性和入侵代码量低</li>
 </ul>
 <p>缺点:</p>
 <ul>
@@ -1004,14 +1004,14 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>博客 <code>hexo</code> 一直部署在 <code>Github Pages</code>，方便、稳定非常 <code>nice</code>，但是最近发现打开博客的速度比较慢。于是想着能否通过多部署，或者国内 <code>CDN</code> 加快访问速度</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>博客<code>hexo</code>一直部署在<code>Github Pages</code>，方便、稳定非常<code>nice</code>，但是最近发现打开博客的速度比较慢。于是想着能否通过多部署，或者国内<code>CDN</code>加快访问速度</p>
 <h3 id="加速方案"><a href="#加速方案" class="headerlink" title="加速方案"></a>加速方案</h3><ol>
-<li>利用 <code>Gitee Pages</code> 作为国内部署，但是 <code>Gitee Pages</code> 免费版不支持 <code>https</code>，遂作罢</li>
-<li>利用 <code>Coding Pages</code> 作为国内部署，支持 <code>Let's Encrypt https</code>，但发现所加速的 <code>IP</code> 均为国外 <code>IP</code>，有时也比较的慢，于是尝试在国内找 <code>cdn</code> 加速就有了下面方案的对比</li>
-<li>百度云：免费版不支持 <code>https</code>，遂作罢</li>
+<li>利用<code>Gitee Pages</code>作为国内部署，但是<code>Gitee Pages</code>免费版不支持<code>https</code>，遂作罢</li>
+<li>利用<code>Coding Pages</code>作为国内部署，支持<code>Let's Encrypt https</code>，但发现所加速的<code>IP</code>均为国外<code>IP</code>，有时也比较的慢，于是尝试在国内找<code>cdn</code>加速就有了下面方案的对比</li>
+<li>百度云：免费版不支持<code>https</code>，遂作罢</li>
 <li>腾讯云：没有免费额度，支持上传自有证书，遂作罢</li>
-<li>七牛 CDN：免费 10G 额度，免费版不支持 <code>https</code>，遂作罢</li>
-<li>又拍云 (在用方案，目前最完美方案)：支持 <code>Let's Encrypt</code> 加入<a target="_blank" rel="noopener" href="https://www.upyun.com/league">又拍云联盟</a> 10G 空间 + 15G 流量额度</li>
+<li>七牛 CDN：免费 10G 额度，免费版不支持<code>https</code>，遂作罢</li>
+<li>又拍云 (在用方案，目前最完美方案)：支持<code>Let's Encrypt</code>加入<a target="_blank" rel="noopener" href="https://www.upyun.com/league">又拍云联盟</a> 10G 空间 + 15G 流量额度</li>
 </ol>
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>加速过后速度杠杠的</p>
 
@@ -1113,15 +1113,15 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近由于项目比较大而且附件比较多，在服务器上选择了外挂 <code>Nas</code> 盘符来存储项目文件</p>
-<p>目前服务器和 <code>Nas</code> 都是用的阿里的服务，这里说一下阿里在 <code>Linux</code> 中自动挂载的注意事项，在 <code>/etc/fstab</code> 配置文件中添加以下命令：</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近由于项目比较大而且附件比较多，在服务器上选择了外挂<code>Nas</code>盘符来存储项目文件</p>
+<p>目前服务器和<code>Nas</code>都是用的阿里的服务，这里说一下阿里在<code>Linux</code>中自动挂载的注意事项，在<code>/etc/fstab</code>配置文件中添加以下命令：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fid-xxxx.cn-hangzhou.nas.aliyuncs.com:/ /mnt  nfs4 vers=4.0,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,_netdev,noresvport 0 0</span><br></pre></td></tr></tbody></table></figure>
 <p>重点来了，请注意：</p>
 <blockquote>
-<p>命令中的 <code>fid-xxxx.cn-hangzhou.nas.aliyuncs.com</code> 为挂载点的域名</p>
+<p>命令中的<code>fid-xxxx.cn-hangzhou.nas.aliyuncs.com</code>为挂载点的域名</p>
 </blockquote>
-<p>我第一次的时候就把 <code>xxxx.cn-hangzhou.nas.aliyuncs.com</code> 替换为了挂载点的域名，而保留了 <code>fid</code></p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>按阿里官方说明为重启时自动挂载 <code>NAS</code> 文件系统，如果需要及时生效可以运行以下命令而不用重启：</p>
+<p>我第一次的时候就把<code>xxxx.cn-hangzhou.nas.aliyuncs.com</code>替换为了挂载点的域名，而保留了<code>fid</code></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>按阿里官方说明为重启时自动挂载<code>NAS</code>文件系统，如果需要及时生效可以运行以下命令而不用重启：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -a</span><br><span class="line">-a：将 /etc/fstab 中定义的所有档案系统挂上</span><br></pre></td></tr></tbody></table></figure>
 
       
@@ -1225,8 +1225,8 @@ var _hmt = _hmt || [];
           <h3 id="查看npm全局包"><a href="#查看npm全局包" class="headerlink" title="查看npm全局包"></a>查看 npm 全局包</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm ll -g</span><br><span class="line">npm la -g</span><br></pre></td></tr></tbody></table></figure>
 <p>上面这两个命令会显示包的简介和 git 地址和 readme 信息</p>
 <p><code>npm ls -g</code> 只会显示包名和版本</p>
-<p><code>depth</code> 参数代表依赖关系最大深度</p>
-<p>如:<code>npm ls -g --depth 0</code> 表示只显示最顶层</p>
+<p><code>depth</code>参数代表依赖关系最大深度</p>
+<p>如:<code>npm ls -g --depth 0</code>表示只显示最顶层</p>
 
       
     </div>
@@ -1271,7 +1271,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/Bushe-Lushan/" class="post-title-link" itemprop="url">周末休闲江津。李市之不舍。鹿山</a>
+          <a href="/2018/Bushe-Lushan/" class="post-title-link" itemprop="url">周末休闲江津. 李市之不舍. 鹿山</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1295,7 +1295,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/Bushe-Lushan/" class="post-meta-item leancloud_visitors" data-flag-title="周末休闲江津。李市之不舍。鹿山" title="阅读次数">
+    <span id="/2018/Bushe-Lushan/" class="post-meta-item leancloud_visitors" data-flag-title="周末休闲江津. 李市之不舍. 鹿山" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1326,8 +1326,8 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>去年团建的时候公司一直在物色一个好的农家乐，由此关注上了不舍。鹿山。虽然最后也没有去，好心累<br><img src="https://img.jakehu.me/20181222160331.jpg"><br>这次找了个周末双休带上孩子一起出发，去到大山卡卡里头呼吸新鲜的空气</p>
-<h3 id="行"><a href="#行" class="headerlink" title="行"></a>行</h3><p>在百度直接导航不舍。鹿山度假酒店即可差不多一个半小时左右<br><img src="https://img.jakehu.me/baidu.png"><br>从重庆出发经过 <code>G85-&gt;G93-&gt;江习高速</code>在李市下道，再走上过 10 分钟左右就到了，有一个问题有差不多 500m 的距离小路非常窄，可能也就 2m 左右。记得要注意上面来车，真的很难错车</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>去年团建的时候公司一直在物色一个好的农家乐，由此关注上了不舍. 鹿山。虽然最后也没有去，好心累<br><img src="https://img.jakehu.me/20181222160331.jpg"><br>这次找了个周末双休带上孩子一起出发，去到大山卡卡里头呼吸新鲜的空气</p>
+<h3 id="行"><a href="#行" class="headerlink" title="行"></a>行</h3><p>在百度直接导航不舍. 鹿山度假酒店即可差不多一个半小时左右<br><img src="https://img.jakehu.me/baidu.png"><br>从重庆出发经过<code>G85-&gt;G93-&gt;江习高速</code>在李市下道，再走上过 10 分钟左右就到了，有一个问题有差不多 500m 的距离小路非常窄，可能也就 2m 左右。记得要注意上面来车，真的很难错车</p>
 <h3 id="住"><a href="#住" class="headerlink" title="住"></a>住</h3><p>关于住宿最好是在网上订好，差不多只有 20 多间房吧，所有越早订好越好，基本周末都是满房。<br><img src="https://img.jakehu.me/20181222161231.jpg"><br>就是因为我们订房晚了，所以只能订在周五…</p>
 <p>目前订房好像是只接受官微订房，官微：<code>蕙家农业</code>价格方面有四个档次</p>
 <p>以下价格为周末价格，平常价格可能会有波动请以官微为准</p>
@@ -1341,7 +1341,7 @@ var _hmt = _hmt || [];
 <h3 id="食"><a href="#食" class="headerlink" title="食"></a>食</h3><p>吃的还是比较多，价格也还能接收，有<code>炒菜</code>、<code>烧烤</code>、<code>汤锅</code>等</p>
 <p>价格方面：</p>
 <ol>
-<li>晚上炒菜 <code>8个菜 366元</code>，分量非常足，就是冬天菜上桌易冷</li>
+<li>晚上炒菜<code>8个菜 366元</code>，分量非常足，就是冬天菜上桌易冷</li>
 <li>早上房间含双早，自己点有<code>饺子、汤圆、小面</code>等</li>
 <li>中午汤锅<code>整只乌鸡汤锅 299</code>，现杀</li>
 </ol>
@@ -1448,8 +1448,8 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p><code>SOAR(SQL Optimizer And Rewriter)</code> 是一个对 <code>SQL</code> 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。</p>
-<p>本来之前使用过一段时间美团的 <code>SQLAdvisor</code>，但是依然有诸多问题无法解决，所以改用 <code>SOAR</code> 试试。</p>
+          <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p><code>SOAR(SQL Optimizer And Rewriter)</code>是一个对<code>SQL</code>进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。</p>
+<p>本来之前使用过一段时间美团的<code>SQLAdvisor</code>，但是依然有诸多问题无法解决，所以改用<code>SOAR</code>试试。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载二进制安装包</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/XiaoMi/soar/releases/download/0.10.0/soar.linux-amd64 -O soar</span><br><span class="line">chmod a+x soar</span><br></pre></td></tr></tbody></table></figure>
 

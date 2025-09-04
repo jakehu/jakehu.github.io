@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="写在前面首先终端已经换为 zsh 了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法 Homebrew install zsh &amp; oh-my-zsh 安装1brew install nvm 设置在.bash_profile 加入以下这行，让你可以直接在 shell 使用 nvm 指令 1source $(brew --prefix nvm)&#x2F;nvm.sh 重新 sour">
+    <meta name="description" content="写在前面首先终端已经换为zsh了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法 Homebrew install zsh &amp; oh-my-zsh 安装1brew install nvm 设置在.bash_profile加入以下这行，让你可以直接在shell使用nvm指令 1source $(brew --prefix nvm)&#x2F;nvm.sh 重新source .bash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Homebrew 安装 Node 版本管理 nvm 之不得不说的坑！">
 <meta property="og:url" content="https://www.jakehu.me/2018/Homebrew-nvm/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="写在前面首先终端已经换为 zsh 了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法 Homebrew install zsh &amp; oh-my-zsh 安装1brew install nvm 设置在.bash_profile 加入以下这行，让你可以直接在 shell 使用 nvm 指令 1source $(brew --prefix nvm)&#x2F;nvm.sh 重新 sour">
+<meta property="og:description" content="写在前面首先终端已经换为zsh了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法 Homebrew install zsh &amp; oh-my-zsh 安装1brew install nvm 设置在.bash_profile加入以下这行，让你可以直接在shell使用nvm指令 1source $(brew --prefix nvm)&#x2F;nvm.sh 重新source .bash">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-06T09:12:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.571Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.562Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Homebrew">
 <meta name="twitter:card" content="summary">
@@ -338,18 +338,18 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>首先终端已经换为 <code>zsh</code> 了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>首先终端已经换为<code>zsh</code>了，至于怎样安装和更换默认终端，这里我就不赘述，可以参考下面网友做法</p>
 <p><a target="_blank" rel="noopener" href="http://achillessatan.github.io/2016/02/15/2016021503/">Homebrew install zsh &amp; oh-my-zsh</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>在<code>.bash_profile</code> 加入以下这行，让你可以直接在 <code>shell</code> 使用 <code>nvm</code> 指令</p>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>在<code>.bash_profile</code>加入以下这行，让你可以直接在<code>shell</code>使用<code>nvm</code>指令</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></tbody></table></figure>
-<p>重新 <code>source .bash_profile</code> 来让设定生效</p>
+<p>重新<code>source .bash_profile</code>来让设定生效</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以上操作看似没有任何问题，安装 <code>node</code> 后也能使用。但是，当你第二次重新打开终端时 <code>node</code> 将不能使用，提示错误 <code>Run nvm use --delete-prefix v8.14.0 to unset it.</code></p>
-<p>后面在 <code>nvm</code> 文档看到这段话 <code>Homebrew installation is not supported. If you have issues with homebrew-installed nvm, please brew uninstall it, and install it using the instructions below, before filing an issue.</code>，额… 看来没事还是要多看看文档啊，同时也有网友对此提有 <a target="_blank" rel="noopener" href="https://github.com/creationix/nvm/issues/855">Issues</a></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以上操作看似没有任何问题，安装<code>node</code>后也能使用。但是，当你第二次重新打开终端时<code>node</code>将不能使用，提示错误<code>Run nvm use --delete-prefix v8.14.0 to unset it.</code></p>
+<p>后面在<code>nvm</code>文档看到这段话<code>Homebrew installation is not supported. If you have issues with homebrew-installed nvm, please brew uninstall it, and install it using the instructions below, before filing an issue.</code>，额… 看来没事还是要多看看文档啊，同时也有网友对此提有 <a target="_blank" rel="noopener" href="https://github.com/creationix/nvm/issues/855">Issues</a></p>
 <h3 id="正确安装"><a href="#正确安装" class="headerlink" title="正确安装"></a>正确安装</h3><p>推荐使用官方<code>script</code>安装</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></tbody></table></figure>
-<p>最后在安装好 <code>node</code> 之后不要忘记设置 <code>alias default</code></p>
+<p>最后在安装好<code>node</code>之后不要忘记设置<code>alias default</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm alias default 8.14.0</span><br></pre></td></tr></tbody></table></figure>
     </div>
 

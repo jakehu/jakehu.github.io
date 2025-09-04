@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记公司部分业务使用的是阿里的 docker swarm 服务，在配置 nodejs 应用时发现时区不对。 处理记录下自己所选择的方式。 我选择在 Dockerfile 文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。 12RUN echo &quot;Asia&#x2F;Shanghai&quot; &gt; &#x2F;etc&#x2F;timezone \    &amp;&amp; dpkg-reconfigure -f no">
+    <meta name="description" content="前记公司部分业务使用的是阿里的docker swarm服务，在配置nodejs应用时发现时区不对。 处理记录下自己所选择的方式。 我选择在Dockerfile文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。 12RUN echo &quot;Asia&#x2F;Shanghai&quot; &gt; &#x2F;etc&#x2F;timezone \    &amp;&amp; dpkg-reconfigure -f noninter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 之时区配置">
 <meta property="og:url" content="https://www.jakehu.me/2018/docker-time-zone/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记公司部分业务使用的是阿里的 docker swarm 服务，在配置 nodejs 应用时发现时区不对。 处理记录下自己所选择的方式。 我选择在 Dockerfile 文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。 12RUN echo &quot;Asia&#x2F;Shanghai&quot; &gt; &#x2F;etc&#x2F;timezone \    &amp;&amp; dpkg-reconfigure -f no">
+<meta property="og:description" content="前记公司部分业务使用的是阿里的docker swarm服务，在配置nodejs应用时发现时区不对。 处理记录下自己所选择的方式。 我选择在Dockerfile文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。 12RUN echo &quot;Asia&#x2F;Shanghai&quot; &gt; &#x2F;etc&#x2F;timezone \    &amp;&amp; dpkg-reconfigure -f noninter">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-11-27T14:17:45.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.573Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.564Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -338,9 +338,9 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>公司部分业务使用的是阿里的 <code>docker swarm</code> 服务，在配置 <code>nodejs</code> 应用时发现时区不对。</p>
+    <div class="post-body" itemprop="articleBody"><h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>公司部分业务使用的是阿里的<code>docker swarm</code>服务，在配置<code>nodejs</code>应用时发现时区不对。</p>
 <h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><p>记录下自己所选择的方式。</p>
-<p>我选择在 <code>Dockerfile</code> 文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。</p>
+<p>我选择在<code>Dockerfile</code>文件中做处理，这样利于以后所有引用此镜像的容器时区的正确性。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RUN echo "Asia/Shanghai" &gt; /etc/timezone \</span><br><span class="line">    &amp;&amp; dpkg-reconfigure -f noninteractive tzdata</span><br></pre></td></tr></tbody></table></figure>
     </div>
 

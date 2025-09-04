@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES">
+    <meta name="description" content="前记最近在做微信开发本地测试，需要用到80端口；鉴于Eggjs默认端口为7001，于是开始了一场Eggjs绑定80端口之战 Scriptsscripts改造，将dev命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行npm run dev之后出现下面问题 1bind EACCES null:80, code: EACCES 绑定80端口失败，看来是权限">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Eggjs 之绑定 80 端口引发的一场血案">
 <meta property="og:url" content="https://www.jakehu.me/2019/eggjs-80/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记最近在做微信开发本地测试，需要用到 80 端口；鉴于 Eggjs 默认端口为 7001，于是开始了一场 Eggjs 绑定 80 端口之战 Scriptsscripts 改造，将 dev 命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行 npm run dev 之后出现下面问题 1bind EACCES null:80, code: EACCES">
+<meta property="og:description" content="前记最近在做微信开发本地测试，需要用到80端口；鉴于Eggjs默认端口为7001，于是开始了一场Eggjs绑定80端口之战 Scriptsscripts改造，将dev命令改为如下： 1&quot;dev&quot;: &quot;egg-bin dev --port&#x3D;80&quot;,  问题一当运行npm run dev之后出现下面问题 1bind EACCES null:80, code: EACCES 绑定80端口失败，看来是权限">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-25T19:07:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.573Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.564Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="eggjs">
 <meta name="twitter:card" content="summary">
@@ -338,26 +338,26 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做微信开发本地测试，需要用到 <code>80</code> 端口；鉴于 <code>Eggjs</code> 默认端口为 <code>7001</code>，于是开始了一场 <code>Eggjs</code> 绑定 <code>80</code> 端口之战</p>
-<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><code>scripts</code> 改造，将 <code>dev</code> 命令改为如下：</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>最近在做微信开发本地测试，需要用到<code>80</code>端口；鉴于<code>Eggjs</code>默认端口为<code>7001</code>，于是开始了一场<code>Eggjs</code>绑定<code>80</code>端口之战</p>
+<h3 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h3><p><code>scripts</code>改造，将<code>dev</code>命令改为如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"dev": "egg-bin dev --port=80",</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当运行 <code>npm run dev</code> 之后出现下面问题</p>
+<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>当运行<code>npm run dev</code>之后出现下面问题</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind EACCES null:80, code: EACCES</span><br></pre></td></tr></tbody></table></figure>
-<p>绑定 <code>80</code> 端口失败，看来是权限不够</p>
+<p>绑定<code>80</code>端口失败，看来是权限不够</p>
 <blockquote>
-<p>解决方案：<code>sudo</code> 高权限运行</p>
+<p>解决方案：<code>sudo</code>高权限运行</p>
 </blockquote>
-<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>当运行 <code>sudo npm run dev</code> 之后出现下面问题</p>
+<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>当运行<code>sudo npm run dev</code>之后出现下面问题</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo: npm：找不到命令</span><br></pre></td></tr></tbody></table></figure>
-<p>看来是 <code>bin</code> 下面没有可执行文件</p>
+<p>看来是<code>bin</code>下面没有可执行文件</p>
 <blockquote>
 <p>解决方案：<code>ln -s</code></p>
 </blockquote>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ which npm</span><br><span class="line">&gt; /home/jakehu/.nvm/versions/node/v8.12.0/bin/npm</span><br><span class="line">$ sudo ln -s /home/jakehu/.nvm/versions/node/v8.12.0/bin/npm /usr/bin/npm</span><br><span class="line"></span><br><span class="line">$ which node</span><br><span class="line">&gt; /home/jakehu/.nvm/versions/node/v8.12.0/bin/node</span><br><span class="line">$ sudo ln -s /home/jakehu/.nvm/versions/node/v8.12.0/bin/node /usr/bin/node</span><br></pre></td></tr></tbody></table></figure>
-<p>最后只需要运行 <code>sudo npm run dev</code> 就可以了</p>
+<p>最后只需要运行<code>sudo npm run dev</code>就可以了</p>
 <hr>
-<p>如果出现 <code>bind EADDRINUSE null:80, code: EADDRINUSE</code> 错误，表示有程序占用 <code>80</code> 端口，<code>pkill</code> 掉即可</p>
+<p>如果出现<code>bind EADDRINUSE null:80, code: EADDRINUSE</code>错误，表示有程序占用<code>80</code>端口，<code>pkill</code>掉即可</p>
 
     </div>
 

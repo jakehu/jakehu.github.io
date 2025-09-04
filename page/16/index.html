@@ -335,7 +335,7 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <div class="note danger"><p>我们不生产 <code>k8s</code> 管理平台，我们只是开源项目的搬运工</p>
+          <div class="note danger"><p>我们不生产<code>k8s</code>管理平台，我们只是开源项目的搬运工</p>
 </div>
 
 <h4 id="Rancher"><a href="#Rancher" class="headerlink" title="Rancher"></a>Rancher</h4><p><a target="_blank" rel="noopener" href="https://rancher.com/">Rancher</a> 是一个开源的企业级容器管理平台。通过 Rancher，企业再也不必自己使用一系列的开源软件去从头搭建容器服务平台。Rancher 提供了在生产环境中使用的管理 Docker 和 Kubernetes 的全栈化容器部署与管理平台。</p>
@@ -344,9 +344,9 @@ var _hmt = _hmt || [];
 <h4 id="Naftis"><a href="#Naftis" class="headerlink" title="Naftis"></a>Naftis</h4><p><a target="_blank" rel="noopener" href="https://github.com/XiaoMi/naftis">Naftis</a> 是一个基于 web 的 Istio dashboard，通过任务模板的方式来帮助用户更方便地执行 Istio 任务。 用户可以在 Naftis 中定义自己的任务模板，并填充变量来构造单个或多个构造任务实例，从而完成各种服务治理功能。</p>
 <h4 id="Breeze"><a href="#Breeze" class="headerlink" title="Breeze"></a>Breeze</h4><p><a target="_blank" rel="noopener" href="https://github.com/wise2c-devops/breeze">Breeze</a> 是睿云智合提供的图形化 Kubernetes 部署工具。</p>
 <h4 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h4><p><a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/">Nacos</a> 是阿里巴巴的新开源项目，其核心定位是 “一个更易于帮助构建云原生应用的动态服务发现、配置和服务管理平台”。</p>
-<p><code>Nacos</code> 可能更多的是为了支持一整套微服务。包括 <code>Dubbo</code>，<code>Spring Cloud</code> 以及 <code>Kubernetes</code> 等。</p>
+<p><code>Nacos</code>可能更多的是为了支持一整套微服务。包括<code>Dubbo</code>，<code>Spring Cloud</code>以及<code>Kubernetes</code>等。</p>
 <hr>
-<p>最后相对来说，我还是比较喜欢用 <code>Rancher</code>。</p>
+<p>最后相对来说，我还是比较喜欢用<code>Rancher</code>。</p>
 
       
     </div>
@@ -446,8 +446,8 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>毫无疑问，<code>Mybatis-Plus</code> 是优秀的。<br>在 <code>Mybatis-Plus</code> 官网的文档中，自定义分页只能只支持 <code>xml</code> 方式，但是鉴于本人对 <code>xml</code> 并不是太喜欢，而是喜欢用注解的方式。</p>
-<p>于是，记录了在 <code>Mybatis-Plus</code> 中注解分页方式实现。</p>
+          <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>毫无疑问，<code>Mybatis-Plus</code>是优秀的。<br>在<code>Mybatis-Plus</code>官网的文档中，自定义分页只能只支持<code>xml</code>方式，但是鉴于本人对<code>xml</code>并不是太喜欢，而是喜欢用注解的方式。</p>
+<p>于是，记录了在<code>Mybatis-Plus</code>中注解分页方式实现。</p>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>首先讲一下我的请求：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">controller-&gt;service-&gt;mapper-&gt;entity</span><br></pre></td></tr></tbody></table></figure>
 
@@ -574,7 +574,7 @@ var _hmt = _hmt || [];
 
 <p>4、数组中查询元素</p>
 <blockquote>
-<p><code>JSON_CONTAINS + JSON_ARRAY</code> 用法</p>
+<p><code>JSON_CONTAINS + JSON_ARRAY</code>用法</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select JSON_CONTAINS(JSON_ARRAY(1,2,3,4,5,6),'6')</span><br></pre></td></tr></tbody></table></figure>
 
@@ -589,7 +589,7 @@ var _hmt = _hmt || [];
 
 <p>7、利用 JSON_CONTAINS 实现 On</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">" LEFT JOIN `ag_user_group` as ug  on JSON_CONTAINS(u.user_group_id, JSON_ARRAY(ug.id), '$')"</span><br></pre></td></tr></tbody></table></figure>
-<p><code>user_group_id</code> 为数组，<code>ug.id</code> 为 <code>int</code> 格式</p>
+<p><code>user_group_id</code>为数组，<code>ug.id</code>为<code>int</code>格式</p>
 <h3 id="常规"><a href="#常规" class="headerlink" title="常规"></a>常规</h3><p>1、查询重复记录</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from merchant</span><br><span class="line">where num in (select num from synk.merchant group by num having count(num) &gt; 1)</span><br></pre></td></tr></tbody></table></figure>
 
@@ -638,7 +638,7 @@ var _hmt = _hmt || [];
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/gitlab-docker/" class="post-title-link" itemprop="url">记 Gitlab 到 Docker 全过程 CI/CD</a>
+          <a href="/2018/gitlab-docker/" class="post-title-link" itemprop="url">记 Gitlab 到 Docker 全过程 CI / CD</a>
         </h2>
 
         <div class="post-meta-container">
@@ -662,7 +662,7 @@ var _hmt = _hmt || [];
     </span>
 
   
-    <span id="/2018/gitlab-docker/" class="post-meta-item leancloud_visitors" data-flag-title="记 Gitlab 到 Docker 全过程 CI/CD" title="阅读次数">
+    <span id="/2018/gitlab-docker/" class="post-meta-item leancloud_visitors" data-flag-title="记 Gitlab 到 Docker 全过程 CI / CD" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -694,22 +694,22 @@ var _hmt = _hmt || [];
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>很久都没有写博客了，不是没时间，可能就是纯粹的懒吧。</p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>公司内部版本管理一直以来都是用的 <code>Gitlab</code>，而系统早在前年的时候就已经全部上了 <code>Docker</code>，<code>gitlab-runner</code> 发布过后就一直想利用 <code>gitlab-runner</code> 进行 <code>CI/CD</code> 自动化的部署。</p>
-<h3 id="Gitlab-Gitlab-Runner"><a href="#Gitlab-Gitlab-Runner" class="headerlink" title="Gitlab &amp;&amp; Gitlab-Runner"></a>Gitlab &amp;&amp; Gitlab-Runner</h3><h4 id="基于原生原方案"><a href="#基于原生原方案" class="headerlink" title="基于原生原方案"></a>基于原生原方案</h4><p>关于 <code>gitlab &amp;&amp; gitlab-runner</code> 的安装我这边就不赘述了，不会的可以看官方的文档。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>公司内部版本管理一直以来都是用的<code>Gitlab</code>，而系统早在前年的时候就已经全部上了<code>Docker</code>，<code>gitlab-runner</code>发布过后就一直想利用<code>gitlab-runner</code>进行<code>CI/CD</code>自动化的部署。</p>
+<h3 id="Gitlab-Gitlab-Runner"><a href="#Gitlab-Gitlab-Runner" class="headerlink" title="Gitlab &amp;&amp; Gitlab-Runner"></a>Gitlab &amp;&amp; Gitlab-Runner</h3><h4 id="基于原生原方案"><a href="#基于原生原方案" class="headerlink" title="基于原生原方案"></a>基于原生原方案</h4><p>关于<code>gitlab &amp;&amp; gitlab-runner</code>的安装我这边就不赘述了，不会的可以看官方的文档。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.gitlab.com.cn/">Gitlab</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.gitlab.com.cn/runner/">Runner 的安装和注册</a></p>
 <p>我们在物理机或云上部署的时候一个流程图如下：</p>
 <img src="https://img.jakehu.me/runner.png">
 
-<p>从上图我们可以看出，当我们的服务器多了之后每个服务器都需要安装 <code>runner</code> 服务，这对于我这样懒的人感觉好麻烦的；受不了。</p>
+<p>从上图我们可以看出，当我们的服务器多了之后每个服务器都需要安装<code>runner</code>服务，这对于我这样懒的人感觉好麻烦的；受不了。</p>
 <p>当然也有可以解决的方案，如：单独用一服务器挂载共享磁盘。</p>
-<h4 id="基于Docker新方案"><a href="#基于Docker新方案" class="headerlink" title="基于Docker新方案"></a>基于 Docker 新方案</h4><p>今天我们重点来谈谈，<code>gitlab</code> 如何和 <code>docker</code> 完美结合</p>
+<h4 id="基于Docker新方案"><a href="#基于Docker新方案" class="headerlink" title="基于Docker新方案"></a>基于 Docker 新方案</h4><p>今天我们重点来谈谈，<code>gitlab</code>如何和<code>docker</code>完美结合</p>
 <p>先看看看架构图，如下：</p>
 <img src="https://img.jakehu.me/docker.png">
 
 <p>接下来我们来说明一哈上面这张图的一个工作流程。</p>
 <blockquote>
-<p>1、开发人员通过本地 <code>push</code> 代码到 <code>gitlab</code> 上<br>2、<code>gitlab-runner</code> 会根据代码根目录下的 <code>gitlab-ci.yml</code> 文件执行 <code>CI</code>，<code>gitlab-ci.yml</code> 使用说明请移步：<a target="_blank" rel="noopener" href="https://docs.gitlab.com/ce/ci/yaml/README.html">gitlab-ci 使用说明</a>。<br>3、在 <code>CI</code> 过程中会去读取你在代码下 <code>Dockerfile</code> 文件构建镜像。<code>docker</code> 的使用我们这里不做过多赘述<br>4、将镜像推送到镜像仓库，可以自建，也可以用像阿里云的仓库<br>5、<code>docker</code> 拉去镜像对服务进行部署。</p>
+<p>1、开发人员通过本地<code>push</code>代码到<code>gitlab</code>上<br>2、<code>gitlab-runner</code>会根据代码根目录下的<code>gitlab-ci.yml</code>文件执行<code>CI</code>，<code>gitlab-ci.yml</code>使用说明请移步：<a target="_blank" rel="noopener" href="https://docs.gitlab.com/ce/ci/yaml/README.html">gitlab-ci 使用说明</a>。<br>3、在<code>CI</code>过程中会去读取你在代码下<code>Dockerfile</code>文件构建镜像。<code>docker</code>的使用我们这里不做过多赘述<br>4、将镜像推送到镜像仓库，可以自建，也可以用像阿里云的仓库<br>5、<code>docker</code>拉去镜像对服务进行部署。</p>
 </blockquote>
 
       
@@ -810,7 +810,7 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>你飘飘荡荡，轻歌曼舞在宛丘之上，是多么令人神往啊。我想着你爱着你，确实有着深深的感情啊，可是只是一厢情愿而没有什么希望啊！</p>
+          <p>你飘飘荡荡，轻歌曼舞在宛丘之上，是多么令人神往啊。我想着你爱着你，确实有着深深的感情啊，可是只是一厢情愿而没有什么希望啊!</p>
 <p>冬冬冬冬，鼓声响了，那是你在宛丘之下唱歌跳舞。你手持鹭毛伞一年到头歌舞不停，不管是寒冷的冬天还是炎热的盛夏。</p>
 <p>乒乒乓乓，瓦盆响了，那是你在宛丘道上跳舞歌唱。你手持鹭毛伞一年到头歌舞不停，不管是寒冷的冬天还是炎热的盛夏。<br><img src="https://img.jakehu.me/ZGAHXN0ABPkYXwZHNw36.jpeg"><br>子之汤兮，宛丘之上兮。洵有情兮，而无望兮。<br>坎其击鼓，宛丘之下。无冬无夏，值其鹭羽。<br>坎其击缶，宛丘之道。无冬无夏，值其鹭翿。</p>
 <hr>
@@ -1355,8 +1355,8 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>昨天写了一篇介绍 <code>Sublime Text</code> 插件的文章《<a href="http://www.jakehu.me/2015/Sublime-Text-Package/">带你在 Sublime Text 的世界里装逼 and 飞！</a>》，今天我们再来谈一谈一个 PHP 的开发者如何利用 <code>Sublime Text</code> 为自己搭建一个不错的 <code>IDE</code> 环境；话不多说开始吧！</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/erichard/SublimePHPCompanion"><strong>Sublime PHP Companion</strong></a><br>这是一个非常棒的插件，但是安装好了之后要小小的设置一哈快捷键。在菜单栏找到下面的快捷键设置文件__Preferences &gt; Key Bindings - User__。快捷键的设置请参考 <a target="_blank" rel="noopener" href="https://github.com/erichard/SublimePHPCompanion/blob/master/messages/1.0.0.txt"><strong>PHP Companion Setting</strong></a>。<br>__find_use (F5)__：当你的光标在这个类名上能快速的导入使用的类<br><img src="https://img.jakehu.me/php-companion-use.gif"><br>__expand_fqcn (F6)__：当你的光标在这个类名上能快速的内联使用的类<br><img src="https://img.jakehu.me/php-companion-use-inline.gif"><br>就是这么的牛逼，这么的叼，当然上面只是一个示例，更多的功能自己折腾去吧！</p>
+          <p>昨天写了一篇介绍<code>Sublime Text</code>插件的文章《<a href="http://www.jakehu.me/2015/Sublime-Text-Package/">带你在 Sublime Text 的世界里装逼 and 飞！</a>》，今天我们再来谈一谈一个 PHP 的开发者如何利用<code>Sublime Text</code>为自己搭建一个不错的<code>IDE</code>环境；话不多说开始吧！</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/erichard/SublimePHPCompanion"><strong>Sublime PHP Companion</strong></a><br>这是一个非常棒的插件，但是安装好了之后要小小的设置一哈快捷键。在菜单栏找到下面的快捷键设置文件__Preferences &gt; Key Bindings - User__。快捷键的设置请参考 <a target="_blank" rel="noopener" href="https://github.com/erichard/SublimePHPCompanion/blob/master/messages/1.0.0.txt"><strong>PHP Companion Setting</strong></a>。<br><strong>find_use(F5)</strong>：当你的光标在这个类名上能快速的导入使用的类<br><img src="https://img.jakehu.me/php-companion-use.gif"><br><strong>expand_fqcn(F6)</strong>：当你的光标在这个类名上能快速的内联使用的类<br><img src="https://img.jakehu.me/php-companion-use-inline.gif"><br>就是这么的牛逼，这么的叼，当然上面只是一个示例，更多的功能自己折腾去吧！</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/Sublime-Text-PHPer/#more" rel="contents">

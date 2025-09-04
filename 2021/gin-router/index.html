@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="在用 Python 或 Nodejs 做项目的时候我喜欢把项目的路由分文件存放在 routers 文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在 Gin 中实现 main.go123r :&#x3D; gin.Default()routers.Router(r) &#x2F;&#x2F; 路由r.Run(&quot;:8888&quot;) 就 3 行代码，Router 方法用来加载所有的路由，接下来看 Router 方法具体实">
+    <meta name="description" content="在用Python或Nodejs做项目的时候我喜欢把项目的路由分文件存放在routers文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在Gin中实现 main.go123r :&#x3D; gin.Default()routers.Router(r) &#x2F;&#x2F; 路由r.Run(&quot;:8888&quot;) 就3行代码，Router方法用来加载所有的路由，接下来看Router方法具体实现 routers&#x2F;rou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gin 框架项目路由规划">
 <meta property="og:url" content="https://www.jakehu.me/2021/gin-router/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="在用 Python 或 Nodejs 做项目的时候我喜欢把项目的路由分文件存放在 routers 文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在 Gin 中实现 main.go123r :&#x3D; gin.Default()routers.Router(r) &#x2F;&#x2F; 路由r.Run(&quot;:8888&quot;) 就 3 行代码，Router 方法用来加载所有的路由，接下来看 Router 方法具体实">
+<meta property="og:description" content="在用Python或Nodejs做项目的时候我喜欢把项目的路由分文件存放在routers文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在Gin中实现 main.go123r :&#x3D; gin.Default()routers.Router(r) &#x2F;&#x2F; 路由r.Run(&quot;:8888&quot;) 就3行代码，Router方法用来加载所有的路由，接下来看Router方法具体实现 routers&#x2F;rou">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-24T09:49:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.573Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.564Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="Gin">
 <meta property="article:tag" content="Router">
@@ -340,16 +340,16 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>在用 <code>Python</code> 或 <code>Nodejs</code> 做项目的时候我喜欢把项目的路由分文件存放在 <code>routers</code> 文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在 <code>Gin</code> 中实现</p>
+    <div class="post-body" itemprop="articleBody"><p>在用<code>Python</code>或<code>Nodejs</code>做项目的时候我喜欢把项目的路由分文件存放在<code>routers</code>文件夹下，然后在启动文件夹中加载，这样即简洁也好维护，试试如何在<code>Gin</code>中实现</p>
 <h3 id="main-go"><a href="#main-go" class="headerlink" title="main.go"></a>main.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r := gin.Default()</span><br><span class="line">routers.Router(r) <span class="comment">// 路由</span></span><br><span class="line">r.Run(<span class="string">":8888"</span>)</span><br></pre></td></tr></tbody></table></figure>
-<p>就 <code>3</code> 行代码，<code>Router</code> 方法用来加载所有的路由，接下来看 <code>Router</code> 方法具体实现</p>
+<p>就<code>3</code>行代码，<code>Router</code>方法用来加载所有的路由，接下来看<code>Router</code>方法具体实现</p>
 <h3 id="routers-router-go"><a href="#routers-router-go" class="headerlink" title="routers/router.go"></a>routers/router.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Router</span><span class="params">(e *gin.Engine)</span></span> {</span><br><span class="line">	<span class="comment">// V1版本</span></span><br><span class="line">	v1 := e.Group(<span class="string">"/v1"</span>)</span><br><span class="line">	{</span><br><span class="line">		RouterUser(v1)</span><br><span class="line">		<span class="comment">// 其他模块路由</span></span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// V2版本</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><code>Router</code> 方法主要是去把当前<code>包</code>下的其他模块的路由加载进来，这里使用了<code>路由组</code>，如果不需要<code>路由组</code>的话去掉即可，接来下看看 <code>RouterUser</code> 方法具体实现</p>
+<p><code>Router</code>方法主要是去把当前<code>包</code>下的其他模块的路由加载进来，这里使用了<code>路由组</code>，如果不需要<code>路由组</code>的话去掉即可，接来下看看<code>RouterUser</code>方法具体实现</p>
 <h3 id="routers-user-go"><a href="#routers-user-go" class="headerlink" title="routers/user.go"></a>routers/user.go</h3><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RouterUser</span><span class="params">(e *gin.RouterGroup)</span></span> {</span><br><span class="line">	e.GET(<span class="string">"/user/list"</span>, controllers.UserList)</span><br><span class="line">	e.POST(<span class="string">"/user/add"</span>, controllers.UserAdd)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>使用<code>路由组</code>接收的参数是 <code>RouterGroup</code> 不使用<code>路由组</code>接收的参数是 <code>Engine</code>，这里需要注意一下</p>
+<p>使用<code>路由组</code>接收的参数是<code>RouterGroup</code>不使用<code>路由组</code>接收的参数是<code>Engine</code>，这里需要注意一下</p>
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>最后规划下来的目录如下：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── app</span><br><span class="line">│&nbsp;&nbsp; └── controllers</span><br><span class="line">│&nbsp;&nbsp;     └── user.go</span><br><span class="line">├── go.mod</span><br><span class="line">├── go.sum</span><br><span class="line">├── main.go</span><br><span class="line">└── routers</span><br><span class="line"> &nbsp;&nbsp; ├── router.go</span><br><span class="line"> &nbsp;&nbsp; └── user.go</span><br></pre></td></tr></tbody></table></figure>
-<p>这样规划的话，就只需要维护 <code>router.go</code> 和其他的对应模块自己的路由规则，<code>main.go</code> 也就会变得非常的简洁</p>
+<p>这样规划的话，就只需要维护<code>router.go</code>和其他的对应模块自己的路由规则，<code>main.go</code>也就会变得非常的简洁</p>
 
     </div>
 
@@ -368,8 +368,8 @@ var _hmt = _hmt || [];
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/es-reserved-characters/" rel="prev" title="Elasticsearch 保留字符查询如：*、$、: 等">
-                  <i class="fa fa-angle-left"></i> Elasticsearch 保留字符查询如：*、$、: 等
+                <a href="/2021/es-reserved-characters/" rel="prev" title="Elasticsearch 保留字符查询如：*、$、:等">
+                  <i class="fa fa-angle-left"></i> Elasticsearch 保留字符查询如：*、$、:等
                 </a>
             </div>
             <div class="post-nav-item">

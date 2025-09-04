@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记在 Python 中使用 json.dumps 时出现 xxx is not JSON serializable 问题一1TypeError: Object of type Decimal is not JSON serializable 问题二1TypeError: Object of type datetime is not JSON serializable 解决123456789101">
+    <meta name="description" content="前记在Python中使用json.dumps时出现xxx is not JSON serializable 问题一1TypeError: Object of type Decimal is not JSON serializable 问题二1TypeError: Object of type datetime is not JSON serializable 解决12345678910111213">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 之 Json 序列化报错 XXX is not JSON serializable">
 <meta property="og:url" content="https://www.jakehu.me/2021/python-serializable/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记在 Python 中使用 json.dumps 时出现 xxx is not JSON serializable 问题一1TypeError: Object of type Decimal is not JSON serializable 问题二1TypeError: Object of type datetime is not JSON serializable 解决123456789101">
+<meta property="og:description" content="前记在Python中使用json.dumps时出现xxx is not JSON serializable 问题一1TypeError: Object of type Decimal is not JSON serializable 问题二1TypeError: Object of type datetime is not JSON serializable 解决12345678910111213">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-21T10:05:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.576Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.567Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="jakehu">
 <meta name="twitter:card" content="summary">
@@ -338,12 +338,12 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>在 <code>Python</code> 中使用 <code>json.dumps</code> 时出现 <code>xxx is not JSON serializable</code></p>
+    <div class="post-body" itemprop="articleBody"><h4 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h4><p>在<code>Python</code>中使用<code>json.dumps</code>时出现<code>xxx is not JSON serializable</code></p>
 <h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Object of type Decimal is not JSON serializable</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Object of type datetime is not JSON serializable</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line">import decimal</span><br><span class="line"></span><br><span class="line">class JSONEncoder(json.JSONEncoder):</span><br><span class="line">    def default(self, obj):</span><br><span class="line">        if isinstance(obj, decimal.Decimal):</span><br><span class="line">            return float(obj)</span><br><span class="line">        if isinstance(obj, datetime.datetime):</span><br><span class="line">            return obj.strftime('%Y-%m-%d %H:%M:%S')</span><br><span class="line">        if isinstance(obj, date):</span><br><span class="line">            return obj.strftime("%Y-%m-%d")</span><br><span class="line">        return json.JSONEncoder.default(self, obj)</span><br><span class="line">      </span><br><span class="line">json.dumps(data, cls=JSONEncoder)</span><br></pre></td></tr></tbody></table></figure>
 <hr>
-<p><code>JSONEncoder</code> 中的类型可以扩展，加上自己需要的类型即可</p>
+<p><code>JSONEncoder</code>中的类型可以扩展，加上自己需要的类型即可</p>
 
     </div>
 

@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前记由于我的 ADGuard Home 是安装在群晖的 Docker 中的，对外服务是在路由器上设置的 DNS，DNS 请求如下 client-&gt;路由器-&gt;群晖-&gt;Docker-&gt;ADGuard Home 所以 ADGuard Home 的客户端列表只是显示了群晖 Docker 的网关地 172.17.0.1，没有显示具体的客户端 IP 地址，导致有很多请求都不知道是从哪个">
+    <meta name="description" content="前记由于我的ADGuard Home是安装在群晖的Docker中的，对外服务是在路由器上设置的DNS，DNS请求如下 client-&gt;路由器-&gt;群晖-&gt;Docker-&gt;ADGuard Home 所以ADGuard Home的客户端列表只是显示了群晖Docker的网关地172.17.0.1，没有显示具体的客户端IP地址，导致有很多请求都不知道是从哪个客户端发起的 解决解决的办">
 <meta property="og:type" content="article">
 <meta property="og:title" content="怎么？ADGuard Home 客户端无法显示对应的设备？">
 <meta property="og:url" content="https://www.jakehu.me/2021/adguardhome-client/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="前记由于我的 ADGuard Home 是安装在群晖的 Docker 中的，对外服务是在路由器上设置的 DNS，DNS 请求如下 client-&gt;路由器-&gt;群晖-&gt;Docker-&gt;ADGuard Home 所以 ADGuard Home 的客户端列表只是显示了群晖 Docker 的网关地 172.17.0.1，没有显示具体的客户端 IP 地址，导致有很多请求都不知道是从哪个">
+<meta property="og:description" content="前记由于我的ADGuard Home是安装在群晖的Docker中的，对外服务是在路由器上设置的DNS，DNS请求如下 client-&gt;路由器-&gt;群晖-&gt;Docker-&gt;ADGuard Home 所以ADGuard Home的客户端列表只是显示了群晖Docker的网关地172.17.0.1，没有显示具体的客户端IP地址，导致有很多请求都不知道是从哪个客户端发起的 解决解决的办">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-20T16:21:07.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.572Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.563Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="jakehu">
 <meta name="twitter:card" content="summary">
@@ -329,27 +329,27 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>由于我的 <code>ADGuard Home</code> 是安装在群晖的 <code>Docker</code> 中的，对外服务是在路由器上设置的 <code>DNS</code>，<code>DNS</code> 请求如下</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>由于我的<code>ADGuard Home</code>是安装在群晖的<code>Docker</code>中的，对外服务是在路由器上设置的<code>DNS</code>，<code>DNS</code>请求如下</p>
 <p><code>client-&gt;路由器-&gt;群晖-&gt;Docker-&gt;ADGuard Home</code></p>
-<p>所以 <code>ADGuard Home</code> 的客户端列表只是显示了群晖 <code>Docker</code> 的网关地 <code>172.17.0.1</code>，没有显示具体的客户端 <code>IP</code> 地址，导致有很多请求都不知道是从哪个客户端发起的</p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>解决的办法就是将 <code>ADGuard Home</code> 所在的容器暴露到局域网中来，这就需要 <code>Docker</code> 的 <code>Macvlan</code> 网络实现方式</p>
-<p>对于 <code>Docker</code> 的 <code>3</code> 种网络实现 <code>Host</code>、<code>Bridge</code>、<code>Macvlan</code> 可以参考这里</p>
+<p>所以<code>ADGuard Home</code>的客户端列表只是显示了群晖<code>Docker</code>的网关地<code>172.17.0.1</code>，没有显示具体的客户端<code>IP</code>地址，导致有很多请求都不知道是从哪个客户端发起的</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>解决的办法就是将<code>ADGuard Home</code>所在的容器暴露到局域网中来，这就需要<code>Docker</code>的<code>Macvlan</code>网络实现方式</p>
+<p>对于<code>Docker</code>的<code>3</code>种网络实现<code>Host</code>、<code>Bridge</code>、<code>Macvlan</code>可以参考这里</p>
 <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/563351">参考文档</a></p>
-<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>开启 <code>Open vSwitch</code>，<code>Open vSwitch</code> 的作用是开启虚拟网络交换机，通过软件实现交换机的作用</p>
+<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>开启<code>Open vSwitch</code>，<code>Open vSwitch</code>的作用是开启虚拟网络交换机，通过软件实现交换机的作用</p>
 <p><code>控制面板-&gt;网络-&gt;网络界面-&gt;管理-&gt;Open vSwitch设置-&gt;启用Open vSwitch</code></p>
-<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>创建 <code>Macvlan</code> 模式网络，<code>SSH</code> 到群晖上</p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>创建<code>Macvlan</code>模式网络，<code>SSH</code>到群晖上</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d macvlan --subnet=192.168.50.0/24 --gateway=192.168.50.1 --ip-range=192.168.50.100/31 -o parent=ovs_eth0 macvlan</span><br></pre></td></tr></tbody></table></figure>
-<p><code>192.168.50.0/24</code> 是路由器中 <code>DHCP</code> 的网段</p>
-<p><code>192.168.50.1</code> 是路由器管理 <code>IP</code></p>
-<p><code>192.168.50.100/31</code> 是 <code>Docker</code> 可用 IP，此段为 <code>100</code>、<code>101</code> 可用</p>
-<p><code>ovs_eth0</code> 是群晖的网卡名称，可用 <code>ip addr</code> 查看</p>
-<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>将 <code>ADGuard Home</code> 容器分配到 <code>Macvlan</code> 网络下</p>
+<p><code>192.168.50.0/24</code> 是路由器中<code>DHCP</code>的网段</p>
+<p><code>192.168.50.1</code> 是路由器管理<code>IP</code></p>
+<p><code>192.168.50.100/31</code> 是<code>Docker</code>可用 IP，此段为<code>100</code>、<code>101</code>可用</p>
+<p><code>ovs_eth0</code> 是群晖的网卡名称，可用<code>ip addr</code>查看</p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>将<code>ADGuard Home</code>容器分配到<code>Macvlan</code>网络下</p>
 <p><code>Docker-&gt;网络-&gt;macvlan-&gt;管理-&gt;新增</code></p>
 <p>当然你也可以选择通过 Docker 命令的模式来创建容器指定网络</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always --network macvlan --ip=192.168.50.50 --name nginx nginx</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>本来是 <code>Bridge</code> 下的一个 <code>Frp</code> 容器提供穿透服务，由于 <code>Macvlan</code> 下容器无法与宿主机通信，所以 <code>ADGuard Home</code> 管理平台也就无法穿透出外网</p>
-<p>解决方案就是将 <code>ADGuard Home</code> 容器同时加入 <code>Bridge</code> 和 <code>Macvlan</code> 网络下，<code>Bridge</code> 映射端口到宿主机进行穿透，而 <code>Macvlan</code> 下的 <code>IP</code> 用来提供 <code>DNS</code> 服务</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>本来是<code>Bridge</code>下的一个<code>Frp</code>容器提供穿透服务，由于<code>Macvlan</code>下容器无法与宿主机通信，所以<code>ADGuard Home</code>管理平台也就无法穿透出外网</p>
+<p>解决方案就是将<code>ADGuard Home</code>容器同时加入<code>Bridge</code>和<code>Macvlan</code>网络下，<code>Bridge</code>映射端口到宿主机进行穿透，而<code>Macvlan</code>下的<code>IP</code>用来提供<code>DNS</code>服务</p>
 <hr>
 <p>大功告成</p>
 

@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.jakehu.me","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="之前安装了 openldap 服务和 lam 管理平台，接下来我们看看如何在 ldap 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建 Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建 Group 组创建 objectClass 属性为 groupOfUniqueNames 的组 gogs 用于 gogs 登陆其中 cn 为组名，uniqueMe">
+    <meta name="description" content="之前安装了openldap服务和lam管理平台，接下来我们看看如何在ldap中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建 Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建 Group 组创建objectClass属性为groupOfUniqueNames的组gogs用于gogs登陆其中cn为组名，uniqueMember为组下用户 为 Gogs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ldap 按分组控制权限并接入 Gogs 系统">
 <meta property="og:url" content="https://www.jakehu.me/2020/openldap-gogs/index.html">
 <meta property="og:site_name" content="晨曦&#39;s Blog">
-<meta property="og:description" content="之前安装了 openldap 服务和 lam 管理平台，接下来我们看看如何在 ldap 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建 Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建 Group 组创建 objectClass 属性为 groupOfUniqueNames 的组 gogs 用于 gogs 登陆其中 cn 为组名，uniqueMe">
+<meta property="og:description" content="之前安装了openldap服务和lam管理平台，接下来我们看看如何在ldap中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。 创建 Group先创建一个组，如图： 创建用户在刚才创建的组里创建用户，如图： 创建 Group 组创建objectClass属性为groupOfUniqueNames的组gogs用于gogs登陆其中cn为组名，uniqueMember为组下用户 为 Gogs">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.jakehu.me/20200520103212.png">
 <meta property="og:image" content="https://img.jakehu.me/20200520103333.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://img.jakehu.me/20200520142815.png">
 <meta property="og:image" content="https://img.jakehu.me/20200520134423.png">
 <meta property="article:published_time" content="2020-05-20T13:45:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.575Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.566Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="ldap">
 <meta name="twitter:card" content="summary">
@@ -347,14 +347,14 @@ var _hmt = _hmt || [];
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>之前安装了 <code>openldap</code> 服务和 <code>lam</code> 管理平台，接下来我们看看如何在 <code>ldap</code> 中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。</p>
+    <div class="post-body" itemprop="articleBody"><p>之前安装了<code>openldap</code>服务和<code>lam</code>管理平台，接下来我们看看如何在<code>ldap</code>中添加多个不同的组和用户来实现不同平台使用不同组下的用户登陆。</p>
 <h4 id="创建Group"><a href="#创建Group" class="headerlink" title="创建Group"></a>创建 Group</h4><p>先创建一个组，如图：<br><img src="https://img.jakehu.me/20200520103212.png"></p>
 <h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p>在刚才创建的组里创建用户，如图：<br><img src="https://img.jakehu.me/20200520103333.png"></p>
-<h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建 Group 组</h4><p>创建 <code>objectClass</code> 属性为 <code>groupOfUniqueNames</code> 的组 <code>gogs</code> 用于 <code>gogs</code> 登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中 <code>cn</code> 为组名，<code>uniqueMember</code> 为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
-<h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为 Gogs 添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code> 管理员的 <code>DN</code><br><code>绑定密码</code>：<code>Ldap</code> 管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code> 用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是 <code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
-<h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在 <code>gogs</code> 用户改为 <code>ldap</code> 认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
+<h4 id="创建Group组"><a href="#创建Group组" class="headerlink" title="创建Group组"></a>创建 Group 组</h4><p>创建<code>objectClass</code>属性为<code>groupOfUniqueNames</code>的组<code>gogs</code>用于<code>gogs</code>登陆<br><img src="https://img.jakehu.me/20200520103558.png"><br>其中<code>cn</code>为组名，<code>uniqueMember</code>为组下用户<br><img src="https://img.jakehu.me/20200520103755.png"><br><img src="https://img.jakehu.me/20200520103826.png"></p>
+<h4 id="为Gogs添加认证源"><a href="#为Gogs添加认证源" class="headerlink" title="为Gogs添加认证源"></a>为 Gogs 添加认证源</h4><p><code>绑定DN</code>：<code>Ldap</code>管理员的<code>DN</code><br><code>绑定密码</code>：<code>Ldap</code>管理员密码<br><code>用户搜索基准</code>：<code>ou=users,dc=jakehu,dc=me</code>用户组<br><code>用户过滤规则</code>：<br><code>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=gogs,ou=groups,dc=jakehu,dc=me)(cn=%s))</code><br>实现不同平台不同分组的重点就是<code>memberOf</code><br><img src="https://img.jakehu.me/20200520104852.png"><br><img src="https://img.jakehu.me/20200520142815.png"></p>
+<h4 id="更改认证源"><a href="#更改认证源" class="headerlink" title="更改认证源"></a>更改认证源</h4><p>如何将已经存在<code>gogs</code>用户改为<code>ldap</code>认证，如下图，更改用户的认证方式即可<br><img src="https://img.jakehu.me/20200520134423.png"></p>
 <hr>
-<p>题外话：禅道 (<code>zentao</code>) 接入 <code>Ldap</code> <a target="_blank" rel="noopener" href="https://github.com/anjia0532/zentao-ldap">参考</a></p>
+<p>题外话：禅道 (<code>zentao</code>) 接入<code>Ldap</code> <a target="_blank" rel="noopener" href="https://github.com/anjia0532/zentao-ldap">参考</a></p>
 
     </div>
 

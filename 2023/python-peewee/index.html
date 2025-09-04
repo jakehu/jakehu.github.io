@@ -30,7 +30,7 @@
 <meta property="og:description" content="函数 TIMESTAMPDIFF123456from peewee import SQL, fnTask.select().where(    (Task.recent_sync_time.is_null(True))    | (fn.TIMESTAMPDIFF(SQL(&quot;MINUTE&quot;), Task.recent_sync_time, fn.NOW()) &gt; Task.interval)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-08T10:54:00.000Z">
-<meta property="article:modified_time" content="2025-09-04T07:27:14.576Z">
+<meta property="article:modified_time" content="2025-09-04T07:41:09.567Z">
 <meta property="article:author" content="jakehu">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="peewee">
@@ -340,11 +340,11 @@ var _hmt = _hmt || [];
     
     
     <div class="post-body" itemprop="articleBody"><h4 id="函数TIMESTAMPDIFF"><a href="#函数TIMESTAMPDIFF" class="headerlink" title="函数TIMESTAMPDIFF"></a>函数 TIMESTAMPDIFF</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> peewee <span class="keyword">import</span> SQL, fn</span><br><span class="line"></span><br><span class="line">Task.select().where(</span><br><span class="line">    (Task.recent_sync_time.is_null(<span class="literal">True</span>))</span><br><span class="line">    | (fn.TIMESTAMPDIFF(SQL(<span class="string">"MINUTE"</span>), Task.recent_sync_time, fn.NOW()) &gt; Task.interval)</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
-<p>注意这里的 <code>MINUTE</code> 必须使用 <code>SQL</code> 函数格式化，如：<code>SQL("MINUTE")</code></p>
+<p>注意这里的<code>MINUTE</code>必须使用<code>SQL</code>函数格式化，如：<code>SQL("MINUTE")</code></p>
 <p><a target="_blank" rel="noopener" href="https://pythonhosted.org/pyfact/_modules/fact/factdb/utils.html">参考</a></p>
-<h4 id="JSONField"><a href="#JSONField" class="headerlink" title="JSONField"></a>JSONField</h4><p><code>Peewee</code> 中本来是没有 <code>JSONField</code> 这个数据类型的，我们可以利用官方的扩展包</p>
+<h4 id="JSONField"><a href="#JSONField" class="headerlink" title="JSONField"></a>JSONField</h4><p><code>Peewee</code>中本来是没有<code>JSONField</code>这个数据类型的，我们可以利用官方的扩展包</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> playhouse.mysql_ext <span class="keyword">import</span> JSONField</span><br></pre></td></tr></tbody></table></figure>
-<p>也可以通过<code>自定义类型</code>或者 <code>jsonfield</code> 这个三方包完成</p>
+<p>也可以通过<code>自定义类型</code>或者<code>jsonfield</code>这个三方包完成</p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40553790/peewee-orm-jsonfield-for-mysql">参考</a></p>
 <h4 id="Model-To-Dict"><a href="#Model-To-Dict" class="headerlink" title="Model To Dict"></a>Model To Dict</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> playhouse.shortcuts <span class="keyword">import</span> model_to_dict</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_data_list</span>(<span class="params">info_id</span>):</span><br><span class="line">    datas = Data.select().where(Data.info_id == info_id)</span><br><span class="line">    datas = [model_to_dict(data) <span class="keyword">for</span> data <span class="keyword">in</span> datas]</span><br><span class="line">    <span class="keyword">return</span> datas</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 

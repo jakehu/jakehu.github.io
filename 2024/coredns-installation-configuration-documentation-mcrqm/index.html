@@ -344,7 +344,7 @@ var _hmt = _hmt || [];
 
 <h4 id="DNS-zone-file"><a href="#DNS-zone-file" class="headerlink" title="DNS zone file"></a>DNS zone file</h4><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/coredns/jakehu.me</span></span><br><span class="line"><span class="variable">$ORIGIN</span> jakehu.me.</span><br><span class="line">@	3600 IN	SOA sns.dns.icann.org. noc.dns.icann.org. 2017042745 7200 3600 1209600 3600</span><br><span class="line">	3600 IN NS a.iana-servers.net.</span><br><span class="line">	3600 IN NS b.iana-servers.net.</span><br><span class="line"></span><br><span class="line">www     IN A     127.0.0.1</span><br></pre></td></tr></tbody></table></figure>
 
-<p>如果增加了记录需要将 <code>2017042745</code>​加 1，让配置生效</p>
+<p>如果增加了记录需要将<code>2017042745</code>​加 1，让配置生效</p>
 <h4 id="主从配置"><a href="#主从配置" class="headerlink" title="主从配置"></a>主从配置</h4><p>CoreDNS 本身并不直接支持传统的主从配置（如 BIND 的 masters 和 slaves）。不过，以下几种方法可以实现类似的功能：</p>
 <ol>
 <li>DNS 转发：通过配置 forward 插件将 DNS 查询转发到另一台服务器，适用于负载均衡或容灾目的。</li>
