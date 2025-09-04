@@ -20,142 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/weixin-token/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2022/windows-cygwin-kubebuilder/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/xcrun-error/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2020/zsh-plugins/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/about/index.html</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/categories/index.html</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/sanic-docker-supervisor/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/sanic-upload/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/smartgit/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2020/some-problems/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/sql-injection/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2022/sqlalchemy-date-format/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/sql-soar/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/supervisor-haproxy/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2019/suse-kernel/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2020/synology-docker/</loc>
+    <loc>https://www.jakehu.me/2019/synology-frp-https/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -173,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/synology-frp-https/</loc>
+    <loc>https://www.jakehu.me/2019/synology-lede/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -191,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/synology-lede/</loc>
+    <loc>https://www.jakehu.me/2019/synology-update/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -201,15 +66,6 @@
   
   <url>
     <loc>https://www.jakehu.me/2021/tortoise-orm-json/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2019/synology-update/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -281,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/pyOpenSSL-parse/</loc>
+    <loc>https://www.jakehu.me/2019/weixin-token/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -290,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/pyenv/</loc>
+    <loc>https://www.jakehu.me/2022/windows-cygwin-kubebuilder/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -299,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/pyspider/</loc>
+    <loc>https://www.jakehu.me/2021/xcrun-error/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -308,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2023/python-peewee/</loc>
+    <loc>https://www.jakehu.me/2020/zsh-plugins/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -317,7 +173,16 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/python-pip-pypi/</loc>
+    <loc>https://www.jakehu.me/about/index.html</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/categories/index.html</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -434,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/mac-iterm/</loc>
+    <loc>https://www.jakehu.me/2021/sanic-docker-supervisor/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -443,7 +308,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/mac-sed-error/</loc>
+    <loc>https://www.jakehu.me/2021/sanic-upload/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -452,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/mac-software/</loc>
+    <loc>https://www.jakehu.me/2021/smartgit/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -461,7 +326,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/module-crypto/</loc>
+    <loc>https://www.jakehu.me/2020/some-problems/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -470,7 +335,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2018/mybatis-plus-page/</loc>
+    <loc>https://www.jakehu.me/2021/sql-injection/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -479,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/mysql-adjoin-diff/</loc>
+    <loc>https://www.jakehu.me/2018/sql-soar/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -488,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2020/mysql-password/</loc>
+    <loc>https://www.jakehu.me/2022/sqlalchemy-date-format/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -497,7 +362,25 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2018/mysql-usage/</loc>
+    <loc>https://www.jakehu.me/2021/supervisor-haproxy/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/suse-kernel/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2020/synology-docker/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -560,7 +443,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/php-composer-error/</loc>
+    <loc>https://www.jakehu.me/2020/openssh-pip/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -569,7 +452,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2020/openssh-pip/</loc>
+    <loc>https://www.jakehu.me/2022/php-composer-error/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -605,7 +488,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/gogs-drone/</loc>
+    <loc>https://www.jakehu.me/2021/pyOpenSSL-parse/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -614,7 +497,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/gogs-update/</loc>
+    <loc>https://www.jakehu.me/2021/pyenv/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -623,7 +506,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/google-translate/</loc>
+    <loc>https://www.jakehu.me/2019/pyspider/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -632,7 +515,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/guns-maven-skip-test/</loc>
+    <loc>https://www.jakehu.me/2021/python-pip-pypi/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -641,70 +524,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/hexo-baidu-sitemap/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2015/hello-hexo/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2019/hexo-drone/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/hexo-gulp/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/hexo-pages/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/homebrew-uninstall/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2020/home-assistant/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/install-efk/</loc>
+    <loc>https://www.jakehu.me/2023/python-peewee/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -777,6 +597,339 @@
   
   <url>
     <loc>https://www.jakehu.me/2023/mac-http-proxy/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/mac-iterm/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/mac-sed-error/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/mac-software/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/module-crypto/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2018/mybatis-plus-page/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/mysql-adjoin-diff/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2020/mysql-password/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2018/mysql-usage/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/gin-docker/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/gin-router/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/gin-hot-reload/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2020/git-auto-push/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/github-actions-push-docker-images/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/gitlab-403-forbidden/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/gitlab-docker-update/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2018/gitlab-docker/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/go-miniprogram/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/go-password/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/go-random-number/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/go-study-notes/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/gogs-drone/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/gogs-update/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/google-translate/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/guns-maven-skip-test/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2015/hello-hexo/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/hexo-baidu-sitemap/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/hexo-drone/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2018/hexo-gulp/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2018/hexo-pages/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2020/home-assistant/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/homebrew-uninstall/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/install-efk/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2023/caddy-error/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2019/centos-chrome-headles/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2021/centos-displacement/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2022/centos-kubebuilder/</loc>
+    
+    <lastmod>2025-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/2018/cleanmymac/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -893,7 +1046,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/gin-docker/</loc>
+    <loc>https://www.jakehu.me/2018/Homebrew-nvm/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -902,7 +1055,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/gin-hot-reload/</loc>
+    <loc>https://www.jakehu.me/2018/Java-Utils/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -911,7 +1064,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/gin-router/</loc>
+    <loc>https://www.jakehu.me/2018/LCN-GTS/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -920,7 +1073,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2020/git-auto-push/</loc>
+    <loc>https://www.jakehu.me/2021/Lapis-Install/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -929,7 +1082,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/github-actions-push-docker-images/</loc>
+    <loc>https://www.jakehu.me/2015/Linux-install-php-extension/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -938,7 +1091,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2019/gitlab-403-forbidden/</loc>
+    <loc>https://www.jakehu.me/2021/Linux-shell-setting/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -947,7 +1100,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/gitlab-docker-update/</loc>
+    <loc>https://www.jakehu.me/2018/Nas-Time-Machine/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -956,7 +1109,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2018/gitlab-docker/</loc>
+    <loc>https://www.jakehu.me/2015/Shijing-Caiwei/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -965,7 +1118,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/go-password/</loc>
+    <loc>https://www.jakehu.me/2016/Shijing-Wanqiu/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -974,7 +1127,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/go-miniprogram/</loc>
+    <loc>https://www.jakehu.me/2015/Shijing-Zhenwei/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -983,7 +1136,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2022/go-random-number/</loc>
+    <loc>https://www.jakehu.me/2015/Sublime-Text-PHPer/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -992,7 +1145,7 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2021/go-study-notes/</loc>
+    <loc>https://www.jakehu.me/2015/Sublime-Text-Package/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -1109,51 +1262,6 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/2023/caddy-error/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2019/centos-chrome-headles/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/centos-displacement/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2022/centos-kubebuilder/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/cleanmymac/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.jakehu.me/2018/Bushe-Lushan/</loc>
     
     <lastmod>2025-09-04</lastmod>
@@ -1191,114 +1299,6 @@
   
   <url>
     <loc>https://www.jakehu.me/2019/GitLab-Java-Runner/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/Homebrew-nvm/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/Java-Utils/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/LCN-GTS/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/Lapis-Install/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2015/Linux-install-php-extension/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2021/Linux-shell-setting/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2018/Nas-Time-Machine/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2015/Shijing-Caiwei/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2016/Shijing-Wanqiu/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2015/Shijing-Zhenwei/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2015/Sublime-Text-PHPer/</loc>
-    
-    <lastmod>2025-09-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/2015/Sublime-Text-Package/</loc>
     
     <lastmod>2025-09-04</lastmod>
     
@@ -1934,13 +1934,6 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/tags/golang/</loc>
-    <lastmod>2025-09-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.jakehu.me/tags/Gin/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -1962,6 +1955,13 @@
   </url>
   
   <url>
+    <loc>https://www.jakehu.me/tags/golang/</loc>
+    <lastmod>2025-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.jakehu.me/tags/Github/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -1976,14 +1976,14 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/tags/Go/</loc>
+    <loc>https://www.jakehu.me/tags/go/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/tags/go/</loc>
+    <loc>https://www.jakehu.me/tags/Go/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2277,14 +2277,14 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/tags/peewee/</loc>
+    <loc>https://www.jakehu.me/tags/pypi/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/tags/pypi/</loc>
+    <loc>https://www.jakehu.me/tags/peewee/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2417,13 +2417,6 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/tags/Sqlalchemy/</loc>
-    <lastmod>2025-09-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.jakehu.me/tags/SOAR/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -2432,6 +2425,13 @@
   
   <url>
     <loc>https://www.jakehu.me/tags/SQL/</loc>
+    <lastmod>2025-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/tags/Sqlalchemy/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2459,6 +2459,13 @@
   </url>
   
   <url>
+    <loc>https://www.jakehu.me/tags/https/</loc>
+    <lastmod>2025-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.jakehu.me/tags/lede/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -2466,7 +2473,14 @@
   </url>
   
   <url>
-    <loc>https://www.jakehu.me/tags/https/</loc>
+    <loc>https://www.jakehu.me/tags/Virtual-Machine-Manager/</loc>
+    <lastmod>2025-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jakehu.me/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2488,20 +2502,6 @@
   
   <url>
     <loc>https://www.jakehu.me/tags/nginx/</loc>
-    <lastmod>2025-09-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/tags/Virtual-Machine-Manager/</loc>
-    <lastmod>2025-09-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.jakehu.me/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
